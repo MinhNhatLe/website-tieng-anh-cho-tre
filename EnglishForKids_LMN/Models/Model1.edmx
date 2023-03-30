@@ -1,0 +1,825 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="English_LearningModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="ID_Category" />
+          </Key>
+          <Property Name="ID_Category" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name_Category" Type="nvarchar" MaxLength="50" />
+          <Property Name="ID_User" Type="int" />
+        </EntityType>
+        <EntityType Name="Category_Vo">
+          <Key>
+            <PropertyRef Name="ID_Category_Vo" />
+          </Key>
+          <Property Name="ID_Category_Vo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name_Category_Vo" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Question">
+          <Key>
+            <PropertyRef Name="ID_Question" />
+          </Key>
+          <Property Name="ID_Question" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Content" Type="nvarchar" MaxLength="200" />
+          <Property Name="Type_Question" Type="varchar" MaxLength="20" />
+          <Property Name="Answer_Content1" Type="varchar" MaxLength="50" />
+          <Property Name="Answer_Content2" Type="varchar" MaxLength="50" />
+          <Property Name="Answer_Content3" Type="varchar" MaxLength="50" />
+          <Property Name="Answer_Content4" Type="varchar" MaxLength="50" />
+          <Property Name="Answer_Correct" Type="varchar" MaxLength="50" />
+          <Property Name="ID_Test" Type="int" />
+        </EntityType>
+        <EntityType Name="Quiz">
+          <Key>
+            <PropertyRef Name="ID_Quiz" />
+          </Key>
+          <Property Name="ID_Quiz" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name_Quiz" Type="varchar" MaxLength="50" />
+          <Property Name="Content" Type="varchar" MaxLength="50" />
+          <Property Name="Answer_1" Type="varchar" MaxLength="100" />
+          <Property Name="Answer_2" Type="varchar" MaxLength="100" />
+          <Property Name="Answer_3" Type="varchar" MaxLength="100" />
+          <Property Name="Answer_4" Type="varchar" MaxLength="100" />
+          <Property Name="Answer_5" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Quiz_Details">
+          <Key>
+            <PropertyRef Name="ID_Category_Vo" />
+            <PropertyRef Name="ID_User" />
+            <PropertyRef Name="ID_Quiz" />
+          </Key>
+          <Property Name="Quiz_Score" Type="float" />
+          <Property Name="Time_Quiz" Type="nvarchar" MaxLength="20" />
+          <Property Name="ID_Category_Vo" Type="int" Nullable="false" />
+          <Property Name="ID_User" Type="int" Nullable="false" />
+          <Property Name="ID_Quiz" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Story">
+          <Key>
+            <PropertyRef Name="ID_Story" />
+          </Key>
+          <Property Name="ID_Story" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name_Story" Type="varchar" MaxLength="50" />
+          <Property Name="EN_Content" Type="varchar" MaxLength="50" />
+          <Property Name="VN_Content" Type="varchar" MaxLength="50" />
+          <Property Name="Image_Story" Type="varchar" MaxLength="50" />
+          <Property Name="Audio" Type="varchar" MaxLength="50" />
+          <Property Name="View_Story" Type="int" />
+          <Property Name="Banner" Type="varchar" MaxLength="50" />
+          <Property Name="ID_Category" Type="int" />
+          <Property Name="ID_User" Type="int" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Test">
+          <Key>
+            <PropertyRef Name="ID_Test" />
+          </Key>
+          <Property Name="ID_Test" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name_Test" Type="nvarchar" MaxLength="50" />
+          <Property Name="Paragraph" Type="varchar" MaxLength="50" />
+          <Property Name="Video" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Test_Details">
+          <Key>
+            <PropertyRef Name="ID_User" />
+            <PropertyRef Name="ID_Test" />
+          </Key>
+          <Property Name="Test_Score" Type="float" />
+          <Property Name="Time_Test" Type="nvarchar" MaxLength="20" />
+          <Property Name="ID_User" Type="int" Nullable="false" />
+          <Property Name="ID_Test" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="ID_User" />
+          </Key>
+          <Property Name="ID_User" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name_User" Type="nvarchar" MaxLength="50" />
+          <Property Name="Gender" Type="nvarchar" MaxLength="10" />
+          <Property Name="Phone" Type="varchar" MaxLength="12" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" />
+          <Property Name="Birthday" Type="datetime" />
+          <Property Name="Image_User" Type="varchar" MaxLength="50" />
+          <Property Name="Login_User" Type="varchar" MaxLength="50" />
+          <Property Name="Password_User" Type="varchar" MaxLength="11" />
+          <Property Name="IsAdmin" Type="bit" />
+        </EntityType>
+        <EntityType Name="Vocabulary">
+          <Key>
+            <PropertyRef Name="ID_Vocabulary" />
+          </Key>
+          <Property Name="ID_Vocabulary" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Pronunciation" Type="nvarchar" MaxLength="20" />
+          <Property Name="VN_Meaning" Type="nvarchar" MaxLength="30" />
+          <Property Name="EN_Meaning" Type="varchar" MaxLength="30" />
+          <Property Name="Image_Vocabulary" Type="varchar" MaxLength="50" />
+          <Property Name="ID_Cate_Vo" Type="int" />
+          <Property Name="ID_Category" Type="int" />
+        </EntityType>
+        <Association Name="FK__Category__ID_Use__47DBAE45">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="Category" Type="Self.Category" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="ID_User" />
+            </Principal>
+            <Dependent Role="Category">
+              <PropertyRef Name="ID_User" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Question__ID_Tes__48CFD27E">
+          <End Role="Test" Type="Self.Test" Multiplicity="0..1" />
+          <End Role="Question" Type="Self.Question" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Test">
+              <PropertyRef Name="ID_Test" />
+            </Principal>
+            <Dependent Role="Question">
+              <PropertyRef Name="ID_Test" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Quiz_Deta__ID_Ca__49C3F6B7">
+          <End Role="Category_Vo" Type="Self.Category_Vo" Multiplicity="1" />
+          <End Role="Quiz_Details" Type="Self.Quiz_Details" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category_Vo">
+              <PropertyRef Name="ID_Category_Vo" />
+            </Principal>
+            <Dependent Role="Quiz_Details">
+              <PropertyRef Name="ID_Category_Vo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Quiz_Deta__ID_Qu__4AB81AF0">
+          <End Role="Quiz" Type="Self.Quiz" Multiplicity="1" />
+          <End Role="Quiz_Details" Type="Self.Quiz_Details" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Quiz">
+              <PropertyRef Name="ID_Quiz" />
+            </Principal>
+            <Dependent Role="Quiz_Details">
+              <PropertyRef Name="ID_Quiz" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Quiz_Deta__ID_Us__4BAC3F29">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="Quiz_Details" Type="Self.Quiz_Details" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="ID_User" />
+            </Principal>
+            <Dependent Role="Quiz_Details">
+              <PropertyRef Name="ID_User" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Story__ID_Catego__4CA06362">
+          <End Role="Category" Type="Self.Category" Multiplicity="0..1" />
+          <End Role="Story" Type="Self.Story" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="ID_Category" />
+            </Principal>
+            <Dependent Role="Story">
+              <PropertyRef Name="ID_Category" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Story__ID_User__4D94879B">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="Story" Type="Self.Story" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="ID_User" />
+            </Principal>
+            <Dependent Role="Story">
+              <PropertyRef Name="ID_User" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Test_Deta__ID_Te__4E88ABD4">
+          <End Role="Test" Type="Self.Test" Multiplicity="1" />
+          <End Role="Test_Details" Type="Self.Test_Details" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Test">
+              <PropertyRef Name="ID_Test" />
+            </Principal>
+            <Dependent Role="Test_Details">
+              <PropertyRef Name="ID_Test" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Test_Deta__ID_Us__4F7CD00D">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="Test_Details" Type="Self.Test_Details" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="ID_User" />
+            </Principal>
+            <Dependent Role="Test_Details">
+              <PropertyRef Name="ID_User" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Vocabular__ID_Ca__5070F446">
+          <End Role="Category_Vo" Type="Self.Category_Vo" Multiplicity="0..1" />
+          <End Role="Vocabulary" Type="Self.Vocabulary" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category_Vo">
+              <PropertyRef Name="ID_Category_Vo" />
+            </Principal>
+            <Dependent Role="Vocabulary">
+              <PropertyRef Name="ID_Cate_Vo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Vocabular__ID_Ca__5165187F">
+          <End Role="Category" Type="Self.Category" Multiplicity="0..1" />
+          <End Role="Vocabulary" Type="Self.Vocabulary" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="ID_Category" />
+            </Principal>
+            <Dependent Role="Vocabulary">
+              <PropertyRef Name="ID_Category" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="English_LearningModelStoreContainer">
+          <EntitySet Name="Category" EntityType="Self.Category" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Category_Vo" EntityType="Self.Category_Vo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Question" EntityType="Self.Question" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Quiz" EntityType="Self.Quiz" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Quiz_Details" EntityType="Self.Quiz_Details" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Story" EntityType="Self.Story" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Test" EntityType="Self.Test" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Test_Details" EntityType="Self.Test_Details" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Vocabulary" EntityType="Self.Vocabulary" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Category__ID_Use__47DBAE45" Association="Self.FK__Category__ID_Use__47DBAE45">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Category" EntitySet="Category" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Question__ID_Tes__48CFD27E" Association="Self.FK__Question__ID_Tes__48CFD27E">
+            <End Role="Test" EntitySet="Test" />
+            <End Role="Question" EntitySet="Question" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Quiz_Deta__ID_Ca__49C3F6B7" Association="Self.FK__Quiz_Deta__ID_Ca__49C3F6B7">
+            <End Role="Category_Vo" EntitySet="Category_Vo" />
+            <End Role="Quiz_Details" EntitySet="Quiz_Details" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Quiz_Deta__ID_Qu__4AB81AF0" Association="Self.FK__Quiz_Deta__ID_Qu__4AB81AF0">
+            <End Role="Quiz" EntitySet="Quiz" />
+            <End Role="Quiz_Details" EntitySet="Quiz_Details" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Quiz_Deta__ID_Us__4BAC3F29" Association="Self.FK__Quiz_Deta__ID_Us__4BAC3F29">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Quiz_Details" EntitySet="Quiz_Details" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Story__ID_Catego__4CA06362" Association="Self.FK__Story__ID_Catego__4CA06362">
+            <End Role="Category" EntitySet="Category" />
+            <End Role="Story" EntitySet="Story" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Story__ID_User__4D94879B" Association="Self.FK__Story__ID_User__4D94879B">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Story" EntitySet="Story" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Test_Deta__ID_Te__4E88ABD4" Association="Self.FK__Test_Deta__ID_Te__4E88ABD4">
+            <End Role="Test" EntitySet="Test" />
+            <End Role="Test_Details" EntitySet="Test_Details" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Test_Deta__ID_Us__4F7CD00D" Association="Self.FK__Test_Deta__ID_Us__4F7CD00D">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Test_Details" EntitySet="Test_Details" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Vocabular__ID_Ca__5070F446" Association="Self.FK__Vocabular__ID_Ca__5070F446">
+            <End Role="Category_Vo" EntitySet="Category_Vo" />
+            <End Role="Vocabulary" EntitySet="Vocabulary" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Vocabular__ID_Ca__5165187F" Association="Self.FK__Vocabular__ID_Ca__5165187F">
+            <End Role="Category" EntitySet="Category" />
+            <End Role="Vocabulary" EntitySet="Vocabulary" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="English_LearningModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="ID_Category" />
+          </Key>
+          <Property Name="ID_Category" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name_Category" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ID_User" Type="Int32" />
+          <NavigationProperty Name="User" Relationship="Self.FK__Category__ID_Use__47DBAE45" FromRole="Category" ToRole="Users" />
+          <NavigationProperty Name="Stories" Relationship="Self.FK__Story__ID_Catego__4CA06362" FromRole="Category" ToRole="Story" />
+          <NavigationProperty Name="Vocabularies" Relationship="Self.FK__Vocabular__ID_Ca__5165187F" FromRole="Category" ToRole="Vocabulary" />
+        </EntityType>
+        <EntityType Name="Category_Vo">
+          <Key>
+            <PropertyRef Name="ID_Category_Vo" />
+          </Key>
+          <Property Name="ID_Category_Vo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name_Category_Vo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Quiz_Details" Relationship="Self.FK__Quiz_Deta__ID_Ca__49C3F6B7" FromRole="Category_Vo" ToRole="Quiz_Details" />
+          <NavigationProperty Name="Vocabularies" Relationship="Self.FK__Vocabular__ID_Ca__5070F446" FromRole="Category_Vo" ToRole="Vocabulary" />
+        </EntityType>
+        <EntityType Name="Question">
+          <Key>
+            <PropertyRef Name="ID_Question" />
+          </Key>
+          <Property Name="ID_Question" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Content" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Type_Question" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Answer_Content1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Answer_Content2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Answer_Content3" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Answer_Content4" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Answer_Correct" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ID_Test" Type="Int32" />
+          <NavigationProperty Name="Test" Relationship="Self.FK__Question__ID_Tes__48CFD27E" FromRole="Question" ToRole="Test" />
+        </EntityType>
+        <EntityType Name="Quiz">
+          <Key>
+            <PropertyRef Name="ID_Quiz" />
+          </Key>
+          <Property Name="ID_Quiz" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name_Quiz" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Content" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Answer_1" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Answer_2" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Answer_3" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Answer_4" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Answer_5" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Quiz_Details" Relationship="Self.FK__Quiz_Deta__ID_Qu__4AB81AF0" FromRole="Quiz" ToRole="Quiz_Details" />
+        </EntityType>
+        <EntityType Name="Quiz_Details">
+          <Key>
+            <PropertyRef Name="ID_Category_Vo" />
+            <PropertyRef Name="ID_User" />
+            <PropertyRef Name="ID_Quiz" />
+          </Key>
+          <Property Name="Quiz_Score" Type="Double" />
+          <Property Name="Time_Quiz" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="ID_Category_Vo" Type="Int32" Nullable="false" />
+          <Property Name="ID_User" Type="Int32" Nullable="false" />
+          <Property Name="ID_Quiz" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Category_Vo" Relationship="Self.FK__Quiz_Deta__ID_Ca__49C3F6B7" FromRole="Quiz_Details" ToRole="Category_Vo" />
+          <NavigationProperty Name="Quiz" Relationship="Self.FK__Quiz_Deta__ID_Qu__4AB81AF0" FromRole="Quiz_Details" ToRole="Quiz" />
+          <NavigationProperty Name="User" Relationship="Self.FK__Quiz_Deta__ID_Us__4BAC3F29" FromRole="Quiz_Details" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="Story">
+          <Key>
+            <PropertyRef Name="ID_Story" />
+          </Key>
+          <Property Name="ID_Story" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name_Story" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="EN_Content" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="VN_Content" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Image_Story" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Audio" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="View_Story" Type="Int32" />
+          <Property Name="Banner" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ID_Category" Type="Int32" />
+          <Property Name="ID_User" Type="Int32" />
+          <NavigationProperty Name="Category" Relationship="Self.FK__Story__ID_Catego__4CA06362" FromRole="Story" ToRole="Category" />
+          <NavigationProperty Name="User" Relationship="Self.FK__Story__ID_User__4D94879B" FromRole="Story" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Test">
+          <Key>
+            <PropertyRef Name="ID_Test" />
+          </Key>
+          <Property Name="ID_Test" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name_Test" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Paragraph" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Video" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Questions" Relationship="Self.FK__Question__ID_Tes__48CFD27E" FromRole="Test" ToRole="Question" />
+          <NavigationProperty Name="Test_Details" Relationship="Self.FK__Test_Deta__ID_Te__4E88ABD4" FromRole="Test" ToRole="Test_Details" />
+        </EntityType>
+        <EntityType Name="Test_Details">
+          <Key>
+            <PropertyRef Name="ID_User" />
+            <PropertyRef Name="ID_Test" />
+          </Key>
+          <Property Name="Test_Score" Type="Double" />
+          <Property Name="Time_Test" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="ID_User" Type="Int32" Nullable="false" />
+          <Property Name="ID_Test" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Test" Relationship="Self.FK__Test_Deta__ID_Te__4E88ABD4" FromRole="Test_Details" ToRole="Test" />
+          <NavigationProperty Name="User" Relationship="Self.FK__Test_Deta__ID_Us__4F7CD00D" FromRole="Test_Details" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="ID_User" />
+          </Key>
+          <Property Name="ID_User" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name_User" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Gender" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Birthday" Type="DateTime" Precision="3" />
+          <Property Name="Image_User" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Login_User" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Password_User" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+          <Property Name="IsAdmin" Type="Boolean" />
+          <NavigationProperty Name="Categories" Relationship="Self.FK__Category__ID_Use__47DBAE45" FromRole="Users" ToRole="Category" />
+          <NavigationProperty Name="Quiz_Details" Relationship="Self.FK__Quiz_Deta__ID_Us__4BAC3F29" FromRole="Users" ToRole="Quiz_Details" />
+          <NavigationProperty Name="Stories" Relationship="Self.FK__Story__ID_User__4D94879B" FromRole="Users" ToRole="Story" />
+          <NavigationProperty Name="Test_Details" Relationship="Self.FK__Test_Deta__ID_Us__4F7CD00D" FromRole="Users" ToRole="Test_Details" />
+        </EntityType>
+        <EntityType Name="Vocabulary">
+          <Key>
+            <PropertyRef Name="ID_Vocabulary" />
+          </Key>
+          <Property Name="ID_Vocabulary" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Pronunciation" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="VN_Meaning" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="EN_Meaning" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Image_Vocabulary" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ID_Cate_Vo" Type="Int32" />
+          <Property Name="ID_Category" Type="Int32" />
+          <NavigationProperty Name="Category" Relationship="Self.FK__Vocabular__ID_Ca__5165187F" FromRole="Vocabulary" ToRole="Category" />
+          <NavigationProperty Name="Category_Vo" Relationship="Self.FK__Vocabular__ID_Ca__5070F446" FromRole="Vocabulary" ToRole="Category_Vo" />
+        </EntityType>
+        <Association Name="FK__Category__ID_Use__47DBAE45">
+          <End Role="Users" Type="Self.User" Multiplicity="0..1" />
+          <End Role="Category" Type="Self.Category" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="ID_User" />
+            </Principal>
+            <Dependent Role="Category">
+              <PropertyRef Name="ID_User" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Story__ID_Catego__4CA06362">
+          <End Role="Category" Type="Self.Category" Multiplicity="0..1" />
+          <End Role="Story" Type="Self.Story" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="ID_Category" />
+            </Principal>
+            <Dependent Role="Story">
+              <PropertyRef Name="ID_Category" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Vocabular__ID_Ca__5165187F">
+          <End Role="Category" Type="Self.Category" Multiplicity="0..1" />
+          <End Role="Vocabulary" Type="Self.Vocabulary" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="ID_Category" />
+            </Principal>
+            <Dependent Role="Vocabulary">
+              <PropertyRef Name="ID_Category" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Quiz_Deta__ID_Ca__49C3F6B7">
+          <End Role="Category_Vo" Type="Self.Category_Vo" Multiplicity="1" />
+          <End Role="Quiz_Details" Type="Self.Quiz_Details" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category_Vo">
+              <PropertyRef Name="ID_Category_Vo" />
+            </Principal>
+            <Dependent Role="Quiz_Details">
+              <PropertyRef Name="ID_Category_Vo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Vocabular__ID_Ca__5070F446">
+          <End Role="Category_Vo" Type="Self.Category_Vo" Multiplicity="0..1" />
+          <End Role="Vocabulary" Type="Self.Vocabulary" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category_Vo">
+              <PropertyRef Name="ID_Category_Vo" />
+            </Principal>
+            <Dependent Role="Vocabulary">
+              <PropertyRef Name="ID_Cate_Vo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Question__ID_Tes__48CFD27E">
+          <End Role="Test" Type="Self.Test" Multiplicity="0..1" />
+          <End Role="Question" Type="Self.Question" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Test">
+              <PropertyRef Name="ID_Test" />
+            </Principal>
+            <Dependent Role="Question">
+              <PropertyRef Name="ID_Test" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Quiz_Deta__ID_Qu__4AB81AF0">
+          <End Role="Quiz" Type="Self.Quiz" Multiplicity="1" />
+          <End Role="Quiz_Details" Type="Self.Quiz_Details" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Quiz">
+              <PropertyRef Name="ID_Quiz" />
+            </Principal>
+            <Dependent Role="Quiz_Details">
+              <PropertyRef Name="ID_Quiz" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Quiz_Deta__ID_Us__4BAC3F29">
+          <End Role="Users" Type="Self.User" Multiplicity="1" />
+          <End Role="Quiz_Details" Type="Self.Quiz_Details" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="ID_User" />
+            </Principal>
+            <Dependent Role="Quiz_Details">
+              <PropertyRef Name="ID_User" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Story__ID_User__4D94879B">
+          <End Role="Users" Type="Self.User" Multiplicity="0..1" />
+          <End Role="Story" Type="Self.Story" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="ID_User" />
+            </Principal>
+            <Dependent Role="Story">
+              <PropertyRef Name="ID_User" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Test_Deta__ID_Te__4E88ABD4">
+          <End Role="Test" Type="Self.Test" Multiplicity="1" />
+          <End Role="Test_Details" Type="Self.Test_Details" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Test">
+              <PropertyRef Name="ID_Test" />
+            </Principal>
+            <Dependent Role="Test_Details">
+              <PropertyRef Name="ID_Test" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Test_Deta__ID_Us__4F7CD00D">
+          <End Role="Users" Type="Self.User" Multiplicity="1" />
+          <End Role="Test_Details" Type="Self.Test_Details" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="ID_User" />
+            </Principal>
+            <Dependent Role="Test_Details">
+              <PropertyRef Name="ID_User" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="English_LearningEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Categories" EntityType="Self.Category" />
+          <EntitySet Name="Category_Vo" EntityType="Self.Category_Vo" />
+          <EntitySet Name="Questions" EntityType="Self.Question" />
+          <EntitySet Name="Quizs" EntityType="Self.Quiz" />
+          <EntitySet Name="Quiz_Details" EntityType="Self.Quiz_Details" />
+          <EntitySet Name="Stories" EntityType="Self.Story" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+          <EntitySet Name="Tests" EntityType="Self.Test" />
+          <EntitySet Name="Test_Details" EntityType="Self.Test_Details" />
+          <EntitySet Name="Users" EntityType="Self.User" />
+          <EntitySet Name="Vocabularies" EntityType="Self.Vocabulary" />
+          <AssociationSet Name="FK__Category__ID_Use__47DBAE45" Association="Self.FK__Category__ID_Use__47DBAE45">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Category" EntitySet="Categories" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Story__ID_Catego__4CA06362" Association="Self.FK__Story__ID_Catego__4CA06362">
+            <End Role="Category" EntitySet="Categories" />
+            <End Role="Story" EntitySet="Stories" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Vocabular__ID_Ca__5165187F" Association="Self.FK__Vocabular__ID_Ca__5165187F">
+            <End Role="Category" EntitySet="Categories" />
+            <End Role="Vocabulary" EntitySet="Vocabularies" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Quiz_Deta__ID_Ca__49C3F6B7" Association="Self.FK__Quiz_Deta__ID_Ca__49C3F6B7">
+            <End Role="Category_Vo" EntitySet="Category_Vo" />
+            <End Role="Quiz_Details" EntitySet="Quiz_Details" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Vocabular__ID_Ca__5070F446" Association="Self.FK__Vocabular__ID_Ca__5070F446">
+            <End Role="Category_Vo" EntitySet="Category_Vo" />
+            <End Role="Vocabulary" EntitySet="Vocabularies" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Question__ID_Tes__48CFD27E" Association="Self.FK__Question__ID_Tes__48CFD27E">
+            <End Role="Test" EntitySet="Tests" />
+            <End Role="Question" EntitySet="Questions" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Quiz_Deta__ID_Qu__4AB81AF0" Association="Self.FK__Quiz_Deta__ID_Qu__4AB81AF0">
+            <End Role="Quiz" EntitySet="Quizs" />
+            <End Role="Quiz_Details" EntitySet="Quiz_Details" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Quiz_Deta__ID_Us__4BAC3F29" Association="Self.FK__Quiz_Deta__ID_Us__4BAC3F29">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Quiz_Details" EntitySet="Quiz_Details" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Story__ID_User__4D94879B" Association="Self.FK__Story__ID_User__4D94879B">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Story" EntitySet="Stories" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Test_Deta__ID_Te__4E88ABD4" Association="Self.FK__Test_Deta__ID_Te__4E88ABD4">
+            <End Role="Test" EntitySet="Tests" />
+            <End Role="Test_Details" EntitySet="Test_Details" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Test_Deta__ID_Us__4F7CD00D" Association="Self.FK__Test_Deta__ID_Us__4F7CD00D">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Test_Details" EntitySet="Test_Details" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="English_LearningModelStoreContainer" CdmEntityContainer="English_LearningEntities">
+          <EntitySetMapping Name="Categories">
+            <EntityTypeMapping TypeName="English_LearningModel.Category">
+              <MappingFragment StoreEntitySet="Category">
+                <ScalarProperty Name="ID_Category" ColumnName="ID_Category" />
+                <ScalarProperty Name="Name_Category" ColumnName="Name_Category" />
+                <ScalarProperty Name="ID_User" ColumnName="ID_User" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Category_Vo">
+            <EntityTypeMapping TypeName="English_LearningModel.Category_Vo">
+              <MappingFragment StoreEntitySet="Category_Vo">
+                <ScalarProperty Name="ID_Category_Vo" ColumnName="ID_Category_Vo" />
+                <ScalarProperty Name="Name_Category_Vo" ColumnName="Name_Category_Vo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Questions">
+            <EntityTypeMapping TypeName="English_LearningModel.Question">
+              <MappingFragment StoreEntitySet="Question">
+                <ScalarProperty Name="ID_Question" ColumnName="ID_Question" />
+                <ScalarProperty Name="Content" ColumnName="Content" />
+                <ScalarProperty Name="Type_Question" ColumnName="Type_Question" />
+                <ScalarProperty Name="Answer_Content1" ColumnName="Answer_Content1" />
+                <ScalarProperty Name="Answer_Content2" ColumnName="Answer_Content2" />
+                <ScalarProperty Name="Answer_Content3" ColumnName="Answer_Content3" />
+                <ScalarProperty Name="Answer_Content4" ColumnName="Answer_Content4" />
+                <ScalarProperty Name="Answer_Correct" ColumnName="Answer_Correct" />
+                <ScalarProperty Name="ID_Test" ColumnName="ID_Test" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Quizs">
+            <EntityTypeMapping TypeName="English_LearningModel.Quiz">
+              <MappingFragment StoreEntitySet="Quiz">
+                <ScalarProperty Name="ID_Quiz" ColumnName="ID_Quiz" />
+                <ScalarProperty Name="Name_Quiz" ColumnName="Name_Quiz" />
+                <ScalarProperty Name="Content" ColumnName="Content" />
+                <ScalarProperty Name="Answer_1" ColumnName="Answer_1" />
+                <ScalarProperty Name="Answer_2" ColumnName="Answer_2" />
+                <ScalarProperty Name="Answer_3" ColumnName="Answer_3" />
+                <ScalarProperty Name="Answer_4" ColumnName="Answer_4" />
+                <ScalarProperty Name="Answer_5" ColumnName="Answer_5" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Quiz_Details">
+            <EntityTypeMapping TypeName="English_LearningModel.Quiz_Details">
+              <MappingFragment StoreEntitySet="Quiz_Details">
+                <ScalarProperty Name="Quiz_Score" ColumnName="Quiz_Score" />
+                <ScalarProperty Name="Time_Quiz" ColumnName="Time_Quiz" />
+                <ScalarProperty Name="ID_Category_Vo" ColumnName="ID_Category_Vo" />
+                <ScalarProperty Name="ID_User" ColumnName="ID_User" />
+                <ScalarProperty Name="ID_Quiz" ColumnName="ID_Quiz" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Stories">
+            <EntityTypeMapping TypeName="English_LearningModel.Story">
+              <MappingFragment StoreEntitySet="Story">
+                <ScalarProperty Name="ID_Story" ColumnName="ID_Story" />
+                <ScalarProperty Name="Name_Story" ColumnName="Name_Story" />
+                <ScalarProperty Name="EN_Content" ColumnName="EN_Content" />
+                <ScalarProperty Name="VN_Content" ColumnName="VN_Content" />
+                <ScalarProperty Name="Image_Story" ColumnName="Image_Story" />
+                <ScalarProperty Name="Audio" ColumnName="Audio" />
+                <ScalarProperty Name="View_Story" ColumnName="View_Story" />
+                <ScalarProperty Name="Banner" ColumnName="Banner" />
+                <ScalarProperty Name="ID_Category" ColumnName="ID_Category" />
+                <ScalarProperty Name="ID_User" ColumnName="ID_User" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="English_LearningModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tests">
+            <EntityTypeMapping TypeName="English_LearningModel.Test">
+              <MappingFragment StoreEntitySet="Test">
+                <ScalarProperty Name="ID_Test" ColumnName="ID_Test" />
+                <ScalarProperty Name="Name_Test" ColumnName="Name_Test" />
+                <ScalarProperty Name="Paragraph" ColumnName="Paragraph" />
+                <ScalarProperty Name="Video" ColumnName="Video" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Test_Details">
+            <EntityTypeMapping TypeName="English_LearningModel.Test_Details">
+              <MappingFragment StoreEntitySet="Test_Details">
+                <ScalarProperty Name="Test_Score" ColumnName="Test_Score" />
+                <ScalarProperty Name="Time_Test" ColumnName="Time_Test" />
+                <ScalarProperty Name="ID_User" ColumnName="ID_User" />
+                <ScalarProperty Name="ID_Test" ColumnName="ID_Test" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="English_LearningModel.User">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="ID_User" ColumnName="ID_User" />
+                <ScalarProperty Name="Name_User" ColumnName="Name_User" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Birthday" ColumnName="Birthday" />
+                <ScalarProperty Name="Image_User" ColumnName="Image_User" />
+                <ScalarProperty Name="Login_User" ColumnName="Login_User" />
+                <ScalarProperty Name="Password_User" ColumnName="Password_User" />
+                <ScalarProperty Name="IsAdmin" ColumnName="IsAdmin" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Vocabularies">
+            <EntityTypeMapping TypeName="English_LearningModel.Vocabulary">
+              <MappingFragment StoreEntitySet="Vocabulary">
+                <ScalarProperty Name="ID_Vocabulary" ColumnName="ID_Vocabulary" />
+                <ScalarProperty Name="Pronunciation" ColumnName="Pronunciation" />
+                <ScalarProperty Name="VN_Meaning" ColumnName="VN_Meaning" />
+                <ScalarProperty Name="EN_Meaning" ColumnName="EN_Meaning" />
+                <ScalarProperty Name="Image_Vocabulary" ColumnName="Image_Vocabulary" />
+                <ScalarProperty Name="ID_Cate_Vo" ColumnName="ID_Cate_Vo" />
+                <ScalarProperty Name="ID_Category" ColumnName="ID_Category" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

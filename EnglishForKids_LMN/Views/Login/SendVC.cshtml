@@ -1,0 +1,39 @@
+﻿@model EnglishForKids_LMN.Models.UserBonus
+@{ Layout = null; }
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link href="~/Content/Style.css" rel="stylesheet" />
+    <title>Send Verification Code</title>
+</head>
+<body background="https://thumbs.dreamstime.com/z/school-background-back-to-stationery-accessories-writing-books-pens-other-office-supplies-grey-top-view-copy-space-155688619.jpg">
+
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="mydiv center-block" style="margin-top: 10%;">
+        @using (Html.BeginForm("SendVC", "Login", FormMethod.Post))
+        {
+<p><strong>@Html.LabelFor(model => model.User_Mail)</strong><font style="color:red;"> @ViewData["MailNotFound"]</font> @Html.ValidationMessageFor(model => model.User_Mail, "", new { @class = "text-danger" })</p>
+                @Html.EditorFor(model => model.User_Mail, new { htmlAttributes = new { @class = "form-control pull-left", @placeholder = "Type your gmail ...", @autofocus = "1", @maxlength = "30", @style = "width:79%;max-width:79%;" } })<input type="submit" name="SendMail" value="Send Code" class="btn btn-info pull-right" style="width:20%;max-width:20%;border-radius:5px;" />}
+        @using (Html.BeginForm("CheckMail", "Login", FormMethod.Post))
+        {
+<br />
+                <br />
+                                <p><strong>@Html.LabelFor(model => model.CheckMail)</strong><font style="color:red;"> @ViewData["WrongCode"]</font> @Html.ValidationMessageFor(model => model.CheckMail, "", new { @class = "text-danger" })</p>
+                                                <div class="input-group">
+                                                    @Html.EditorFor(model => model.CheckMail, new { htmlAttributes = new { @class = "form-control", @placeholder = "Type verification code ...", @maxlength = "6" } })
+                                                    <span class="input-group-addon">
+                                                        <i class="glyphicon glyphicon-lock "></i>
+                                                    </span>
+                                                </div>
+                                                                <br />
+                                                                                <input type="submit" name="CheckMail" value="Confirm" class="btn btn-info" style="width:100%;max-width:100%;" />}
+        <br />
+        <p>@Html.ActionLink("Back", "SignIn", "Login", new { @class = "btn btn-default center-block" })</p>
+    </div>
+    <script src="~/Scripts/jquery-3.4.1.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+</body>
+</html>
+

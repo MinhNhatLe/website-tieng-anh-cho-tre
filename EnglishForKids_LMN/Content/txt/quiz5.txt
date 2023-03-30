@@ -1,0 +1,6 @@
+﻿There is no one who has not heard of Walt Disney; he is without <input type="text" id="dropone" name="dropone" ondrop="drop1(event)" ondragover="allowDrop1(event)" readonly> one  of the most famous figures in the twentieth century 
+and <input type="text" id="droptwo" name="droptwo" ondrop="drop2(event)" ondragover="allowDrop2(event)" readonly> most people  know hardly anything about him. 
+<input type="text" id="dropthree" name="dropthree" ondrop="drop3(event)" ondragover="allowDrop3(event)" readonly> he became one of the most successful  men in history, 
+he <input type="text" id="dropfour" name="dropfour" ondrop="drop4(event)" ondragover="allowDrop4(event)" readonly> school at the age of sixteen and then studied art for  a short time. 
+By the <input type="text" id="dropfive" name="dropfive" ondrop="drop5(event)" ondragover="allowDrop5(event)" readonly> years of this century, he had already started to  produce cartoons in Hollywood in partnership with his brother Roy,
+who, is for  some reason, never managed to become as famous as Walt.

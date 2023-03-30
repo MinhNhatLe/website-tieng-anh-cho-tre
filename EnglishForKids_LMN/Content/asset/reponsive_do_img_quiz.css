@@ -1,0 +1,34 @@
+﻿/* Mobie: width < 740px */
+@media only screen and (max-width: 739px ) {
+    .img-quiz {
+        width: 300px;
+        height: 300px;
+    }
+    .cau-tra-loi {
+        width: 52%;
+        max-width: 52%;
+    }
+/*    .note-2 {
+        display: none;
+    }*/
+}
+
+
+/* Tablet: width >= 740px and width < 1024px */
+@media only screen and (min-width: 740px ) and ( max-width: 1023px) {
+}
+
+/* PC: width >= 1024px */
+@media only screen and (min-width: 1024px) {
+    .img-quiz {
+        width: 500px;
+        height: 500px;
+    }
+    .cau-tra-loi {
+        width: 80%;
+        max-width: 80%;
+    }
+/*    .note-1{
+        display:none;
+    }*/
+}

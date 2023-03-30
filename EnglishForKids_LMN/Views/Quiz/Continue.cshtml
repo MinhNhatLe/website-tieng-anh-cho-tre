@@ -1,0 +1,96 @@
+﻿@model EnglishForKids_LMN.Models.Vocabulary
+@{ ViewBag.Title = "Continue";
+                Layout = "~/Views/Shared/_Layout.cshtml"; }
+
+<style>
+    .img-quiz {
+        display: inline-block;
+        padding: 5px;
+        background-color: black;
+        border-radius: 20px;
+        border: 5px solid #337ab7;
+        margin-top: 20px;
+    }
+    .background-quiz {
+        padding: 20px;
+        background-color: #fff;
+        border: 10px; /* Viền của cái khối */
+        border-color: rgb(0 0 0 / 2%);
+        border-style: solid;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        border-radius: 20px;
+        box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+    }
+</style>
+<div class="container">
+    <div class="row background-quiz">
+        <div class="col-lg-12 col-xs-12">
+            @using (Html.BeginForm("Check_Answer", "Quiz", FormMethod.Post))
+            {
+                <div class="row">
+                    <div class="col-lg-12 col-xs-12">
+                        <h2 style="text-align: center; font-size: 30px; font-weight: 600;">CÂU ĐỐ HÌNH ẢNH</h2>
+                    </div>
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col-lg-6 col-xs-12">
+                        @*<div class="note-1">
+                        <b>Lưu ý nhỏ:</b>
+                        <p>- Tổng số câu hỏi là 5.</p>
+                        <p>- Mỗi câu tưởng đương với 2 điểm.</p>
+                        <p>- Tất cả những câu đố đều có trong phần từ vựng.</p>
+                        <p>- Chúc các em vừa học & vừa chơi thật vui vẻ.</p>
+                    </div>*@
+                    </div>
+                    <div class="col-lg-6 col-xs-0">
+                    </div>
+                </div>
+                <hr />
+                @Html.EditorFor(model => model.ID_Vocabulary, "", new { htmlAttributes = new { @class = "form-control center-block", @style = "width:100%;max-width:100%;display:none;" } })
+                <div class="row">
+                    <div class="col-lg-2 col-xs-0">
+                        @*<div class="note-2">
+                        <b>Lưu ý nhỏ:</b>
+                        <p>- Tổng số câu hỏi là 5.</p>
+                        <p>- Mỗi câu tưởng đương với 2 điểm.</p>
+                        <p>- Tất cả những câu đố đều có trong phần từ vựng.</p>
+                        <p>- Chúc các em vừa học & vừa chơi thật vui vẻ.</p>
+                    </div>*@
+                    </div>
+                    <div class="col-lg-8 col-xs-12">
+                        <div style="text-align: center;">
+                            <img src="~/Content/images/@Model.Image_Vocabulary" alt="Vocabulary Image" class="img-quiz" />
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-xs-0">
+
+                    </div>
+                </div>
+                <br />
+                <div class="pull-right">
+                    <font style="padding:10px;background-color:lightgray;border-radius:16px;">@Session["Image_Quiz_Index"] / @Session["Count_Image_Quiz_List"]</font>
+                </div>
+                <br />
+                <br />
+                <div class="row">
+                    <div class="col-lg-1 col-xs-0">
+
+                    </div>
+                    <div class="col-lg-10 col-xs-12">
+                        <div class="row">
+                            <b>Câu trả lời: </b>
+                            <input type="text" id="answer" name="answer" class="form-control cau-tra-loi" style="display:inline-block" placeholder="Nhập câu trả lời ..." maxlength="30" data-val="true" data-val-required=" Please enter your answer " autofocus />
+                            <input type="submit" value="Tiếp tục" class="btn btn-primary" />
+                        </div>
+                    </div>
+                    <div class="col-lg-1 col-xs-0">
+
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+

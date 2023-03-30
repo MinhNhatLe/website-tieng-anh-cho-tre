@@ -1,0 +1,206 @@
+﻿@model EnglishForKids_LMN.Models.User
+
+@{
+    ViewBag.Title = "Account";
+    if (Session["ID_User"] != null)
+    {
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+    if (Session["ID_Admin"] != null)
+    {
+        Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    }
+}
+<style>
+    .btn-choose-avatar {
+        color: #fff;
+        box-shadow: 0 1px 1px rgb(0 0 0 / 9%);
+        font-size: 15px;
+        width:200px;
+        height: 40px;
+        border-radius: 5px;
+        outline-style: inherit;
+        outline-color: aqua;
+        margin-top: 15px;
+        border: 3px solid #315cfd;
+        transition: all 0.3s;
+        font-weight: 100;
+    }
+    .btn-choose-avatar:hover {
+        color: white;
+        font-size: 1.2em;
+    }
+    .btn-capnhat {
+        color: #fff;
+        box-shadow: 0 1px 1px rgb(0 0 0 / 9%);
+        font-size: 15px;
+        width: 200px;
+        height: 40px;
+        border-radius: 5px;
+        outline-style: inherit;
+        outline-color: aqua;
+        margin-top: 15px;
+        border: 3px solid #315cfd;
+        transition: all 0.3s;
+        font-weight: 100;
+    }
+
+        .btn-capnhat:hover {
+            color: white;
+            font-size: 1.2em;
+        }
+    .form-account {
+        padding: 20px;
+        background-color: #fff;
+        border: 10px; /* Viền của cái khối */
+        border-color: rgb(0 0 0 / 2%);
+        border-style: solid;
+        border-radius: 20px;
+        box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+    }
+    .img-account {
+        width: 275px;
+        height: 275px;
+        border-radius: 50%;
+        text-align: center;
+        margin-top: 50px;
+        box-shadow: 0 20px 39px rgb(0 0 0 / 40%);
+        border: 5px solid #4660c2;
+    }
+
+</style>
+@using (Html.BeginForm("Account", "Home", FormMethod.Post))
+{
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12 col-xs-12">
+            <h2 style="text-align: center; font-size: 30px; font-weight: 600;">CẬP NHẬT THÔNG TIN</h2>
+        </div>
+    </div>
+    <br />
+    <hr />
+    <div class="row">
+        <div class="col-lg-2 col-xs-0">
+
+        </div>
+        <div class="col-lg-4 col-xs-12">
+            <div class="row">
+                <div class="col-lg-12 col-xs-12" style="display: flex; justify-content: center;">
+                    <input type="file" name="fileUpload" id="fileUpload" accept="images/*" style="display:none;" />
+                    <img src="~/Content/images/@Model.Image_User" id="pictureUpload" class="img-account" />
+                </div>
+                <br />
+                <div class="col-lg-12 col-xs-12">
+                    <input type="text" name="Image_User" id="Image_User" class="form-control center-block" placeholder="Nhập ảnh đại diện của bạn ở đây!" style="width:500px;height:200px;display:none;">
+                    <input type="button" id="btnUpload" value="Chọn ảnh đại diện" class="btn btn-primary center-block btn-choose-avatar" />
+                    @section upload
+    {
+                        <script>
+                            $(function () {
+                                $('#btnUpload').click(function () {
+                                    $('#fileUpload').trigger('click');
+                                });
+                            });
+                            $('#fileUpload').change(function () {
+                                if (window.FormData !== undefined) {
+                                    var fileUpload = $('#fileUpload').get(0);
+                                    var files = fileUpload.files;
+                                    var formData = new FormData();
+                                    formData.append('file', files[0]);
+                                    $.ajax({
+                                        type: 'POST',
+                                        url: '/Home/ProcessUpload',
+                                        contentType: false,
+                                        processData: false,
+                                        data: formData,
+                                        success: function (urlImage) {
+                                            $('#pictureUpload').attr('src', "/Content/images/" + urlImage);
+                                            $('#Image_User').val(urlImage);
+                                        },
+                                        error: function (err) {
+                                            alert('Error', err.statusText);
+                                        }
+                                    });
+                                }
+                            });</script>
+                    }
+                </div>
+            </div>
+            <br />
+            
+        </div>
+        <div class="col-lg-4 col-xs-12">
+            <div class="row">
+                <div class="col-lg-12 col-xs-12">
+                    <div class="form-account">
+                        <p>
+                            <strong>Họ và tên</strong>
+                            @Html.ValidationMessageFor(model => model.Name_User, "", new { @class = "text-danger" })
+                        </p>
+                        @*<input type="text" name="Name_User" id="Name_User" class="form-control center-block" placeholder="Ví dụ: Lê Minh Nhật" style="width:100%;max-width:100%;" maxlength="35">*@
+                        @Html.EditorFor(model => model.Name_User, "", new { htmlAttributes = new { @class = "form-control center-block", @placeholder = "Ví dụ: Lê Minh Nhật", @style = "width:100%;max-width:100%;", @maxlength = "35" } })
+                        <br />
+                        <p>
+                            <strong>Email</strong>
+                            @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                            <font style="color:red;">@ViewData["GmailFound"]</font>
+                        </p>
+                        @*<input type="email" class="form-control center-block" placeholder="Ví dụ: lmnhat.contact@gmail.com" style="width:100%;max-width:100%;" maxlength="30">*@
+                        @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control center-block", @placeholder = "Ví dụ: lmnhat.contact@gmail.com", @style = "width:100%;max-width:100%;", @maxlength = "30" } })
+
+                        <br />
+                        <p>
+                            <strong>Số điện thoại</strong>
+                            @Html.ValidationMessageFor(model => model.Phone, "", new { @class = "text-danger" })
+                            <font style="color:red;">@ViewData["PhoneNumberNotValid"]</font>
+                        </p>
+                        @*<input type="number" name="Phone" id="Phone" class="form-control center-block" placeholder="Nhập số điện thoại của bạn..." style="width:100%;max-width:100%;">*@
+                        @Html.EditorFor(model => model.Phone, new { htmlAttributes = new { @class = "form-control center-block", @placeholder = "Nhập số điện thoại của bạn...", @style = "width:100%;max-width:100%;", @type = "number" } })
+
+                        <br />
+                        <p>
+                            <strong>Giới tính</strong>
+                            @Html.ValidationMessageFor(model => model.Gender, "", new { @class = "text-danger" })
+                        </p>
+                        <select id="Gender" name="Gender" class="form-control center-block" style="width:100%;max-width:100%;">
+                            <option for="Gender" id="Gender" name="Gender" selected>@Html.ValueFor(model => model.Gender)</option>
+                            <option for="Gender" id="Gender" name="Gender" value="Nam">Nam</option>
+                            <option for="Gender" id="Gender" name="Gender" value="Nữ">Nữ</option>
+                            <option for="Gender" id="Gender" name="Gender" value="Khác">Khác</option>
+                        </select>
+                        <br />
+                        <p>
+                            <strong>Sinh nhật</strong>
+                            @Html.ValidationMessageFor(model => model.Birthday, "", new { @class = "text-danger" })
+                        </p>
+                        @*<input type="number" name="Birthday" id="Birthday" class="form-control center-block" placeholder="Nhập ngày sinh của bạn: dd/mm/yyyy" style="width:100%;max-width:100%;" maxlength="10">*@
+                        @Html.EditorFor(model => model.Birthday, new { htmlAttributes = new { @class = "form-control center-block", @placeholder = "Nhập ngày sinh của bạn: mm/dd/yyyy", @style = "width:100%;max-width:100%;", @maxlength = "30" } })
+
+                        <br />
+                        <p>
+                            <input type="submit" name="Account" value="Cập nhật" class="btn btn-primary btn-capnhat" style="width: 100%;max-width:100%; border-radius: 10px;" />
+                        </p>
+                        <br />
+                        @*<p>
+            <a href="/Home/HomePage" class="btn btn-default center-block" style="width:100%;max-width:100%;border-radius:16px;">Trở lại trang chủ!</a>
+        </p>*@
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-2 col-xs-0">
+
+        </div>
+    </div>
+</div>
+    
+    }
+<script src="~/Scripts/jquery-3.4.1.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+
+
+
+

@@ -1,0 +1,7 @@
+﻿In their attempt to ensure higher <input type="text" id="dropone" name="dropone" ondrop="drop1(event)" ondragover="allowDrop1(event)" readonly>, 
+TV producers have developed a  whole new breed of programmes <input type="text" id="droptwo" name="droptwo" ondrop="drop2(event)" ondragover="allowDrop2(event)" readonly> real people. 
+In Europe, the most  famous of these <input type="text" id="dropthree" name="dropthree" ondrop="drop3(event)" ondragover="allowDrop3(event)" readonly> reality TV shows was probably Big Brothers,
+where 12  ordinary people volunteered to live under the watchful eye of TV cameras 24 hours  a day. 
+In America, the top show was Survivor, based on a similar concept, in which  16 constants are abandoned on a desert island. 
+But the ultimate example of the  <input type="text" id="dropfour" name="dropfour" ondrop="drop4(event)" ondragover="allowDrop4(event)" readonly> must surely be The Osbournes, first <input type="text" id="dropfive" name="dropfive" ondrop="drop5(event)" ondragover="allowDrop5(event)" readonly> on MTV in 2002, 
+in  which the homelife of rock star Ozzy Osbourne and his family was laid bare to public scrutiny.

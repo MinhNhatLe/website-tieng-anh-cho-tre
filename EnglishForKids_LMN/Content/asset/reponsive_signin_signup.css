@@ -1,0 +1,24 @@
+﻿/* Mobie: width < 740px */
+@media only screen and (max-width: 739px ) {
+    .bg-mb {
+        background-image: url('https://sites.google.com/site/hinhanhdep24h/_/rsrc/1436687439788/home/hinh%20anh%20thien%20nhien%20dep%202015%20%281%29.jpeg');
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: 100% 100%;
+    }
+}
+
+
+/* Tablet: width >= 740px and width < 1024px */
+@media only screen and (min-width: 740px ) and ( max-width: 1023px) {
+}
+
+/* PC: width >= 1024px */
+@media only screen and (min-width: 1024px) {
+    .bg-pc {
+        background-image: url('https://img.freepik.com/free-photo/word-english-with-globe-wooden-background_1357-127.jpg?w=1380&t=st=1667124222~exp=1667124822~hmac=c0027f11ee78ed1412471ac43c22237fc98b4032b35589c263cd09e54728e583');
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: 100% 100%;
+    }
+}

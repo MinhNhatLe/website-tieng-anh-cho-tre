@@ -1,0 +1,19 @@
+﻿/* Mobie: width < 740px */
+@media only screen and (max-width: 739px ) {
+    /*.form-account {
+        margin-left: 10px;
+        margin-right: 10px;
+    }*/
+}
+
+
+/* Tablet: width >= 740px and width < 1024px */
+@media only screen and (min-width: 740px ) and ( max-width: 1023px) {
+}
+
+/* PC: width >= 1024px */
+@media only screen and (min-width: 1024px) {
+    .form-account{
+        width:750px;
+    }
+}

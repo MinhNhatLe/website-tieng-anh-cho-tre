@@ -1,0 +1,76 @@
+﻿@model PagedList.IPagedList<EnglishForKids_LMN.Models.Story>
+@using PagedList.Mvc;
+@using PagedList;
+@{
+    ViewBag.Title = "User_View";
+    if (Session["ID_User"] != null)
+    {
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+    if (Session["Admin_Code"] != null)
+    {
+        Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    }
+}
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12 col-xs-12">
+            <h2 style="text-align: center; font-size: 30px; font-weight: 600;">CÂU CHUYỆN</h2>
+        </div>
+    </div>
+<br />
+@using (Html.BeginForm("User_View", "Story", FormMethod.Get))
+{
+    <div class="row">
+        <div class="col-lg-5 col-xs-0"></div>
+        <div class="col-lg-7 col-xs-12">
+            <label>Tìm kiếm và sắp xếp: </label>
+            <select id="sortStory" name="sortStory" class="form-control" style="width:105px;display:inline-block">
+                <option for="sortStory" id="sortStory" name="sortStory" value="@Session["sortStory"]">@Session["sortStory"]</option>
+                <option for="sortStory" id="sortStory" name="sortStory" value="None">None</option>
+                <option for="sortStory" id="sortStory" name="sortStory" value="AZ">A - Z</option>
+                <option for="sortStory" id="sortStory" name="sortStory" value="ZA">Z - A</option>
+                <option for="sortStory" id="sortStory" name="sortStory" value="View">View</option>
+            </select>
+        <input type="text" id="searchStory" name="searchStory" class="form-control" placeholder="Nhập từ khóa để tìm ..." value="@Session["searchStory"]" required style="display: inline-block; width: 250px"/>
+        <input type="submit" value="Tìm kiếm" class="btn btn-primary" style="width:90px;display:inline-block" />
+        </div>
+    </div>
+    <br />
+    <hr />
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <a href="/Story/DetailS/@item.ID_Story">
+                <div class="col-lg-4 col-xs-12" style="border-radius: 0; margin-top:50px; display: flex; align-items: center; justify-content: center;">
+                    <div class="card" style="border-radius: 20px">
+                        <img src="~/Content/images/@item.Image_Story" alt="Vocabulary Image" style="width: 100%; height: 250px; border-radius: 20px" />
+                        <h3 style="text-align:center;color:black;">@item.Name_Story</h3>
+                        <p style="padding: 10px; width: 100%; background-color: #333333; color: white; font-size: 14px; border-radius: 5px">Đọc</p>
+                    </div>
+                </div>
+            </a>
+        }
+    </div>
+    <div class="row">
+        <div class="col-lg-12 col-xs-12">
+            <div style="margin-top:50px">
+                <div>
+                    Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount
+                </div>
+                <div>
+                    @if (Session["searchStory"] != null)
+                    {
+                        @Html.PagedListPager(Model, page => Url.Action("User_View", new { page = page, searchStory = Session["searchStory"], sortStory = Session["sortStory"] }))
+                    }
+                    else
+                    {
+                        @Html.PagedListPager(Model, page => Url.Action("User_View", new { page = page }))
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+}
+</div>

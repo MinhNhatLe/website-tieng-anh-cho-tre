@@ -1,0 +1,48 @@
+﻿@model IEnumerable<EnglishForKids_LMN.Models.Test>
+@{ ViewBag.Title = "Choose Test";
+    Layout = "~/Views/Shared/_Layout.cshtml"; }
+
+<style>
+    .layout-background-test {
+        background-color: gray;
+        border-radius: 20px;
+    }
+</style>
+
+@*MAIN Bài kiếm tra CHÍNH*@
+@*<div class="container">
+    <div class="row">
+        <div class="col-lg-12 col-xs-12">
+            <h2 style="text-align: center; font-size: 30px; font-weight: 600;">KIỂM TRA 5 PHÚT</h2>
+        </div>
+    </div>
+    <br />
+    <hr />
+    <div class="row">
+        <div class="col-lg-2 col-xs-0">
+
+        </div>
+        <div class="col-lg-8 col-xs-12 layout-background-test">
+            @using EnglishForKids_LMN.Models;
+            @{ List<Test_Details> test_Details = Session["test_Details"] as List<Test_Details>;
+                int user_Code = int.Parse(Session["ID_User"].ToString()); }
+            @foreach (var item in Model)
+            {
+<div style="padding: 20px; background-color: black; width: 100%; max-width: 100%; border-radius: 20px; border: 2px solid #337ab7; margin-top: 20px; ">
+    <a href="/Test/Do_Test/@item.ID_Test" style="color: white; text-decoration: none; text-align: center;">Bài kiểm tra: @item.Name_Test</a>
+    @foreach (var item1 in test_Details)
+    {
+        if (item1.ID_Test == item.ID_Test && item1.ID_User == user_Code)
+        {
+<p class="pull-right" style="color:white;">Số điểm: @item1.Test_Score/10</p>break;
+                    }
+                }
+</div>
+                <br />}
+        </div>
+        <div class="col-lg-2 col-xs-0">
+
+        </div>
+    </div>
+</div>*@
+

@@ -1,0 +1,89 @@
+﻿@model PagedList.IPagedList<EnglishForKids_LMN.Models.StoryBonus>
+@using PagedList.Mvc;
+@using PagedList;
+@{ ViewBag.Title = "ListStory";
+                Layout = "~/Views/Shared/_LayoutAdmin.cshtml"; }
+<style>
+
+</style>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12 col-xs-12">
+            <h2 style="text-align: center; font-size: 30px; font-weight: 600;">
+                DANH SÁCH CÂU CHUYỆN
+            </h2>
+        </div>
+    </div>
+<br />
+@using (Html.BeginForm("ListStory", "Story", FormMethod.Post))
+{
+<br />
+    <div class="row">
+            <div class="col-lg-5 col-xs-0">
+                @*@Html.ActionLink("Tạo mới", "CreateV", "Vocabulary", new { @class = "btn btn-default" })*@
+                @*<a href="@Url.Action("CreateV", "Vocabulary")" class="btn btn-default btn-taomoi-reponsive-1">Tạo mới</a>*@
+            </div>
+            <div class="col-lg-7 col-xs-12">
+                <label>Tìm kiếm và sắp xếp:</label>
+                <select id="sortStory1" name="sortStory1" class="form-control" style="width:105px;display:inline-block">
+                    <option for="sortStory1" id="sortStory1" name="sortStory1" value="@Session["sortStory1"]">@Session["sortStory1"]</option>
+                    <option for="sortStory1" id="sortStory1" name="sortStory1" value="None">None</option>
+                    <option for="sortStory1" id="sortStory1" name="sortStory1" value="AZ">A - Z</option>
+                    <option for="sortStory1" id="sortStory1" name="sortStory1" value="ZA">Z - A</option>
+                    <option for="sortStory1" id="sortStory1" name="sortStory1" value="View">View</option>
+                </select>
+                <input type="text" id="searchStory1" name="searchStory1" class="form-control" placeholder="Nhập từ khóa để tìm kiếm ..." value="@Session["searchStory1"]" required style="display: inline-block; width: 250px" />
+                <input type="submit" value="Tìm kiếm" class="btn btn-primary" style="width:90px;display:inline-block" />
+            </div>
+        </div>
+        <br />
+        <div class="row">
+            <div class="col-lg-12 col-xs-12">
+                <a href="@Url.Action("CreateS", "Story")" class="btn btn-default btn-taomoi-reponsive">Thêm câu chuyện</a>
+            </div>
+        </div>
+<hr />
+    <div class="row">
+        <table class="table-hover table table-responsive tr">
+            <caption class="caption">Bảng thống kê danh sách câu chuyện</caption>
+            <tr>
+                <th style=" text-align: center;">STT</th>
+                <th style=" text-align: center;">Hình ảnh câu chuyện</th>
+                <th style=" text-align: center;">Tên câu chuyện</th>
+                <th style=" text-align: center;">Người tạo</th>
+                <th style=" text-align: center;">Chức năng</th>
+            </tr>
+            @foreach (var item in Model)
+            {
+        <tr class="search-list">
+            <td style=" text-align: center;">@item.ID_Story</td>
+            <td style=" text-align: center;"><img src="~/Content/images/@item.Image_Story" style="width:50px;height:50px; border-radius:10px" /></td>
+            <td style=" text-align: center;">@item.Name_Story</td>
+            <td style=" text-align: center;">@item.Name_User</td>
+            <td style=" text-align: center;">
+                <a href="@Url.Action("EditS", "Story", new { id = item.ID_Story })" class="btn btn-primary" style="width:80px;">Sửa</a>
+                <a href="@Url.Action("DetailS", "Story", new { id = item.ID_Story })" class="btn btn-primary" style="width:80px;">Chi tiết</a>
+                <a href="@Url.Action("DeleteS", "Story", new { id = item.ID_Story })" class="btn btn-primary" style="width:80px;">Xóa</a>
+            </td>
+        </tr>}
+        </table>
+</div>
+    <div class="row">
+        <div class="col-lg-12 col-xs-12">
+            <div style="margin-top:50px">
+                <div>
+                    Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount
+                </div>
+                <div>
+                    @if (Session["searchStory1"] != null)
+                    {
+                @Html.PagedListPager(Model, page => Url.Action("ListStory", new { page = page, searchStory1 = Session["searchStory1"], sortStory1 = Session["sortStory1"] })) }
+            else
+            {
+                @Html.PagedListPager(Model, page => Url.Action("ListStory", new { page = page }))}
+                </div>
+            </div>
+        </div>
+    </div>}
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    </div>

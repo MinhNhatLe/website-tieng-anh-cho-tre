@@ -1,0 +1,91 @@
+﻿@model EnglishForKids_LMN.Models.Category_VocabularyBonus
+@{ ViewBag.Title = "EditVT";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml"; }
+
+<style>
+    .img-vocabulary {
+        display: inline-block;
+        padding: 5px;
+        background-color: black;
+        border-radius: 20px;
+        border: 5px solid #337ab7;
+        margin-top: 20px;
+    }
+
+    .background-quiz {
+        padding: 20px;
+        background-color: #fff;
+        border: 10px; /* Viền của cái khối */
+        border-color: rgb(0 0 0 / 2%);
+        border-style: solid;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        border-radius: 20px;
+        box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+    }
+</style>
+<div class="container">
+    <div class="row background-quiz">
+        <div class="row">
+            <div class="col-lg-12 col-xs-12">
+                <h2 style="text-align: center; font-size: 30px; font-weight: 600;">@Html.ValueFor(model => model.Name_Category_Vo)</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-2 col-xs-0 ">
+
+            </div>
+            <div class="col-lg-8 col-xs-12 ">
+                @using (Html.BeginForm("EditVT", "Vocabulary", FormMethod.Post))
+                {
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <div class="center-block">
+                        @Html.EditorFor(model => model.ID_Category_Vo, "", new { htmlAttributes = new { @class = "form-control center-block a", @placeholder = "Nhập mã loại từ vựng ...", @style = "width:100%;max-width:100%;display:none;" } })
+                        <p>
+                            <strong>Tên loại:</strong>
+                            <font style="color:red;"> @ViewData["existed"]</font> 
+                            @Html.ValidationMessageFor(model => model.Name_Category_Vo, "", new { @class = "text-danger" })
+                        </p>
+                        @Html.EditorFor(model => model.Name_Category_Vo, "", new { htmlAttributes = new { @class = "form-control center-block a", @placeholder = "Nhập tên loại từ vựng ...", @style = "width:100%;max-width:100%;", @autofocus = "1" } })
+                        <br />
+                        <div class="row">
+                            <div class="col-lg-6 col-xs-12">
+                                <p>
+                                    <input type="submit" name="EditVT" value="Lưu" class="btn btn-primary" style="width: 100%; max-width: 100%; border-radius: 4px;" />
+                                </p>
+                            </div>
+                            <div class="col-lg-6 col-xs-12">
+                                <p>
+                                    @Html.ActionLink("Trở về", "ListVocabularyType", "Vocabulary", new { @class = "btn btn-default center-block", @style = "width:100%;max-width:100%;border-radius:4px;" })
+                                </p>
+                            </div>
+                        </div>                       
+                        <br />                        
+                    </div>
+                    }
+            </div>
+            <div class="col-lg-2 col-xs-0 ">
+
+            </div>
+        </div>
+    </div>
+</div>
+@*<h2><p>@Html.ValueFor(model => model.Name_Category_Vo)</p></h2>
+@using (Html.BeginForm("EditVT", "Vocabulary", FormMethod.Post))
+{
+@Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="mydiv center-block">
+                    @Html.EditorFor(model => model.ID_Category_Vo, "", new { htmlAttributes = new { @class = "form-control center-block a", @placeholder = "Nhập mã loại từ vựng ...", @style = "width:100%;max-width:100%;display:none;" } })
+                    <p><strong>Tên loại : </strong><font style="color:red;"> @ViewData["existed"]</font> @Html.ValidationMessageFor(model => model.Name_Category_Vo, "", new { @class = "text-danger" })</p>
+                    @Html.EditorFor(model => model.Name_Category_Vo, "", new { htmlAttributes = new { @class = "form-control center-block a", @placeholder = "Nhập tên loại từ vựng ...", @style = "width:100%;max-width:100%;", @autofocus = "1" } })
+
+                    <br />
+                    <p>
+                        <input type="submit" name="EditVT" value="Lưu" class="btn btn-signup" style="width: 100%; max-width: 100%; border-radius: 16px;" />
+                    </p>
+                    <br />
+                    <p>@Html.ActionLink("Trở về", "ListVocabularyType", "Vocabulary", new { @class = "btn btn-default center-block", @style = "width:100%;max-width:100%;border-radius:16px;" })</p>
+                </div>}*@
+<script src="~/Scripts/jquery-3.4.1.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.js"></script>

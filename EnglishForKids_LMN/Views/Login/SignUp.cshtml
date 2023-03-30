@@ -1,0 +1,122 @@
+﻿@model EnglishForKids_LMN.Models.UserBonus
+@{ Layout = null; }
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="~/Content/Style.css" rel="stylesheet" />
+    <title>Sign Up</title>
+    <link href="~/Content/asset/signup.css" rel="stylesheet" />
+    <link href="~/Content/asset/reponsive_signin_signup.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&display=swap" rel="stylesheet">
+    <style>
+        .dangky {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
+</head>
+
+<body style="background-color: #eceade;">
+    <div>
+        <div class="row">
+            <div class="col-lg-12 col-xs-12 dangky">
+                <div class="form-dangky">
+                    <form action="/Login/SignUp" method="post">
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        <div>
+                            <h1 class="h1-dangky">Đăng ký</h1>
+                            <p>
+                                <strong>
+                                    <label for="User_FullName">Họ và tên</label>
+                                </strong>
+                                @Html.ValidationMessageFor(model => model.User_FullName, "", new { @class = "text-danger" })
+                            </p>
+                            <div class="input-group">
+                                <input type="text" id="User_FullName" name="User_FullName" class="form-control" placeholder="Nhập họ và tên của bạn ..." autofocus="1" maxlength="35" />
+                                <span class="input-group-addon">
+                                    <i class="glyphicon glyphicon-user"></i>
+                                </span>
+                            </div>
+                            <br />
+                            <p>
+                                <strong>
+                                    <label for="User_Mail">Email</label>
+                                </strong>
+                                <font style="color:red;"> @ViewData["UserExisted"]</font>
+                                @Html.ValidationMessageFor(model => model.User_Mail, "", new { @class = "text-danger" })
+                            </p>
+                            <div class="input-group">
+                                <input type="text" id="User_Mail" name="User_Mail" class="form-control" placeholder="Ví dụ: lmnhat.contact@gmail.com" maxlength="30" />
+                                <span class="input-group-addon">
+                                    <i class="glyphicon glyphicon-envelope"></i>
+                                </span>
+                            </div>
+                            <br />
+                            <p>
+                                <strong>
+                                    <label for="User_Password">Mật khẩu</label>
+                                </strong>
+                                @Html.ValidationMessageFor(model => model.User_Password, "", new { @class = "text-danger" })
+                            </p>
+                            <div class="input-group">
+                                <input type="password" id="User_Password" name="User_Password" class="form-control" placeholder="Nhập mật khẩu của bạn ..." maxlength="10" />
+                                <span class="input-group-addon">
+                                    <i class="glyphicon glyphicon-lock "></i>
+                                </span>
+                            </div>
+                            <br />
+                            <p>
+                                <strong>
+                                    <label for="Check_Password">Xác nhận mật khẩu</label>
+                                </strong>
+                                <font style="color:red;"> @ViewData["WrongPassword"]</font>
+                                @Html.ValidationMessageFor(model => model.Check_Password, "", new { @class = "text-danger" })
+                            </p>
+                            <div class="input-group">
+                                <input type="password" id="Check_Password" name="Check_Password" class="form-control" placeholder="Nhập lại mật khẩu của bạn ..." maxlength="10" />
+                                <span class="input-group-addon">
+                                    <i class="glyphicon glyphicon-check "></i>
+                                </span>
+                            </div>
+                            <div>
+                                <button type="submit" name="SignUp" value="Sign Up" class="btn btn-primary btn-dangky">Đăng ký</button>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-6 col-xs-6">
+                                    <p class="QuayLai">
+                                        <a href="/Login/SignIn">Quay lại!</a>
+                                    </p>
+                                </div>
+                                <div class="col-lg-6 col-xs-6">
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        function myfunction() {
+            var x = document.getElementById("Check_Password");
+            var y = document.getElementById("Password_User");
+            if (x.type == "password" && y.type == "password") {
+                x.type = "text";
+                y.type = "text";
+            }
+            else {
+                x.type = "password";
+                y.type = "password";
+            }
+        }
+    </script>
+        <script src="~/Scripts/jquery-3.4.1.js"></script>
+        <script src="~/Scripts/jquery.validate.min.js"></script>
+        <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+</body>
+</html>

@@ -1,0 +1,106 @@
+﻿@model EnglishForKids_LMN.Models.Category_VocabularyBonus
+@{ ViewBag.Title = "List Vocabulary Categories";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml"; }
+<style>
+</style>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12 col-xs-12">
+            <h2 style="text-align: center; font-size: 30px; font-weight: 600;">
+                DANH SÁCH THỂ LOẠI TỪ VỰNG
+            </h2>
+        </div>
+    </div>
+    <br />
+    <div class="row">
+        <div class="col-lg-5 col-xs-0">
+
+        </div>
+        <div class="col-lg-7 col-xs-12">
+
+        </div>
+    </div>
+    <br />
+    <div class="row">
+        <div class="col-lg-12 col-xs-12">
+            <a href="#" class="btn btn-default btn-taomoi-reponsive" data-toggle="modal" data-target="#create-category">Thêm loại từ</a>
+        </div>
+    </div>
+    <hr />
+    <table class="table table-responsive tr">
+        <caption class="caption">Danh sách thể loại từ vựng</caption>
+        <tr>
+            <th style=" text-align: center;">STT</th>
+            <th style=" text-align: center;">Tên thể loại</th>
+            <th style=" text-align: center;">Chức năng</th>
+        </tr>
+        @foreach (var item in Model.vocabulary_Types)
+        {
+<tr>
+    <td style=" text-align: center;">@item.ID_Category_Vo</td>
+    <td style=" text-align: center;">@item.Name_Category_Vo</td>
+    <td style=" text-align: center;">
+        <a href="@Url.Action("EditVT", "Vocabulary", new { id = item.ID_Category_Vo })" class="btn btn-primary" style="width:80px;">Sửa</a>
+        @*@Html.ActionLink("Sửa", "EditVT", new { id = item.ID_Category_Vo }) |*@
+        <a href="/Vocabulary/DeleteVT/@item.ID_Category_Vo" class="btn btn-primary" style="width:80px;">Xóa</a>
+    </td>
+</tr>
+}
+    </table>
+    <div class="modal fade " id="create-category">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div class="form-group">
+                        <h2 class="modal-title" style="text-align: center; font-size: 30px; font-weight: 600;">TẠO MỚI THỂ LOẠI<button type="button" class="close pull-right" data-dismiss="modal">x</button></h2>
+                    </div>
+                </div>
+                <div class="modal-body">
+                    <form id="create">
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        <p>
+                            <strong>Tên thể loại : </strong>
+                        </p>
+                        @Html.EditorFor(model => model.Name_Category_Vo, new { htmlAttributes = new { @class = "form-control center-block", @placeholder = "Nhập tên loại từ vựng ...", @style = "width:100%;max-width:100%;", @maxlength = "20" } })
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <div class="btn-group">
+                        <p>
+                            <a href="#" class="btn btn-default" data-dismiss="modal">Hủy</a>
+                            <a href="#" class="btn btn-primary" id="btn-save">Thêm</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    @section add
+{
+        <script>
+            $(document).ready(function () {
+                $("#btn-save").click(function () {
+                    var category = $("#create").serialize();
+
+                    $.ajax({
+                        type: "POST",
+                        url: "/Vocabulary/CreateVT",
+                        data: category,
+                        success: function () {
+                            window.location.href = "/Vocabulary/ListVocabularyType";
+                        },
+                        error: function () {
+                            alert('This category already existed!');
+                        }
+                    })
+                })
+            })</script>
+    }
+    <script src="~/Scripts/jquery-3.4.1.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <script src="~/Scripts/bootstrap.min.js"></script>
+
+</div>

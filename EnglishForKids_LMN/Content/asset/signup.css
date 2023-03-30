@@ -1,0 +1,67 @@
+﻿
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+.form-dangky {
+    width: 800px;
+    padding: 20px;
+    background-color: #fff;
+    border: 10px; /* Viền của cái khối */
+    border-color: rgb(0 0 0 / 2%);
+    border-style: solid;
+    margin-top: 100px;
+    border-radius: 20px;
+    /*            margin-left: 15px;*/
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}
+
+.h1-dangky {
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 40px;
+    transition: 0.5s;
+}
+
+    .h1-dangky:hover {
+        transition: 1s;
+        font-size: 4em;
+    }
+
+.btn-dangky {
+    color: #fff;
+    box-shadow: 0 1px 1px rgb(0 0 0 / 9%);
+    font-size: 15px;
+    width: 100%;
+    height: 40px;
+    max-width: 100%;
+    border-radius: 5px;
+    outline-style: inherit;
+    outline-color: aqua;
+    margin-top: 15px;
+    border: 3px solid #315cfd;
+    transition: all 0.3s;
+    font-weight: 100;
+    /*font-family: 'Montserrat', sans-serif;*/
+}
+
+    .btn-dangky:hover {
+        color: white;
+        font-size: 1.2em;
+    }
+
+.QuayLai {
+    color: #05a;
+    letter-spacing: normal;
+    margin-top: 10px;
+    margin-left: 15px;
+}
+
+body {
+    /*background-image: url('https://img.freepik.com/free-photo/word-english-with-globe-wooden-background_1357-127.jpg?w=1380&t=st=1667124222~exp=1667124822~hmac=c0027f11ee78ed1412471ac43c22237fc98b4032b35589c263cd09e54728e583');*/
+    /*background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: 100% 100%;*/
+    font-family: Montserrat;
+}

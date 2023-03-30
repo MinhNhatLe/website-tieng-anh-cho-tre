@@ -1,0 +1,207 @@
+﻿@model EnglishForKids_LMN.Models.Quiz
+@{
+    ViewBag.Title = "Do Drag & Drop Quiz";
+    if (Session["ID_User"] != null)
+    {
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+    if (Session["Admin_Code"] != null)
+    {
+        Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    }
+}
+<style>
+    .background-quiz-do-dragdrop {
+        padding: 20px;
+        background-color: #fff;
+        border: 10px; /* Viền của cái khối */
+        border-color: rgb(0 0 0 / 2%);
+        border-style: solid;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        border-radius: 20px;
+        box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+    }
+    .btn-hoanthanh-dragdrop {
+        color: #fff;
+        box-shadow: 0 1px 1px rgb(0 0 0 / 9%);
+        font-size: 15px;
+        width: 200px;
+        height: 40px;
+        border-radius: 5px;
+        outline-style: inherit;
+        outline-color: aqua;
+        margin-top: 15px;
+        border: 3px solid #315cfd;
+        transition: all 0.3s;
+        font-weight: 100;
+    }
+
+        .btn-hoanthanh-dragdrop:hover {
+            color: white;
+            font-size: 1.2em;
+        }
+</style>
+<div class="container">
+    @using (Html.BeginForm("Do_DragDrop_Quiz", "Quiz", FormMethod.Post))
+{
+    <div class="row">
+        <div class="row background-quiz-do-dragdrop">
+            <div class="col-lg-1 col-xs-0">
+
+            </div>
+            <div class="col-lg-10 col-xs-0">
+                <div class="row">
+                    <div class="col-lg-12 col-xs-12">
+                        <div>
+                            <h2 style="text-align: center; font-size: 30px; font-weight: 600;">KÉO CÁC TỪ VÀ BỎ VÀO Ô TRỐNG THÍCH HỢP</h2>
+                        </div>
+                    </div>
+                </div>                
+                <br />
+                <div class="row">
+                    <div class="col-lg-12 col-xs-12">
+                        <div style="text-align:center;">
+                            <p id="@Model.Answer_1" draggable="true" ondragstart="drag1(event)" class="btn btn-default">@Model.Answer_1</p>
+                            <p id="@Model.Answer_2" draggable="true" ondragstart="drag2(event)" class="btn btn-default">@Model.Answer_2</p>
+                            <p id="@Model.Answer_3" draggable="true" ondragstart="drag3(event)" class="btn btn-default">@Model.Answer_3</p>
+                            <p id="@Model.Answer_4" draggable="true" ondragstart="drag4(event)" class="btn btn-default">@Model.Answer_4</p>
+                            <p id="@Model.Answer_5" draggable="true" ondragstart="drag5(event)" class="btn btn-default">@Model.Answer_5</p>
+                        </div>
+                    </div>
+                </div>
+                <br />
+                <hr />
+                <div class="row">
+                    <div class="col-lg-12 col-xs-12">
+                        <div>
+                            <p id="Quiz_Content"></p>
+                        </div>
+                    </div>
+                </div>
+                <br />
+                <hr />
+                <div class="row">
+                    <div class="col-lg-4 col-xs-0">
+
+                    </div>
+                    <div class="col-lg-4 col-xs-12" style="text-align:center;">
+                        <input type="submit" value="Hoàn thành" class="btn btn-primary btn-hoanthanh-dragdrop" />
+                    </div>
+                    <div class="col-lg-4 col-xs-0">
+
+                    </div>
+                </div>
+                
+            </div>
+            <div class="col-lg-1 col-xs-0">
+
+            </div>
+        </div>
+    </div>  
+}
+</div>
+
+@*@using (Html.BeginForm("Do_DragDrop_Quiz", "Quiz", FormMethod.Post))
+{
+    <h2>Kéo các từ sau đây và bỏ vào ô trống thích hợp:</h2>
+    <div>
+        <p id="@Model.Answer_1" draggable="true" ondragstart="drag1(event)" class="btn btn-default">@Model.Answer_1</p>
+        <p id="@Model.Answer_2" draggable="true" ondragstart="drag2(event)" class="btn btn-default">@Model.Answer_2</p>
+        <p id="@Model.Answer_3" draggable="true" ondragstart="drag3(event)" class="btn btn-default">@Model.Answer_3</p>
+        <p id="@Model.Answer_4" draggable="true" ondragstart="drag4(event)" class="btn btn-default">@Model.Answer_4</p>
+        <p id="@Model.Answer_5" draggable="true" ondragstart="drag5(event)" class="btn btn-default">@Model.Answer_5</p>
+    </div>
+    <hr />
+    <div>
+        <p id="Quiz_Content"></p>
+    </div>
+    <input type="submit" value="Hoàn thành" class="btn btn-info" />
+}*@
+<script>
+    function allowDrop1(ev) {
+        ev.preventDefault();
+    }
+
+    function drag1(ev) {
+        ev.dataTransfer.setData("text", ev.target.id);
+    }
+
+    function drop1(ev) {
+        ev.preventDefault();
+        var data = ev.dataTransfer.getData("text");
+        ev.target.appendChild(document.getElementById(data));
+        document.getElementById("dropone").value = data;
+    }
+    /*----------------------------------------------------------*/
+    function allowDrop2(ev) {
+        ev.preventDefault();
+    }
+
+    function drag2(ev) {
+        ev.dataTransfer.setData("text", ev.target.id);
+    }
+
+    function drop2(ev) {
+        ev.preventDefault();
+        var data = ev.dataTransfer.getData("text");
+        ev.target.appendChild(document.getElementById(data));
+        document.getElementById("droptwo").value = data;
+    }
+    /*----------------------------------------------------------*/
+    function allowDrop3(ev) {
+        ev.preventDefault();
+    }
+
+    function drag3(ev) {
+        ev.dataTransfer.setData("text", ev.target.id);
+    }
+
+    function drop3(ev) {
+        ev.preventDefault();
+        var data = ev.dataTransfer.getData("text");
+        ev.target.appendChild(document.getElementById(data));
+        document.getElementById("dropthree").value = data;
+    }
+    /*----------------------------------------------------------*/
+    function allowDrop4(ev) {
+        ev.preventDefault();
+    }
+
+    function drag4(ev) {
+        ev.dataTransfer.setData("text", ev.target.id);
+    }
+
+    function drop4(ev) {
+        ev.preventDefault();
+        var data = ev.dataTransfer.getData("text");
+        ev.target.appendChild(document.getElementById(data));
+        document.getElementById("dropfour").value = data;
+    }
+    /*----------------------------------------------------------*/
+    function allowDrop5(ev) {
+        ev.preventDefault();
+    }
+
+    function drag5(ev) {
+        ev.dataTransfer.setData("text", ev.target.id);
+    }
+
+    function drop5(ev) {
+        ev.preventDefault();
+        var data = ev.dataTransfer.getData("text");
+        ev.target.appendChild(document.getElementById(data));
+        document.getElementById("dropfive").value = data;
+    }</script>
+
+<script src="~/Scripts/jquery-3.4.1.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        $("#Quiz_Content").load("/Content/txt/@Model.Content");
+    });
+</script>
+

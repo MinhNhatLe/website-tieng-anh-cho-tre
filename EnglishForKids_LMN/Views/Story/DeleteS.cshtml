@@ -1,0 +1,107 @@
+﻿@model EnglishForKids_LMN.Models.Story
+@{ ViewBag.Title = "DeleteS";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml"; }
+
+<style>
+    .text-danger {
+        color: red;
+    }
+
+    .background-story-createS {
+        padding: 20px;
+        background-color: #fff;
+        border: 10px; /* Viền của cái khối */
+        border-color: rgb(0 0 0 / 2%);
+        border-style: solid;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        border-radius: 20px;
+        box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+    }
+</style>
+<div class="container">
+    <div class="row background-story-createS">
+        <div class="row">
+            <div class="col-lg-12 col-xs-12">
+                <h2 style="text-align: center; font-size: 30px; font-weight: 600;">XÓA CÂU CHUYỆN</h2>
+            </div>
+        </div>
+        <br />
+        <hr />
+        <div class="row">
+            <div class="col-lg-2 col-xs-0">
+
+            </div>
+            <div class="col-lg-8 col-xs-12">
+                @using (Html.BeginForm("DeleteSS", "Story", FormMethod.Post))
+                {
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            <div class="row">
+                                <div class="col-lg-12 col-xs-12">
+                                    <div>
+                                        <img src="~/Content/images/@Model.Banner" id="pictureUpload" class = "form-control center-block" style="width: 100%; height: 250px;" alt="Story Banner" />
+                                        <br />
+                                        @Html.EditorFor(model => model.Banner, "", new { htmlAttributes = new { @class = "form-control center-block", @placeholder = "Type image string ...", @style = "width:500px;height:200px;display:none;", @maxlength = "50" } })
+                                        <br />
+                                        <p>@Html.ValidationMessageFor(model => model.Banner, "", new { @class = "text-danger" })</p>
+                                    </div>
+                                </div>
+                            </div>
+                <div class="thumbnail">
+                    <img src="~/Content/images/@Model.Image_Story" id="pictureUpload1" style="width: 200px; height: 200px;" alt="Story Image" />
+                    <br />
+                    @Html.EditorFor(model => model.Image_Story, "", new { htmlAttributes = new { @class = "form-control center-block", @placeholder = "Type image string ...", @style = "width:500px;height:200px;display:none;", @maxlength = "50" } })
+                    <br />
+                    <p>@Html.ValidationMessageFor(model => model.Image_Story, "", new { @class = "text-danger" })</p>
+                </div>
+                <div class="form-group">
+                    @Html.EditorFor(model => model.ID_Story, new { htmlAttributes = new { @class = "form-control", @style = "display:none;" } })
+                    <p><strong>@Html.LabelFor(model => model.Name_Story)</strong> @Html.EditorFor(model => model.Name_Story, new { htmlAttributes = new { @class = "form-control" } })</p>
+                    <p>@Html.ValidationMessageFor(model => model.Name_Story, "", new { @class = "text-danger" })</p>
+                    <p><strong>@Html.LabelFor(model => model.EN_Content)</strong> @Html.EditorFor(model => model.EN_Content, new { htmlAttributes = new { @class = "form-control" } })</p>
+                    <p>@Html.ValidationMessageFor(model => model.EN_Content, "", new { @class = "text-danger" })</p>
+                    <p><strong>@Html.LabelFor(model => model.VN_Content)</strong> @Html.EditorFor(model => model.VN_Content, new { htmlAttributes = new { @class = "form-control" } })</p>
+                    <p>@Html.ValidationMessageFor(model => model.VN_Content, "", new { @class = "text-danger" })</p>
+                    <p><strong>@Html.LabelFor(model => model.Audio)</strong> @Html.EditorFor(model => model.Audio, new { htmlAttributes = new { @class = "form-control" } })</p>
+                    <p>@Html.ValidationMessageFor(model => model.Audio, "", new { @class = "text-danger" })</p>
+                </div>
+                <div class="row">
+                    <a href="#" class="btn btn-danger center-block" data-toggle="modal" data-target="#delete"  style="width:40%;">Xóa</a>
+                </div>
+                <div class="col-lg-2 col-xs-0">
+
+            </div>
+                }
+                <div class="modal fade " id="delete">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <div class="form-group">
+                                    <h2 class="modal-title">Xóa câu chuyện<button type="button" class="close pull-right" data-dismiss="modal">x</button></h2>
+                                </div>
+                            </div>
+                            <div class="modal-body">
+                                Bạn có muốn xóa câu chuyện này không?
+                            </div>
+                            <div class="modal-footer">
+                                <div class="btn-group">
+                                    <p>
+                                        <a href="#" class="btn btn-default" data-dismiss="modal">Hủy</a>
+                                        @Html.ActionLink("Xóa", "DeleteSS", "Story", new { id = Model.ID_Story }, new { @class = "btn btn-danger" })
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+                <script src="~/Scripts/jquery-3.4.1.js"></script>
+                <script src="~/Scripts/jquery.validate.min.js"></script>
+                <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+                <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+
+
+

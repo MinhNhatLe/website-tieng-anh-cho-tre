@@ -1,0 +1,311 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+    <link href="~/Content/asset/navbar_scroll.css" rel="stylesheet" />
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    <link href="~/Content/boxicons.css" rel="stylesheet" />
+    @*<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js"></script>*@
+    <script src="~/Scripts/jquery-3.6.0.js"></script>
+
+    
+    @*<link href="~/Content/asset/navbaruser.css" rel="stylesheet" />*@
+    <link href="~/Content/Style.css" rel="stylesheet" />
+    <link href="~/Content/asset/reponsive_tuvung_user.css" rel="stylesheet" />
+    <link href="~/Content/asset/reponsive_translate.css" rel="stylesheet" />
+    <link href="~/Content/asset/reponsive_account.css" rel="stylesheet" />
+    <link href="~/Content/asset/reponsive_do_img_quiz.css" rel="stylesheet" />
+    <link href="~/Content/asset/reponsive_vocabulary_detail.css" rel="stylesheet" />
+    <link href="~/Content/asset/reponsive_story_detail.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&display=swap" rel="stylesheet">
+    <link href="~/Content/asset/footer.css" rel="stylesheet" />
+
+    <link href="~/Content/bootstrap-theme.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap-theme.min.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/PagedList.css" rel="stylesheet" />
+    @*@Styles.Render("~/Content/css")*@
+</head>
+<body>
+    @*<nav class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    @Html.ActionLink("English For Kids", "HomePage", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                </div>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li>@Html.ActionLink("Từ vựng", "User_View", "Vocabulary")</li>
+                        <li>@Html.ActionLink("Câu chuyện", "User_View", "Story")</li>
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">Câu đố <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a href="/Quiz/Choose_Image_Quiz">Câu đố hình ảnh</a>
+                                </li>
+                                <li>
+                                    <a href="/Quiz/Choose_DragDrop_Quiz">Câu đố kéo & thả</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>@Html.ActionLink("Kiểm tra", "Choose_Test", "Test")</li>
+                        <li>@Html.ActionLink("Google dịch", "GoogleTranslate", "GoogleTranslate")</li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <img src="~/Content/images/@Session["Image_User"]" class="avatar" />
+                        </li>
+                        <li>
+                            <a href="/Home/Account">@Session["Name_User"]</a>
+                        </li>
+                        <li class="pull-right">@Html.ActionLink("Thoát", "Logout", "Home")</li>
+                    </ul>
+                </div>
+            </div>
+        </nav>*@
+    <div class="wrapper">
+        <div class="sidebar">
+            <div class="logo-details">
+                <i class='bx bx-sun bx-tada'></i>
+                <span class="logo_name">EnglishForKids</span>
+            </div>
+            <ul class="nav-links">
+                <li>
+                    <a href="@Url.Action("HomePage", "Home", new { area = "" })">
+                        <i class='bx bx-home-heart bx-tada'></i>
+                        <span class="link_name">Trang chủ</span>
+                    </a>
+                    <ul class="sub-menu blank">
+                        <li>
+                            @*<a class="link_name" href="#">Trang chủ</a>*@
+                            <a href="@Url.Action("HomePage", "Home", new { area = "" })">Trang chủ</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="@Url.Action("User_View", "Vocabulary")">
+                        <i class='bx bxl-firebase bx-tada'></i>
+                        <span class="link_name">Từ vựng</span>
+                    </a>
+                    <ul class="sub-menu blank">
+                        <li><a class="link_name" href="@Url.Action("User_View", "Vocabulary")">Từ vựng</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="@Url.Action("User_View", "Story")">
+                        <i class='bx bxs-book-heart bx-tada'></i>
+                        <span class="link_name">Câu chuyện</span>
+                    </a>
+                    <ul class="sub-menu blank">
+                        <li><a class="link_name" href="@Url.Action("User_View", "Story")">Câu chuyện</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <div class="icon-link">
+                        <a href="#">
+                            <i class='bx bxs-graduation bx-tada'></i>
+                            <span class="link_name">Câu đố</span>
+                        </a>
+                        <i class='bx bxs-chevron-down arrow'></i>
+                    </div>
+                    <ul class="sub-menu">
+                        @*<li><a class="link_name" href="#">Câu đố</a></li>*@
+                        <li><a href="/Quiz/Choose_Image_Quiz">Câu đố hình ảnh</a></li>
+                        <li><a href="/Quiz/Choose_DragDrop_Quiz">Câu đố kéo & thả</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="@Url.Action("Choose_Test", "Test")">
+                        <i class='bx bx-notepad bx-tada'></i>
+                        <span class="link_name">Kiểm tra</span>
+                    </a>
+                    <ul class="sub-menu blank">
+                        <li><a class="link_name" href="@Url.Action("Choose_Test", "Test")">Kiểm tra</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="@Url.Action("GoogleTranslate", "GoogleTranslate")">
+                        <i class='bx bx-captions bx-tada'></i>
+                        <span class="link_name">Google dịch</span>
+                    </a>
+                    <ul class="sub-menu blank">
+                        <li><a class="link_name" href="@Url.Action("GoogleTranslate", "GoogleTranslate")">Google dịch</a></li>
+                    </ul>
+                </li>
+                <li style="bottom:0; position:fixed">
+                    <a href="/Home/Account">
+                        <i class='bx bx-user bx-burst'></i>
+                    </a>
+                    <ul class="sub-menu blank">
+                        <li><a class="link_name" href="/Home/Account">@Session["Name_User"]</a></li>
+                    </ul>
+                </li>
+
+                <li>
+                    <div class="profile-details" style="width: 300px;">
+                        <div class="profile-content">
+
+                        </div>
+                        <div class="name-job">
+                            <div class="profile_name">
+                                <a href="/Home/Account">
+                                    <span class="link_name">@Session["Name_User"]</span>
+                                </a>
+
+                            </div>
+                            <div class="job">Front End Developer</div>
+                        </div>
+                        <a class="link_name" href="@Url.Action("Logout", "Home")">
+                            <i class='bx bx-log-out'>
+                            </i>
+                        </a>
+                    </div>
+                </li>
+
+            </ul>
+        </div>
+
+        <section class="home-section">
+            <div class="home-content">
+                <i class='bx bx-menu'></i>
+                <span class="text">Swap Menu</span> <br />
+            </div>
+            <div style="background-color: #eceade;">
+                @RenderBody()
+            </div>
+
+            @*<footer class="clearfix">
+            <p style="padding-left: 10px; text-align:center;font-size:20px;">&copy; @DateTime.Now.Year - StartEnd's Website</p>
+        </footer>*@
+
+
+
+            @*MAIN FOOTER CHÍNH*@
+            <footer class="new_footer_area bg_color">
+                <div class="new_footer_top">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-3 col-md-6">
+                                <div class="f_widget company_widget wow fadeInLeft" data-wow-delay="0.2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInLeft;">
+                                    <h3 class="f-title f_600 t_color f_size_18">Để lại thông tin</h3>
+                                    <p>Hãy đăng ký những cập nhất mới nhất của chúng tôi nhé!</p>
+                                    <form action="#" class="f_subscribe_two mailchimp" method="post" novalidate="true" _lpchecked="1">
+                                        <input type="text" name="EMAIL" class="form-control memail" placeholder="Email">
+                                        <button class="btn btn_get btn_get_two" type="submit">Đăng ký</button>
+                                        <p class="mchimp-errmessage" style="display: none;"></p>
+                                        <p class="mchimp-sucmessage" style="display: none;"></p>
+                                    </form>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-6">
+                                <div class="f_widget about-widget pl_70 wow fadeInLeft" data-wow-delay="0.4s" style="visibility: visible; animation-delay: 0.4s; animation-name: fadeInLeft;">
+                                    <h3 class="f-title f_600 t_color f_size_18">Trang</h3>
+                                    <ul class="list-unstyled f_list">
+                                        <li><a href="#">Từ vựng</a></li>
+                                        <li><a href="#">Câu chuyện</a></li>
+                                        <li><a href="#">Câu đố</a></li>
+                                        <li><a href="#">Kiểm tra</a></li>
+                                        <li><a href="#">Google dịch</a></li>
+                                        <li><a href="#">Thông tin cá nhân</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-6">
+                                <div class="f_widget about-widget pl_70 wow fadeInLeft" data-wow-delay="0.6s" style="visibility: visible; animation-delay: 0.6s; animation-name: fadeInLeft;">
+                                    <h3 class="f-title f_600 t_color f_size_18">Giúp đỡ</h3>
+                                    <ul class="list-unstyled f_list">
+                                        <li><a href="#">Những trục trặc thường mắc phải?</a></li>
+                                        <li><a href="#">Các thiết bị có thể dùng website?</a></li>
+                                        <li><a href="#">Tại sao điện thoại tôi vào trang lại bị vỡ?</a></li>
+                                        <li><a href="#">Bạn có chức năng nào khác không?</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-6">
+                                <div class="f_widget social-widget pl_70 wow fadeInLeft" data-wow-delay="0.8s" style="visibility: visible; animation-delay: 0.8s; animation-name: fadeInLeft;">
+                                    <h3 class="f-title f_600 t_color f_size_18">Liên hệ</h3>
+                                    <div class="f_social_icon">
+                                        <a href="#" class="fab fa-facebook"></a>
+                                        <a href="#" class="fab fa-twitter"></a>
+                                        <a href="#" class="fab fa-linkedin"></a>
+                                        <a href="#" class="fab fa-pinterest"></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="footer_bg">
+                        <div class="footer_bg_one"></div>
+                        <div class="footer_bg_two"></div>
+                    </div>
+                </div>
+            </footer>
+
+
+
+
+            @*MAIN FOOTER CHÍNH*@
+        </section>
+        </div>
+        <script>
+            let arrow = document.querySelectorAll(".arrow");
+            for (var i = 0; i < arrow.length; i++) {
+                arrow[i].addEventListener("click", (e) => {
+                    let arrowParent = e.target.parentElement.parentElement;//selecting main parent of arrow
+                    arrowParent.classList.toggle("showMenu");
+                });
+            }
+            let sidebar = document.querySelector(".sidebar");
+            let sidebarBtn = document.querySelector(".bx-menu");
+            console.log(sidebarBtn);
+            /* sidebarBtn.addEventListener("click", () => {
+              sidebar.classList.toggle("close");
+            }); */
+            $(function () {
+                /* console.log("width: "+ document.body.clientWidth); */
+
+                resizeScreen();
+                $(window).resize(function () {
+                    resizeScreen();
+                });
+                $('.bx-menu').click(function () {
+
+                    if (document.body.clientWidth > 400) {
+                        $('.sidebar').toggleClass('close');
+                    } else {
+                        $('.sidebar').toggleClass('small-screen');
+                    }
+                });
+
+                function resizeScreen() {
+                    if (document.body.clientWidth < 400) {
+                        $('.sidebar').addClass('close');
+                    } else {
+                        $('.sidebar').removeClass('close');
+                    }
+                }
+            });
+        </script>
+        @Scripts.Render("~/bundles/modernizr")
+        @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/bootstrap")
+        @RenderSection("scripts", required: false)
+        @RenderSection("upload", required: false)
+        
+
+
+
+        
+
+</body>
+
+
+</html>

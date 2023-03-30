@@ -1,0 +1,88 @@
+﻿@model EnglishForKids_LMN.Models.Test
+@{ ViewBag.Title = "CreateT";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml"; }
+<style>
+    .text-danger {
+        color: red;
+    }
+    .background-test-createT {
+        padding: 20px;
+        background-color: #fff;
+        border: 10px; /* Viền của cái khối */
+        border-color: rgb(0 0 0 / 2%);
+        border-style: solid;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        border-radius: 20px;
+        box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+    }
+</style>
+<div class="container">
+    <div class="row background-test-createT">
+        <div class="row">
+            <div class="col-lg-2 col-xs-0">
+
+            </div>
+            <div class="col-lg-8 col-xs-12">
+                <div class="row">
+                    <div class="col-lg-12 col-xs-12">
+                        <h2 style="text-align: center; font-size: 30px; font-weight: 600;">TẠO BÀI KIỂM TRA</h2>
+                    </div>
+                    <hr />
+                    <div class="col-lg-12 col-xs-12">
+                        @using (Html.BeginForm("CreateT", "Test", FormMethod.Post))
+                        {
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <div class="form-group">
+                    <p>
+                        <strong>Tên bài kiểm tra:</strong> 
+                        @Html.ValidationMessageFor(model => model.Name_Test, "", new { @class = "text-danger" })
+                    @Html.EditorFor(model => model.Name_Test, "", new { htmlAttributes = new { @class = "form-control", @placeholder = "Nhập tên bài kiểm tra ...", @maxlength = "50" } })
+                    </p>
+                     <p>
+                        <strong>Video kiểm tra:</strong> 
+                        @Html.ValidationMessageFor(model => model.Video, "", new { @class = "text-danger" })
+                     @Html.EditorFor(model => model.Video, new { htmlAttributes = new { @class = "form-control", @placeholder = "Nhập file video kiểm tra ...", @maxlength = "50" } })
+                     </p>
+                    <p>
+                        <strong>Đoạn văn kiểm tra:</strong>
+                        @Html.ValidationMessageFor(model => model.Paragraph, "", new { @class = "text-danger" })
+                    @Html.EditorFor(model => model.Paragraph, new { htmlAttributes = new { @class = "form-control", @placeholder = "Nhập tên đoạn văn kiểm tra ...", @maxlength = "50" } })
+                    </p>
+                    </div>
+                    <div>
+                        <input type="submit" name="CreateT" value="Thêm" class="btn btn-success center-block" style="width:40%;" />
+                    </div>}
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-2 col-xs-0">
+
+            </div>
+        </div>
+    </div>
+    <br />
+</div>
+@*<h2>Thêm bài kiểm tra</h2>
+@using (Html.BeginForm("CreateT", "Test", FormMethod.Post))
+{
+@Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <p><strong>Tên bài kiểm tra : </strong> @Html.ValidationMessageFor(model => model.Name_Test, "", new { @class = "text-danger" })</p>
+                                @Html.EditorFor(model => model.Name_Test, "", new { htmlAttributes = new { @class = "form-control", @placeholder = "Nhập tên bài kiểm tra ...", @maxlength = "50" } })
+                                                <br />
+                                                                <p><strong>Video kiểm tra : </strong> @Html.ValidationMessageFor(model => model.Video, "", new { @class = "text-danger" })</p>
+                                                                                @Html.EditorFor(model => model.Video, new { htmlAttributes = new { @class = "form-control", @placeholder = "Nhập đường dẫn video kiểm tra ...", @maxlength = "50" } })
+                                                                                                <br />
+                                                                                                                <p><strong>Đoạn văn kiểm tra : </strong> @Html.ValidationMessageFor(model => model.Paragraph, "", new { @class = "text-danger" })</p>
+                                                                                                                                @Html.EditorFor(model => model.Paragraph, new { htmlAttributes = new { @class = "form-control", @placeholder = "Nhập tên đoạn văn kiểm tra ...", @maxlength = "50" } })
+                                                                                                                                                <br />
+                                                                                                                                                                <br />
+                                                                                                                                                                                <p>
+                                                                                                                                                                                    <input type="submit" name="CreateT" value="Thêm" class="btn btn-success" />
+                                                                                                                                                                                </p>}*@
+<script src="~/Scripts/jquery-3.4.1.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+
+

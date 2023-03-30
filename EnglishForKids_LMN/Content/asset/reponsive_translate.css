@@ -1,0 +1,27 @@
+﻿/* Mobie: width < 740px */
+@media only screen and (max-width: 739px ) {
+    .btn-hoandoingonngu {
+        margin-top: 30px;
+        margin-bottom: 30px;
+    }
+    .btn-voice {
+        top: 250px;
+        left: 80px;
+    }
+}
+
+
+/* Tablet: width >= 740px and width < 1024px */
+@media only screen and (min-width: 740px ) and ( max-width: 1023px) {
+}
+
+/* PC: width >= 1024px */
+@media only screen and (min-width: 1024px) {
+    .btn-hoandoingonngu {
+        margin-top: 50%;
+    }
+    .btn-voice {
+        top: 250px;
+        left: 120px;
+    }
+}

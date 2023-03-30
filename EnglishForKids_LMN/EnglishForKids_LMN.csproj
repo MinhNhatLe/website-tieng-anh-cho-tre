@@ -1,0 +1,555 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{C98F3814-6EE4-4140-8FB8-E595C52DB01B}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>EnglishForKids_LMN</RootNamespace>
+    <AssemblyName>EnglishForKids_LMN</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort>44357</IISExpressSSLPort>
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.0.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.0.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList.Mvc, Version=4.5.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Speech" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.7\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.7\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\GoogleTranslateController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\QuizController.cs" />
+    <Compile Include="Controllers\StoryController.cs" />
+    <Compile Include="Controllers\TestController.cs" />
+    <Compile Include="Controllers\VocabularyController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Category.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Category_Vo.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Category_VocabularyBonus.cs" />
+    <Compile Include="Models\Google.cs" />
+    <Compile Include="Models\Model1.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Model1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Model1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Question.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Quiz.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Quiz_Details.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Story.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\StoryBonus.cs" />
+    <Compile Include="Models\sysdiagram.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TempListAnswer.cs" />
+    <Compile Include="Models\Test.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Test_Details.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\User.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\UserBonus.cs" />
+    <Compile Include="Models\Vocabulary.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VocabularyBonus.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\asset\footer.css" />
+    <Content Include="Content\asset\img_footer\cyclist.gif" />
+    <Content Include="Content\asset\img_footer\footer_bg.png" />
+    <Content Include="Content\asset\img_footer\volks.gif" />
+    <Content Include="Content\asset\navbaruser.css" />
+    <Content Include="Content\asset\navbaradmin.css" />
+    <Content Include="Content\asset\navbar_scroll.css" />
+    <Content Include="Content\asset\reponsive_account.css" />
+    <Content Include="Content\asset\reponsive_createV.css" />
+    <Content Include="Content\asset\reponsive_do_img_quiz.css" />
+    <Content Include="Content\asset\reponsive_list_vocabulary.css" />
+    <Content Include="Content\asset\reponsive_story_detail.css" />
+    <Content Include="Content\asset\reponsive_translate.css" />
+    <Content Include="Content\asset\reponsive_tuvung_user.css" />
+    <Content Include="Content\asset\reponsive_vocabulary_detail.css" />
+    <Content Include="Content\asset\signin.css" />
+    <Content Include="Content\asset\reponsive_signin_signup.css" />
+    <Content Include="Content\asset\signup.css" />
+    <Content Include="Content\audio\audio1.mp3" />
+    <Content Include="Content\audio\audio10.mp3" />
+    <Content Include="Content\audio\audio100.mp3" />
+    <Content Include="Content\audio\audio11.mp3" />
+    <Content Include="Content\audio\audio12.mp3" />
+    <Content Include="Content\audio\audio13.mp3" />
+    <Content Include="Content\audio\audio14.mp3" />
+    <Content Include="Content\audio\audio15.mp3" />
+    <Content Include="Content\audio\audio2.mp3" />
+    <Content Include="Content\audio\audio3.mp3" />
+    <Content Include="Content\audio\audio4.mp3" />
+    <Content Include="Content\audio\audio5.mp3" />
+    <Content Include="Content\audio\audio6.mp3" />
+    <Content Include="Content\audio\audio7.mp3" />
+    <Content Include="Content\audio\audio8.mp3" />
+    <Content Include="Content\audio\audio9.mp3" />
+    <Content Include="Content\bootstrap-theme.css" />
+    <Content Include="Content\bootstrap-theme.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\bootstrap1.css" />
+    <Content Include="Content\boxicons.css" />
+    <Content Include="Content\images\about-img.png" />
+    <Content Include="Content\images\apple.png" />
+    <Content Include="Content\images\Archery.png" />
+    <Content Include="Content\images\Athletics.png" />
+    <Content Include="Content\images\Avocado.png" />
+    <Content Include="Content\images\background.png" />
+    <Content Include="Content\images\Badminton.png" />
+    <Content Include="Content\images\Banana.png" />
+    <Content Include="Content\images\Baseball.png" />
+    <Content Include="Content\images\Basketball.png" />
+    <Content Include="Content\images\bicycle.png" />
+    <Content Include="Content\images\Bird.png" />
+    <Content Include="Content\images\Boat.png" />
+    <Content Include="Content\images\Boxing.png" />
+    <Content Include="Content\images\Bread.png" />
+    <Content Include="Content\images\Bus.png" />
+    <Content Include="Content\images\Cake.png" />
+    <Content Include="Content\images\Canoe.png" />
+    <Content Include="Content\images\Car.png" />
+    <Content Include="Content\images\card-bg1.png" />
+    <Content Include="Content\images\card-bg2.png" />
+    <Content Include="Content\images\card-bg3.png" />
+    <Content Include="Content\images\cat.png" />
+    <Content Include="Content\images\Chess.png" />
+    <Content Include="Content\images\Chicken.png" />
+    <Content Include="Content\images\Chips.png" />
+    <Content Include="Content\images\contact-img.png" />
+    <Content Include="Content\images\Dog.png" />
+    <Content Include="Content\images\Duck.png" />
+    <Content Include="Content\images\Dumpling.png" />
+    <Content Include="Content\images\Elephant.png" />
+    <Content Include="Content\images\Fish.png" />
+    <Content Include="Content\images\football.png" />
+    <Content Include="Content\images\Giraffe.png" />
+    <Content Include="Content\images\Grape.png" />
+    <Content Include="Content\images\header-bg.png" />
+    <Content Include="Content\images\Helicopter.png" />
+    <Content Include="Content\images\home-img.png" />
+    <Content Include="Content\images\img-down.png" />
+    <Content Include="Content\images\img-top.png" />
+    <Content Include="Content\images\left-icon1.png" />
+    <Content Include="Content\images\left-icon2.png" />
+    <Content Include="Content\images\left-icon3.png" />
+    <Content Include="Content\images\Lemon.png" />
+    <Content Include="Content\images\Mango.png" />
+    <Content Include="Content\images\Motorbike.png" />
+    <Content Include="Content\images\nakiri-ayame-in-hololive-i5-1920x1080.jpg" />
+    <Content Include="Content\images\noodles.png" />
+    <Content Include="Content\images\Orange.png" />
+    <Content Include="Content\images\Pancake.png" />
+    <Content Include="Content\images\Peach.png" />
+    <Content Include="Content\images\Pig.png" />
+    <Content Include="Content\images\Pizza.png" />
+    <Content Include="Content\images\Plane.png" />
+    <Content Include="Content\images\Rabbit.png" />
+    <Content Include="Content\images\right-icon1.png" />
+    <Content Include="Content\images\right-icon2.png" />
+    <Content Include="Content\images\right-icon3.png" />
+    <Content Include="Content\images\s1.jpg" />
+    <Content Include="Content\images\s2.jpg" />
+    <Content Include="Content\images\s3.jpg" />
+    <Content Include="Content\images\s4.jpg" />
+    <Content Include="Content\images\s5.jpg" />
+    <Content Include="Content\images\s6.jpg" />
+    <Content Include="Content\images\Sandwich.png" />
+    <Content Include="Content\images\Sausage.png" />
+    <Content Include="Content\images\Snack.png" />
+    <Content Include="Content\images\stick.png" />
+    <Content Include="Content\images\story1.png" />
+    <Content Include="Content\images\story10.png" />
+    <Content Include="Content\images\story11.png" />
+    <Content Include="Content\images\story12.png" />
+    <Content Include="Content\images\story13.png" />
+    <Content Include="Content\images\story14.png" />
+    <Content Include="Content\images\story15.png" />
+    <Content Include="Content\images\story2.png" />
+    <Content Include="Content\images\story3.png" />
+    <Content Include="Content\images\story4.png" />
+    <Content Include="Content\images\story5.png" />
+    <Content Include="Content\images\story6.png" />
+    <Content Include="Content\images\story7.png" />
+    <Content Include="Content\images\story8.png" />
+    <Content Include="Content\images\story9.png" />
+    <Content Include="Content\images\storybanner1.png" />
+    <Content Include="Content\images\storybanner10.png" />
+    <Content Include="Content\images\storybanner11.png" />
+    <Content Include="Content\images\storybanner12.png" />
+    <Content Include="Content\images\storybanner13.png" />
+    <Content Include="Content\images\storybanner14.png" />
+    <Content Include="Content\images\storybanner15.png" />
+    <Content Include="Content\images\storybanner2.png" />
+    <Content Include="Content\images\storybanner3.png" />
+    <Content Include="Content\images\storybanner4.png" />
+    <Content Include="Content\images\storybanner5.png" />
+    <Content Include="Content\images\storybanner6.png" />
+    <Content Include="Content\images\storybanner7.png" />
+    <Content Include="Content\images\storybanner8.png" />
+    <Content Include="Content\images\storybanner9.png" />
+    <Content Include="Content\images\Strawberry.png" />
+    <Content Include="Content\images\Swimming.png" />
+    <Content Include="Content\images\tomato.jpg" />
+    <Content Include="Content\images\Train.png" />
+    <Content Include="Content\images\Truck.png" />
+    <Content Include="Content\images\unknown %281%29.png" />
+    <Content Include="Content\images\unknown.png" />
+    <Content Include="Content\images\user.png" />
+    <Content Include="Content\images\Volleyball.png" />
+    <Content Include="Content\images\Watermelon.png" />
+    <Content Include="Content\PagedList.css" />
+    <Content Include="Content\responsive.css" />
+    <Content Include="Content\Style.css" />
+    <Content Include="Content\style1.css" />
+    <Content Include="Content\txt\paragraph1.txt" />
+    <Content Include="Content\txt\paragraph100.txt" />
+    <Content Include="Content\txt\paragraph2.txt" />
+    <Content Include="Content\txt\paragraph3.txt" />
+    <Content Include="Content\txt\paragraph4.txt" />
+    <Content Include="Content\txt\paragraph5.txt" />
+    <Content Include="Content\txt\quiz1.txt" />
+    <Content Include="Content\txt\quiz100.txt" />
+    <Content Include="Content\txt\quiz2.txt" />
+    <Content Include="Content\txt\quiz3.txt" />
+    <Content Include="Content\txt\quiz4.txt" />
+    <Content Include="Content\txt\quiz5.txt" />
+    <Content Include="Content\txt\story100_en.txt" />
+    <Content Include="Content\txt\story100_vn.txt" />
+    <Content Include="Content\txt\story10_en.txt" />
+    <Content Include="Content\txt\story10_vn.txt" />
+    <Content Include="Content\txt\story11_en.txt" />
+    <Content Include="Content\txt\story11_vn.txt" />
+    <Content Include="Content\txt\story12_en.txt" />
+    <Content Include="Content\txt\story12_vn.txt" />
+    <Content Include="Content\txt\story13_en.txt" />
+    <Content Include="Content\txt\story13_vn.txt" />
+    <Content Include="Content\txt\story14_en.txt" />
+    <Content Include="Content\txt\story14_vn.txt" />
+    <Content Include="Content\txt\story15_en.txt" />
+    <Content Include="Content\txt\story15_vn.txt" />
+    <Content Include="Content\txt\story1_en.txt" />
+    <Content Include="Content\txt\story1_vn.txt" />
+    <Content Include="Content\txt\story2_en.txt" />
+    <Content Include="Content\txt\story2_vn.txt" />
+    <Content Include="Content\txt\story3_en.txt" />
+    <Content Include="Content\txt\story3_vn.txt" />
+    <Content Include="Content\txt\story4_en.txt" />
+    <Content Include="Content\txt\story4_vn.txt" />
+    <Content Include="Content\txt\story5_en.txt" />
+    <Content Include="Content\txt\story5_vn.txt" />
+    <Content Include="Content\txt\story6_en.txt" />
+    <Content Include="Content\txt\story6_vn.txt" />
+    <Content Include="Content\txt\story7_en.txt" />
+    <Content Include="Content\txt\story7_vn.txt" />
+    <Content Include="Content\txt\story8_en.txt" />
+    <Content Include="Content\txt\story8_vn.txt" />
+    <Content Include="Content\txt\story9_en.txt" />
+    <Content Include="Content\txt\story9_vn.txt" />
+    <Content Include="Content\video\video1.mp4" />
+    <Content Include="Content\video\video100.mp4" />
+    <Content Include="Content\video\video2.mp4" />
+    <Content Include="Content\video\video3.mp4" />
+    <Content Include="Content\video\video4.mp4" />
+    <Content Include="Content\video\video5.mp4" />
+    <Content Include="favicon.ico" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="Content\Site.css" />
+    <Content Include="Models\Model1.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Model1.edmx</DependentUpon>
+      <LastGenOutput>Model1.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\Model1.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Model1.edmx</DependentUpon>
+      <LastGenOutput>Model1.cs</LastGenOutput>
+    </Content>
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <EntityDeploy Include="Models\Model1.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Model1.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\Model1.edmx.diagram">
+      <DependentUpon>Model1.edmx</DependentUpon>
+    </Content>
+    <None Include="Scripts\jquery-3.4.1.intellisense.js" />
+    <Content Include="Scripts\jquery-3.4.1.js" />
+    <Content Include="Scripts\jquery-3.4.1.min.js" />
+    <Content Include="Scripts\jquery-3.4.1.slim.js" />
+    <Content Include="Scripts\jquery-3.4.1.slim.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery-3.6.0.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\GoogleTranslate\GoogleTranslate.cshtml" />
+    <Content Include="Views\Home\Account.cshtml" />
+    <Content Include="Views\Home\HomePage.cshtml" />
+    <Content Include="Views\Login\SignIn.cshtml" />
+    <Content Include="Views\Login\SignUp.cshtml" />
+    <Content Include="Views\Login\SendVC.cshtml" />
+    <Content Include="Views\Login\ChangePassword.cshtml" />
+    <Content Include="Views\Quiz\Choose_Image_Quiz.cshtml" />
+    <Content Include="Views\Quiz\Do_Image_Quiz.cshtml" />
+    <Content Include="Views\Quiz\Choose_DragDrop_Quiz.cshtml" />
+    <Content Include="Views\Quiz\Continue.cshtml" />
+    <Content Include="Views\Quiz\CreateQ.cshtml" />
+    <Content Include="Views\Quiz\DeleteQ.cshtml" />
+    <Content Include="Views\Quiz\Do_DragDrop_Quiz.cshtml" />
+    <Content Include="Views\Quiz\EditQ.cshtml" />
+    <Content Include="Views\Quiz\ListQuiz.cshtml" />
+    <Content Include="Views\Quiz\Result.cshtml" />
+    <Content Include="Views\Quiz\Result_DragDrop_Quiz.cshtml" />
+    <Content Include="Views\Shared\_LayoutAdmin.cshtml" />
+    <Content Include="Views\Story\ListStory.cshtml" />
+    <Content Include="Views\Story\CreateS.cshtml" />
+    <Content Include="Views\Story\EditS.cshtml" />
+    <Content Include="Views\Story\DetailS.cshtml" />
+    <Content Include="Views\Story\DeleteS.cshtml" />
+    <Content Include="Views\Story\User_View.cshtml" />
+    <Content Include="Views\Test\Do_Test.cshtml" />
+    <Content Include="Views\Test\Choose_Test.cshtml" />
+    <Content Include="Views\Test\Result_Test.cshtml" />
+    <Content Include="Views\Test\CreateT.cshtml" />
+    <Content Include="Views\Test\EditQ.cshtml" />
+    <Content Include="Views\Test\ListTest.cshtml" />
+    <Content Include="Views\Vocabulary\CreateV.cshtml" />
+    <Content Include="Views\Vocabulary\DeleteV.cshtml" />
+    <Content Include="Views\Vocabulary\DetailV.cshtml" />
+    <Content Include="Views\Vocabulary\EditV.cshtml" />
+    <Content Include="Views\Vocabulary\EditVT.cshtml" />
+    <Content Include="Views\Vocabulary\ListVocabulary.cshtml" />
+    <Content Include="Views\Vocabulary\ListVocabularyType.cshtml" />
+    <Content Include="Views\Vocabulary\User_View.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\bootstrap-theme.min.css.map" />
+    <Content Include="Content\bootstrap-theme.css.map" />
+    <None Include="packages.config" />
+    <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
+    <Content Include="Scripts\jquery-3.4.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>56600</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>https://localhost:44357/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

@@ -1,0 +1,130 @@
+﻿@model EnglishForKids_LMN.Models.Story
+@{ ViewBag.Title = "DetailS";
+                if (Session["ID_User"] != null)
+                {
+                    Layout = "~/Views/Shared/_Layout.cshtml";
+                }
+                if (Session["Admin_Code"] != null)
+                {
+                    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+                } }
+<style>
+    .btn-noidungtiengviet {
+        color: #fff;
+        box-shadow: 0 1px 1px rgb(0 0 0 / 9%);
+        font-size: 15px;
+        width: 200px;
+        height: 40px;
+        border-radius: 5px;
+        outline-style: inherit;
+        outline-color: aqua;
+        margin-top: 15px;
+        border: 3px solid #315cfd;
+        transition: all 0.3s;
+        font-weight: 100;
+    }
+
+        .btn-noidungtiengviet:hover {
+            color: white;
+            font-size: 1.2em;
+        }
+    .img-story {
+        display: inline-block;
+        padding: 5px;
+        background-color: black;
+        border-radius: 20px;
+        border: 5px solid #337ab7;
+        margin-top: 20px;
+    }
+    .background-story-detail {
+        padding: 20px;
+        background-color: #fff;
+        border: 10px; /* Viền của cái khối */
+        border-color: rgb(0 0 0 / 2%);
+        border-style: solid;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        border-radius: 20px;
+        box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+    }
+</style>
+<div class="container">
+    <div class="row background-story-detail">
+        <div class="row">
+            <div class="col-lg-2 col-xs-0">
+
+            </div>
+            <div class="col-lg-8 col-xs-12">
+                <div class="row">
+                    <div>
+                        <img src="~/Content/images/@Model.Banner" style="width: 100%;" alt="Story Banner" class="img-story" />
+                    </div>
+                </div>
+                <hr />
+                <div class="row">
+                    <h1 class="text-center" style="font-family:cursive;">@Model.Name_Story</h1>
+                </div>
+                <div class="row">
+                    <div>
+                        <pre id="English_Content" style="font-size: 18px; background-color: #FFEBCD; border: none; text-align: center; overflow-x: hidden;">
+                        
+                        </pre>
+                    </div>
+                </div>
+                <hr />
+                <div class="row">
+                    <button class="btn btn-primary center-block btn-noidungtiengviet" onclick="myfunction()">Nội dung tiếng Việt</button>
+                </div>
+                <hr />
+                <div class="row">
+                    <div>
+                        <pre id="Vietnamese_Content" style="font-size: 18px; margin-top: 0px; padding-top: 0px; background-color: #FFEBCD; border: none; text-align:center; overflow-x: hidden; " hidden>
+
+                        </pre>
+                    </div>
+                </div>
+                <div class="row">
+                    <div>
+                        <audio style="width:100%;height:50px;" controls>
+                            <source src="~/Content/audio/@Model.Audio" type="audio/mp3">
+                        </audio>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-6 col-xs-6">
+                        <div>
+                            @Html.ActionLink("Trở về", "User_View", "Story", new { @class = "btn btn-primary" })
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-xs-6">
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-2 col-xs-0">
+
+            </div>
+        </div>
+    </div>
+</div>
+<script src="~/Scripts/jquery-3.4.1.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $("#English_Content").load("/Content/txt/@Model.EN_Content");
+        $("#Vietnamese_Content").load("/Content/txt/@Model.VN_Content");
+    });
+</script>
+<script>
+    function myfunction() {
+        if (document.getElementById("Vietnamese_Content").hidden == true) {
+            document.getElementById("Vietnamese_Content").hidden = false;
+        }
+        else {
+            document.getElementById("Vietnamese_Content").hidden = true;
+        }
+    }
+</script>
+

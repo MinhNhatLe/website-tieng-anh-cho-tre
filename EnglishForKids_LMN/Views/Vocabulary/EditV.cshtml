@@ -1,0 +1,228 @@
+﻿@model EnglishForKids_LMN.Models.VocabularyBonus
+@{ ViewBag.Title = "EditV";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml"; }
+<style>
+    .text-danger {
+        color: red;
+    }
+
+    .img-editV {
+        display: inline-block;
+        padding: 5px;
+        background-color: black;
+        border-radius: 20px;
+        border: 5px solid #337ab7;
+        margin-top: -10px;
+    }
+
+    .background-editV {
+        padding: 20px;
+        background-color: #fff;
+        border: 10px; /* Viền của cái khối */
+        border-color: rgb(0 0 0 / 2%);
+        border-style: solid;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        border-radius: 20px;
+        box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+    }
+</style>
+<div class="container">
+    <div class="row background-editV">
+        <div class="row">
+            <div class="col-lg-12 col-xs-12">
+                <h2 style="text-align: center; font-size: 30px; font-weight: 600;">@Html.ValueFor(model => model.EN_Meaning)</h2>
+            </div>
+        </div>
+        <br />
+        <hr />
+        @using (Html.BeginForm("EditV", "Vocabulary", FormMethod.Post))
+        {
+@Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="row">
+                    <div class="col-lg-6 col-xs-12">
+                        <div>
+                            <br />
+                            <input type="file" name="fileUpload" id="fileUpload" accept="images/*" style="display:none;" />
+                            <img src="~/Content/images/@Model.Image_Vocabulary" id="pictureUpload" style="width: 100%;" alt="Vocabulary Image" class="img-editV" />
+                            <br />
+                            @Html.EditorFor(model => model.Image_Vocabulary, "", new { htmlAttributes = new { @class = "form-control center-block", @placeholder = "Type image string ...", @style = "width:500px;height:200px;display:none;", @maxlength = "50" } })
+                            <br />
+                            <p><input type="button" id="btnUpload" value="Chọn ảnh" class="btn btn-primary center-block" /></p>
+                            @section upload
+                        {
+                                <script>
+                                    $(function () {
+                                        $('#btnUpload').click(function () {
+                                            $('#fileUpload').trigger('click');
+                                        });
+                                    });
+                                    $('#fileUpload').change(function () {
+                                        if (window.FormData !== undefined) {
+                                            var fileUpload = $('#fileUpload').get(0);
+                                            var files = fileUpload.files;
+                                            var formData = new FormData();
+                                            formData.append('file', files[0]);
+                                            $.ajax({
+                                                type: 'POST',
+                                                url: '/Vocabulary/ProcessUpload',
+                                                contentType: false,
+                                                processData: false,
+                                                data: formData,
+                                                success: function (urlImage) {
+                                                    $('#pictureUpload').attr('src', "/Content/images/" + urlImage);
+                                                    $('#Image_Vocabulary').val(urlImage);
+                                                },
+                                                error: function (err) {
+                                                    alert('Error', err.statusText);
+                                                }
+                                            });
+                                        }
+                                    });</script>
+                            }
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-xs-12">
+                        <div class="background-editV">
+                            @Html.EditorFor(model => model.ID_Vocabulary, "", new { htmlAttributes = new { @class = "form-control center-block", @placeholder = "Nhập tên từ vựng tiếng anh ...", @style = "width:100%;max-width:100%;display:none;" } })
+                            <p><strong>Tên tiếng anh : </strong> @Html.ValidationMessageFor(model => model.EN_Meaning, "", new { @class = "text-danger" })</p>
+                            @Html.EditorFor(model => model.EN_Meaning, "", new { htmlAttributes = new { @class = "form-control center-block", @placeholder = "Nhập tên từ vựng tiếng anh ...", @style = "width:100%;max-width:100%;", @maxlength = "30" } })
+                            <br />
+                            <p><strong>Tên tiếng việt : </strong> @Html.ValidationMessageFor(model => model.VN_Meaning, "", new { @class = "text-danger" })</p>
+                            @Html.EditorFor(model => model.VN_Meaning, new { htmlAttributes = new { @class = "form-control center-block", @placeholder = "Nhập tên từ vựng tiếng việt ...", @style = "width:100%;max-width:100%;", @maxlength = "30" } })
+                            <br />
+                            <p><strong>Phát âm : </strong> @Html.ValidationMessageFor(model => model.Pronunciation, "", new { @class = "text-danger" })</p>
+                            @Html.EditorFor(model => model.Pronunciation, new { htmlAttributes = new { @class = "form-control center-block", @placeholder = "Nhập phát âm ...", @style = "width:100%;max-width:100%;", @maxlength = "20" } })
+                            <br />
+                            <p><strong>Loại từ vựng : </strong> @Html.ValidationMessageFor(model => model.category_vos, "", new { @class = "text-danger" })</p>
+                            @Html.DropDownListFor(model => model.ID_Category_Vo, new SelectList(Model.category_vos, "ID_Category_Vo", "Name_Category_Vo"), "", new { @class = "form-control center-block pull-left", @style = "width:75%;max-width:80%;" })
+                            <a href="#" class="btn btn-primary pull-right" data-toggle="modal" data-target="#create-category">Thêm</a>
+                            <br />
+                            <br />
+                            <br />
+                            <p>
+                                @Html.ActionLink("Trở về", "ListVocabulary", "Vocabulary", new { @class = "btn btn-default pull-left", @style = "width:45%; max-width:50%; border-radius:4px;" })
+                                <input type="submit" name="EditV" value="Lưu" class="btn btn-success pull-right" style="width: 45%; max-width: 50%; border-radius: 4px; " />
+                            </p>
+                            <br />
+                            <br />
+                        </div>
+                    </div>
+                </div>}
+    @*<h2><p>@Html.ValueFor(model => model.EN_Meaning)</p></h2>
+            @using (Html.BeginForm("EditV", "Vocabulary", FormMethod.Post))
+            {
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            <div class="row">
+                                <div class="myleft">
+                                    <input type="file" name="fileUpload" id="fileUpload" accept="images/*" style="display:none;" />
+                                    <img src="~/Content/images/@Model.Image_Vocabulary" id="pictureUpload" style="width: 50%; height: 60%; margin-top: 14.7%; border-radius: 6px; margin-left:25%" alt="Vocabulary Image" />
+                                    <br />
+                                    @Html.EditorFor(model => model.Image_Vocabulary, "", new { htmlAttributes = new { @class = "form-control center-block", @placeholder = "Type image string ...", @style = "width:500px;height:200px;display:none;", @maxlength = "50" } })
+                                    <br />
+                                    <p><input type="button" id="btnUpload" value="Chọn ảnh" class="btn btn-success center-block" /></p>
+                                    @section upload
+                {
+                                        <script>$(function () {
+                                    $('#btnUpload').click(function () {
+                                        $('#fileUpload').trigger('click');
+                                    });
+                                });
+                                $('#fileUpload').change(function () {
+                                    if (window.FormData !== undefined) {
+                                        var fileUpload = $('#fileUpload').get(0);
+                                        var files = fileUpload.files;
+                                        var formData = new FormData();
+                                        formData.append('file', files[0]);
+                                        $.ajax({
+                                            type: 'POST',
+                                            url: '/Vocabulary/ProcessUpload',
+                                            contentType: false,
+                                            processData: false,
+                                            data: formData,
+                                            success: function (urlImage) {
+                                                $('#pictureUpload').attr('src', "/Content/images/" + urlImage);
+                                                $('#Image_Vocabulary').val(urlImage);
+                                            },
+                                            error: function (err) {
+                                                alert('Error', err.statusText);
+                                            }
+                                        });
+                                    }
+                                });</script>
+                                    }
+                                </div>
+                                <div class="myright mydiv">
+                                    @Html.EditorFor(model => model.ID_Vocabulary, "", new { htmlAttributes = new { @class = "form-control center-block", @placeholder = "Nhập tên từ vựng tiếng anh ...", @style = "width:100%;max-width:100%;display:none;" } })
+                                    <p><strong>Tên tiếng anh : </strong> @Html.ValidationMessageFor(model => model.EN_Meaning, "", new { @class = "text-danger" })</p>
+                                    @Html.EditorFor(model => model.EN_Meaning, "", new { htmlAttributes = new { @class = "form-control center-block", @placeholder = "Nhập tên từ vựng tiếng anh ...", @style = "width:100%;max-width:100%;", @maxlength = "30" } })
+                                    <br />
+                                    <p><strong>Tên tiếng việt : </strong> @Html.ValidationMessageFor(model => model.VN_Meaning, "", new { @class = "text-danger" })</p>
+                                    @Html.EditorFor(model => model.VN_Meaning, new { htmlAttributes = new { @class = "form-control center-block", @placeholder = "Nhập tên từ vựng tiếng việt ...", @style = "width:100%;max-width:100%;", @maxlength = "30" } })
+                                    <br />
+                                    <p><strong>Phát âm : </strong> @Html.ValidationMessageFor(model => model.Pronunciation, "", new { @class = "text-danger" })</p>
+                                    @Html.EditorFor(model => model.Pronunciation, new { htmlAttributes = new { @class = "form-control center-block", @placeholder = "Nhập phát âm ...", @style = "width:100%;max-width:100%;", @maxlength = "20" } })
+                                    <br />
+                                    <p><strong>Loại từ vựng : </strong> @Html.ValidationMessageFor(model => model.category_vos, "", new { @class = "text-danger" })</p>
+                                    @Html.DropDownListFor(model => model.ID_Category_Vo, new SelectList(Model.category_vos, "ID_Category_Vo", "Name_Category_Vo"), "", new { @class = "form-control center-block pull-left", @style = "width:85%;max-width:100%;" }) <a href="#" class="btn btn-primary pull-right" data-toggle="modal" data-target="#create-category">Thêm</a>
+                                    <br />
+                                    <br />
+                                    <br />
+                                    <p>
+                                        @Html.ActionLink("Trở về", "ListVocabulary", "Vocabulary", new { @class = "btn btn-default pull-left", @style = "width:48%;max-width:48%;border-radius:16px;" }) <input type="submit" name="EditV" value="Lưu" class="btn btn-success pull-right" style="width: 48%; max-width: 48%; border-radius: 16px; " />
+                                    </p>
+                                </div>
+                            </div>}*@
+                <div class="modal fade " id="create-category">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <div class="form-group">
+                                    <h2 class="modal-title" style="text-align: center; font-size: 30px; font-weight: 600;">TẠO LOẠI TỪ VỰNG MỚI<button type="button" class="close pull-right" data-dismiss="modal">x</button></h2>
+                                </div>
+                            </div>
+                            <div class="modal-body">
+                                <form id="create">
+                                    <p>
+                                        <strong>Tên loại từ vựng:</strong><font style="color:red;"> @ViewData["existed"]</font>
+                                    </p>
+                                    @Html.EditorFor(model => model.Name_Category_Vo, new { htmlAttributes = new { @class = "form-control center-block", @placeholder = "Nhập tên loại từ vựng...", @style = "width:100%;max-width:100%;", @maxlength = "20" } })
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                                <div class="btn-group">
+                                    <p>
+                                        <a href="#" class="btn btn-default" data-dismiss="modal">Hủy</a>
+                                        <a href="#" class="btn btn-primary" id="btn-save">Thêm</a>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        @section add
+                {
+            <script>
+                $(document).ready(function () {
+                    $("#btn-save").click(function () {
+                        var category = $("#create").serialize();
+                        $.ajax({
+                            type: "POST",
+                            url: "/Vocabulary/CreateVT",
+                            data: category,
+                            success: function () {
+                                $(this).hide();
+                            },
+                            error: function () {
+                                alert('Tên loại đã tồn tại!');
+                            }
+                        })
+                    })
+                })</script>
+        }
+        <script src="~/Scripts/jquery-3.4.1.js"></script>
+        <script src="~/Scripts/jquery.validate.min.js"></script>
+        <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+        <script src="~/Scripts/jquery-3.4.1.min.js"></script>

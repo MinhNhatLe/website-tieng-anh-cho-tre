@@ -1,0 +1,6 @@
+﻿Man cannot go on increasing numbers at the present rate. In the next 30 years,  man will face a period of crisis. 
+<input type="text" id="dropone" name="dropone" ondrop="drop1(event)" ondragover="allowDrop1(event)" readonly> experts believe that there will be a  widespread food <input type="text" id="droptwo" name="droptwo" ondrop="drop2(event)" ondragover="allowDrop2(event)" readonly> .Other experts think this is too pessimistic, 
+and that  man can prevent things from getting worse than they are now. 
+But <input type="text" id="dropthree" name="dropthree" ondrop="drop3(event)" ondragover="allowDrop3(event)" readonly>  that two-thirds of the people in the world are undernourished or starving now. 
+One thing that man can do is to limit <input type="text" id="dropfour" name="dropfour" ondrop="drop4(event)" ondragover="allowDrop4(event)" readonly> of babies born. 
+The need <input type="text" id="dropfive" name="dropfive" ondrop="drop5(event)" ondragover="allowDrop5(event)" readonly> this is obvious, but it is not easy to achieve. People have to be persuaded  to limit their families.  

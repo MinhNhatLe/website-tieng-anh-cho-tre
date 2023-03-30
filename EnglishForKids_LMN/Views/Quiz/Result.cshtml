@@ -1,0 +1,122 @@
+﻿@{
+    ViewBag.Title = "Result";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    .background-quiz-result {
+        padding: 20px;
+        background-color: #fff;
+        border: 10px; /* Viền của cái khối */
+        border-color: rgb(0 0 0 / 2%);
+        border-style: solid;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        border-radius: 20px;
+        box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+    }
+</style>
+<div class="container">
+    <div class="row background-quiz-result">
+        <div class="row">
+            <div class="col-lg-2 col-xs-0">
+
+            </div>
+            <div class="col-lg-8 col-xs-12">
+                <div class="row">
+                    <div class="col-lg-12 col-xs-12">
+                        <div style="text-align:center;">
+                            <h2 style="text-align: center; font-size: 30px; font-weight: 600;">BẢNG THỐNG KÊ</h2>
+                        </div>
+                    </div>
+                </div>
+                <hr />
+                <div class="row">
+                    <div class="col-lg-12 col-xs-12">
+                        <div>
+                            <h3 style="text-align:center;">Tổng số điểm: @Session["Image_Quiz_Score"]</h3>
+                            @{
+                                List<EnglishForKids_LMN.Models.TempListAnswer> ans = Session["Answer"] as List<EnglishForKids_LMN.Models.TempListAnswer>;
+                                List<bool> index = Session["Image_Quiz_Index"] as List<bool>;
+                                List<bool> vs = Session["Image_Quiz_Result"] as List<bool>;
+                                List<int> a = new List<int>();
+                                for (int i = 1; i < 6; i++)
+                                {
+                                    a.Add(i);
+                                }
+                            }
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12 col-xs-12">
+                        <table class="table-hover table table-responsive tr">
+                            <tr>
+                                <th>STT</th>
+                                <th>Đúng / Sai</th>
+                                <th>Câu trả lời</th>
+                                <th>Đáp án</th>
+                            </tr>
+                            @{
+                                try
+                                {
+                                    int b = 1;
+                                    foreach (var number in a)
+                                    {
+
+
+                                        foreach (var item in vs)
+                                        {
+                                            foreach (var answerrequest in ans)
+                                            {
+                                                if (b < 6)
+                                                {
+                                                    if (answerrequest.IdAnswer == b.ToString())
+                                                    {
+                                                        <tr>
+                                                            <td>@b</td>
+                                                            @if (item == true)
+                                                            {
+                                                                <td style="color:green;">V</td>
+
+                                                            }
+                                                            else
+                                                            {
+                                                                <td style="color:red">X</td>
+                                                            }
+                                                            <td>@answerrequest.QuestionAnswer.ToLower()</td>
+                                                            <td>@answerrequest.Answers.ToLower()</td>
+                                                        </tr>
+                                                        b++;
+                                                        Console.WriteLine(b);
+                                                        // a.Remove(number);
+                                                        break;
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                                catch (Exception ex) { Console.WriteLine(ex.StackTrace); }
+                            }
+
+                        </table>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-6 col-xs-6">
+                        <div>
+                            @Html.ActionLink("Trở về", "Choose_Image_Quiz", "Quiz", new { @class = "btn btn-default" })
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-xs-6">
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-2 col-xs-0">
+
+            </div>
+        </div>
+    </div>
+</div>
+

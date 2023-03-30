@@ -1,0 +1,5 @@
+﻿Also, unmarried couples may decide to have more children - or they might take in  foster children or <input type="text" id="dropone" name="dropone" ondrop="drop1(event)" ondragover="allowDrop1(event)" readonly>. 
+And because people are staying single and living  longer (often as widows), there may be more one-person households. 
+<input type="text" id="droptwo" name="droptwo" ondrop="drop2(event)" ondragover="allowDrop2(event)" readonly>  the other hand, some people believe similar events happen again and again in  history: if this is true, 
+people may go back to the traditional <input type="text" id="dropthree" name="dropthree" ondrop="drop3(event)" ondragover="allowDrop3(event)" readonly> or nuclear  family of the past. Others think the only <input type="text" id="dropfour" name="dropfour" ondrop="drop4(event)" ondragover="allowDrop4(event)" readonly> in history is change: in other  words,
+the structure of the <input type="text" id="dropfive" name="dropfive" ondrop="drop5(event)" ondragover="allowDrop5(event)" readonly> family could begin to change faster and faster  - and in more and more ways. 
