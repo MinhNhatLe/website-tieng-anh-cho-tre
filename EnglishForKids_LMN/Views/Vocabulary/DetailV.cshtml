@@ -60,10 +60,10 @@
             </div>
             <div class="col-lg-4 col-xs-12">
                 <div style="margin-left:69px">
-                    <p><strong>Tên tiếng anh: </strong>@Html.ValueFor(model => model.EN_Meaning)</p>
-                    <p><strong>Tên tiếng việt: </strong>@Html.ValueFor(model => model.VN_Meaning)</p>
-                    <p><strong>Phiên âm IPA: </strong>
-                    / @Html.ValueFor(model => model.Pronunciation) / @Html.ActionLink("Voice", "Speech", new { id = Model.ID_Vocabulary }, new { @class = "btn btn-default" }) </p>
+                    <p><strong>English name: </strong>@Html.ValueFor(model => model.EN_Meaning)</p>
+                    <p><strong>Vietnamese name: </strong>@Html.ValueFor(model => model.VN_Meaning)</p>
+                    <p><strong>IPA: </strong>
+                    / @Html.ValueFor(model => model.Pronunciation) / @Html.ActionLink("Voice", "Speech", new { id = Model.ID_Vocabulary }, new { @class = "btn btn-success" }) </p>
                 </div>
             </div>
             <div class="col-lg-4 col-xs-0">
@@ -72,7 +72,7 @@
         </div>
         <div class="row">
             <div class="col-lg-6 col-xs-6">
-                @Html.ActionLink("Trở về", "User_View", "Vocabulary", new { @class = "btn btn-primary" })
+                @Html.ActionLink("Back", "User_View", "Vocabulary", new { @class = "btn btn-primary" })
             </div>
             <div class="col-lg-6 col-xs-6">
 

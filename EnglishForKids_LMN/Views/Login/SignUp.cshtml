@@ -8,7 +8,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="~/Content/Style.css" rel="stylesheet" />
-    <title>Sign Up</title>
+    <title>Register - English For Kids</title>
     <link href="~/Content/asset/signup.css" rel="stylesheet" />
     <link href="~/Content/asset/reponsive_signin_signup.css" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&display=swap" rel="stylesheet">
@@ -29,15 +29,15 @@
                     <form action="/Login/SignUp" method="post">
                         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                         <div>
-                            <h1 class="h1-dangky">Đăng ký</h1>
+                            <h1 class="h1-dangky">Member Register</h1>
                             <p>
                                 <strong>
-                                    <label for="User_FullName">Họ và tên</label>
+                                    <label for="User_FullName">Full name</label>
                                 </strong>
                                 @Html.ValidationMessageFor(model => model.User_FullName, "", new { @class = "text-danger" })
                             </p>
                             <div class="input-group">
-                                <input type="text" id="User_FullName" name="User_FullName" class="form-control" placeholder="Nhập họ và tên của bạn ..." autofocus="1" maxlength="35" />
+                                <input type="text" id="User_FullName" name="User_FullName" class="form-control" placeholder="Enter your full name ..." autofocus="1" maxlength="35" />
                                 <span class="input-group-addon">
                                     <i class="glyphicon glyphicon-user"></i>
                                 </span>
@@ -45,13 +45,13 @@
                             <br />
                             <p>
                                 <strong>
-                                    <label for="User_Mail">Email</label>
+                                    <label for="User_Mail">Email Address</label>
                                 </strong>
                                 <font style="color:red;"> @ViewData["UserExisted"]</font>
                                 @Html.ValidationMessageFor(model => model.User_Mail, "", new { @class = "text-danger" })
                             </p>
                             <div class="input-group">
-                                <input type="text" id="User_Mail" name="User_Mail" class="form-control" placeholder="Ví dụ: lmnhat.contact@gmail.com" maxlength="30" />
+                                <input type="text" id="User_Mail" name="User_Mail" class="form-control" placeholder="Example: lmnhat.contact@gmail.com" maxlength="30" />
                                 <span class="input-group-addon">
                                     <i class="glyphicon glyphicon-envelope"></i>
                                 </span>
@@ -59,12 +59,12 @@
                             <br />
                             <p>
                                 <strong>
-                                    <label for="User_Password">Mật khẩu</label>
+                                    <label for="User_Password">Password</label>
                                 </strong>
                                 @Html.ValidationMessageFor(model => model.User_Password, "", new { @class = "text-danger" })
                             </p>
                             <div class="input-group">
-                                <input type="password" id="User_Password" name="User_Password" class="form-control" placeholder="Nhập mật khẩu của bạn ..." maxlength="10" />
+                                <input type="password" id="User_Password" name="User_Password" class="form-control" placeholder="Enter your password ..." maxlength="10" />
                                 <span class="input-group-addon">
                                     <i class="glyphicon glyphicon-lock "></i>
                                 </span>
@@ -72,24 +72,24 @@
                             <br />
                             <p>
                                 <strong>
-                                    <label for="Check_Password">Xác nhận mật khẩu</label>
+                                    <label for="Check_Password">Confirm password</label>
                                 </strong>
                                 <font style="color:red;"> @ViewData["WrongPassword"]</font>
                                 @Html.ValidationMessageFor(model => model.Check_Password, "", new { @class = "text-danger" })
                             </p>
                             <div class="input-group">
-                                <input type="password" id="Check_Password" name="Check_Password" class="form-control" placeholder="Nhập lại mật khẩu của bạn ..." maxlength="10" />
+                                <input type="password" id="Check_Password" name="Check_Password" class="form-control" placeholder="Enter your password again ..." maxlength="10" />
                                 <span class="input-group-addon">
                                     <i class="glyphicon glyphicon-check "></i>
                                 </span>
                             </div>
                             <div>
-                                <button type="submit" name="SignUp" value="Sign Up" class="btn btn-primary btn-dangky">Đăng ký</button>
+                                <button type="submit" name="SignUp" value="Sign Up" class="btn btn-primary btn-dangky">Register</button>
                             </div>
                             <div class="row">
                                 <div class="col-lg-6 col-xs-6">
                                     <p class="QuayLai">
-                                        <a href="/Login/SignIn">Quay lại!</a>
+                                        <a href="/Login/SignIn">Back to login page!</a>
                                     </p>
                                 </div>
                                 <div class="col-lg-6 col-xs-6">

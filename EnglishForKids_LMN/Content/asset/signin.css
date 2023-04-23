@@ -1,4 +1,10 @@
 ﻿
+
+
+
+
+
+
 * {
     padding: 0;
     margin: 0;
@@ -15,7 +21,7 @@
     width: 800px;
     padding: 20px;
     background-color: #fff;
-    border: 10px; /* Viền của cái khối */
+    border: 10px;  Viền của cái khối 
     border-color: rgb(0 0 0 / 2%);
     border-style: solid;
     margin-top: 200px;
@@ -50,7 +56,7 @@
     border: 3px solid #315cfd;
     transition: all 0.3s;
     font-weight: 100;
-    /*font-family: 'Montserrat', sans-serif;*/
+    font-family: 'Montserrat', sans-serif;
 }
 
     .btn-submit:hover {
@@ -73,10 +79,14 @@
 }
 
 body {
-    /*background-image: url('https://i.pinimg.com/564x/f5/74/2d/f5742d0d50fb74ccc71e127a2088836d.jpg');
+    background-image: url('https://i.pinimg.com/564x/f5/74/2d/f5742d0d50fb74ccc71e127a2088836d.jpg');
             background-repeat: no-repeat;
             background-attachment: fixed;
             background-size: cover;
-            overflow: hidden;*/
+            overflow: hidden;
     font-family: Montserrat;
 }
+
+
+
+

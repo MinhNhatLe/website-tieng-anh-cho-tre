@@ -81,63 +81,63 @@
                 <li>
                     <a href="@Url.Action("HomePage", "Home", new { area = "" })">
                         <i class='bx bx-home-heart bx-tada'></i>
-                        <span class="link_name">Trang chủ</span>
+                        <span class="link_name">Home</span>
                     </a>
                     <ul class="sub-menu blank">
                         <li>
                             @*<a class="link_name" href="#">Trang chủ</a>*@
-                            <a href="@Url.Action("HomePage", "Home", new { area = "" })">Trang chủ</a>
+                            <a href="@Url.Action("HomePage", "Home", new { area = "" })">Home</a>
                         </li>
                     </ul>
                 </li>
                 <li>
                     <a href="@Url.Action("User_View", "Vocabulary")">
                         <i class='bx bxl-firebase bx-tada'></i>
-                        <span class="link_name">Từ vựng</span>
+                        <span class="link_name">Vocabulary</span>
                     </a>
                     <ul class="sub-menu blank">
-                        <li><a class="link_name" href="@Url.Action("User_View", "Vocabulary")">Từ vựng</a></li>
+                        <li><a class="link_name" href="@Url.Action("User_View", "Vocabulary")">Vocabulary</a></li>
                     </ul>
                 </li>
                 <li>
                     <a href="@Url.Action("User_View", "Story")">
                         <i class='bx bxs-book-heart bx-tada'></i>
-                        <span class="link_name">Câu chuyện</span>
+                        <span class="link_name">Story</span>
                     </a>
                     <ul class="sub-menu blank">
-                        <li><a class="link_name" href="@Url.Action("User_View", "Story")">Câu chuyện</a></li>
+                        <li><a class="link_name" href="@Url.Action("User_View", "Story")">Story</a></li>
                     </ul>
                 </li>
                 <li>
                     <div class="icon-link">
                         <a href="#">
                             <i class='bx bxs-graduation bx-tada'></i>
-                            <span class="link_name">Câu đố</span>
+                            <span class="link_name">Quiz</span>
                         </a>
                         <i class='bx bxs-chevron-down arrow'></i>
                     </div>
                     <ul class="sub-menu">
                         @*<li><a class="link_name" href="#">Câu đố</a></li>*@
-                        <li><a href="/Quiz/Choose_Image_Quiz">Câu đố hình ảnh</a></li>
-                        <li><a href="/Quiz/Choose_DragDrop_Quiz">Câu đố kéo & thả</a></li>
+                        <li><a href="/Quiz/Choose_Image_Quiz">Quiz with images</a></li>
+                        <li><a href="/Quiz/Choose_DragDrop_Quiz">Quiz with drag & drog</a></li>
                     </ul>
                 </li>
                 <li>
                     <a href="@Url.Action("Choose_Test", "Test")">
                         <i class='bx bx-notepad bx-tada'></i>
-                        <span class="link_name">Kiểm tra</span>
+                        <span class="link_name">Test</span>
                     </a>
                     <ul class="sub-menu blank">
-                        <li><a class="link_name" href="@Url.Action("Choose_Test", "Test")">Kiểm tra</a></li>
+                        <li><a class="link_name" href="@Url.Action("Choose_Test", "Test")">Test</a></li>
                     </ul>
                 </li>
                 <li>
                     <a href="@Url.Action("GoogleTranslate", "GoogleTranslate")">
                         <i class='bx bx-captions bx-tada'></i>
-                        <span class="link_name">Google dịch</span>
+                        <span class="link_name">Translate</span>
                     </a>
                     <ul class="sub-menu blank">
-                        <li><a class="link_name" href="@Url.Action("GoogleTranslate", "GoogleTranslate")">Google dịch</a></li>
+                        <li><a class="link_name" href="@Url.Action("GoogleTranslate", "GoogleTranslate")">Translate</a></li>
                     </ul>
                 </li>
                 <li style="bottom:0; position:fixed">
@@ -161,7 +161,7 @@
                                 </a>
 
                             </div>
-                            <div class="job">Front End Developer</div>
+                            <div class="job">Web Developer</div>
                         </div>
                         <a class="link_name" href="@Url.Action("Logout", "Home")">
                             <i class='bx bx-log-out'>
@@ -195,11 +195,11 @@
                         <div class="row">
                             <div class="col-lg-3 col-md-6">
                                 <div class="f_widget company_widget wow fadeInLeft" data-wow-delay="0.2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInLeft;">
-                                    <h3 class="f-title f_600 t_color f_size_18">Để lại thông tin</h3>
-                                    <p>Hãy đăng ký những cập nhất mới nhất của chúng tôi nhé!</p>
+                                    <h3 class="f-title f_600 t_color f_size_18">Leave message</h3>
+                                    <p>Sign up for our latest updates!</p>
                                     <form action="#" class="f_subscribe_two mailchimp" method="post" novalidate="true" _lpchecked="1">
-                                        <input type="text" name="EMAIL" class="form-control memail" placeholder="Email">
-                                        <button class="btn btn_get btn_get_two" type="submit">Đăng ký</button>
+                                        <input type="text" name="EMAIL" class="form-control memail" placeholder="Example: lmnhat.contact@gmail.com">
+                                        <button class="btn btn_get btn_get_two" type="submit">Register</button>
                                         <p class="mchimp-errmessage" style="display: none;"></p>
                                         <p class="mchimp-sucmessage" style="display: none;"></p>
                                     </form>
@@ -209,31 +209,31 @@
                                 <div class="f_widget about-widget pl_70 wow fadeInLeft" data-wow-delay="0.4s" style="visibility: visible; animation-delay: 0.4s; animation-name: fadeInLeft;">
                                     <h3 class="f-title f_600 t_color f_size_18">Trang</h3>
                                     <ul class="list-unstyled f_list">
-                                        <li><a href="#">Từ vựng</a></li>
-                                        <li><a href="#">Câu chuyện</a></li>
-                                        <li><a href="#">Câu đố</a></li>
-                                        <li><a href="#">Kiểm tra</a></li>
-                                        <li><a href="#">Google dịch</a></li>
-                                        <li><a href="#">Thông tin cá nhân</a></li>
+                                        <li><a href="/Vocabulary/User_View">Vocabulary</a></li>
+                                        <li><a href="/Story/User_View">Story</a></li>
+                                        <li><a href="/Quiz/Choose_Image_Quiz">Quiz</a></li>
+                                        <li><a href="/Test/Choose_Test">Test</a></li>
+                                        <li><a href="/GoogleTranslate/GoogleTranslate">Translate</a></li>
+                                        <li><a href="/Home/Account">Your Profile</a></li>
                                     </ul>
                                 </div>
                             </div>
                             <div class="col-lg-3 col-md-6">
                                 <div class="f_widget about-widget pl_70 wow fadeInLeft" data-wow-delay="0.6s" style="visibility: visible; animation-delay: 0.6s; animation-name: fadeInLeft;">
-                                    <h3 class="f-title f_600 t_color f_size_18">Giúp đỡ</h3>
+                                    <h3 class="f-title f_600 t_color f_size_18">Help</h3>
                                     <ul class="list-unstyled f_list">
-                                        <li><a href="#">Những trục trặc thường mắc phải?</a></li>
-                                        <li><a href="#">Các thiết bị có thể dùng website?</a></li>
-                                        <li><a href="#">Tại sao điện thoại tôi vào trang lại bị vỡ?</a></li>
-                                        <li><a href="#">Bạn có chức năng nào khác không?</a></li>
+                                        <li><a href="#">Common problems?</a></li>
+                                        <li><a href="#">What devices can use the website?</a></li>
+                                        <li><a href="#">Why is my phone broken when I go to the site?</a></li>
+                                        <li><a href="#">Do you have any other function?</a></li>
                                     </ul>
                                 </div>
                             </div>
                             <div class="col-lg-3 col-md-6">
                                 <div class="f_widget social-widget pl_70 wow fadeInLeft" data-wow-delay="0.8s" style="visibility: visible; animation-delay: 0.8s; animation-name: fadeInLeft;">
-                                    <h3 class="f-title f_600 t_color f_size_18">Liên hệ</h3>
+                                    <h3 class="f-title f_600 t_color f_size_18">Contact</h3>
                                     <div class="f_social_icon">
-                                        <a href="#" class="fab fa-facebook"></a>
+                                        <a href="https://www.facebook.com/Nhat.sun.1005/" class="fab fa-facebook"></a>
                                         <a href="#" class="fab fa-twitter"></a>
                                         <a href="#" class="fab fa-linkedin"></a>
                                         <a href="#" class="fab fa-pinterest"></a>

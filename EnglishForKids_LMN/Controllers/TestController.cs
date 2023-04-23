@@ -165,7 +165,7 @@ namespace EnglishForKids_LMN.Controllers
             //MailAddress toGMail = new MailAddress(userz.Email, "Me");
             MailMessage Message = new MailMessage();
             SmtpClient smtp = new SmtpClient();
-            Message.From = new MailAddress("tiennguyennaraka@gmail.com");
+            Message.From = new MailAddress("minhnhat057@gmail.com");
             Message.To.Add(new MailAddress(userz.Email));
             {
                 Message.IsBodyHtml = true;
@@ -206,7 +206,7 @@ namespace EnglishForKids_LMN.Controllers
             smtp.EnableSsl = true;
             smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
             smtp.UseDefaultCredentials = false;
-            smtp.Credentials = new NetworkCredential("tiennguyennaraka@gmail.com", "p");
+            smtp.Credentials = new NetworkCredential("minhnhat057@gmail.com", "p");
             //smtp.Send(Message);
             return RedirectToAction("Result_Test", "Test");
         }
