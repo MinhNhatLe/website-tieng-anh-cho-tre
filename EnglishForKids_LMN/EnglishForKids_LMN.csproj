@@ -202,6 +202,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\asset\background_layout.css" />
     <Content Include="Content\asset\footer.css" />
     <Content Include="Content\asset\img_footer\cyclist.gif" />
     <Content Include="Content\asset\img_footer\footer_bg.png" />
@@ -220,6 +221,7 @@
     <Content Include="Content\asset\signin.css" />
     <Content Include="Content\asset\reponsive_signin_signup.css" />
     <Content Include="Content\asset\signup.css" />
+    <Content Include="Content\asset\userview.css" />
     <Content Include="Content\audio\audio1.mp3" />
     <Content Include="Content\audio\audio10.mp3" />
     <Content Include="Content\audio\audio100.mp3" />

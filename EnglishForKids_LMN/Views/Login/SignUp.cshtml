@@ -29,7 +29,9 @@
                     <form action="/Login/SignUp" method="post">
                         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                         <div>
-                            <h1 class="h1-dangky">Member Register</h1>
+                            <div class="text-center">
+                                <h1 class="h1-dangky animate-charcter">Member Register</h1>
+                            </div>
                             <p>
                                 <strong>
                                     <label for="User_FullName">Full name</label>
@@ -45,7 +47,7 @@
                             <br />
                             <p>
                                 <strong>
-                                    <label for="User_Mail">Email Address</label>
+                                    <label for="User_Mail">Email address</label>
                                 </strong>
                                 <font style="color:red;"> @ViewData["UserExisted"]</font>
                                 @Html.ValidationMessageFor(model => model.User_Mail, "", new { @class = "text-danger" })
@@ -84,7 +86,13 @@
                                 </span>
                             </div>
                             <div>
-                                <button type="submit" name="SignUp" value="Sign Up" class="btn btn-primary btn-dangky">Register</button>
+                                @*<button type="submit" name="SignUp" value="Sign Up" class="btn btn-primary btn-dangky">Register</button>*@
+
+
+                                <div class="wrap">
+                                    <button class="button" type="submit" name="SignUp" value="Sign Up">Register </button>
+                                </div>
+
                             </div>
                             <div class="row">
                                 <div class="col-lg-6 col-xs-6">

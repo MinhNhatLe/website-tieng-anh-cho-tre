@@ -1,4 +1,30 @@
-﻿
+﻿.animate-charcter {
+    text-transform: uppercase;
+    background-image: linear-gradient( -225deg, #231557 0%, #44107a 29%, #ff1361 67%, #fff800 100% );
+    background-size: auto auto;
+    background-clip: border-box;
+    background-size: 200% auto;
+    color: #fff;
+    background-clip: text;
+    text-fill-color: transparent;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: textclip 2s linear infinite;
+    display: inline-block;
+    font-size: 50px;
+}
+
+@keyframes textclip {
+    to {
+        background-position: 200% center;
+    }
+}
+
+
+
+
+
+
 
 
 
@@ -18,15 +44,16 @@
 }
 
 .form-dangnhap {
-    width: 800px;
-    padding: 20px;
+    width: 1000px;
+    padding: 35px;
     background-color: #fff;
-    border: 10px;  Viền của cái khối 
-    border-color: rgb(0 0 0 / 2%);
+    border: 10px;
+    /*Viền của cái khối*/
+    border-color: rgb(221 58 58 / 74%);
     border-style: solid;
     margin-top: 200px;
-    border-radius: 20px;
-    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+    border-radius: 30px;
+    box-shadow: 0 14px 28px rgb(226 17 17 / 25%), 0 10px 10px rgb(243 241 22 / 22%);
 }
 
 
@@ -41,6 +68,9 @@
         transition: 1s;
         font-size: 4em;
     }
+
+
+
 
 .btn-submit {
     color: #fff;
@@ -79,14 +109,93 @@
 }
 
 body {
-    background-image: url('https://i.pinimg.com/564x/f5/74/2d/f5742d0d50fb74ccc71e127a2088836d.jpg');
-            background-repeat: no-repeat;
-            background-attachment: fixed;
-            background-size: cover;
-            overflow: hidden;
+    background-image: url('https://wallpapers.com/images/featured/ducktales-uitqw8er78i5c44d.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    overflow: hidden;
     font-family: Montserrat;
 }
 
 
 
 
+
+
+
+
+
+
+
+
+/*-------------------------------------------*/
+
+/*html, body {
+    height: 100%;
+}*/
+
+.wrap {
+    margin-top: 10px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.button {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    min-width: 100%;
+    /*min-height: 60px;*/
+
+    font-size: 22px;
+    letter-spacing: 1.3px;
+    font-weight: 700;
+    /*color: #333;*/
+
+    background: #4FD1C5;
+    background: linear-gradient(90deg, rgb(210 205 113) 0%, rgb(223 52 93) 100%);
+    border: none;
+    border-radius: 10px;
+
+    box-shadow: 12px 12px 24px rgba(79,209,197,.64);
+    transition: all 0.3s ease-in-out 0s;
+    cursor: pointer;
+    outline: none;
+    position: relative;
+    padding: 10px;
+}
+
+button::before {
+    content: '';
+    border-radius: 20px;
+    min-width: calc(100% + 12px);
+    min-height: calc(60px + 2px);
+    border: 6px solid #ebece7;
+    box-shadow: 0 0 15px rgba(0,255,203,.64);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    transition: all .3s ease-in-out 0s;
+}
+
+.button:hover, .button:focus {
+    color: #313133;
+    transform: translateY(-6px);
+}
+
+button:hover::before, button:focus::before {
+    opacity: 1;
+}
+
+button::after {
+    content: '';
+    width: 30px;
+    height: 30px;
+    border-radius: 40%;
+    border: 6px solid #ebece7;
+    position: absolute;
+}
+ 

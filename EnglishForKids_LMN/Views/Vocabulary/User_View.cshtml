@@ -16,14 +16,35 @@
 <div class="container">
     <div class="row">
         <div class="col-lg-12 col-xs-12">
-            <h2 style="text-align: center; font-size: 30px; font-weight: 600;">VOCABULARY</h2>
+            @*<h2 class="animate-charcter" style="text-align: center; font-size: 30px; font-weight: 600;">VOCABULARY</h2>*@
+            <div class="border-title">
+                <div class="container_title">
+                    <h2 class="title">
+                        <span class="title-word title-word-1">V</span>
+                        <span class="title-word title-word-2">O</span>
+                        <span class="title-word title-word-3">C</span>
+                        <span class="title-word title-word-4">A</span>
+                        <span class="title-word title-word-1">B</span>
+                        <span class="title-word title-word-2">U</span>
+                        <span class="title-word title-word-3">L</span>
+                        <span class="title-word title-word-4">A</span>
+                        <span class="title-word title-word-1">R</span>
+                        <span class="title-word title-word-2">Y</span>
+                    </h2>
+                </div>
+            </div>
+
 
             @*<marquee direction="right"> <h2 style="text-align: center; font-size: 30px; font-weight: 600;">VOCABULARY</h2> </marquee>*@
 
         </div>
     </div>
     <br />
-    @using (Html.BeginForm("User_View", "Vocabulary", FormMethod.Get)) 
+    <br />
+    <br />
+    <br />
+
+    @using (Html.BeginForm("User_View", "Vocabulary", FormMethod.Get))
     {
         <div class="row">
             <div class="col-lg-5 col-xs-0">
@@ -64,9 +85,9 @@
             {
                 <a href="/Vocabulary/DetailV/@item.ID_Vocabulary">
                     <div class="col-lg-4 col-xs-12" style="border-radius: 0; margin-top:50px; display: flex; align-items: center; justify-content: center;">
-                        <div class="card" style="border-radius: 20px">
+                        <div class="card" style="border-radius: 20px; background-color: #eceade;">
                             <img src="~/Content/images/@item.Image_Vocabulary" alt="Vocabulary Image" style="width: 100%; height: 250px; border-radius: 20px" />
-                            <h1 style="text-align:center;color:black;">@item.EN_Meaning</h1>
+                            <h1 class="animate-charcter" style="text-align:center;color:black;">@item.EN_Meaning</h1>
                             <p style="color:gray;">IPA transcription: / @item.Pronunciation /</p>
                             <p style="padding: 10px; width: 100%; background-color: #333333; color: white; font-size: 14px; border-radius: 5px">Detail</p>
                         </div>

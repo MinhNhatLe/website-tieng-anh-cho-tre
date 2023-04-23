@@ -1,0 +1,12 @@
+﻿/*.background_layout {
+    background-image: url('https://a-static.besthdwallpaper.com/cartoon-character-mickey-mouse-on-red-black-background-wallpaper-1920x1080-108566_48.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    overflow: hidden;
+    font-family: Montserrat;
+}
+*/
+.background_layout{
+    background-color: blanchedalmond;
+}
