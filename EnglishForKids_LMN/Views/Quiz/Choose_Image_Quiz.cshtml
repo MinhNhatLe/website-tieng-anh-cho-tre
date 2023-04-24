@@ -1,4 +1,6 @@
 ﻿@model IEnumerable<EnglishForKids_LMN.Models.Category_Vo>
+
+
 @{ ViewBag.Title = "Choose Image Quiz";
     Layout = "~/Views/Shared/_Layout.cshtml"; }
 <style>
@@ -10,7 +12,33 @@
 <div class="container">
     <div class="row">
         <div class="col-lg-12 col-xs-12">
-            <h2 style="text-align: center; font-size: 30px; font-weight: 600;">CÂU ĐỐ HÌNH ẢNH</h2>
+            @*<h2 style="text-align: center; font-size: 30px; font-weight: 600;">QUIZ WITH IMAGES</h2>*@
+
+
+
+            <div class="border-title">
+                <div class="container_title">
+                    <h2 class="title">
+                        <span class="title-word title-word-1">Q</span>
+                        <span class="title-word title-word-2">U</span>
+                        <span class="title-word title-word-3">I</span>
+                        <span class="title-word title-word-4">Z</span>
+                        @*<span class="title-word title-word-1">W</span>
+                            <span class="title-word title-word-2">I</span>
+                            <span class="title-word title-word-3">T</span>
+                            <span class="title-word title-word-4">H</span>
+                            <span class="title-word title-word-1">I</span>
+                            <span class="title-word title-word-2">M</span>
+                            <span class="title-word title-word-3">A</span>
+                            <span class="title-word title-word-4">G</span>
+                            <span class="title-word title-word-1">E</span>
+                            <span class="title-word title-word-2">S</span>*@
+
+                    </h2>
+                </div>
+            </div>
+
+
         </div>
     </div>
     <br />
@@ -19,29 +47,135 @@
         <div class="col-lg-2 col-xs-0">
 
         </div>
-        <div class="col-lg-8 col-xs-12 layout-background-quiz">
-            @using EnglishForKids_LMN.Models;
-            @{ List<Quiz_Details> quiz_Details = Session["quiz_Details"] as List<Quiz_Details>;
-                int user_Code = int.Parse(Session["ID_User"].ToString()); }
-            @foreach (var item in Model)
-            {
-                <div style="padding: 20px; background-color: black; width: 100%; max-width: 100%; border-radius: 20px; border: 2px solid #337ab7; margin-top: 20px; ">
-                    <a href="/Quiz/Do_Image_Quiz/@item.ID_Category_Vo" style="color: white; text-decoration: none; text-align: center;">Câu đố: @item.Name_Category_Vo</a>
-                    @foreach (var item1 in quiz_Details)
-                    {
-                        if (item1.ID_Category_Vo == item.ID_Category_Vo && item1.ID_User == user_Code)
+        @*<div class="col-lg-8 col-xs-12 layout-background-quiz">
+                @using EnglishForKids_LMN.Models;
+                @{ List<Quiz_Details> quiz_Details = Session["quiz_Details"] as List<Quiz_Details>;
+                    int user_Code = int.Parse(Session["ID_User"].ToString()); }
+                @foreach (var item in Model)
+                {
+                    <div style="padding: 20px; background-color: black; width: 100%; max-width: 100%; border-radius: 20px; border: 2px solid #337ab7; margin-top: 20px; ">
+                        <a href="/Quiz/Do_Image_Quiz/@item.ID_Category_Vo" style="color: white; text-decoration: none; text-align: center;">Câu đố: @item.Name_Category_Vo</a>
+                        @foreach (var item1 in quiz_Details)
                         {
-                            <p class="pull-right" style="color:white;">Số điểm: @item1.Quiz_Score/10</p>
-                            break;
+                            if (item1.ID_Category_Vo == item.ID_Category_Vo && item1.ID_User == user_Code)
+                            {
+                                <p class="pull-right" style="color:white;">Số điểm: @item1.Quiz_Score/10</p>
+                                break;
+                            }
                         }
-                    }
-                </div>
-                <br />
-            }
-        </div>
+                    </div>
+                    <br />
+                }
+            </div>*@
         <div class="col-lg-2 col-xs-0">
 
         </div>
     </div>
+
+    @*<div class="row">
+            <div class="col-lg-2 col-xs-0">
+
+            </div>
+            <div class="col-lg-8 col-xs-12 layout-background-quiz">
+                @using EnglishForKids_LMN.Models;
+                @{ List<Quiz_Details> quiz_Details = Session["quiz_Details"] as List<Quiz_Details>;
+                    int user_Code = int.Parse(Session["ID_User"].ToString()); }
+                @foreach (var item in Model)
+                {
+                    <div style="padding: 20px; background-color: black; width: 100%; max-width: 100%; border-radius: 20px; border: 2px solid #337ab7; margin-top: 20px; ">
+                        <a href="/Quiz/Do_Image_Quiz/@item.ID_Category_Vo" class="animate-charcter" style="color: white; text-decoration: none; text-align: center;"> @item.Name_Category_Vo</a>
+                        @foreach (var item1 in quiz_Details)
+                        {
+                            if (item1.ID_Category_Vo == item.ID_Category_Vo && item1.ID_User == user_Code)
+                            {
+                                <p class="pull-right animate-charcter" style="color:white;">Số điểm: @item1.Quiz_Score/10</p>
+                                break;
+                            }
+                        }
+                    </div>
+                    <br />
+                }
+            </div>
+
+            <div class="col-lg-2 col-xs-0">
+
+            </div>
+        </div>*@
+
+    <div class="row">
+
+
+        @using EnglishForKids_LMN.Models;
+        @{ List<Quiz_Details> quiz_Details = Session["quiz_Details"] as List<Quiz_Details>;
+            int user_Code = int.Parse(Session["ID_User"].ToString()); }
+        <div class="col-lg-4 col-xs-12">
+            <div class="">
+                @*<marquee direction="left">*@
+                <h2 class="animate-charcter" style="text-align: center; font-size: 30px; font-weight: 600;">
+                    Score statistics:
+                </h2>
+                @*</marquee>*@
+                @foreach (var item in Model)
+                {
+                    <ul>
+                        <li>
+                            @item.Name_Category_Vo
+                            @foreach (var item1 in quiz_Details)
+                            {
+                                if (item1.ID_Category_Vo == item.ID_Category_Vo && item1.ID_User == user_Code)
+                                {
+                                    <span>: @item1.Quiz_Score/10 score.</span>
+                                    break;
+                                }
+                            }
+                        </li>
+                    </ul>
+
+                }
+            </div>
+            <ul>
+                <h3 class="animate-charcter" style="text-align: center; font-size: 20px; font-weight: 600;">
+                    Score statistics:
+                </h3>
+                <li>
+                    Thi 1 lần
+                </li>
+                <li>
+                    Thi 1 lần
+                </li>
+            </ul>
+        </div>
+        @*@using EnglishForKids_LMN.Models;
+            @{ List<Quiz_Details> quiz_Details = Session["quiz_Details"] as List<Quiz_Details>;
+                int user_Code = int.Parse(Session["ID_User"].ToString()); }*@
+        <div class="col-lg-8 col-xs-12">
+            @foreach (var item in Model)
+            {
+                <a href="/Quiz/Do_Image_Quiz/@item.ID_Category_Vo">
+                    <div class="col-lg-6 col-xs-12" style="border-radius: 0; margin-top:50px; display: flex; align-items: center; justify-content: center;">
+                        <div class="card" style="border-radius: 20px; background-color: #eceade;">
+                            <h1 class="animate-charcter text-center" style="text-align:center;color:black; font-size: 30px; font-weight: 700 ">@item.Name_Category_Vo</h1>
+                            @*@foreach (var item1 in quiz_Details)
+                                {
+                                    if (item1.ID_Category_Vo == item.ID_Category_Vo && item1.ID_User == user_Code)
+                                    {
+                                        <p class="" style="color:white;">Số điểm: @item1.Quiz_Score/10</p>
+                                        break;
+                                    }
+                                }*@
+                        </div>
+                    </div>
+
+                </a>
+            }
+        </div>
+    </div>
+
+
+
+
+
+
+
 </div>
 
