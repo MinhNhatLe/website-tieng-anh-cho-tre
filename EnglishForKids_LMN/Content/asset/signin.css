@@ -112,6 +112,8 @@
     display: block;
 }
 
+/*https://wallpapers.com/images/featured/ducktales-uitqw8er78i5c44d.jpg*/
+
 body {
     background-image: url('https://wallpapers.com/images/featured/ducktales-uitqw8er78i5c44d.jpg');
     background-repeat: no-repeat;
@@ -161,7 +163,6 @@ body {
     background: linear-gradient(90deg, rgb(210 205 113) 0%, rgb(223 52 93) 100%);
     border: none;
     border-radius: 10px;
-
     box-shadow: 12px 12px 24px rgba(79,209,197,.64);
     transition: all 0.3s ease-in-out 0s;
     cursor: pointer;
@@ -202,4 +203,13 @@ button::after {
     border: 6px solid #ebece7;
     position: absolute;
 }
- 
+
+
+
+
+
+
+
+
+
+

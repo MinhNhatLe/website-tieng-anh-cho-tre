@@ -25,6 +25,11 @@
     <div>
         <div class="row">
             <div class="col-lg-12 col-xs-12 dangky">
+                <audio autoplay="autoplay" controls hidden preload="auto">
+                    <source src="~/Content/audio/SUPER MARIO BROS Final Trailer (4K ULTRA HD) 2023.mp3" type="audio/ogg">
+                    <source src="~/Content/audio/SUPER MARIO BROS Final Trailer (4K ULTRA HD) 2023.mp3" type="audio/mpeg">
+                </audio>
+
                 <div class="form-dangky">
                     <form action="/Login/SignUp" method="post">
                         @Html.ValidationSummary(true, "", new { @class = "text-danger" })

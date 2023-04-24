@@ -1,54 +1,91 @@
 ﻿@model EnglishForKids_LMN.Models.Story
 @{ ViewBag.Title = "DetailS";
-                if (Session["ID_User"] != null)
-                {
-                    Layout = "~/Views/Shared/_Layout.cshtml";
-                }
-                if (Session["Admin_Code"] != null)
-                {
-                    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
-                } }
+    if (Session["ID_User"] != null)
+    {
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+    if (Session["Admin_Code"] != null)
+    {
+        Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    } }
 <style>
+
     .btn-noidungtiengviet {
         color: #fff;
         box-shadow: 0 1px 1px rgb(0 0 0 / 9%);
-        font-size: 15px;
-        width: 200px;
-        height: 40px;
-        border-radius: 5px;
+        font-size: 20px;
+        width: 400px;
+        height: 60px;
+
+        cursor: pointer;
+        border-radius: 10px;
         outline-style: inherit;
         outline-color: aqua;
-        margin-top: 15px;
+        margin-top: 20px;
+        margin-bottom: 20px;
         border: 3px solid #315cfd;
         transition: all 0.3s;
-        font-weight: 100;
+        font-weight: 700;
+        background: #4FD1C5;
+        background: linear-gradient(90deg, rgb(210 205 113) 0%, rgb(223 52 93) 100%);
     }
 
         .btn-noidungtiengviet:hover {
-            color: white;
-            font-size: 1.2em;
+            color: #fff;
+            transform: translateY(-6px);
+            font-size: 18px;
         }
+
+
     .img-story {
         display: inline-block;
         padding: 5px;
-        background-color: black;
-        border-radius: 20px;
-        border: 5px solid #337ab7;
+        border-radius: 30px;
+        border: 10px; /* Viền của cái khối */
+        border-color: rgb(221 58 58 / 74%);
+        box-shadow: 0 14px 28px rgb(226 17 17 / 25%), 0 10px 10px rgb(243 241 22 / 22%);
         margin-top: 20px;
     }
+
+        .img-story:hover {
+            transition: 2s;
+            width: 100%;
+        }
+
     .background-story-detail {
-        padding: 20px;
+
+
+        padding: 35px;
         background-color: #fff;
         border: 10px; /* Viền của cái khối */
-        border-color: rgb(0 0 0 / 2%);
+        border-color: rgb(221 58 58 / 74%);
         border-style: solid;
-        margin-top: 10px;
-        margin-bottom: 10px;
-        border-radius: 20px;
-        box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+        margin-top: 20px;
+        margin-bottom: 20px;
+        border-radius: 30px;
+        box-shadow: 0 14px 28px rgb(226 17 17 / 25%), 0 10px 10px rgb(243 241 22 / 22%);
     }
 </style>
-<div class="container">
+<div class="container body">
+    <div class="row">
+        <div class="col-lg-12 col-xs-12">
+
+            <div class="border-title">
+                <div class="container_title">
+                    <h2 class="title">
+                        <span class="title-word title-word-1">S</span>
+                        <span class="title-word title-word-2">T</span>
+                        <span class="title-word title-word-3">O</span>
+                        <span class="title-word title-word-4">R</span>
+                        <span class="title-word title-word-1">Y</span>
+                    </h2>
+                </div>
+            </div>
+
+
+
+        </div>
+    </div>
     <div class="row background-story-detail">
         <div class="row">
             <div class="col-lg-2 col-xs-0">
@@ -56,29 +93,29 @@
             </div>
             <div class="col-lg-8 col-xs-12">
                 <div class="row">
-                    <div>
+                    <div class="text-center">
                         <img src="~/Content/images/@Model.Banner" style="width: 100%;" alt="Story Banner" class="img-story" />
                     </div>
                 </div>
                 <hr />
                 <div class="row">
-                    <h1 class="text-center" style="font-family:cursive;">@Model.Name_Story</h1>
+                    <h1 class="text-center animate-charcter " style="font-family:cursive; font-weight:700; width:100%">@Model.Name_Story</h1>
                 </div>
                 <div class="row">
                     <div>
-                        <pre id="English_Content" style="font-size: 18px; background-color: #FFEBCD; border: none; text-align: center; overflow-x: hidden;">
+                        <pre id="English_Content" style="font-size: 18px; border-radius: 15px; background-color: #FFEBCD; border: none; text-align: center; overflow-x: hidden;">
                         
                         </pre>
                     </div>
                 </div>
                 <hr />
                 <div class="row">
-                    <button class="btn btn-primary center-block btn-noidungtiengviet" onclick="myfunction()">Nội dung tiếng Việt</button>
+                    <button class="btn btn-primary center-block btn-noidungtiengviet bx-tada-hover" onclick="myfunction()">Vietnamese content</button>
                 </div>
                 <hr />
                 <div class="row">
                     <div>
-                        <pre id="Vietnamese_Content" style="font-size: 18px; margin-top: 0px; padding-top: 0px; background-color: #FFEBCD; border: none; text-align:center; overflow-x: hidden; " hidden>
+                        <pre id="Vietnamese_Content" style="font-size: 18px; border-radius:15px; background-color: #FFEBCD; border: none; text-align:center; overflow-x: hidden; " hidden>
 
                         </pre>
                     </div>
@@ -92,8 +129,8 @@
                 </div>
                 <div class="row">
                     <div class="col-lg-6 col-xs-6">
-                        <div>
-                            @Html.ActionLink("Trở về", "User_View", "Story", new { @class = "btn btn-primary" })
+                        <div style="margin-top:20px">
+                            @Html.ActionLink("Back to story page!", "User_View", "Story", new { @class = "btn btn-warning bx-fade-left-hover" })
                         </div>
                     </div>
                     <div class="col-lg-6 col-xs-6">

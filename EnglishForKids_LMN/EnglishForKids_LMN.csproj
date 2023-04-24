@@ -238,6 +238,7 @@
     <Content Include="Content\audio\audio7.mp3" />
     <Content Include="Content\audio\audio8.mp3" />
     <Content Include="Content\audio\audio9.mp3" />
+    <Content Include="Content\audio\SUPER MARIO BROS Final Trailer %284K ULTRA HD%29 2023.mp3" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -400,6 +401,7 @@
     <Content Include="Content\txt\story8_vn.txt" />
     <Content Include="Content\txt\story9_en.txt" />
     <Content Include="Content\txt\story9_vn.txt" />
+    <Content Include="Content\video\SUPER MARIO BROS Final Trailer %284K ULTRA HD%29 2023_Trim.mp4" />
     <Content Include="Content\video\video1.mp4" />
     <Content Include="Content\video\video100.mp4" />
     <Content Include="Content\video\video2.mp4" />
