@@ -3,25 +3,28 @@
     Layout = "~/Views/Shared/_Layout.cshtml"; }
 <style>
     .btn-hoandoingonngu {
-        text-align: center;
         color: #fff;
         box-shadow: 0 1px 1px rgb(0 0 0 / 9%);
-        font-size: 15px;
-        width: 100%;
-        height: 50px;
-        max-width: 100%;
-        border-radius: 5px;
+        font-size: 20px;
+        width: 400px;
+        height: 60px;
+        cursor: pointer;
+        border-radius: 10px;
         outline-style: inherit;
         outline-color: aqua;
+        margin-top: 20px;
+        margin-bottom: 20px;
         border: 3px solid #315cfd;
         transition: all 0.3s;
-        font-weight: 100;
-        /*font-family: 'Montserrat', sans-serif;*/
+        font-weight: 700;
+        background: #4FD1C5;
+        background: linear-gradient(90deg, rgb(210 205 113) 0%, rgb(223 52 93) 100%);
     }
 
         .btn-hoandoingonngu:hover {
-            color: white;
-            font-size: 1.2em;
+            color: #fff;
+            transform: translateY(-6px);
+            font-size: 18px;
         }
 </style>
 
@@ -30,16 +33,39 @@
 <div class="container">
     <div class="row">
         <div class="col-lg-12 col-xs-12">
-            <h2 style="text-align: center; font-size: 30px; font-weight: 600;">DỊCH THUẬT</h2>
+            @*<h2 style="text-align: center; font-size: 30px; font-weight: 600;">DỊCH THUẬT</h2>*@
+
+            <div class="border-title">
+                <div class="container_title">
+                    <h2 class="title" style="font-size: 45px;">
+                        <span class="title-word title-word-1">T</span>
+                        <span class="title-word title-word-2">R</span>
+                        <span class="title-word title-word-3">A</span>
+                        <span class="title-word title-word-4">N</span>
+                        <span class="title-word title-word-1">S</span>
+                        <span class="title-word title-word-2">L</span>
+                        <span class="title-word title-word-3">A</span>
+                        <span class="title-word title-word-4">T</span>
+                        <span class="title-word title-word-1">E</span>
+
+                    </h2>
+                </div>
+            </div>
+
+
+
         </div>
     </div>
     <br />
+    <br />
+    <br />
+    <hr/>
     @using (Html.BeginForm("GoogleTranslate", "GoogleTranslate", FormMethod.Post))
     {
         <div class="row">
             <div class="col-lg-6 col-xs-12">
                 <label for="language">
-                    Vui lòng chọn ngôn ngữ:
+                    Please select language:
                 </label>
                 <select name="checklanguage" id="checklanguage" class="form-control" style="display: inline-block;">
                     @if (Session["checklanguage"].ToString() == "english")
@@ -62,17 +88,21 @@
         <br />
         <hr />
         <div class="row">
-            <div class="col-lg-5 col-xs-12">
+            <div class="col-lg-4 col-xs-12">
                 <div>
                     <textarea name="content" id="content" placeholder="..." class="form-control center-block" required style="width:100%; height:300px">@Model.content</textarea>
                 </div>
             </div>
-            <div class="col-lg-2 col-xs-12">
-                <input type="submit" value="Hoán đổi ngôn ngữ" class="btn-primary btn-hoandoingonngu" />
+            <div class="col-lg-4 col-xs-12">
+                @*<input type="submit" value="Hoán đổi ngôn ngữ" class="btn-primary btn-hoandoingonngu" />*@
+
+                <input type="submit" value="Language swap" class="btn btn-primary center-block btn-hoandoingonngu bx-flashing-hover" style="width: 80%;" />
+
+
             </div>
-            <div class="col-lg-5 col-xs-12">
+            <div class="col-lg-4 col-xs-12">
                 <div>
-                    <textarea placeholder="Bản dịch" class="form-control center-block" style="width:100%; height:300px; position:relative">@Session["translate"].ToString()</textarea>
+                    <textarea placeholder="Translation ..." class="form-control center-block" style="width:100%; height:300px; cursor: default ; position:relative">@Session["translate"].ToString()</textarea>
                 </div>
                 <a href="/GoogleTranslate/Speech" class="btn btn-default btn-voice" style=" width: 70px; position: absolute;">Voice</a>
             </div>
@@ -80,3 +110,6 @@
         </div>
     }
 </div>
+<br/>
+<br />
+<br />
