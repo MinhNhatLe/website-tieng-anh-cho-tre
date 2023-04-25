@@ -16,6 +16,23 @@
     }
 </style>
 <div class="container">
+
+    <div class="row">
+        <div class="col-lg-12 col-xs-12">
+            <div class="border-title">
+                <div class="container_title">
+                    <h2 class="title">
+                        <span class="title-word title-word-1">Q</span>
+                        <span class="title-word title-word-2">U</span>
+                        <span class="title-word title-word-3">I</span>
+                        <span class="title-word title-word-4">Z</span>
+                    </h2>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
     <div class="row background-quiz-result">
         <div class="row">
             <div class="col-lg-2 col-xs-0">
@@ -24,12 +41,22 @@
             <div class="col-lg-8 col-xs-12">
                 <div class="row">
                     <div class="col-lg-12 col-xs-12">
-                        <h2 style="text-align:center;">Điểm bài kiểm tra: @Session["DragDrop_Quiz_Score"]/10</h2>
+                        <div class="text-center" style="background-color:antiquewhite">
+                            <h2 class="animate-charcter" style="text-transform: uppercase; text-align: center; font-size: 50px; font-weight: 700;">
+                                Statistical tables
+                            </h2>
+                        </div>
                     </div>
                 </div>
                 <div class="row">
+                    <div class="col-lg-12 col-xs-12">
+                        <h3 style="text-align:center;">Total score: @Session["DragDrop_Quiz_Score"]/10</h3>
+                    </div>
+                </div>
+                <br/>
+                <div class="row">
                     <div class="col-lg-6 col-xs-6">
-                        @Html.ActionLink("Trở về", "Choose_DragDrop_Quiz", "Quiz", new { @class = "btn btn-default" })
+                        @Html.ActionLink("Back to quiz with drag & drop page!", "Choose_DragDrop_Quiz", "Quiz", new { @class = "btn btn-warning bx-fade-left" })
                     </div>
                     <div class="col-lg-6 col-xs-6">
 
