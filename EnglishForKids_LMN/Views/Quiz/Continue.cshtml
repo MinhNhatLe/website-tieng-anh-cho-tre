@@ -76,7 +76,6 @@
                     <div class="col-lg-6 col-xs-0">
                     </div>
                 </div>
-                <hr />
                 @Html.EditorFor(model => model.ID_Vocabulary, "", new { htmlAttributes = new { @class = "form-control center-block", @style = "width:100%;max-width:100%;display:none;" } })
                 <div class="row">
                     <div class="col-lg-2 col-xs-0">
@@ -108,9 +107,9 @@
 
                     </div>
                     <div class="col-lg-8 col-xs-12">
-                        <div class="row">
+                        <div class="row text-center">
                             <b>Your answer: </b>
-                            <input type="text" id="answer" name="answer" class="form-control cau-tra-loi" style="display:inline-block" placeholder="Please enter your answer ..." maxlength="30" data-val="true" data-val-required=" Please enter your answer " autofocus />
+                            <input type="text" id="answer" name="answer" class="form-control cau-tra-loi" style="display: inline-block ;  width:50%;" placeholder="Please enter your answer ..." maxlength="30" data-val="true" data-val-required=" Please enter your answer " autofocus />
                             <input type="submit" value="->" class="btn btn-primary bx-fade-right" />
                         </div>
                     </div>
