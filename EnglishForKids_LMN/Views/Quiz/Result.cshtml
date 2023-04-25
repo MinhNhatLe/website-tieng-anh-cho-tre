@@ -16,6 +16,20 @@
     }
 </style>
 <div class="container">
+    <div class="row">
+        <div class="col-lg-12 col-xs-12">
+            <div class="border-title">
+                <div class="container_title">
+                    <h2 class="title">
+                        <span class="title-word title-word-1">Q</span>
+                        <span class="title-word title-word-2">U</span>
+                        <span class="title-word title-word-3">I</span>
+                        <span class="title-word title-word-4">Z</span>
+                    </h2>
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="row background-quiz-result">
         <div class="row">
             <div class="col-lg-2 col-xs-0">
@@ -24,8 +38,10 @@
             <div class="col-lg-8 col-xs-12">
                 <div class="row">
                     <div class="col-lg-12 col-xs-12">
-                        <div style="text-align:center;">
-                            <h2 style="text-align: center; font-size: 30px; font-weight: 600;">BẢNG THỐNG KÊ</h2>
+                        <div class="text-center" style="background-color:antiquewhite">
+                            <h2 class="animate-charcter" style="text-transform: uppercase; text-align: center; font-size: 50px; font-weight: 700;">
+                                Statistical tables
+                            </h2>
                         </div>
                     </div>
                 </div>
@@ -33,7 +49,7 @@
                 <div class="row">
                     <div class="col-lg-12 col-xs-12">
                         <div>
-                            <h3 style="text-align:center;">Tổng số điểm: @Session["Image_Quiz_Score"]</h3>
+                            <h3 style="text-align:center;">Total score: @Session["Image_Quiz_Score"]</h3>
                             @{
                                 List<EnglishForKids_LMN.Models.TempListAnswer> ans = Session["Answer"] as List<EnglishForKids_LMN.Models.TempListAnswer>;
                                 List<bool> index = Session["Image_Quiz_Index"] as List<bool>;
@@ -51,10 +67,10 @@
                     <div class="col-lg-12 col-xs-12">
                         <table class="table-hover table table-responsive tr">
                             <tr>
-                                <th>STT</th>
-                                <th>Đúng / Sai</th>
-                                <th>Câu trả lời</th>
-                                <th>Đáp án</th>
+                                <th>#</th>
+                                <th>Right / Wrong</th>
+                                <th>Your answer</th>
+                                <th>Correct answer</th>
                             </tr>
                             @{
                                 try
@@ -76,12 +92,12 @@
                                                             <td>@b</td>
                                                             @if (item == true)
                                                             {
-                                                                <td style="color:green;">V</td>
+                                                                <td class="bx-flashing" style="color:green;">V</td>
 
                                                             }
                                                             else
                                                             {
-                                                                <td style="color:red">X</td>
+                                                                <td class="bx-flashing" style="color:red">X</td>
                                                             }
                                                             <td>@answerrequest.QuestionAnswer.ToLower()</td>
                                                             <td>@answerrequest.Answers.ToLower()</td>
@@ -90,7 +106,7 @@
                                                         Console.WriteLine(b);
                                                         // a.Remove(number);
                                                         break;
-                                                    }
+                                                    }                                                    
                                                 }
                                             }
                                         }
@@ -105,7 +121,7 @@
                 <div class="row">
                     <div class="col-lg-6 col-xs-6">
                         <div>
-                            @Html.ActionLink("Trở về", "Choose_Image_Quiz", "Quiz", new { @class = "btn btn-default" })
+                            @Html.ActionLink("Back to quiz page!", "Choose_Image_Quiz", "Quiz", new { @class = "btn btn-warning bx-fade-left" })
                         </div>
                     </div>
                     <div class="col-lg-6 col-xs-6">
@@ -119,4 +135,7 @@
         </div>
     </div>
 </div>
+<br />
+<br />
+
 

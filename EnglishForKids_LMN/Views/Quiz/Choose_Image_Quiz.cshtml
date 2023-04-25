@@ -8,6 +8,12 @@
         background-color: gray;
         border-radius: 20px;
     }
+
+    .note-main {
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        transition: 0.3s;
+        border-radius: 30px;
+    }
 </style>
 <div class="container">
     <div class="row">
@@ -108,7 +114,7 @@
         @using EnglishForKids_LMN.Models;
         @{ List<Quiz_Details> quiz_Details = Session["quiz_Details"] as List<Quiz_Details>;
             int user_Code = int.Parse(Session["ID_User"].ToString()); }
-        <div class="col-lg-4 col-xs-12" style="padding:20px;">
+        <div class="col-lg-4 col-xs-12 note-main" style="padding:40px;">
             <div class="">
                 @*<marquee direction="left">*@
                 <h2 class="animate-charcter" style="text-align: center; font-size: 30px; font-weight: 600;">
@@ -119,7 +125,9 @@
                 {
                     <ul>
                         <li>
-                            @item.Name_Category_Vo
+                            <b>
+                                @item.Name_Category_Vo
+                            </b>
                             @foreach (var item1 in quiz_Details)
                             {
                                 if (item1.ID_Category_Vo == item.ID_Category_Vo && item1.ID_User == user_Code)
@@ -133,6 +141,7 @@
 
                 }
             </div>
+            <hr />
             <ol>
                 <p class="animate-charcter" style="text-align: center; font-size: 20px; font-weight: 600;">
                     Note:
@@ -178,4 +187,7 @@
 
 
 </div>
+<br />
+<br />
+
 
