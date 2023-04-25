@@ -29,8 +29,54 @@
         border-radius: 20px;
         box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
     }
+
+
+    .btn-hoanthanh-test {
+        color: #fff;
+        box-shadow: 0 1px 1px rgb(0 0 0 / 9%);
+        font-size: 20px;
+        width: 400px;
+        height: 60px;
+        cursor: pointer;
+        border-radius: 10px;
+        outline-style: inherit;
+        outline-color: aqua;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        border: 3px solid #315cfd;
+        transition: all 0.3s;
+        font-weight: 700;
+        background: #4FD1C5;
+        background: linear-gradient(90deg, rgb(210 205 113) 0%, rgb(223 52 93) 100%);
+    }
+
+        .btn-hoanthanh-test:hover {
+            color: #fff;
+            transform: translateY(-6px);
+            font-size: 18px;
+        }
 </style>
 <div class="container">
+
+
+
+    <div class="row">
+        <div class="col-lg-12 col-xs-12">
+            <div class="border-title">
+                <div class="container_title">
+                    <h2 class="title">
+                        <span class="title-word title-word-1">T</span>
+                        <span class="title-word title-word-2">E</span>
+                        <span class="title-word title-word-3">S</span>
+                        <span class="title-word title-word-4">T</span>
+                    </h2>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
     @using (Html.BeginForm("Do_Test", "Test", FormMethod.Post))
     {
         <div class="row background-test">
@@ -47,7 +93,7 @@
                     <div class="row">
                         <div class="col-lg-6 col-xs-6">
                             <div>
-                                <div>Thời gian làm bài: <span id="minRemaining"></span>:<span id="secRemaining"></span></div>
+                                <div>Test time: <span id="minRemaining"></span>:<span id="secRemaining"></span></div>
                             </div>
                         </div>
                         <div class="col-lg-6 col-xs-6">
@@ -144,13 +190,13 @@
                     </div>
                     <br />
                     <div class="row">
-                        <div class="col-lg-3 col-xs-0">
+                        <div class="col-lg-2 col-xs-0">
 
                         </div>
-                        <div class="col-lg-6 col-xs-12" style="text-align:center;">
-                            <input type="submit" value="Hoàn thành" class="btn btn-primary" style="width: 100%;" />
+                        <div class="col-lg-8 col-xs-12" style="text-align:center;">
+                            <input type="submit" value="Finish" class="btn btn-primary center-block btn-hoanthanh-test bx-flashing-hover" style="width: 100%;" />
                         </div>
-                        <div class="col-lg-3 col-xs-0">
+                        <div class="col-lg-2 col-xs-0">
 
                         </div>
                     </div>
@@ -162,117 +208,120 @@
         </div>
     }
 </div>
+<br />
+<br />
+
 
 @*@using (Html.BeginForm("Do_Test", "Test", FormMethod.Post))
-{
-    <br />
-    <br />
-    <div class="row">
-        <div></div>
-        <div class="col-md-12">
-            <div>Thời gian làm bài: <span id="minRemaining"></span>:<span id="secRemaining"></span></div>
+    {
+        <br />
+        <br />
+        <div class="row">
+            <div></div>
+            <div class="col-md-12">
+                <div>Thời gian làm bài: <span id="minRemaining"></span>:<span id="secRemaining"></span></div>
+            </div>
         </div>
-    </div>
-    <div class="mydiv" style="width:100%;max-width:100%;">
+        <div class="mydiv" style="width:100%;max-width:100%;">
 
-        <p>Question 1: @questions2[0].Content</p>
-        <p><input type="radio" name="choice1" id="choice1" value="@questions2[0].Answer_Content1" /> @questions2[0].Answer_Content1</p>
-        <p><input type="radio" name="choice1" id="choice1" value="@questions2[0].Answer_Content2" /> @questions2[0].Answer_Content2</p>
-        <p><input type="radio" name="choice1" id="choice1" value="@questions2[0].Answer_Content3" /> @questions2[0].Answer_Content3</p>
-        <p><input type="radio" name="choice1" id="choice1" value="@questions2[0].Answer_Content4" /> @questions2[0].Answer_Content4</p>
+            <p>Question 1: @questions2[0].Content</p>
+            <p><input type="radio" name="choice1" id="choice1" value="@questions2[0].Answer_Content1" /> @questions2[0].Answer_Content1</p>
+            <p><input type="radio" name="choice1" id="choice1" value="@questions2[0].Answer_Content2" /> @questions2[0].Answer_Content2</p>
+            <p><input type="radio" name="choice1" id="choice1" value="@questions2[0].Answer_Content3" /> @questions2[0].Answer_Content3</p>
+            <p><input type="radio" name="choice1" id="choice1" value="@questions2[0].Answer_Content4" /> @questions2[0].Answer_Content4</p>
 
-    </div>
-
-
-    <div class="mydiv" style="width:100%;max-width:100%;">
-
-        <p>Question 2: @questions2[1].Content</p>
-        <p><input type="radio" name="choice2" id="choice2" value="@questions2[1].Answer_Content1" /> @questions2[1].Answer_Content1</p>
-        <p><input type="radio" name="choice2" id="choice2" value="@questions2[1].Answer_Content2" /> @questions2[1].Answer_Content2</p>
-        <p><input type="radio" name="choice2" id="choice2" value="@questions2[1].Answer_Content3" /> @questions2[1].Answer_Content3</p>
-        <p><input type="radio" name="choice2" id="choice2" value="@questions2[1].Answer_Content4" /> @questions2[1].Answer_Content4</p>
-
-    </div>
-
-    <div class="mydiv" style="width:100%;max-width:100%;">
-
-        <p>Question 3: @questions2[2].Content</p>
-        <p><input type="radio" name="choice3" id="choice3" value="@questions2[2].Answer_Content1" /> @questions2[2].Answer_Content1</p>
-        <p><input type="radio" name="choice3" id="choice3" value="@questions2[2].Answer_Content2" /> @questions2[2].Answer_Content2</p>
-        <p><input type="radio" name="choice3" id="choice3" value="@questions2[2].Answer_Content3" /> @questions2[2].Answer_Content3</p>
-        <p><input type="radio" name="choice3" id="choice3" value="@questions2[2].Answer_Content4" /> @questions2[2].Answer_Content4</p>
-
-    </div>
+        </div>
 
 
-    <div class="mydiv" style="width:100%;max-width:100%;">
-        <p>Question 4: @questions3[0].Content</p>
-        <p>Enter answer : <input type="text" name="text1" id="text1" style="width:100px;" /></p>
-    </div>
+        <div class="mydiv" style="width:100%;max-width:100%;">
 
-    <div class="mydiv" style="width:100%;max-width:100%;">
-        <p>Question 5: @questions3[1].Content</p>
-        <p>Enter answer : <input type="text" name="text2" id="text2" style="width:100px;" /></p>
-    </div>
+            <p>Question 2: @questions2[1].Content</p>
+            <p><input type="radio" name="choice2" id="choice2" value="@questions2[1].Answer_Content1" /> @questions2[1].Answer_Content1</p>
+            <p><input type="radio" name="choice2" id="choice2" value="@questions2[1].Answer_Content2" /> @questions2[1].Answer_Content2</p>
+            <p><input type="radio" name="choice2" id="choice2" value="@questions2[1].Answer_Content3" /> @questions2[1].Answer_Content3</p>
+            <p><input type="radio" name="choice2" id="choice2" value="@questions2[1].Answer_Content4" /> @questions2[1].Answer_Content4</p>
 
-    <div class="mydiv" style="width:100%;max-width:100%;">
-        <p>Question 6: @questions3[2].Content</p>
-        <p>Enter answer : <input type="text" name="text2" id="text2" style="width:100px;" /></p>
-    </div>
+        </div>
 
-    <div class="mydiv" style="width:100%;max-width:100%;">
-        <pre id="question_paragraph" style="text-align:center;">
+        <div class="mydiv" style="width:100%;max-width:100%;">
 
-        </pre>
-    </div>
+            <p>Question 3: @questions2[2].Content</p>
+            <p><input type="radio" name="choice3" id="choice3" value="@questions2[2].Answer_Content1" /> @questions2[2].Answer_Content1</p>
+            <p><input type="radio" name="choice3" id="choice3" value="@questions2[2].Answer_Content2" /> @questions2[2].Answer_Content2</p>
+            <p><input type="radio" name="choice3" id="choice3" value="@questions2[2].Answer_Content3" /> @questions2[2].Answer_Content3</p>
+            <p><input type="radio" name="choice3" id="choice3" value="@questions2[2].Answer_Content4" /> @questions2[2].Answer_Content4</p>
 
-    <div class="mydiv" style="width:100%;max-width:100%;">
+        </div>
 
-        <p>Question 7: @questions4[0].Content</p>
-        <p><input type="radio" name="choice4" id="choice4" value="@questions4[0].Answer_Content1" /> @questions4[0].Answer_Content1</p>
-        <p><input type="radio" name="choice4" id="choice4" value="@questions4[0].Answer_Content2" /> @questions4[0].Answer_Content2</p>
-        <p><input type="radio" name="choice4" id="choice4" value="@questions4[0].Answer_Content3" /> @questions4[0].Answer_Content3</p>
-        <p><input type="radio" name="choice4" id="choice4" value="@questions4[0].Answer_Content4" /> @questions4[0].Answer_Content4</p>
-    </div>
 
-    <div class="mydiv" style="width:100%;max-width:100%;">
+        <div class="mydiv" style="width:100%;max-width:100%;">
+            <p>Question 4: @questions3[0].Content</p>
+            <p>Enter answer : <input type="text" name="text1" id="text1" style="width:100px;" /></p>
+        </div>
 
-        <p>Question 8: @questions4[1].Content</p>
-        <p><input type="radio" name="choice5" id="choice5" value="@questions4[1].Answer_Content1" /> @questions4[1].Answer_Content1</p>
-        <p><input type="radio" name="choice5" id="choice5" value="@questions4[1].Answer_Content2" /> @questions4[1].Answer_Content2</p>
-        <p><input type="radio" name="choice5" id="choice5" value="@questions4[1].Answer_Content3" /> @questions4[1].Answer_Content3</p>
-        <p><input type="radio" name="choice5" id="choice5" value="@questions4[1].Answer_Content4" /> @questions4[1].Answer_Content4</p>
+        <div class="mydiv" style="width:100%;max-width:100%;">
+            <p>Question 5: @questions3[1].Content</p>
+            <p>Enter answer : <input type="text" name="text2" id="text2" style="width:100px;" /></p>
+        </div>
 
-    </div>
+        <div class="mydiv" style="width:100%;max-width:100%;">
+            <p>Question 6: @questions3[2].Content</p>
+            <p>Enter answer : <input type="text" name="text2" id="text2" style="width:100px;" /></p>
+        </div>
 
-    <div class="mydiv" style="width:100%;max-width:100%;;">
-        <video style="width:100%;height:70vh;" controls>
-            <source src="~/Content/video/@Session["video"]" type="video/mp4" />
-        </video>
-    </div>
+        <div class="mydiv" style="width:100%;max-width:100%;">
+            <pre id="question_paragraph" style="text-align:center;">
 
-    <div class="mydiv" style="width:100%;max-width:100%;">
+            </pre>
+        </div>
 
-        <p>Question 9: @questions5[0].Content</p>
-        <p><input type="radio" name="choice6" id="choice6" value="@questions5[0].Answer_Content1" /> @questions5[0].Answer_Content1</p>
-        <p><input type="radio" name="choice6" id="choice6" value="@questions5[0].Answer_Content2" /> @questions5[0].Answer_Content2</p>
-        <p><input type="radio" name="choice6" id="choice6" value="@questions5[0].Answer_Content3" /> @questions5[0].Answer_Content3</p>
-        <p><input type="radio" name="choice6" id="choice6" value="@questions5[0].Answer_Content4" /> @questions5[0].Answer_Content4</p>
+        <div class="mydiv" style="width:100%;max-width:100%;">
 
-    </div>
+            <p>Question 7: @questions4[0].Content</p>
+            <p><input type="radio" name="choice4" id="choice4" value="@questions4[0].Answer_Content1" /> @questions4[0].Answer_Content1</p>
+            <p><input type="radio" name="choice4" id="choice4" value="@questions4[0].Answer_Content2" /> @questions4[0].Answer_Content2</p>
+            <p><input type="radio" name="choice4" id="choice4" value="@questions4[0].Answer_Content3" /> @questions4[0].Answer_Content3</p>
+            <p><input type="radio" name="choice4" id="choice4" value="@questions4[0].Answer_Content4" /> @questions4[0].Answer_Content4</p>
+        </div>
 
-    <div class="mydiv" style="width:100%;max-width:100%;">
+        <div class="mydiv" style="width:100%;max-width:100%;">
 
-        <p>Question 10: @questions5[1].Content</p>
-        <p><input type="radio" name="choice7" id="choice7" value="@questions5[1].Answer_Content1" /> @questions5[1].Answer_Content1</p>
-        <p><input type="radio" name="choice7" id="choice7" value="@questions5[1].Answer_Content2" /> @questions5[1].Answer_Content2</p>
-        <p><input type="radio" name="choice7" id="choice7" value="@questions5[1].Answer_Content3" /> @questions5[1].Answer_Content3</p>
-        <p><input type="radio" name="choice7" id="choice7" value="@questions5[1].Answer_Content4" /> @questions5[1].Answer_Content4</p>
+            <p>Question 8: @questions4[1].Content</p>
+            <p><input type="radio" name="choice5" id="choice5" value="@questions4[1].Answer_Content1" /> @questions4[1].Answer_Content1</p>
+            <p><input type="radio" name="choice5" id="choice5" value="@questions4[1].Answer_Content2" /> @questions4[1].Answer_Content2</p>
+            <p><input type="radio" name="choice5" id="choice5" value="@questions4[1].Answer_Content3" /> @questions4[1].Answer_Content3</p>
+            <p><input type="radio" name="choice5" id="choice5" value="@questions4[1].Answer_Content4" /> @questions4[1].Answer_Content4</p>
 
-    </div>
-    <br />
-    <input type="submit" value="Submit" class="btn btn-primary" />
-}*@
+        </div>
+
+        <div class="mydiv" style="width:100%;max-width:100%;;">
+            <video style="width:100%;height:70vh;" controls>
+                <source src="~/Content/video/@Session["video"]" type="video/mp4" />
+            </video>
+        </div>
+
+        <div class="mydiv" style="width:100%;max-width:100%;">
+
+            <p>Question 9: @questions5[0].Content</p>
+            <p><input type="radio" name="choice6" id="choice6" value="@questions5[0].Answer_Content1" /> @questions5[0].Answer_Content1</p>
+            <p><input type="radio" name="choice6" id="choice6" value="@questions5[0].Answer_Content2" /> @questions5[0].Answer_Content2</p>
+            <p><input type="radio" name="choice6" id="choice6" value="@questions5[0].Answer_Content3" /> @questions5[0].Answer_Content3</p>
+            <p><input type="radio" name="choice6" id="choice6" value="@questions5[0].Answer_Content4" /> @questions5[0].Answer_Content4</p>
+
+        </div>
+
+        <div class="mydiv" style="width:100%;max-width:100%;">
+
+            <p>Question 10: @questions5[1].Content</p>
+            <p><input type="radio" name="choice7" id="choice7" value="@questions5[1].Answer_Content1" /> @questions5[1].Answer_Content1</p>
+            <p><input type="radio" name="choice7" id="choice7" value="@questions5[1].Answer_Content2" /> @questions5[1].Answer_Content2</p>
+            <p><input type="radio" name="choice7" id="choice7" value="@questions5[1].Answer_Content3" /> @questions5[1].Answer_Content3</p>
+            <p><input type="radio" name="choice7" id="choice7" value="@questions5[1].Answer_Content4" /> @questions5[1].Answer_Content4</p>
+
+        </div>
+        <br />
+        <input type="submit" value="Submit" class="btn btn-primary" />
+    }*@
 <script src="~/Scripts/jquery-3.4.1.js"></script>
 <script src="~/Scripts/jquery.validate.min.js"></script>
 <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
