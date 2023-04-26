@@ -20,7 +20,7 @@
 
 
     <div class="row">
-        <div class="col-lg-12 col-xs-12">
+        <div class="col-lg-12 col-sm-12 col-xs-12">
             @*<h2 style="text-align: center; font-size: 30px; font-weight: 600;">CÂU ĐỐ KÉO THẢ</h2>*@
 
 
@@ -93,7 +93,7 @@
         @{
             List<Quiz_Details> quiz_Details = Session["quiz_Details"] as List<Quiz_Details>;
             int user_Code = int.Parse(Session["ID_User"].ToString());}
-        <div class="col-lg-4 col-xs-12 note-main" style="padding:40px;">
+        <div class="col-lg-4 col-sm-4 col-xs-12 note-main" style="padding:40px;">
             <div class="">
                 @*<marquee direction="left">*@
                 <h2 class="animate-charcter" style="text-align: center; font-size: 30px; font-weight: 600;">
@@ -134,11 +134,11 @@
             </ol>
         </div>
 
-        <div class="col-lg-8 col-xs-12">
+        <div class="col-lg-8 col-sm-8 col-xs-12">
             @foreach (var item in Model)
             {
                 <a href="/Quiz/Do_DragDrop_Quiz/@item.ID_Quiz">
-                    <div class="col-lg-6 col-xs-12" style="border-radius: 0; margin-top: 30px; display: flex; align-items: center; justify-content: center;">
+                    <div class="col-lg-6 col-sm-6 col-xs-12" style="border-radius: 0; margin-top: 30px; display: flex; align-items: center; justify-content: center;">
                         <div class="card" style="border-radius: 20px; background-color: #eceade;">
                             <h1 class="animate-charcter text-center" style="text-align:center;color:black; font-size: 30px; font-weight: 700 ">@item.Name_Quiz</h1>
 
