@@ -14,6 +14,7 @@
         display: inline-block;
         padding: 5px;
         
+        width: 70%;
         border-radius: 30px;
         border: 10px; /* Viền của cái khối */
         border-color: rgb(221 58 58 / 74%);
@@ -39,7 +40,7 @@
 </style>
 <div class="container">
     <div class="row">
-        <div class="col-lg-12 col-xs-12">
+        <div class="col-lg-12 col-sm-12 col-xs-12">
             @*<h2 class="animate-charcter" style="text-align: center; font-size: 30px; font-weight: 600;">VOCABULARY</h2>*@
             <div class="border-title">
                 <div class="container_title">
@@ -68,7 +69,7 @@
 
     <div class="row background-quiz">
         <div class="row">
-            <div class="col-lg-12 col-xs-12">
+            <div class="col-lg-12 col-sm-12 col-xs-12">
                 <div class="text-center" style="background-color:antiquewhite">
                     <h2 class="animate-charcter" style="text-transform: uppercase; text-align: center; font-size: 50px; font-weight: 700;">
                         @Html.ValueFor(model => model.EN_Meaning)
@@ -80,15 +81,15 @@
         <br />
         <hr />
         <div class="row">
-            <div class="col-lg-2 col-xs-0">
+            <div class="col-lg-2 col-sm-1 col-xs-0">
 
             </div>
-            <div class="col-lg-8 col-xs-12">
+            <div class="col-lg-8 col-sm-10 col-xs-12">
                 <div class="text-center">
                     <img src="~/Content/images/@Model.Image_Vocabulary" alt="Vocabulary Image" class="img-vocabulary" />
                 </div>
             </div>
-            <div class="col-lg-2 col-xs-0">
+            <div class="col-lg-2 col-sm-1 col-xs-0">
 
             </div>
         </div>
