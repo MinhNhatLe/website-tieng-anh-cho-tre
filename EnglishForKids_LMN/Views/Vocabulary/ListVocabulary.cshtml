@@ -11,7 +11,7 @@
     <div class="row">
         <div class="col-lg-12 col-xs-12">
             <h2 style="text-align: center; font-size: 30px; font-weight: 600;">
-                DANH SÁCH TỪ VỰNG
+                VOCABULARY LIST
             </h2>
         </div>
     </div>
@@ -24,33 +24,33 @@
                 @*<a href="@Url.Action("CreateV", "Vocabulary")" class="btn btn-default btn-taomoi-reponsive-1">Tạo mới</a>*@
             </div>
             <div class="col-lg-7 col-xs-12">
-                <label>Tìm kiếm và sắp xếp:</label>
+                <label>Search and arrange:</label>
                 <select id="sortVocabulary1" name="sortVocabulary1" class="form-control" style="width:105px;display:inline-block">
                     <option for="sortVocabulary1" id="sortVocabulary1" name="sortVocabulary1" value="@Session["Vocabulary_Sort1"]">@Session["Vocabulary_Sort1"]</option>
                     <option for="sortVocabulary1" id="sortVocabulary1" name="sortVocabulary1" value="None">None</option>
                     <option for="sortVocabulary1" id="sortVocabulary1" name="sortVocabulary1" value="AZ">A - Z</option>
                     <option for="sortVocabulary1" id="sortVocabulary1" name="sortVocabulary1" value="ZA">Z - A</option>
                 </select>
-                <input type="text" id="searchVocabulary1" name="searchVocabulary1" class="form-control" placeholder="Nhập từ khóa để tìm kiếm ..." value="@Session["searchVocabulary1"]" required style="display: inline-block; width: 250px"/>
-                <input type="submit" value="Tìm kiếm" class="btn btn-primary" style="width:90px;display:inline-block" />
+                <input type="text" id="searchVocabulary1" name="searchVocabulary1" class="form-control" placeholder="Enter keywords to search ..." value="@Session["searchVocabulary1"]" required style="display: inline-block; width: 250px"/>
+                <input type="submit" value="Search" class="btn btn-primary" style="width:90px;display:inline-block" />
             </div>
         </div>
         <br />
         <div class="row">
             <div class="col-lg-12 col-xs-12">
-                <a href="@Url.Action("CreateV", "Vocabulary")" class="btn btn-default btn-taomoi-reponsive">Thêm từ vựng</a>
+                <a href="@Url.Action("CreateV", "Vocabulary")" class="btn btn-default btn-taomoi-reponsive">Add vocabulary</a>
             </div>
         </div>
 <hr />
 <div class="row">
     <table class="table-hover table table-responsive tr">
-        <caption class="caption">Bảng thống kê danh sách từ vựng</caption>
+        <caption class="caption">Vocabulary list statistics table</caption>
         <tr>
-            <th style=" text-align: center;">STT</th>
-            <th style=" text-align: center;">Hình ảnh từ vựng</th>
-            <th style=" text-align: center;">Tên tiếng anh</th>
-            <th style=" text-align: center;">Tên tiếng việt</th>
-            <th style=" text-align: center;">Chức năng</th>
+            <th style=" text-align: center;">#</th>
+            <th style=" text-align: center;">Vocabulary pictures</th>
+            <th style=" text-align: center;">English name</th>
+            <th style=" text-align: center;">Vietnamese name</th>
+            <th style=" text-align: center;">Function</th>
         </tr>
         @foreach (var item in Model)
         {
@@ -60,9 +60,9 @@
             <td style=" text-align: center;">@item.EN_Meaning</td>
             <td style=" text-align: center;">@item.VN_Meaning</td>
             <td style=" text-align: center;">
-                <a href="@Url.Action("EditV", "Vocabulary", new { id = item.ID_Vocabulary })" class="btn btn-primary" style="width:80px;">Sửa</a>
-                <a href="@Url.Action("DetailV", "Vocabulary", new { id = item.ID_Vocabulary })" class="btn btn-primary" style="width:80px;">Chi tiết</a>
-                <a href="@Url.Action("DeleteV", "Vocabulary", new { id = item.ID_Vocabulary })" class="btn btn-primary" style="width:80px;">Xóa</a>
+                <a href="@Url.Action("EditV", "Vocabulary", new { id = item.ID_Vocabulary })" class="btn btn-primary" style="width:80px;">Edit</a>
+                <a href="@Url.Action("DetailV", "Vocabulary", new { id = item.ID_Vocabulary })" class="btn btn-primary" style="width:80px;">Detail</a>
+                <a href="@Url.Action("DeleteV", "Vocabulary", new { id = item.ID_Vocabulary })" class="btn btn-primary" style="width:80px;">Delete</a>
                 @*@Html.ActionLink("Sửa", "EditV", new { id = item.ID_Vocabulary }) |
         @Html.ActionLink("Chi tiết", "DetailV", new { id = item.ID_Vocabulary }) |
         @Html.ActionLink("Xóa", "DeleteV", new { id = item.ID_Vocabulary })*@
