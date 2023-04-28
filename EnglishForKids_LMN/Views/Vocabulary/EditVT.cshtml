@@ -25,12 +25,44 @@
     }
 </style>
 <div class="container">
+    <div class="row">
+        <div class="col-lg-12 col-sm-12s col-xs-12">
+            <div class="border-title">
+                <div class="container_title">
+                    <h2 class="title" style="font-size:37px">
+                        <span class="title-word title-word-1">C</span>
+                        <span class="title-word title-word-2">A</span>
+                        <span class="title-word title-word-3">T</span>
+                        <span class="title-word title-word-4">E</span>
+                        <span class="title-word title-word-1">G</span>
+                        <span class="title-word title-word-2">O</span>
+                        <span class="title-word title-word-3">R</span>
+                        <span class="title-word title-word-4">Y</span>
+                    </h2>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
     <div class="row background-quiz">
         <div class="row">
             <div class="col-lg-12 col-xs-12">
-                <h2 style="text-align: center; font-size: 30px; font-weight: 600;">@Html.ValueFor(model => model.Name_Category_Vo)</h2>
+                @*<h2 style="text-align: center; font-size: 30px; font-weight: 600;">@Html.ValueFor(model => model.Name_Category_Vo)</h2>*@
+
+                <div class="text-center" style="background-color:antiquewhite">
+                    <h2 class="animate-charcter" style="text-transform: uppercase; text-align: center; font-size: 30px; font-weight: 700;">
+                        @Html.ValueFor(model => model.Name_Category_Vo)
+                    </h2>
+                </div>
+
+
+
             </div>
         </div>
+        <br/>
+        <hr/>
         <div class="row">
             <div class="col-lg-2 col-xs-0 ">
 
@@ -40,23 +72,23 @@
                 {
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                     <div class="center-block">
-                        @Html.EditorFor(model => model.ID_Category_Vo, "", new { htmlAttributes = new { @class = "form-control center-block a", @placeholder = "Nhập mã loại từ vựng ...", @style = "width:100%;max-width:100%;display:none;" } })
+                        @Html.EditorFor(model => model.ID_Category_Vo, "", new { htmlAttributes = new { @class = "form-control center-block a", @placeholder = "Enter the vocabulary type code...", @style = "width:100%;max-width:100%;display:none;" } })
                         <p>
-                            <strong>Tên loại:</strong>
+                            <strong>Category name:</strong>
                             <font style="color:red;"> @ViewData["existed"]</font> 
                             @Html.ValidationMessageFor(model => model.Name_Category_Vo, "", new { @class = "text-danger" })
                         </p>
-                        @Html.EditorFor(model => model.Name_Category_Vo, "", new { htmlAttributes = new { @class = "form-control center-block a", @placeholder = "Nhập tên loại từ vựng ...", @style = "width:100%;max-width:100%;", @autofocus = "1" } })
+                        @Html.EditorFor(model => model.Name_Category_Vo, "", new { htmlAttributes = new { @class = "form-control center-block a", @placeholder = "Enter the word type name...", @style = "width:100%;max-width:100%;", @autofocus = "1" } })
                         <br />
                         <div class="row">
                             <div class="col-lg-6 col-xs-12">
                                 <p>
-                                    <input type="submit" name="EditVT" value="Lưu" class="btn btn-primary" style="width: 100%; max-width: 100%; border-radius: 4px;" />
+                                    @Html.ActionLink("Back", "ListVocabularyType", "Vocabulary", new { @class = "btn btn-default bx-fade-left-hover center-block", @style = "width:80%;max-width:80%;border-radius:4px;" })
                                 </p>
                             </div>
                             <div class="col-lg-6 col-xs-12">
                                 <p>
-                                    @Html.ActionLink("Trở về", "ListVocabularyType", "Vocabulary", new { @class = "btn btn-default center-block", @style = "width:100%;max-width:100%;border-radius:4px;" })
+                                    <input type="submit" name="EditVT" value="Update" class="btn btn-primary bx-fade-right-hover" style="width: 80%; max-width: 80%; border-radius: 4px;" />
                                 </p>
                             </div>
                         </div>                       
