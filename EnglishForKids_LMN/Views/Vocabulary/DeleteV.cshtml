@@ -60,10 +60,39 @@
     }
 </style>
 <div class="container">
+    <div class="row">
+        <div class="col-lg-12 col-sm-12">
+            <div class="border-title">
+                <div class="container_title">
+                    <h2 class="title" style="font-size:38px">
+                        <span class="title-word title-word-1">V</span>
+                        <span class="title-word title-word-2">O</span>
+                        <span class="title-word title-word-3">C</span>
+                        <span class="title-word title-word-4">A</span>
+                        <span class="title-word title-word-1">B</span>
+                        <span class="title-word title-word-2">U</span>
+                        <span class="title-word title-word-3">L</span>
+                        <span class="title-word title-word-4">A</span>
+                        <span class="title-word title-word-1">R</span>
+                        <span class="title-word title-word-2">Y</span>
+                    </h2>
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="row background-quiz">
         <div class="row">
             <div class="col-lg-12 col-xs-12">
-                <h2 style="text-transform: uppercase; text-align: center; font-size: 30px; font-weight: 600;">@Html.ValueFor(model => model.EN_Meaning)</h2>
+                @*<h2 style="text-transform: uppercase; text-align: center; font-size: 30px; font-weight: 600;">@Html.ValueFor(model => model.EN_Meaning)</h2>*@
+
+                <div class="text-center" style="background-color:antiquewhite">
+                    <h2 class="animate-charcter" style="text-transform: uppercase; text-align: center; font-size: 30px; font-weight: 700;">
+                        @Html.ValueFor(model => model.EN_Meaning)
+                    </h2>
+                </div>
+
+
+
             </div>
         </div>
         <br />
@@ -88,11 +117,11 @@
             </div>
             <div class="col-lg-4 col-xs-12">
                 <div style="margin-left:69px">
-                    <p><strong>Tên tiếng anh: </strong>@Html.ValueFor(model => model.EN_Meaning)</p>
-                    <p><strong>Tên tiếng việt: </strong>@Html.ValueFor(model => model.VN_Meaning)</p>
+                    <p><strong>English name: </strong>@Html.ValueFor(model => model.EN_Meaning)</p>
+                    <p><strong>Vietnamese name: </strong>@Html.ValueFor(model => model.VN_Meaning)</p>
                     <p>
-                        <strong>Phiên âm IPA: </strong>
-                        / @Html.ValueFor(model => model.Pronunciation) / @Html.ActionLink("Voice", "Speech", new { id = Model.ID_Vocabulary }, new { @class = "btn btn-default" })
+                        <strong>IPA: </strong>
+                        / @Html.ValueFor(model => model.Pronunciation) / @Html.ActionLink("Voice", "Speech", new { id = Model.ID_Vocabulary }, new { @class = "btn btn-success bx bx-microphone bx-tada" })
                     </p>
                 </div>
             </div>
@@ -102,11 +131,11 @@
         </div>
         <div class="row">
             <div class="col-lg-4 col-xs-4">
-                @Html.ActionLink("Trở về", "ListVocabulary", "", new { @class = "btn btn-default" })
+                @Html.ActionLink("Back", "ListVocabulary", "", new { @class = "btn btn-default bx-fade-left-hover" })
             </div>
             <div class="col-lg-8 col-xs-8">
                 <p>
-                    <a href="#" class="btn btn-danger" data-toggle="modal" data-target="#delete" style="width:50%;">Xóa</a>
+                    <a href="#" class="btn btn-danger bx-flashing-hover" data-toggle="modal" data-target="#delete" style="width:50%;height:38px;">Delete</a>
                 </p>
             </div>
         </div>
@@ -115,17 +144,17 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <div class="form-group">
-                            <h2 class="modal-title" style="text-align: center; font-size: 30px; font-weight: 600;">Xóa từ vựng<button type="button" class="close pull-right" data-dismiss="modal">x</button></h2>
+                            <h2 class="modal-title" style="text-align: center; font-size: 30px; font-weight: 600;">Delete vocabulary<button type="button" class="close pull-right" data-dismiss="modal">x</button></h2>
                         </div>
                     </div>
                     <div class="modal-body">
-                        Bạn có muốn xóa từ vựng này không?
+                        Do you want to delete this vocabulary?
                     </div>
                     <div class="modal-footer">
                         <div class="btn-group">
                             <p>
-                                <a href="#" class="btn btn-default" data-dismiss="modal">Hủy</a>
-                                @Html.ActionLink("Xóa", "DeleteVC", "Vocabulary", new { id = Model.ID_Vocabulary }, new { @class = "btn btn-danger" })
+                                <a href="#" class="btn btn-default bx-fade-left-hover" data-dismiss="modal">Cancel</a>
+                                @Html.ActionLink("Delete", "DeleteVC", "Vocabulary", new { id = Model.ID_Vocabulary }, new { @class = "btn btn-danger bx-fade-right-hover" })
                             </p>
                         </div>
                     </div>
