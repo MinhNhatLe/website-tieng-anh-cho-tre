@@ -265,7 +265,7 @@
                                 @Html.ValidationMessageFor(model => model.Name_User, "", new { @class = "text-danger" })
                             </p>
                             @*<input type="text" name="Name_User" id="Name_User" class="form-control center-block" placeholder="Ví dụ: Lê Minh Nhật" style="width:100%;max-width:100%;" maxlength="35">*@
-                            @Html.EditorFor(model => model.Name_User, "", new { htmlAttributes = new { @class = "form-control center-block", @placeholder = "Example: Lê Minh Nhật", @style = "width:100%;max-width:100%;", @maxlength = "35" } })
+                            @Html.EditorFor(model => model.Name_User, "", new { htmlAttributes = new { @class = "form-control center-block", @placeholder = "Example: Lê Minh Nhật", @style = "width:100%;max-width:100%;", @minlength = "2", @maxlength = "35" } })
                             <br />
                             <p>
                                 <strong>Email</strong>
@@ -273,7 +273,7 @@
                                 <font style="color:red;">@ViewData["GmailFound"]</font>
                             </p>
                             @*<input type="email" class="form-control center-block" placeholder="Ví dụ: lmnhat.contact@gmail.com" style="width:100%;max-width:100%;" maxlength="30">*@
-                            @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control center-block", @placeholder = "Example: lmnhat.contact@gmail.com", @style = "width:100%;max-width:100%;", @maxlength = "30" } })
+                            @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control center-block", @placeholder = "Example: lmnhat.contact@gmail.com", @style = "width:100%;max-width:100%;", @maxlength = "30" , @readonly = "readonly" } })
 
                             <br />
                             <p>
@@ -282,7 +282,7 @@
                                 <font style="color:red;">@ViewData["PhoneNumberNotValid"]</font>
                             </p>
                             @*<input type="number" name="Phone" id="Phone" class="form-control center-block" placeholder="Nhập số điện thoại của bạn..." style="width:100%;max-width:100%;">*@
-                            @Html.EditorFor(model => model.Phone, new { htmlAttributes = new { @class = "form-control center-block", @placeholder = "Enter your number ...", @style = "width:100%;max-width:100%;", @type = "number" } })
+                            @Html.EditorFor(model => model.Phone, new { htmlAttributes = new { @class = "form-control center-block", @placeholder = "Enter your number ...", @style = "width:100%;max-width:100%;", @minlength = "1", @maxlength = "10", @type = "number" } })
 
                             <br />
                             <p>
