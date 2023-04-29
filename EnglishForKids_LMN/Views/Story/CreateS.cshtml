@@ -148,19 +148,35 @@
                 }
                 <div class="form-group">
                     <p>
-                        <strong>@Html.LabelFor(model => model.Name_Story)</strong> @Html.ValidationMessageFor(model => model.Name_Story, "", new { @class = "text-danger" })
+                        <strong>
+                            @*@Html.LabelFor(model => model.Name_Story)*@
+                            Story name:
+                        </strong> 
+                        @Html.ValidationMessageFor(model => model.Name_Story, "", new { @class = "text-danger" })
                         @Html.EditorFor(model => model.Name_Story, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter story name...", @maxlength = "50" } })
                     </p>
                     <p>
-                        <strong>@Html.LabelFor(model => model.EN_Content)</strong> @Html.ValidationMessageFor(model => model.EN_Content, "", new { @class = "text-danger" })
+                        <strong>
+                            @*@Html.LabelFor(model => model.EN_Content)*@
+                            English content:
+                        </strong>
+                        @Html.ValidationMessageFor(model => model.EN_Content, "", new { @class = "text-danger" })
                         @Html.EditorFor(model => model.EN_Content, new { htmlAttributes = new { @class = "form-control", @placeholder = "Import the file EN the story content...", @maxlength = "50" } })
                     </p>
                     <p>
-                        <strong>@Html.LabelFor(model => model.VN_Content)</strong> @Html.ValidationMessageFor(model => model.VN_Content, "", new { @class = "text-danger" })
+                        <strong>
+                            @*@Html.LabelFor(model => model.VN_Content)*@
+                            Vietnamese content:
+                        </strong> 
+                        @Html.ValidationMessageFor(model => model.VN_Content, "", new { @class = "text-danger" })
                         @Html.EditorFor(model => model.VN_Content, new { htmlAttributes = new { @class = "form-control", @placeholder = "Import the VN file with story content...", @maxlength = "50" } })
                     </p>
                     <p>
-                        <strong>@Html.LabelFor(model => model.Audio)</strong> @Html.ValidationMessageFor(model => model.Audio, "", new { @class = "text-danger" })
+                        <strong>
+                            @*@Html.LabelFor(model => model.Audio)*@
+                            Story audio:
+                        </strong> 
+                        @Html.ValidationMessageFor(model => model.Audio, "", new { @class = "text-danger" })
                         @Html.EditorFor(model => model.Audio, new { htmlAttributes = new { @class = "form-control", @placeholder = "Import story audio files...", @maxlength = "50" } })
                     </p>
                     <p>
