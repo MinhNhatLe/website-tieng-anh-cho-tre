@@ -8,10 +8,35 @@
 </style>
 <div class="container">
     <div class="row">
-        <div class="col-lg-12 col-xs-12">
-            <h2 style="text-align: center; font-size: 30px; font-weight: 600;">
+        <div class="col-lg-12 col-sm-12 col-xs-12">
+            @*<h2 style="text-align: center; font-size: 30px; font-weight: 600;">
                 DANH SÁCH CÂU CHUYỆN
-            </h2>
+            </h2>*@
+
+
+
+
+
+            <div class="border-title">
+                <div class="container_title">
+                    <h2 class="title" style="font-size:37px">
+                        <span class="title-word title-word-1">S</span>
+                        <span class="title-word title-word-2">T</span>
+                        <span class="title-word title-word-3">O</span>
+                        <span class="title-word title-word-4">R</span>
+                        <span class="title-word title-word-1">Y</span>
+                    </h2>
+                </div>
+            </div>
+
+
+
+
+
+
+
+
+
         </div>
     </div>
 <br />
@@ -19,12 +44,12 @@
 {
 <br />
     <div class="row">
-            <div class="col-lg-5 col-xs-0">
+            <div class="col-lg-5 col-sm-0 col-xs-0">
                 @*@Html.ActionLink("Tạo mới", "CreateV", "Vocabulary", new { @class = "btn btn-default" })*@
                 @*<a href="@Url.Action("CreateV", "Vocabulary")" class="btn btn-default btn-taomoi-reponsive-1">Tạo mới</a>*@
             </div>
-            <div class="col-lg-7 col-xs-12">
-                <label>Tìm kiếm và sắp xếp:</label>
+            <div class="col-lg-7 col-sm-12 col-xs-12">
+                <label>Search and arrange:</label>
                 <select id="sortStory1" name="sortStory1" class="form-control" style="width:105px;display:inline-block">
                     <option for="sortStory1" id="sortStory1" name="sortStory1" value="@Session["sortStory1"]">@Session["sortStory1"]</option>
                     <option for="sortStory1" id="sortStory1" name="sortStory1" value="None">None</option>
@@ -32,26 +57,26 @@
                     <option for="sortStory1" id="sortStory1" name="sortStory1" value="ZA">Z - A</option>
                     <option for="sortStory1" id="sortStory1" name="sortStory1" value="View">View</option>
                 </select>
-                <input type="text" id="searchStory1" name="searchStory1" class="form-control" placeholder="Nhập từ khóa để tìm kiếm ..." value="@Session["searchStory1"]" required style="display: inline-block; width: 250px" />
-                <input type="submit" value="Tìm kiếm" class="btn btn-primary" style="width:90px;display:inline-block" />
+                <input type="text" id="searchStory1" name="searchStory1" class="form-control" placeholder="Enter keywords to search ..." value="@Session["searchStory1"]" required style="display: inline-block; width: 250px" />
+                <input type="submit" value="Search" class="btn btn-primary bx-fade-right-hover" style="width:90px;display:inline-block" />
             </div>
         </div>
         <br />
         <div class="row">
-            <div class="col-lg-12 col-xs-12">
-                <a href="@Url.Action("CreateS", "Story")" class="btn btn-default btn-taomoi-reponsive">Thêm câu chuyện</a>
+            <div class="col-lg-12 col-sm-12 col-xs-12">
+                <a href="@Url.Action("CreateS", "Story")" class="btn btn-primary bx-tada-hover btn-taomoi-reponsive">Create story</a>
             </div>
         </div>
 <hr />
     <div class="row">
         <table class="table-hover table table-responsive tr">
-            <caption class="caption">Bảng thống kê danh sách câu chuyện</caption>
+            <caption class="caption">Story list statistics table</caption>
             <tr>
-                <th style=" text-align: center;">STT</th>
-                <th style=" text-align: center;">Hình ảnh câu chuyện</th>
-                <th style=" text-align: center;">Tên câu chuyện</th>
-                <th style=" text-align: center;">Người tạo</th>
-                <th style=" text-align: center;">Chức năng</th>
+                <th style=" text-align: center;">#</th>
+                <th style=" text-align: center;">Story pictures</th>
+                <th style=" text-align: center;">Story name</th>
+                <th style=" text-align: center;">Creator</th>
+                <th style=" text-align: center;">Function</th>
             </tr>
             @foreach (var item in Model)
             {
@@ -61,18 +86,18 @@
             <td style=" text-align: center;">@item.Name_Story</td>
             <td style=" text-align: center;">@item.Name_User</td>
             <td style=" text-align: center;">
-                <a href="@Url.Action("EditS", "Story", new { id = item.ID_Story })" class="btn btn-primary" style="width:80px;">Sửa</a>
-                <a href="@Url.Action("DetailS", "Story", new { id = item.ID_Story })" class="btn btn-primary" style="width:80px;">Chi tiết</a>
-                <a href="@Url.Action("DeleteS", "Story", new { id = item.ID_Story })" class="btn btn-primary" style="width:80px;">Xóa</a>
+                <a href="@Url.Action("EditS", "Story", new { id = item.ID_Story })" class="btn btn-warning bx-tada-hover" style="width:80px;">Edit</a>
+                <a href="@Url.Action("DetailS", "Story", new { id = item.ID_Story })" class="btn btn-success bx-tada-hover" style="width:80px;">Detail</a>
+                <a href="@Url.Action("DeleteS", "Story", new { id = item.ID_Story })" class="btn btn-danger bx-tada-hover" style="width:80px;">Delete</a>
             </td>
         </tr>}
         </table>
 </div>
     <div class="row">
-        <div class="col-lg-12 col-xs-12">
+        <div class="col-lg-12 col-sm-12 col-xs-12">
             <div style="margin-top:50px">
                 <div>
-                    Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount
+                    Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount
                 </div>
                 <div>
                     @if (Session["searchStory1"] != null)
