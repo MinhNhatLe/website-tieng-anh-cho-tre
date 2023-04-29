@@ -9,7 +9,7 @@ namespace EnglishForKids_LMN.Models
 {
     public class UserBonus
     {
-        [DisplayName("Full Name: ")]
+        [DisplayName("Full name: ")]
         [Required(ErrorMessage = " Please enter your full name ")]
         [MaxLength(35)]
         public string User_FullName { get; set; }
@@ -19,12 +19,12 @@ namespace EnglishForKids_LMN.Models
         [MinLength(5, ErrorMessage = " Password must be 5 - 10 character ")]
         [DataType(DataType.Password)]
         public string User_Password { get; set; }
-        [DisplayName("Confirm Password: ")]
+        [DisplayName("Confirm password: ")]
         [Required(ErrorMessage = " Please re-enter your password ")]
         [DataType(DataType.Password)]
         public string Check_Password { get; set; }
 
-        [DisplayName("Remember Me ")]
+        [DisplayName("Remember me ")]
         public bool RememberMe { get; set; }
         [DisplayName("Verification Code: ")]
         [Required(ErrorMessage = " Please enter your verification code ")]

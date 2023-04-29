@@ -13,11 +13,11 @@ namespace EnglishForKids_LMN.Models
         [Required(ErrorMessage = " Please choose vocabulary type ")]
         public List<Category_Vo> category_vos { get; set; }
         public List<Vocabulary> vocabularies { get; set; }
-        [DisplayName("English Name : ")]
+        [DisplayName("English name : ")]
         [Required(ErrorMessage = " Please enter english name ")]
         [MaxLength(30)]
         public string EN_Meaning { get; set; }
-        [DisplayName("Vietnamese Name : ")]
+        [DisplayName("Vietnamese name : ")]
         [Required(ErrorMessage = " Please enter vietnamese name ")]
         [MaxLength(30)]
         public string VN_Meaning { get; set; }
@@ -25,13 +25,13 @@ namespace EnglishForKids_LMN.Models
         [Required(ErrorMessage = " Please enter pronunciation ")]
         [MaxLength(20)]
         public string Pronunciation { get; set; }
-        [DisplayName("Vocabulary Image : ")]
+        [DisplayName("Vocabulary image : ")]
         [Required(ErrorMessage = " Please enter vocabulary image ")]
         [MaxLength(50)]
         public string Image_Vocabulary { get; set; }
         public int ID_Category_Vo { get; set; }
         [Required(ErrorMessage = "Please enter vocabulary type name")]
-        [MaxLength(20, ErrorMessage = "Vocabulary Type Name can't longer than 20 character")]
+        [MaxLength(20, ErrorMessage = "Vocabulary type name can't longer than 20 character")]
         public string Name_Category_Vo { get; set; }
         public int ID_Vocabulary { get; set; }
 

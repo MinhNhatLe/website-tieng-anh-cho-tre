@@ -10,27 +10,27 @@ namespace EnglishForKids_LMN.Models
 {
     public class StoryBonus
     {
-        [DisplayName("Tên câu chuyện : ")]
-        [Required(ErrorMessage = " Hãy nhập thông tin tên câu chuyện ")]
+        [DisplayName("Story name: ")]
+        [Required(ErrorMessage = " Please enter the name of the story ")]
         [MaxLength(50)]
         public string Name_Story { get; set; }
-        [DisplayName("Nội dung tiếng anh : ")]
-        [Required(ErrorMessage = " Hãy nhập nội dụng tiếng anh")]
+        [DisplayName("English content: ")]
+        [Required(ErrorMessage = " Please enter English content")]
         [MaxLength(50)]
         public string EN_Content { get; set; }
-        [DisplayName("Nội dung tiếng việt : ")]
-        [Required(ErrorMessage = " Hãy nhập nội dụng tiếng việt ")]
+        [DisplayName("Vietnamese content: ")]
+        [Required(ErrorMessage = " Please enter the content in Vietnamese ")]
         [MaxLength(50)]
         public string VN_Content { get; set; }
-        [DisplayName("Âm thanh câu chuyện : ")]
-        [Required(ErrorMessage = " Hãy nhập âm thanh câu chuyện ")]
+        [DisplayName("Story audio: ")]
+        [Required(ErrorMessage = " Please enter the story audio ")]
         [MaxLength(50)]
         public string Audio { get; set; }
-        [DisplayName("Story banner : ")]
+        [DisplayName("Story banner: ")]
         [Required(ErrorMessage = " Please enter story banner ")]
         [MaxLength(50)]
         public string Banner { get; set; }
-        [DisplayName("Story image : ")]
+        [DisplayName("Story image: ")]
         [Required(ErrorMessage = " Please enter story image ")]
         [MaxLength(50)]
         public string Image_Story { get; set; }
