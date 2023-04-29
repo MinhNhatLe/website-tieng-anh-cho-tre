@@ -9,7 +9,7 @@
 </style>
 <div class="container">
     <div class="row">
-        <div class="col-lg-12 col-xs-12">
+        <div class="col-lg-12 col-sm-12 col-xs-12">
             @*<h2 style="text-align: center; font-size: 30px; font-weight: 600;">
             VOCABULARY LIST
         </h2>*@
@@ -44,11 +44,11 @@
 @using (Html.BeginForm("ListVocabulary", "Vocabulary", FormMethod.Get)) 
 {
     <div class="row">
-            <div class="col-lg-5 col-xs-0">
+            <div class="col-lg-5 col-sm-1 col-xs-0">
                 @*@Html.ActionLink("Tạo mới", "CreateV", "Vocabulary", new { @class = "btn btn-default" })*@
                 @*<a href="@Url.Action("CreateV", "Vocabulary")" class="btn btn-default btn-taomoi-reponsive-1">Tạo mới</a>*@
             </div>
-            <div class="col-lg-7 col-xs-12">
+            <div class="col-lg-7 col-sm-11 col-xs-12">
                 <label>Search and arrange:</label>
                 <select id="sortVocabulary1" name="sortVocabulary1" class="form-control" style="width:105px;display:inline-block">
                     <option for="sortVocabulary1" id="sortVocabulary1" name="sortVocabulary1" value="@Session["Vocabulary_Sort1"]">@Session["Vocabulary_Sort1"]</option>
@@ -63,44 +63,48 @@
         <br />
         <div class="row">
             <div class="col-lg-12 col-xs-12">
-                <a href="@Url.Action("CreateV", "Vocabulary")" class="btn btn-primary bx-tada-hover btn-taomoi-reponsive">Add vocabulary</a>
+                <a href="@Url.Action("CreateV", "Vocabulary")" class="btn btn-primary bx-flashing-hover btn-taomoi-reponsive">Create new vocabulary</a>
             </div>
         </div>
 <hr />
 <div class="row">
-    <table class="table-hover table table-responsive tr">
-        <caption class="caption">Vocabulary list statistics table</caption>
-        <tr>
-            <th style=" text-align: center;">#</th>
-            <th style=" text-align: center;">Vocabulary pictures</th>
-            <th style=" text-align: center;">English name</th>
-            <th style=" text-align: center;">Vietnamese name</th>
-            <th style=" text-align: center;">Function</th>
-        </tr>
-        @foreach (var item in Model)
-        {
-        <tr class="search-list">
-            <td style=" text-align: center;">@item.ID_Vocabulary</td>
-            <td style=" text-align: center;"><img src="~/Content/images/@item.Image_Vocabulary" style="width:50px;height:50px; border-radius:10px" /></td>
-            <td style=" text-align: center;">@item.EN_Meaning</td>
-            <td style=" text-align: center;">@item.VN_Meaning</td>
-            <td style=" text-align: center;">
-                <a href="@Url.Action("EditV", "Vocabulary", new { id = item.ID_Vocabulary })" class="btn btn-warning bx-tada-hover" style="width:80px;">Edit</a>
-                <a href="@Url.Action("DetailV", "Vocabulary", new { id = item.ID_Vocabulary })" class="btn btn-success bx-tada-hover" style="width:80px;">Detail</a>
-                <a href="@Url.Action("DeleteV", "Vocabulary", new { id = item.ID_Vocabulary })" class="btn btn-danger bx-tada-hover" style="width:80px;">Delete</a>
-                @*@Html.ActionLink("Sửa", "EditV", new { id = item.ID_Vocabulary }) |
-        @Html.ActionLink("Chi tiết", "DetailV", new { id = item.ID_Vocabulary }) |
-        @Html.ActionLink("Xóa", "DeleteV", new { id = item.ID_Vocabulary })*@
-            </td>
-        </tr>
-        }
-    </table>
+    <div class="col-lg-12 col-sm-12 col-xs-12">
+
+
+        <table class="table-hover table table-responsive tr">
+            <caption class="caption">Vocabulary list statistics table</caption>
+            <tr>
+                <th style=" text-align: center;">#</th>
+                <th style=" text-align: center;">Vocabulary pictures</th>
+                <th style=" text-align: center;">English name</th>
+                <th style=" text-align: center;">Vietnamese name</th>
+                <th style=" text-align: center;">Function</th>
+            </tr>
+            @foreach (var item in Model)
+            {
+                <tr class="search-list">
+                    <td style=" text-align: center;">@item.ID_Vocabulary</td>
+                    <td style=" text-align: center;"><img src="~/Content/images/@item.Image_Vocabulary" style="width:50px;height:50px; border-radius:10px" /></td>
+                    <td style=" text-align: center;">@item.EN_Meaning</td>
+                    <td style=" text-align: center;">@item.VN_Meaning</td>
+                    <td style=" text-align: center;">
+                        <a href="@Url.Action("EditV", "Vocabulary", new { id = item.ID_Vocabulary })" class="btn btn-warning bx-tada-hover" style="width:80px;">Edit</a>
+                        <a href="@Url.Action("DetailV", "Vocabulary", new { id = item.ID_Vocabulary })" class="btn btn-success bx-tada-hover" style="width:80px;">Detail</a>
+                        <a href="@Url.Action("DeleteV", "Vocabulary", new { id = item.ID_Vocabulary })" class="btn btn-danger bx-tada-hover" style="width:80px;">Delete</a>
+                        @*@Html.ActionLink("Sửa", "EditV", new { id = item.ID_Vocabulary }) |
+                        @Html.ActionLink("Chi tiết", "DetailV", new { id = item.ID_Vocabulary }) |
+                        @Html.ActionLink("Xóa", "DeleteV", new { id = item.ID_Vocabulary })*@
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
 </div>
     <div class="row">
-        <div class="col-lg-12 col-xs-12">
+        <div class="col-lg-12 col-sm-12 col-xs-12">
             <div style="margin-top:50px">
                 <div>
-                    Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount
+                    Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount
                 </div>
                 <div>
                     @if (Session["searchVocabulary1"] != null)
