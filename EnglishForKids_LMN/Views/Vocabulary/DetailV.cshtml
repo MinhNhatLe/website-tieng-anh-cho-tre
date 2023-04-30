@@ -104,7 +104,8 @@
                     <p><strong>Vietnamese name: </strong>@Html.ValueFor(model => model.VN_Meaning)</p>
                     <p>
                         <strong>IPA: </strong>
-                        / @Html.ValueFor(model => model.Pronunciation) / @Html.ActionLink("Voice", "Speech", new { id = Model.ID_Vocabulary }, new { @class = "btn btn-success bx bx-microphone bx-tada" })
+                        / @Html.ValueFor(model => model.Pronunciation) / 
+                        @Html.ActionLink("Voice", "Speech", new { id = Model.ID_Vocabulary }, new { @class = "btn btn-success bx bx-microphone bx-tada" })
                     </p>
                 </div>
             </div>
