@@ -44,7 +44,7 @@
                                 @Html.ValidationMessageFor(model => model.User_FullName, "", new { @class = "text-danger" })
                             </p>
                             <div class="input-group">
-                                <input type="text" id="User_FullName" name="User_FullName" class="form-control" placeholder="Enter your full name ..." autofocus="1" minlength="2"  maxlength="35" />
+                                <input type="text" id="User_FullName" name="User_FullName" class="form-control" placeholder="Enter your full name ..." autofocus="autofocus" minlength="2"  maxlength="35" required />
                                 <span class="input-group-addon">
                                     <i class="glyphicon glyphicon-user"></i>
                                 </span>
@@ -58,7 +58,7 @@
                                 @Html.ValidationMessageFor(model => model.User_Mail, "", new { @class = "text-danger" })
                             </p>
                             <div class="input-group">
-                                <input type="text" id="User_Mail" name="User_Mail" class="form-control" placeholder="Example: lmnhat.contact@gmail.com" minlength="5" maxlength="30" />
+                                <input type="email" id="User_Mail" name="User_Mail" class="form-control" placeholder="Example: lmnhat.contact@gmail.com" minlength="5" maxlength="30" required />
                                 <span class="input-group-addon">
                                     <i class="glyphicon glyphicon-envelope"></i>
                                 </span>
@@ -71,7 +71,7 @@
                                 @Html.ValidationMessageFor(model => model.User_Password, "", new { @class = "text-danger" })
                             </p>
                             <div class="input-group">
-                                <input type="password" id="User_Password" name="User_Password" class="form-control" placeholder="Enter your password ..." minlength="5" maxlength="10" />
+                                <input type="password" id="User_Password" name="User_Password" class="form-control" placeholder="Enter your password ..." minlength="5" maxlength="10" required />
                                 <span class="input-group-addon">
                                     <i class="glyphicon glyphicon-lock "></i>
                                 </span>
@@ -85,7 +85,7 @@
                                 @Html.ValidationMessageFor(model => model.Check_Password, "", new { @class = "text-danger" })
                             </p>
                             <div class="input-group">
-                                <input type="password" id="Check_Password" name="Check_Password" class="form-control" placeholder="Enter your password again ..." minlength="5" maxlength="10" />
+                                <input type="password" id="Check_Password" name="Check_Password" class="form-control" placeholder="Enter your password again ..." minlength="5" maxlength="10" required />
                                 <span class="input-group-addon">
                                     <i class="glyphicon glyphicon-check "></i>
                                 </span>
@@ -95,7 +95,7 @@
 
 
                                 <div class="wrap">
-                                    <button class="button" type="submit" name="SignUp" value="Sign Up">Register </button>
+                                    <button class="button" type="submit" name="SignUp" value="Sign Up" required>Register</button>
                                 </div>
 
                             </div>

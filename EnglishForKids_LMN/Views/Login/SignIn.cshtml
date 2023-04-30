@@ -63,7 +63,7 @@
                                 <font style="color:red">@ViewData["UserNotFound"]</font>
                             </p>
                             <div class="input-group">
-                                <input class="form-control" type="text" id="User_Mail" name="User_Mail" placeholder="Example: lmnhat.contact@gmail.com" autofocus="autofocus" minlength="5" maxlength="30" />
+                                <input class="form-control" type="email" id="User_Mail" name="User_Mail" placeholder="Example: lmnhat.contact@gmail.com" autofocus="autofocus" minlength="5" maxlength="30" required/>
                                 <span class="input-group-addon">
                                     <i class="glyphicon glyphicon-user "></i>
                                 </span>
@@ -76,7 +76,7 @@
                                 @Html.ValidationMessageFor(model => model.User_Password, "", new { @class = "text-danger" })
                             </p>
                             <div class="input-group">
-                                <input class="form-control" type="password" id="User_Password" name="User_Password" placeholder="Enter your password ..." minlength="5" maxlength="10" />
+                                <input class="form-control" type="password" id="User_Password" name="User_Password" placeholder="Enter your password ..." minlength="5" maxlength="10" required/>
                                 <span class="input-group-addon" onclick="myfunction()">
                                     <i class="glyphicon  glyphicon-eye-close" id="a"></i>
                                     <i class="glyphicon  glyphicon-eye-open" id="b" style="display:none;"></i>
@@ -86,7 +86,7 @@
                                 @*<button type="submit" name="SignIn" value="Sign In" class="btn-primary btn-submit">Log in</button>*@
 
                                 <div class="wrap">
-                                    <button class="button" type="submit" name="SignIn" value="Sign In">Login </button>
+                                    <button class="button" type="submit" name="SignIn" value="Sign In">Login</button>
                                 </div>
                             </div>
                             <div class="row">
