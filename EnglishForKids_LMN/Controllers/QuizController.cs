@@ -22,6 +22,7 @@ namespace EnglishForKids_LMN.Controllers
             List<Quiz_Details> quiz_Details = db.Quiz_Details.ToList();
             Session["quiz_Details"] = quiz_Details;
             return View(vocabulary_Type);
+
         }
         static List<Vocabulary> vocabularies = new List<Vocabulary>();
 

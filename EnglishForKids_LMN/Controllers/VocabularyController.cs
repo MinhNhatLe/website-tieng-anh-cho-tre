@@ -162,6 +162,8 @@ namespace EnglishForKids_LMN.Controllers
             {
                 using (SpeechSynthesizer sp = new SpeechSynthesizer())
                 {
+                    // Chọn giọng đọc với giới tính là nữ và độ tuổi là trẻ
+                    //sp.SelectVoiceByHints(VoiceGender.Male, VoiceAge.Child);
                     sp.SelectVoice("Microsoft Zira Desktop");
                     sp.SetOutputToDefaultAudioDevice();
                     sp.Speak(vocabulary.EN_Meaning);
