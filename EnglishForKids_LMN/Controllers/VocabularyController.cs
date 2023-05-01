@@ -219,7 +219,9 @@ namespace EnglishForKids_LMN.Controllers
                     }
                     else
                     {
-                        vocabulary.Image_Vocabulary = "1478594.png";
+                        //vocabulary.Image_Vocabulary = "1478594.png";
+                        vocabulary.Image_Vocabulary = "404.jpg";
+
                     }
                     db.Vocabularies.Add(vocabulary);
                     db.SaveChanges();
