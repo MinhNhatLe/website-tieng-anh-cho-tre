@@ -255,9 +255,11 @@
                             data: category,
                             success: function () {
                                 $(this).hide();
+                                alert('Congratulations, you have successfully created a new category 💕!');
+                                location.reload();
                             },
                             error: function () {
-                                alert('Tên loại đã tồn tại!');
+                                alert('Sorry! Type name already exists 😢!');
                             }
                         })
                     })

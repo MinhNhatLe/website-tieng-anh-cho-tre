@@ -84,10 +84,10 @@
                 <div class="col-lg-6 col-sm-12 col-xs-12">
                     <div>
                         <br />
-                        <input type="file" name="fileUpload" id="fileUpload" accept="images/*" style="display:none;" />
+                        <input type="file" name="fileUpload" id="fileUpload" accept="images/*" style="display:none;" required />
                         <img src="~/Content/images/@Model.Image_Vocabulary" id="pictureUpload" style="width: 100%; height: 350px; border-radius: 10%" alt="Image vocabulary" class="img-createV" />
                         <br />
-                        @Html.EditorFor(model => model.Image_Vocabulary, "", new { htmlAttributes = new { @class = "form-control center-block", @placeholder = "Type image string ...", @style = "width:500px;height:200px;display:none;", @maxlength = "50" } })
+                        @Html.EditorFor(model => model.Image_Vocabulary, "", new { htmlAttributes = new { @class = "form-control center-block", @placeholder = "Type image string ...", @style = "width:500px;height:200px;display:none;", @maxlength = "50", @required = "required" } })
                         <br />
                         <p><input type="button" id="btnUpload" value="Choose picture" class="btn btn-success bx-flashing-hover center-block" /></p>
                         @section upload
@@ -129,26 +129,26 @@
                             <strong>English name:</strong>
                             @Html.ValidationMessageFor(model => model.EN_Meaning, "", new { @class = "text-danger" })
                         </p>
-                        @Html.EditorFor(model => model.EN_Meaning, "", new { htmlAttributes = new { @class = "form-control center-block", @placeholder = "Enter english name ...", @style = "width:100%;max-width:100%;", @maxlength = "30" } })
+                        @Html.EditorFor(model => model.EN_Meaning, "", new { htmlAttributes = new { @class = "form-control center-block", @placeholder = "Enter english name ...", @style = "width:100%;max-width:100%;", @minlength = "1", @maxlength = "30", @autofocus="autofocus", @required = "required" } })
                         <br />
                         <p>
                             <strong>Vietnamese name:</strong>
                             @Html.ValidationMessageFor(model => model.VN_Meaning, "", new { @class = "text-danger" })
                         </p>
-                        @Html.EditorFor(model => model.VN_Meaning, new { htmlAttributes = new { @class = "form-control center-block", @placeholder = "Enter vietnamese name ...", @style = "width:100%;max-width:100%;", @maxlength = "30" } })
+                        @Html.EditorFor(model => model.VN_Meaning, new { htmlAttributes = new { @class = "form-control center-block", @placeholder = "Enter vietnamese name ...", @style = "width:100%;max-width:100%;", @minlength = "1", @maxlength = "30", @required = "required" } })
                         <br />
                         <p>
                             <strong>IPA transcription:</strong>
                             @Html.ValidationMessageFor(model => model.Pronunciation, "", new { @class = "text-danger" })
                         </p>
-                        @Html.EditorFor(model => model.Pronunciation, new { htmlAttributes = new { @class = "form-control center-block", @placeholder = "Enter IPA ...", @style = "width:100%;max-width:100%;", @maxlength = "20" } })
+                        @Html.EditorFor(model => model.Pronunciation, new { htmlAttributes = new { @class = "form-control center-block", @placeholder = "Enter IPA ...", @style = "width:100%;max-width:100%;", @minlength = "1", @maxlength = "20", @required = "required" } })
                         <br />
                         <p>
                             <strong>Category vocabulary:</strong>
                             @Html.ValidationMessageFor(model => model.category_vos, "", new { @class = "text-danger" })
                         </p>
-                        @Html.DropDownListFor(model => model.ID_Category_Vo, new SelectList(Model.category_vos, "ID_Category_Vo", "Name_Category_Vo"), "", new { @class = "form-control center-block pull-left", @style = "width:48%;" })
-                        <a href="#" class="btn btn-success bx-flashing-hover pull-right" data-toggle="modal" data-target="#create-category" style="width: 48%;">Add category</a>
+                        @Html.DropDownListFor(model => model.ID_Category_Vo, new SelectList(Model.category_vos, "ID_Category_Vo", "Name_Category_Vo"), "", new { @class = "form-control center-block pull-left", @style = "width:100%;" })
+                        @*<a href="#" class="btn btn-success bx-flashing-hover pull-right" data-toggle="modal" data-target="#create-category" style="width: 48%;">Add category</a>*@
                         <br />
                         <br />
                         <br />
@@ -270,7 +270,7 @@
                         window.location.href = "/Vocabulary/CreateV";
                     },
                     error: function () {
-                        alert('Tên loại đã tồn tại!');
+                        alert('Sorry! Type name already exists 😢!');
                     }
                 })
             })
