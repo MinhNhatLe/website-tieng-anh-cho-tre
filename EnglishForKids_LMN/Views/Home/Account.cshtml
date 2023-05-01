@@ -186,7 +186,7 @@
                             </span>
                             will learn English well and enjoy my website.
                             <br />
-                            If you have any problems with the website, please contact me: <a href="https://www.facebook.com/Nhat.sun.1005/">Facebook</a> 💞
+                            If you have any problems with the website, please contact me by: <a href="https://www.facebook.com/Nhat.sun.1005/">Facebook</a> 💞
                             <br />
                             Thank you. 💖
                         </p>
@@ -265,7 +265,7 @@
                                 @Html.ValidationMessageFor(model => model.Name_User, "", new { @class = "text-danger" })
                             </p>
                             @*<input type="text" name="Name_User" id="Name_User" class="form-control center-block" placeholder="Ví dụ: Lê Minh Nhật" style="width:100%;max-width:100%;" maxlength="35">*@
-                            @Html.EditorFor(model => model.Name_User, "", new { htmlAttributes = new { @class = "form-control center-block", @placeholder = "Example: Lê Minh Nhật", @style = "width:100%;max-width:100%;", @minlength = "2", @maxlength = "35" } })
+                            @Html.EditorFor(model => model.Name_User, "", new { htmlAttributes = new { @class = "form-control center-block", @placeholder = "Example: Lê Minh Nhật", @style = "width:100%;max-width:100%;", @minlength = "2", @maxlength = "35", @required = "required" } })
                             <br />
                             <p>
                                 <strong>Email</strong>
@@ -282,15 +282,15 @@
                                 <font style="color:red;">@ViewData["PhoneNumberNotValid"]</font>
                             </p>
                             @*<input type="number" name="Phone" id="Phone" class="form-control center-block" placeholder="Nhập số điện thoại của bạn..." style="width:100%;max-width:100%;">*@
-                            @Html.EditorFor(model => model.Phone, new { htmlAttributes = new { @class = "form-control center-block", @placeholder = "Enter your number ...", @style = "width:100%;max-width:100%;", @minlength = "1", @maxlength = "10", @type = "number" } })
+                            @Html.EditorFor(model => model.Phone, new { htmlAttributes = new { @class = "form-control center-block", @placeholder = "Enter your number ...", @style = "width:100%;max-width:100%;", @minlength = "1", @maxlength = "10", @type = "number", @autofocus = "autofocus", @required = "required" } })
 
                             <br />
                             <p>
                                 <strong>Gender</strong>
                                 @Html.ValidationMessageFor(model => model.Gender, "", new { @class = "text-danger" })
                             </p>
-                            <select id="Gender" name="Gender" class="form-control center-block" style="width:100%;max-width:100%;">
-                                <option for="Gender" id="Gender" name="Gender" selected>@Html.ValueFor(model => model.Gender)</option>
+                            <select id="Gender" name="Gender" class="form-control center-block" style="width:100%;max-width:100%;" required>
+                                <option for="Gender" id="Gender" name="Gender" selected hidden>@Html.ValueFor(model => model.Gender)</option>
                                 <option for="Gender" id="Gender" name="Gender" value="Nam">Nam</option>
                                 <option for="Gender" id="Gender" name="Gender" value="Nữ">Nữ</option>
                                 <option for="Gender" id="Gender" name="Gender" value="Khác">Khác</option>
@@ -301,11 +301,11 @@
                                 @Html.ValidationMessageFor(model => model.Birthday, "", new { @class = "text-danger" })
                             </p>
                             @*<input type="number" name="Birthday" id="Birthday" class="form-control center-block" placeholder="Nhập ngày sinh của bạn: dd/mm/yyyy" style="width:100%;max-width:100%;" maxlength="10">*@
-                            @Html.EditorFor(model => model.Birthday, new { htmlAttributes = new { @class = "form-control center-block", @placeholder = "Enter your birthday: mm/dd/yyyy", @style = "width:100%;max-width:100%;", @maxlength = "30" } })
+                            @Html.EditorFor(model => model.Birthday, new { htmlAttributes = new { @class = "form-control center-block", @placeholder = "Enter your birthday: mm/dd/yyyy", @style = "width:100%;max-width:100%;", @maxlength = "30", @required = "required" } })
 
                             <br />
                             <p>
-                                <input type="submit" name="Account" value="Update" class="btn btn-primary center-block btn-capnhat bx-flashing-hover" style="width: 100%;max-width:100%; border-radius: 10px;" />
+                                <input type="submit" name="Account" value="Update" class="btn btn-primary center-block btn-capnhat bx-flashing-hover" style="width: 100%;max-width:100%; border-radius: 10px;" required />
                             </p>
                             @*<p>
             <a href="/Home/HomePage" class="btn btn-default center-block" style="width:100%;max-width:100%;border-radius:16px;">Trở lại trang chủ!</a>
