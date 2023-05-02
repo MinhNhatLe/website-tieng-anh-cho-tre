@@ -74,26 +74,35 @@
 
     .img-account {
         width: 80%;
-        height:370px;
+        height: 370px;
         border-radius: 10px;
         text-align: center;
         box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
         border: 5px solid #4660c2;
     }
+
     .note-main {
         box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
         transition: 0.3s;
         border-radius: 30px;
     }
-
 </style>
 @using (Html.BeginForm("Account", "Home", FormMethod.Post))
 {
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
     <div class="container">
         <div class="row">
+        <div class="col-lg-12 col-sm-12 col-xs-12" style="position:relative;">
+            <img src="~/Content/images/gif/spyro-the-dragon-purple-dragon.gif" alt="results" style="width:25%; position: absolute; left: -270px; top: 50px" />
+        </div>
+    </div>
+        <div class="row">
+        <div class="col-lg-12 col-sm-12 col-xs-12" style="position:relative;">
+            <img src="~/Content/images/gif/quby-cute_point.gif" alt="results" style="width:35%; position: absolute; left: 0px; top: 600px" />
+        </div>
+    </div>
+        <div class="row">
             <div class="col-lg-12 col-sm-12 col-xs-12">
-                @*<h2 style="text-align: center; font-size: 30px; font-weight: 600;">CẬP NHẬT THÔNG TIN</h2>*@
 
                 <div class="border-title">
                     <div class="container_title">
@@ -115,52 +124,7 @@
         <br />
         <hr />
         <div class="row">
-            @*<div class="col-lg-2 col-xs-0">
-
-                </div>*@
             <div class="col-lg-5 col-sm-12 col-xs-12">
-                @*<div class="row">
-                    <div class="col-lg-12 col-xs-12" style="display: flex; justify-content: center;">
-                        <input type="file" name="fileUpload" id="fileUpload" accept="images/*" style="display:none;" />
-                        <img src="~/Content/images/@Model.Image_User" id="pictureUpload" class="img-account" />
-                    </div>
-                    <br />
-                    <div class="col-lg-12 col-xs-12">
-                        <input type="text" name="Image_User" id="Image_User" class="form-control center-block" placeholder="Nhập ảnh đại diện của bạn ở đây!" style="width:500px;height:200px;display:none;">
-                        <input type="button" id="btnUpload" value="Chọn ảnh đại diện" class="btn btn-primary center-block btn-choose-avatar" />
-                        @section upload
-    {
-                            <script>
-                                $(function () {
-                                    $('#btnUpload').click(function () {
-                                        $('#fileUpload').trigger('click');
-                                    });
-                                });
-                                $('#fileUpload').change(function () {
-                                    if (window.FormData !== undefined) {
-                                        var fileUpload = $('#fileUpload').get(0);
-                                        var files = fileUpload.files;
-                                        var formData = new FormData();
-                                        formData.append('file', files[0]);
-                                        $.ajax({
-                                            type: 'POST',
-                                            url: '/Home/ProcessUpload',
-                                            contentType: false,
-                                            processData: false,
-                                            data: formData,
-                                            success: function (urlImage) {
-                                                $('#pictureUpload').attr('src', "/Content/images/" + urlImage);
-                                                $('#Image_User').val(urlImage);
-                                            },
-                                            error: function (err) {
-                                                alert('Error', err.statusText);
-                                            }
-                                        });
-                                    }
-                                });</script>
-                        }
-                    </div>
-                </div>*@
 
 
                 <div class="row">
@@ -192,20 +156,6 @@
                         </p>
 
 
-                        @*<h1 class="animate-charcter" style="text-align: center; font-size: 30px; font-weight: 600;">
-                            YOUR INFORMATION
-                        </h1>
-                        <div class="body-fake">
-                            <section>
-                                <div class="content">
-                                    <h2>@Model.Name_User</h2>
-                                    <h2>@Model.Name_User</h2>
-                                </div>
-                            </section>
-                        </div>
-                        <h3 class="animate-charcter" style="text-align: center; font-size: 30px; font-weight: 600;">
-                            @Model.Name_User
-                        </h3>*@
                     </div>
                 </div>
 
@@ -248,8 +198,10 @@
                                                         success: function (urlImage) {
                                                             $('#pictureUpload').attr('src', "/Content/images/" + urlImage);
                                                             $('#Image_User').val(urlImage);
+                                                            //alert('Congratulations, you have successfully created a new category 💕!');
                                                         },
                                                         error: function (err) {
+                                                            //alert('Sorry! Type name already exists 😢!');
                                                             alert('Error', err.statusText);
                                                         }
                                                     });
@@ -273,7 +225,7 @@
                                 <font style="color:red;">@ViewData["GmailFound"]</font>
                             </p>
                             @*<input type="email" class="form-control center-block" placeholder="Ví dụ: lmnhat.contact@gmail.com" style="width:100%;max-width:100%;" maxlength="30">*@
-                            @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control center-block", @placeholder = "Example: lmnhat.contact@gmail.com", @style = "width:100%;max-width:100%;", @maxlength = "30" , @readonly = "readonly" } })
+                            @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control center-block", @placeholder = "Example: lmnhat.contact@gmail.com", @style = "width:100%;max-width:100%;", @maxlength = "30", @readonly = "readonly" } })
 
                             <br />
                             <p>
@@ -305,11 +257,14 @@
 
                             <br />
                             <p>
-                                <input type="submit" name="Account" value="Update" class="btn btn-primary center-block btn-capnhat bx-flashing-hover" style="width: 100%;max-width:100%; border-radius: 10px;" required />
+                                <input type="submit" name="Account" id="update-form" value="Update" class="btn btn-primary center-block btn-capnhat bx-flashing-hover" style="width: 100%;max-width:100%; border-radius: 10px;" required />
                             </p>
+
                             @*<p>
-            <a href="/Home/HomePage" class="btn btn-default center-block" style="width:100%;max-width:100%;border-radius:16px;">Trở lại trang chủ!</a>
-        </p>*@
+                                    <a href="/Home/HomePage" class="btn btn-default center-block btn-capnhat bx-flashing-hover" style="width: 100%; border-radius: 10px;">Back home!</a>
+                                </p>*@
+
+
                         </div>
 
                     </div>
@@ -323,6 +278,34 @@
 <br />
 <br />
 <br />
+
+
+@*///lỗi logic
+    <script>
+        $(document).ready(function () {
+            $("#update-form").click(function () {
+                var form = $(".form-account").serialize();
+                $.ajax({
+                    type: "POST",
+                    url: '/Home/ProcessUpload',
+                    data: form,
+                    success: function () {
+                        alert('Congratulations, you have successfully created a new category 💕!');
+                    },
+                    error: function () {
+                        alert('Sorry! Type name already exists 😢!');
+                    }
+                })
+            })
+        })</script>*@
+
+
+
+
+
+
+
+
 <script src="~/Scripts/jquery-3.4.1.js"></script>
 <script src="~/Scripts/jquery.validate.min.js"></script>
 <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
