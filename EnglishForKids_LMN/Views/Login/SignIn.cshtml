@@ -19,122 +19,130 @@
 
 </head>
 <body style="">
-    @*background-color: #eceade;*@
-    @* - Trang LogIn sử dụng:
-    *@
-    @*<video id="video_background" preload="auto" autoplay="true" loop="loop" muted volume="100%">
-
-        <source src="~/Content/video/SUPER MARIO BROS Final Trailer (4K ULTRA HD) 2023_Trim.mp4" type="video/webm" />
-
-        <source src="~/Content/video/SUPER MARIO BROS Final Trailer (4K ULTRA HD) 2023_Trim.mp4" type="video/ogg ogv" ; codecs="theora, vorbis" />
-
-        <source src="~/Content/video/SUPER MARIO BROS Final Trailer (4K ULTRA HD) 2023_Trim.mp4" type="video/mp4" />
-
-    </video>*@
-    <div>
+    <div class="container">
         <div class="row">
-
-
+            <div class="col-lg-12 col-sm-12 col-xs-12" style="position:relative;">
+                <img src="~/Content/images/gif/gif_win7.gif" alt="results" style="width:40%; position: absolute; left: -400px; top: 200px" />
+            </div>
         </div>
-        <div class="row">
 
-            <div class="col-lg-12 col-xs-12 ">
-                <audio autoplay="autoplay" controls hidden preload="auto" loop>
-                    @*<source src="~/Content/audio/SUPER MARIO BROS Final Trailer (4K ULTRA HD) 2023.mp3" type="audio/ogg">
-                    <source src="~/Content/audio/SUPER MARIO BROS Final Trailer (4K ULTRA HD) 2023.mp3" type="audio/mpeg">*@
-                    <source src="~/Content/audio/cupid intro.mp3" type="audio/ogg">
-                    <source src="~/Content/audio/cupid intro.mp3" type="audio/mpeg">
-                </audio>
+        @*background-color: #eceade;*@
+        @* - Trang LogIn sử dụng:
+        *@
+        @*<video id="video_background" preload="auto" autoplay="true" loop="loop" muted volume="100%">
 
-                <div class="col-lg-12 col-xs-12">
-                    <form action="/Login/SignIn" method="post" class="body-dangnhap">
-                        <!-- form elements go here -->
-                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                        <div class="form-dangnhap">
-                            <div class="text-center">
-                                <h1 class="logIn animate-charcter">Member Login</h1>
-                            </div>
+            <source src="~/Content/video/SUPER MARIO BROS Final Trailer (4K ULTRA HD) 2023_Trim.mp4" type="video/webm" />
 
-                            <p>
-                                <strong>
-                                    <label for="User_Mail">Email address</label>
-                                </strong>
-                                <span class="text-danger" data-valmsg-for="User_Mail" data-valmsg-replace="true"></span>
-                                <font style="color:red">@ViewData["UserNotFound"]</font>
-                            </p>
-                            <div class="input-group">
-                                <input class="form-control" type="email" id="User_Mail" name="User_Mail" placeholder="Example: lmnhat.contact@gmail.com" autofocus="autofocus" minlength="5" maxlength="30" required/>
-                                <span class="input-group-addon">
-                                    <i class="glyphicon glyphicon-user "></i>
-                                </span>
-                            </div>
-                            <br />
-                            <p>
-                                <strong>
-                                    <label for="User_Password">Password</label>
-                                </strong>
-                                @Html.ValidationMessageFor(model => model.User_Password, "", new { @class = "text-danger" })
-                            </p>
-                            <div class="input-group">
-                                <input class="form-control" type="password" id="User_Password" name="User_Password" placeholder="Enter your password ..." minlength="5" maxlength="10" required/>
-                                <span class="input-group-addon" onclick="myfunction()">
-                                    <i class="glyphicon  glyphicon-eye-close" id="a"></i>
-                                    <i class="glyphicon  glyphicon-eye-open" id="b" style="display:none;"></i>
-                                </span>
-                            </div>
-                            <div>
-                                @*<button type="submit" name="SignIn" value="Sign In" class="btn-primary btn-submit">Log in</button>*@
+            <source src="~/Content/video/SUPER MARIO BROS Final Trailer (4K ULTRA HD) 2023_Trim.mp4" type="video/ogg ogv" ; codecs="theora, vorbis" />
 
-                                <div class="wrap">
-                                    <button class="button" type="submit" name="SignIn" value="Sign In">Login</button>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-lg-6 col-xs-6">
-                                    <p class="QuenMatKhau">
-                                        <a href="#">Forgot password?</a>
-                                    </p>
-                                </div>
-                                <div class="col-lg-6 col-xs-6">
-                                    <p class="DangKy">
-                                        <a href="/Login/SignUp">Member Register?</a>
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </form>
-                </div>
+            <source src="~/Content/video/SUPER MARIO BROS Final Trailer (4K ULTRA HD) 2023_Trim.mp4" type="video/mp4" />
 
-
+        </video>*@
+        <div>
+            <div class="row">
 
 
             </div>
+            <div class="row">
+
+                <div class="col-lg-12 col-xs-12 ">
+                    <audio autoplay="autoplay" controls hidden preload="auto" loop>
+                        @*<source src="~/Content/audio/SUPER MARIO BROS Final Trailer (4K ULTRA HD) 2023.mp3" type="audio/ogg">
+                        <source src="~/Content/audio/SUPER MARIO BROS Final Trailer (4K ULTRA HD) 2023.mp3" type="audio/mpeg">*@
+                        <source src="~/Content/audio/phonics_song.mp3" type="audio/ogg">
+                        <source src="~/Content/audio/phonics_song.mp3" type="audio/mpeg">
+                    </audio>
+
+                    <div class="col-lg-12 col-xs-12">
+                        <form action="/Login/SignIn" method="post" class="body-dangnhap">
+                            <!-- form elements go here -->
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            <div class="form-dangnhap">
+                                <div class="text-center">
+                                    <h1 class="logIn animate-charcter">Member Login</h1>
+                                </div>
+
+                                <p>
+                                    <strong>
+                                        <label for="User_Mail">Email address</label>
+                                    </strong>
+                                    <span class="text-danger" data-valmsg-for="User_Mail" data-valmsg-replace="true"></span>
+                                    <font style="color:red">@ViewData["UserNotFound"]</font>
+                                </p>
+                                <div class="input-group">
+                                    <input class="form-control" type="email" id="User_Mail" name="User_Mail" placeholder="Example: lmnhat.contact@gmail.com" autofocus="autofocus" minlength="5" maxlength="30" required />
+                                    <span class="input-group-addon">
+                                        <i class="glyphicon glyphicon-user "></i>
+                                    </span>
+                                </div>
+                                <br />
+                                <p>
+                                    <strong>
+                                        <label for="User_Password">Password</label>
+                                    </strong>
+                                    @Html.ValidationMessageFor(model => model.User_Password, "", new { @class = "text-danger" })
+                                </p>
+                                <div class="input-group">
+                                    <input class="form-control" type="password" id="User_Password" name="User_Password" placeholder="Enter your password ..." minlength="5" maxlength="10" required />
+                                    <span class="input-group-addon" onclick="myfunction()">
+                                        <i class="glyphicon  glyphicon-eye-close" id="a"></i>
+                                        <i class="glyphicon  glyphicon-eye-open" id="b" style="display:none;"></i>
+                                    </span>
+                                </div>
+                                <div>
+                                    @*<button type="submit" name="SignIn" value="Sign In" class="btn-primary btn-submit">Log in</button>*@
+
+                                    <div class="wrap">
+                                        <button class="button" type="submit" name="SignIn" value="Sign In">Login</button>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-6 col-xs-6">
+                                        <p class="QuenMatKhau">
+                                            <a href="#">Forgot password?</a>
+                                        </p>
+                                    </div>
+                                    <div class="col-lg-6 col-xs-6">
+                                        <p class="DangKy">
+                                            <a href="/Login/SignUp">Member Register?</a>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+
+
+
+                </div>
+            </div>
         </div>
     </div>
-    <script>
-        function myfunction() {
-            var x = document.getElementById("Password_User");
-            if (x.type == "password") {
-                x.type = "text";
+        <script>
+            function myfunction() {
+                var x = document.getElementById("Password_User");
+                if (x.type == "password") {
+                    x.type = "text";
+                }
+                else {
+                    x.type = "password";
+                }
+                var y = document.getElementById("a");
+                var z = document.getElementById("b");
+                if (y.style.display == "block" && z.style.display == "none") {
+                    y.style.display = "none";
+                    z.style.display = "block";
+                }
+                else {
+                    y.style.display = "block";
+                    z.style.display = "none";
+                }
             }
-            else {
-                x.type = "password";
-            }
-            var y = document.getElementById("a");
-            var z = document.getElementById("b");
-            if (y.style.display == "block" && z.style.display == "none") {
-                y.style.display = "none";
-                z.style.display = "block";
-            }
-            else {
-                y.style.display = "block";
-                z.style.display = "none";
-            }
-        }
-    </script>
-    <script src="~/Scripts/jquery-3.4.1.js"></script>
-    <script src="~/Scripts/jquery.validate.min.js"></script>
-    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+        </script>
+        <script src="~/Scripts/jquery-3.4.1.js"></script>
+        <script src="~/Scripts/jquery.validate.min.js"></script>
+        <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
 </body>
 </html>
 

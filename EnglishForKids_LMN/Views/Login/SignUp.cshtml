@@ -22,12 +22,17 @@
 </head>
 
 <body style="background-color: #eceade;">
+    <div class="row">
+        <div class="col-lg-12 col-sm-12 col-xs-12" style="position:relative;">
+            <img src="~/Content/images/gif/spyro-the-dragon-purple-dragon.gif" alt="results" style="width:20%; position: absolute; left: 0px; top: -100px" />
+        </div>
+    </div>
     <div>
         <div class="row">
             <div class="col-lg-12 col-xs-12 dangky">
-                <audio autoplay="autoplay" controls hidden preload="auto" loop >
-                    <source src="~/Content/audio/SUPER MARIO BROS Final Trailer (4K ULTRA HD) 2023.mp3" type="audio/ogg">
-                    <source src="~/Content/audio/SUPER MARIO BROS Final Trailer (4K ULTRA HD) 2023.mp3" type="audio/mpeg">
+                <audio autoplay="autoplay" controls hidden preload="auto" loop>
+                    <source src="~/Content/audio/phonics_song.mp3" type="audio/ogg">
+                    <source src="~/Content/audio/phonics_song.mp3" type="audio/mpeg">
                 </audio>
 
                 <div class="form-dangky">
@@ -44,7 +49,7 @@
                                 @Html.ValidationMessageFor(model => model.User_FullName, "", new { @class = "text-danger" })
                             </p>
                             <div class="input-group">
-                                <input type="text" id="User_FullName" name="User_FullName" class="form-control" placeholder="Enter your full name ..." autofocus="autofocus" minlength="2"  maxlength="35" required />
+                                <input type="text" id="User_FullName" name="User_FullName" class="form-control" placeholder="Enter your full name ..." autofocus="autofocus" minlength="2" maxlength="35" required />
                                 <span class="input-group-addon">
                                     <i class="glyphicon glyphicon-user"></i>
                                 </span>
@@ -128,8 +133,8 @@
             }
         }
     </script>
-        <script src="~/Scripts/jquery-3.4.1.js"></script>
-        <script src="~/Scripts/jquery.validate.min.js"></script>
-        <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+    <script src="~/Scripts/jquery-3.4.1.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
 </body>
 </html>
