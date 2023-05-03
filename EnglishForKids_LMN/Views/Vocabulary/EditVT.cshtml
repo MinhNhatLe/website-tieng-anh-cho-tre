@@ -78,7 +78,7 @@
                             <font style="color:red;"> @ViewData["existed"]</font> 
                             @Html.ValidationMessageFor(model => model.Name_Category_Vo, "", new { @class = "text-danger" })
                         </p>
-                        @Html.EditorFor(model => model.Name_Category_Vo, "", new { htmlAttributes = new { @class = "form-control center-block a", @placeholder = "Enter the word type name...", @style = "width:100%;max-width:100%;", @autofocus = "1" } })
+                        @Html.EditorFor(model => model.Name_Category_Vo, "", new { htmlAttributes = new { @class = "form-control center-block a", @placeholder = "Enter the word type name...", @style = "width:100%;max-width:100%;", @autofocus = "autofocus", @minlength = "1", @maxlength = "10", @required = "required" } })
                         <br />
                         <div class="row">
                             <div class="col-lg-6 col-sm-6 col-xs-12">

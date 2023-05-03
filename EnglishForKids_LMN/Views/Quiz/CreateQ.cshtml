@@ -64,31 +64,32 @@
                             <div class="form-group">
                                 <p>
                                     <strong>Quiz name:</strong> @Html.ValidationMessageFor(model => model.Name_Quiz, "", new { @class = "text-danger" })
-                                    @Html.EditorFor(model => model.Name_Quiz, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter the puzzle name...", @maxlength = "50" } })
+                                    @Html.EditorFor(model => model.Name_Quiz, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter the puzzle name...", @maxlength = "50", @minlength = "2", @autofocus = "autofocus", @required = "required" } })
                                 </p>
                                 <p>
                                     <strong>Content file:</strong> @Html.ValidationMessageFor(model => model.Content, "", new { @class = "text-danger" })
-                                    @Html.EditorFor(model => model.Content, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter the content file name...", @maxlength = "50" } })
+                                    @*@Html.EditorFor(model => model.Content, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter the content file name...", @maxlength = "50", @minlength = "2", @autofocus = "autofocus", @required = "required" } })*@
+                                    <input type="file" name="Content" accept=".txt" required />
                                 </p>
                                 <p>
                                     <strong>Answer 1:</strong> @Html.ValidationMessageFor(model => model.Answer_1, "", new { @class = "text-danger" })
-                                    @Html.EditorFor(model => model.Answer_1, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter answer 1...", @maxlength = "50" } })
+                                    @Html.EditorFor(model => model.Answer_1, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter answer 1...", @maxlength = "50", @minlength = "2", @autofocus = "autofocus", @required = "required" } })
                                 </p>
                                 <p>
                                     <strong>Answer 2:</strong> @Html.ValidationMessageFor(model => model.Answer_2, "", new { @class = "text-danger" })
-                                    @Html.EditorFor(model => model.Answer_2, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter answer 2...", @maxlength = "50" } })
+                                    @Html.EditorFor(model => model.Answer_2, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter answer 2...", @maxlength = "50", @minlength = "2", @autofocus = "autofocus", @required = "required" } })
                                 </p>
                                 <p>
                                     <strong>Answer 3:</strong> @Html.ValidationMessageFor(model => model.Answer_3, "", new { @class = "text-danger" })
-                                    @Html.EditorFor(model => model.Answer_3, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter answer 3...", @maxlength = "50" } })
+                                    @Html.EditorFor(model => model.Answer_3, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter answer 3...", @maxlength = "50", @minlength = "2", @autofocus = "autofocus", @required = "required" } })
                                 </p>
                                 <p>
                                     <strong>Answer 4:</strong> @Html.ValidationMessageFor(model => model.Answer_4, "", new { @class = "text-danger" })
-                                    @Html.EditorFor(model => model.Answer_4, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter answer 4...", @maxlength = "50" } })
+                                    @Html.EditorFor(model => model.Answer_4, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter answer 4...", @maxlength = "50", @minlength = "2", @autofocus = "autofocus", @required = "required" } })
                                 </p>
                                 <p>
                                     <strong>Answer 5:</strong> @Html.ValidationMessageFor(model => model.Answer_5, "", new { @class = "text-danger" })
-                                    @Html.EditorFor(model => model.Answer_5, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter answer 5...", @maxlength = "50" } })
+                                    @Html.EditorFor(model => model.Answer_5, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter answer 5...", @maxlength = "50", @minlength = "2", @autofocus = "autofocus", @required = "required" } })
                                 </p>
                             </div>
                             <div class="row">

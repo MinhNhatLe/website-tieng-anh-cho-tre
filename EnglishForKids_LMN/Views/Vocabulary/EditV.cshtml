@@ -127,17 +127,17 @@
                         <div class="background-editV">
                             @Html.EditorFor(model => model.ID_Vocabulary, "", new { htmlAttributes = new { @class = "form-control center-block", @placeholder = "Enter english name ...", @style = "width:100%;max-width:100%;display:none;" } })
                             <p><strong>English name:</strong> @Html.ValidationMessageFor(model => model.EN_Meaning, "", new { @class = "text-danger" })</p>
-                            @Html.EditorFor(model => model.EN_Meaning, "", new { htmlAttributes = new { @class = "form-control center-block", @placeholder = "Enter english name ..", @style = "width:100%;max-width:100%;", @maxlength = "30" } })
+                            @Html.EditorFor(model => model.EN_Meaning, "", new { htmlAttributes = new { @class = "form-control center-block", @placeholder = "Enter english name ..", @style = "width:100%;max-width:100%;", @minlength = "1", @maxlength = "10", @autofocus = "autofocus", @required = "required" } })
                             <br />
                             <p><strong>Vietnamese name:</strong> @Html.ValidationMessageFor(model => model.VN_Meaning, "", new { @class = "text-danger" })</p>
-                            @Html.EditorFor(model => model.VN_Meaning, new { htmlAttributes = new { @class = "form-control center-block", @placeholder = "Enter vietnamese name ...", @style = "width:100%;max-width:100%;", @maxlength = "30" } })
+                            @Html.EditorFor(model => model.VN_Meaning, new { htmlAttributes = new { @class = "form-control center-block", @placeholder = "Enter vietnamese name ...", @style = "width:100%;max-width:100%;", @minlength = "1", @maxlength = "10", @required = "required" } })
                             <br />
                             <p><strong>IPA transcription:</strong> @Html.ValidationMessageFor(model => model.Pronunciation, "", new { @class = "text-danger" })</p>
-                            @Html.EditorFor(model => model.Pronunciation, new { htmlAttributes = new { @class = "form-control center-block", @placeholder = "Enter IPA ...", @style = "width:100%;max-width:100%;", @maxlength = "20" } })
+                            @Html.EditorFor(model => model.Pronunciation, new { htmlAttributes = new { @class = "form-control center-block", @placeholder = "Enter IPA ...", @style = "width:100%;max-width:100%;", @minlength = "1", @maxlength = "10", @required = "required" } })
                             <br />
                             <p><strong>Category vocabulary:</strong> @Html.ValidationMessageFor(model => model.category_vos, "", new { @class = "text-danger" })</p>
-                            @Html.DropDownListFor(model => model.ID_Category_Vo, new SelectList(Model.category_vos, "ID_Category_Vo", "Name_Category_Vo"), "", new { @class = "form-control center-block pull-left", @style = "width:48%;" })
-                            <a href="#" class="btn btn-success bx-fade-right-hover pull-right" data-toggle="modal" data-target="#create-category" style="width: 48%;">Add category</a>
+                            @Html.DropDownListFor(model => model.ID_Category_Vo, new SelectList(Model.category_vos, "ID_Category_Vo", "Name_Category_Vo"), "", new { @class = "form-control center-block pull-left", @style = "width:100%;", @minlength = "1", @maxlength = "10", @required = "required" })
+                            @*<a href="#" class="btn btn-success bx-fade-right-hover pull-right" data-toggle="modal" data-target="#create-category" style="width: 48%;">Add category</a>*@
                             <br />
                             <br />
                             <br />
@@ -214,6 +214,9 @@
                                     </p>
                                 </div>
                             </div>}*@
+
+
+
         <div class="modal fade " id="create-category">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -227,7 +230,7 @@
                             <p>
                                 <strong>Category name:</strong><font style="color:red;"> @ViewData["existed"]</font>
                             </p>
-                            @Html.EditorFor(model => model.Name_Category_Vo, new { htmlAttributes = new { @class = "form-control center-block", @placeholder = "Enter category name ...", @style = "width:100%;max-width:100%;", @maxlength = "20" } })
+                            @Html.EditorFor(model => model.Name_Category_Vo, new { htmlAttributes = new { @class = "form-control center-block", @placeholder = "Enter category name ...", @style = "width:100%;max-width:100%;", @minlength = "1", @maxlength = "10", @required = "required" } })
                         </form>
                     </div>
                     <div class="modal-footer">
@@ -241,6 +244,9 @@
                 </div>
             </div>
         </div>
+
+
+
     </div>
 </div>
         @section add

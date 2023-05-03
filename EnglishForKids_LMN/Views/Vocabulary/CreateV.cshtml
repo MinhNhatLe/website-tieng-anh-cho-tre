@@ -129,19 +129,19 @@
                             <strong>English name:</strong>
                             @Html.ValidationMessageFor(model => model.EN_Meaning, "", new { @class = "text-danger" })
                         </p>
-                        @Html.EditorFor(model => model.EN_Meaning, "", new { htmlAttributes = new { @class = "form-control center-block", @placeholder = "Enter english name ...", @style = "width:100%;max-width:100%;", @minlength = "1", @maxlength = "30", @autofocus="autofocus", @required = "required" } })
+                        @Html.EditorFor(model => model.EN_Meaning, "", new { htmlAttributes = new { @class = "form-control center-block", @placeholder = "Enter english name ...", @style = "width:100%;max-width:100%;", @minlength = "1", @maxlength = "10", @autofocus="autofocus", @required = "required" } })
                         <br />
                         <p>
                             <strong>Vietnamese name:</strong>
                             @Html.ValidationMessageFor(model => model.VN_Meaning, "", new { @class = "text-danger" })
                         </p>
-                        @Html.EditorFor(model => model.VN_Meaning, new { htmlAttributes = new { @class = "form-control center-block", @placeholder = "Enter vietnamese name ...", @style = "width:100%;max-width:100%;", @minlength = "1", @maxlength = "30", @required = "required" } })
+                        @Html.EditorFor(model => model.VN_Meaning, new { htmlAttributes = new { @class = "form-control center-block", @placeholder = "Enter vietnamese name ...", @style = "width:100%;max-width:100%;", @minlength = "1", @maxlength = "10", @required = "required" } })
                         <br />
                         <p>
                             <strong>IPA transcription:</strong>
                             @Html.ValidationMessageFor(model => model.Pronunciation, "", new { @class = "text-danger" })
                         </p>
-                        @Html.EditorFor(model => model.Pronunciation, new { htmlAttributes = new { @class = "form-control center-block", @placeholder = "Enter IPA ...", @style = "width:100%;max-width:100%;", @minlength = "1", @maxlength = "20", @required = "required" } })
+                        @Html.EditorFor(model => model.Pronunciation, new { htmlAttributes = new { @class = "form-control center-block", @placeholder = "Enter IPA ...", @style = "width:100%;max-width:100%;", @minlength = "1", @maxlength = "10", @required = "required" } })
                         <br />
                         <p>
                             <strong>Category vocabulary:</strong>
