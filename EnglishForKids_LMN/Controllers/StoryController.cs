@@ -86,7 +86,7 @@ namespace EnglishForKids_LMN.Controllers
                     }
                     else
                     {
-                        story1.Banner = "1478594.png";
+                        story1.Banner = "404.jpg";
                     }
                     if (story.Image_Story != null)
                     {
@@ -94,7 +94,7 @@ namespace EnglishForKids_LMN.Controllers
                     }
                     else
                     {
-                        story1.Image_Story = "1478594.png";
+                        story1.Image_Story = "404.jpg";
                     }
                     story1.Name_Story = story.Name_Story;
                     story1.EN_Content = story.EN_Content;
