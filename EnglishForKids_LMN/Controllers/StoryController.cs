@@ -56,7 +56,25 @@ namespace EnglishForKids_LMN.Controllers
                 storyBonus1.Image_Story = item.Image_Story;
                 storyBonus1.Name_Story = item.Name_Story;
                 User users = db.Users.FirstOrDefault(s => s.ID_User == item.ID_User);
-                storyBonus1.Name_User = users.Name_User;
+                //storyBonus1.Name_User = users.Name_User;
+
+
+
+                // fix lỗi 500
+                if (users != null)
+                {
+                    storyBonus1.Name_User = users.Name_User;
+                }
+                else
+                {
+                    // Xử lý khi đối tượng users là null
+                }
+
+                /////////////////
+                ///
+
+
+
                 storyBonus.Add(storyBonus1);
             }
             if (page == null)

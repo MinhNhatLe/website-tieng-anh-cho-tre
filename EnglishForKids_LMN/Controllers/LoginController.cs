@@ -123,7 +123,7 @@ namespace EnglishForKids_LMN.Controllers
                         userz1.Password_User = userz.User_Password;
                         userz1.IsAdmin = false;
                         userz1.Email = userz.User_Mail;
-                        userz1.Image_User = "user.png";
+                        userz1.Image_User = "404.jpg";
                         db.Users.AddOrUpdate(userz1);
                         db.SaveChanges();
                         /*MailAddress fromGMail = new MailAddress("garena281215@gmail.com", "StartEndSchools");
