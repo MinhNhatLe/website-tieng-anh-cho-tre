@@ -31,5 +31,6 @@ namespace EnglishForKids_LMN.Models
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Quiz_Details> Quiz_Details { get; set; }
+        public object QuizDetails { get; internal set; }
     }
 }
