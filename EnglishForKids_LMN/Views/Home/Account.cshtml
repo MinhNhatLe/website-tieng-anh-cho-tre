@@ -1,12 +1,14 @@
 ﻿@model EnglishForKids_LMN.Models.User
 
 @{
-    ViewBag.Title = "Account";
+    ViewBag.Title = "Account - English For Kids";
     if (Session["ID_User"] != null)
     {
         Layout = "~/Views/Shared/_Layout.cshtml";
     }
-    if (Session["ID_Admin"] != null)
+    //if (Session["ID_Admin"] != null)
+    if (Session["Admin_Code"] != null)
+
     {
         Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
     }
@@ -253,9 +255,9 @@
                             </p>
                             <select id="Gender" name="Gender" class="form-control center-block" style="width:100%;max-width:100%;" required>
                                 <option for="Gender" id="Gender" name="Gender" selected hidden>@Html.ValueFor(model => model.Gender)</option>
-                                <option for="Gender" id="Gender" name="Gender" value="Nam">Nam</option>
-                                <option for="Gender" id="Gender" name="Gender" value="Nữ">Nữ</option>
-                                <option for="Gender" id="Gender" name="Gender" value="Khác">Khác</option>
+                                <option for="Gender" id="Gender" name="Gender" value="Male">Male</option>
+                                <option for="Gender" id="Gender" name="Gender" value="Female">Female</option>
+                                <option for="Gender" id="Gender" name="Gender" value="Other">Other</option>
                             </select>
                             <br />
                             <p>
@@ -263,7 +265,7 @@
                                 @Html.ValidationMessageFor(model => model.Birthday, "", new { @class = "text-danger" })
                             </p>
                             @*<input type="number" name="Birthday" id="Birthday" class="form-control center-block" placeholder="Nhập ngày sinh của bạn: dd/mm/yyyy" style="width:100%;max-width:100%;" maxlength="10">*@
-                            @Html.EditorFor(model => model.Birthday, new { htmlAttributes = new { @class = "form-control center-block", @placeholder = "Enter your birthday: mm/dd/yyyy", @style = "width:100%;max-width:100%;", @maxlength = "30", @required = "required" } })
+                            @Html.EditorFor(model => model.Birthday, new { htmlAttributes = new { @class = "form-control center-block", @placeholder = "Enter your birthday: mm/dd/yyyy", @style = "width:100%;max-width:100%;", @maxlength = "21", @required = "required" } })
 
                             <br />
                             <p>
