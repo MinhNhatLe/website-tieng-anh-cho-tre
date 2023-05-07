@@ -108,7 +108,8 @@
                                                         data: formData,
                                                         success: function (urlImage) {
                                                             $('#pictureUpload').attr('src', "/Content/images/" + urlImage);
-                                                            $('#Story_banner').val(urlImage);
+                                                            //$('#Story_banner').val(urlImage);
+                                                            $('#Banner').val(urlImage);
                                                         },
                                                         error: function (err) {
                                                             alert('Error', err.statusText);
@@ -150,7 +151,8 @@
                                             data: formData,
                                             success: function (urlImage) {
                                                 $('#pictureUpload1').attr('src', "/Content/images/" + urlImage);
-                                                $('#Story_image').val(urlImage);
+                                                //$('#Story_image').val(urlImage);
+                                                $('#Image_Story').val(urlImage);
                                             },
                                             error: function (err) {
                                                 alert('Error', err.statusText);
@@ -177,9 +179,9 @@
                                             English content:
                                         </strong>
                                         @Html.ValidationMessageFor(model => model.EN_Content, "", new { @class = "text-danger" })
-                                        @*@Html.EditorFor(model => model.EN_Content, new { htmlAttributes = new { @class = "form-control", @placeholder = "Import the file EN the story content...", @maxlength = "50", @readonly = "readonly" } })*@
-                                    <p>@Model.EN_Content</p>
-                                    <input type="file" name="EN_Content" accept=".txt" />
+                                        @Html.EditorFor(model => model.EN_Content, new { htmlAttributes = new { @class = "form-control", @placeholder = "Import the file EN the story content...", @maxlength = "30", @minlength = "2", @required = "required" } })
+                                    @*<p>@Model.EN_Content</p>
+                                    <input type="file" name="EN_Content" accept=".txt" />*@
 
                                     </p>
                                     <p>
@@ -188,9 +190,9 @@
                                             Vietnamese content:
                                         </strong>
                                         @Html.ValidationMessageFor(model => model.VN_Content, "", new { @class = "text-danger" })
-                                        @*@Html.EditorFor(model => model.VN_Content, new { htmlAttributes = new { @class = "form-control", @placeholder = "Import the VN file with story content...", @maxlength = "50", @readonly = "readonly" } })*@
-                                    <p>@Model.VN_Content</p>
-                                    <input type="file" name="VN_Content" accept=".txt" />
+                                        @Html.EditorFor(model => model.VN_Content, new { htmlAttributes = new { @class = "form-control", @placeholder = "Import the VN file with story content...", @maxlength = "30", @minlength = "2", @required = "required" } })
+                                        @*<p>@Model.VN_Content</p>
+                                        <input type="file" name="VN_Content" accept=".txt" />*@
                                     </p>
                                     <p>
                                         <strong>
@@ -198,13 +200,13 @@
                                             Story audio:
                                         </strong>
                                         @Html.ValidationMessageFor(model => model.Audio, "", new { @class = "text-danger" })
-                                        @*@Html.EditorFor(model => model.Audio, new { htmlAttributes = new { @class = "form-control", @placeholder = "Import story audio files...", @maxlength = "50", @readonly = "readonly" } })*@
-                                    <p>@Model.Audio</p>
-                                    <input type="file" name="Audio" accept=".mp3" />
+                                        @Html.EditorFor(model => model.Audio, new { htmlAttributes = new { @class = "form-control", @placeholder = "Import story audio files...", @maxlength = "30", @minlength = "2", @required = "required" } })
+                                    @*<p>@Model.Audio</p>
+                                    <input type="file" name="Audio" accept=".mp3" />*@
                                     </p>
                                 </div>
                                 <div class="row">
-                                    <input type="submit" value="Update" name="EditS" class="btn btn-primary bx-flashing-hover center-block" style="width:100%;" />
+                                    <input type="submit" value="Update" name="EditS" class="btn btn-primary bx-flashing-hover center-block" style="width:50%;" />
                                 </div>
                             </div>
                         </div>
