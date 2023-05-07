@@ -56,14 +56,6 @@ namespace EnglishForKids_LMN.Controllers
 
 
 
-
-
-
-
-
-
-
-
             List<Question> questions2 = new List<Question>();
             List<Question> questions3 = new List<Question>();
             List<Question> questions4 = new List<Question>();
@@ -176,13 +168,13 @@ namespace EnglishForKids_LMN.Controllers
             //MailAddress toGMail = new MailAddress(userz.Email, "Me");
             MailMessage Message = new MailMessage();
             SmtpClient smtp = new SmtpClient();
-            Message.From = new MailAddress("minhnhat057@gmail.com");
+            Message.From = new MailAddress("lmnhat.englishforkids@gmail.com");
             Message.To.Add(new MailAddress(userz.Email));
             {
                 Message.IsBodyHtml = true;
-                Message.Subject = "Kết quả Kiểm tra";
+                Message.Subject = "Test result";
                 Message.Body = "Chào " + userz.Name_User.ToString() + ",\n"
-                + "Kết quả : \n\n"
+                + "Result : \n\n"
                 + "---------------------------------------------------"
                 + "Question 1 : " + questions[0].Content + "\n"
                 + "Your answer : " + choice1 + "\n\n"
@@ -205,9 +197,9 @@ namespace EnglishForKids_LMN.Controllers
                 + "Question 10 : " + questions[9].Content + "\n"
                 + "Your answer : " + choice7 + "\n\n"
                 + "-----------------------------------------------------"
-                + "Tổng điểm : " + test_Score + "\n\n"
-                + "Chúc bé có 1 buổi học đầy bổ ích và vui vẻ,\n"
-                + "StartEnd";
+                + "Total : " + test_Score + "\n\n"
+                + "Wish you have a useful and fun learning session,\n"
+                + "English For Kids";
                 Message.Priority = MailPriority.High;
                 Message.IsBodyHtml = false;
             };
@@ -217,7 +209,7 @@ namespace EnglishForKids_LMN.Controllers
             smtp.EnableSsl = true;
             smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
             smtp.UseDefaultCredentials = false;
-            smtp.Credentials = new NetworkCredential("minhnhat057@gmail.com", "p");
+            smtp.Credentials = new NetworkCredential("lmnhat.englishforkids@gmail.com", "p");
             //smtp.Send(Message);
             return RedirectToAction("Result_Test", "Test");
         }

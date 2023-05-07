@@ -189,7 +189,7 @@ namespace EnglishForKids_LMN.Controllers
             if (userz != null)
             {
                 user_mail = userBonus.User_Mail;
-                MailAddress fromGMail = new MailAddress("garena281215@gmail.com", "English For Kids");
+                MailAddress fromGMail = new MailAddress("lmnhat.englishforkids@gmail.com", "English For Kids");
                 MailAddress toGMail = new MailAddress(userBonus.User_Mail, "Me");
                 reCode = rd.Next(100000, 999999);
                 MailMessage Message = new MailMessage()
@@ -210,8 +210,8 @@ namespace EnglishForKids_LMN.Controllers
                     UseDefaultCredentials = false,
                     Credentials = new NetworkCredential()
                     {
-                        UserName = "garena281215@gmail.com",
-                        Password = "lcxehypdkkvzyzqh"
+                        UserName = "lmnhat.englishforkids@gmail.com",
+                        Password = "Leminhnhat2001"
                     }
                 };
                 smtp.Send(Message);
