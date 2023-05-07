@@ -238,10 +238,8 @@
     <Content Include="Content\audio\audio7.mp3" />
     <Content Include="Content\audio\audio8.mp3" />
     <Content Include="Content\audio\audio9.mp3" />
-    <Content Include="Content\audio\cupid intro.mp3" />
     <Content Include="Content\audio\lose.mp3" />
     <Content Include="Content\audio\phonics_song.mp3" />
-    <Content Include="Content\audio\SUPER MARIO BROS Final Trailer %284K ULTRA HD%29 2023.mp3" />
     <Content Include="Content\audio\win.mp3" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
@@ -329,6 +327,18 @@
     <Content Include="Content\images\Motorbike.png" />
     <Content Include="Content\images\nakiri-ayame-in-hololive-i5-1920x1080.jpg" />
     <Content Include="Content\images\noodles.png" />
+    <Content Include="Content\images\number\1.jpg" />
+    <Content Include="Content\images\number\10.jpg" />
+    <Content Include="Content\images\number\11.jpg" />
+    <Content Include="Content\images\number\12.jpg" />
+    <Content Include="Content\images\number\2.jpg" />
+    <Content Include="Content\images\number\3.jpg" />
+    <Content Include="Content\images\number\4.jpg" />
+    <Content Include="Content\images\number\5.jpg" />
+    <Content Include="Content\images\number\6.png" />
+    <Content Include="Content\images\number\7.jpg" />
+    <Content Include="Content\images\number\8.jpg" />
+    <Content Include="Content\images\number\9.jpg" />
     <Content Include="Content\images\Orange.png" />
     <Content Include="Content\images\Pancake.png" />
     <Content Include="Content\images\Peach.png" />
@@ -491,6 +501,8 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\teachablemachine.js" />
+    <Content Include="Scripts\tensorflow.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
