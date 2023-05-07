@@ -71,17 +71,19 @@
                                 <p>
                                     <strong>Test name:</strong>
                                     @Html.ValidationMessageFor(model => model.Name_Test, "", new { @class = "text-danger" })
-                                    @Html.EditorFor(model => model.Name_Test, "", new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter test name...", @maxlength = "50" } })
+                                    @Html.EditorFor(model => model.Name_Test, "", new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter test name...", @minlength="1", @maxlength = "15", @autofocus="autofocus", @required="required" } })
                                 </p>
                                 <p>
                                     <strong>Test video:</strong>
                                     @Html.ValidationMessageFor(model => model.Video, "", new { @class = "text-danger" })
-                                    @Html.EditorFor(model => model.Video, new { htmlAttributes = new { @class = "form-control", @placeholder = "Import test video file...", @maxlength = "50" } })
+                                    @*@Html.EditorFor(model => model.Video, new { htmlAttributes = new { @class = "form-control", @placeholder = "Import test video file...", @maxlength = "30" } })*@
+                                    <input class="bx-flashing-hover" style="padding:10px;" type="file" name="Video" accept=".mp4" required />
                                 </p>
                                 <p>
                                     <strong>Test paragraph:</strong>
                                     @Html.ValidationMessageFor(model => model.Paragraph, "", new { @class = "text-danger" })
-                                    @Html.EditorFor(model => model.Paragraph, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter test paragraph name...", @maxlength = "50" } })
+                                    @*@Html.EditorFor(model => model.Paragraph, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter test paragraph name...", @maxlength = "30" } })*@
+                                    <input class="bx-flashing-hover" style="padding:10px;" type="file" name="Paragraph" accept=".txt" required />
                                 </p>
                             </div>
                             <div class="row">

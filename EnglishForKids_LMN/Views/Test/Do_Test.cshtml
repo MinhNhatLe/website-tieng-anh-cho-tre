@@ -1,9 +1,27 @@
 ﻿@model IEnumerable<EnglishForKids_LMN.Models.Question>
 @using EnglishForKids_LMN.Models;
+@*@{
+        ViewBag.Title = "Do Test - English For Kids";
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }*@
+
 @{
     ViewBag.Title = "Do Test - English For Kids";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    if (Session["ID_User"] != null)
+    {
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+    //if (Session["ID_Admin"] != null)
+    if (Session["Admin_Code"] != null)
+
+    {
+        Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    }
 }
+
+
+
+
 @{
     List<Question> questions2 = Session["questions2"] as List<Question>;
     List<Question> questions3 = Session["questions3"] as List<Question>;
