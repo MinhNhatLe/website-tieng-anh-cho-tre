@@ -24,7 +24,7 @@
     <link href="~/Content/asset/reponsive_do_img_quiz.css" rel="stylesheet" />
     <link href="~/Content/asset/reponsive_vocabulary_detail.css" rel="stylesheet" />
     <link href="~/Content/asset/reponsive_story_detail.css" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&display=swap" rel="stylesheet">
+    @*<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&display=swap" rel="stylesheet">*@
     <link href="~/Content/asset/footer.css" rel="stylesheet" />
 
     <link href="~/Content/bootstrap-theme.css" rel="stylesheet" />
@@ -146,6 +146,15 @@
                         <li><a class="link_name" href="@Url.Action("GoogleTranslate", "GoogleTranslate")">Translate</a></li>
                     </ul>
                 </li>
+                <li>
+                    <a href="@Url.Action("Identify_AI", "Identify")">
+                        <i class='bx bx-camera bx-tada'></i>
+                        <span class="link_name">Identify</span>
+                    </a>
+                    <ul class="sub-menu blank">
+                        <li><a class="link_name" href="@Url.Action("Identify_AI", "Identify")">Identify</a></li>
+                    </ul>
+                </li>
                 <li style="bottom:0; position:fixed">
                     <a href="/Home/Account">
                         <i class='bx bx-user bx-burst'></i>
@@ -184,7 +193,7 @@
                 <i class='bx bx-menu'></i>
                 <span class="text">Dashboard</span> <br />
             </div>
-            <div  class="background_layout" >
+            <div class="background_layout">
                 @RenderBody()
             </div>
 

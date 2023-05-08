@@ -90,6 +90,18 @@
                     </ul>
                 </li>
                 <li>
+                    <a href="@Url.Action("Index", "Home", new { area = "" })">
+                        <i class='bx bx-home-heart bx-tada'></i>
+                        <span class="link_name">Statistical</span>
+                    </a>
+                    <ul class="sub-menu blank">
+                        <li>
+                            @*<a class="link_name" href="#">Trang chủ</a>*@
+                            <a href="@Url.Action("Index", "Home", new { area = "" })">Statistical</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
                     <div class="icon-link">
                         <a href="#">
                             <i class='bx bxs-graduation bx-tada'></i>
@@ -132,14 +144,14 @@
                     </ul>
                 </li>
                 @*<li>
-                    <a href="@Url.Action("GoogleTranslate", "GoogleTranslate")">
-                        <i class='bx bx-captions bx-tada'></i>
-                        <span class="link_name">Google dịch</span>
-                    </a>
-                    <ul class="sub-menu blank">
-                        <li><a class="link_name" href="@Url.Action("GoogleTranslate", "GoogleTranslate")">Google dịch</a></li>
-                    </ul>
-                </li>*@
+            <a href="@Url.Action("GoogleTranslate", "GoogleTranslate")">
+                <i class='bx bx-captions bx-tada'></i>
+                <span class="link_name">Google dịch</span>
+            </a>
+            <ul class="sub-menu blank">
+                <li><a class="link_name" href="@Url.Action("GoogleTranslate", "GoogleTranslate")">Google dịch</a></li>
+            </ul>
+        </li>*@
                 <li style="bottom:0; position:fixed">
                     <a href="/Home/Account">
                         <i class='bx bx-user bx-burst'></i>
