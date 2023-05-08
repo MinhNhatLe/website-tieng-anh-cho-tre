@@ -137,6 +137,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\GoogleTranslateController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\IdentifyController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\QuizController.cs" />
     <Compile Include="Controllers\StoryController.cs" />
@@ -247,6 +248,26 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\bootstrap1.css" />
     <Content Include="Content\boxicons.css" />
+    <Content Include="Content\home_main\css\bootstrap.css" />
+    <Content Include="Content\home_main\css\reponsive.css" />
+    <Content Include="Content\home_main\css\style.css" />
+    <Content Include="Content\home_main\img_main\app-bg.jpg" />
+    <Content Include="Content\home_main\img_main\app-store.png" />
+    <Content Include="Content\home_main\img_main\codung.png" />
+    <Content Include="Content\home_main\img_main\left-angle.png" />
+    <Content Include="Content\home_main\img_main\love.png" />
+    <Content Include="Content\home_main\img_main\next-black.png" />
+    <Content Include="Content\home_main\img_main\next-grey.png" />
+    <Content Include="Content\home_main\img_main\Picture.png" />
+    <Content Include="Content\home_main\img_main\play-store.png" />
+    <Content Include="Content\home_main\img_main\pngegg %281%29.png" />
+    <Content Include="Content\home_main\img_main\pngegg %287%29.png" />
+    <Content Include="Content\home_main\img_main\prev-black.png" />
+    <Content Include="Content\home_main\img_main\prev-grey.png" />
+    <Content Include="Content\home_main\img_main\resultmain3.png" />
+    <Content Include="Content\home_main\img_main\right-angle.png" />
+    <Content Include="Content\home_main\js\bootstrap.js" />
+    <Content Include="Content\home_main\js\jquery341min.js" />
     <Content Include="Content\images\404.jpg" />
     <Content Include="Content\images\about-img.png" />
     <Content Include="Content\images\apple.png" />
@@ -556,6 +577,7 @@
     <Content Include="Views\Vocabulary\ListVocabulary.cshtml" />
     <Content Include="Views\Vocabulary\ListVocabularyType.cshtml" />
     <Content Include="Views\Vocabulary\User_View.cshtml" />
+    <Content Include="Views\Identify\Identify_AI.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
