@@ -258,7 +258,7 @@
     }
 
     .sidebar.close .profile-details i,
-    .sidebar.close .profile-details .profile_name,
+    .sidebar.close .profile-details .profile_name,s
     .sidebar.close .profile-details .job {
         display: none;
     }
@@ -269,7 +269,7 @@
 
 .home-section {
     position: relative;
-    background: #E4E9F7;
+    /*background: #E4E9F7;*/
     min-height: 100%;
     left: 0px;
     width: calc(100% - 260px);
