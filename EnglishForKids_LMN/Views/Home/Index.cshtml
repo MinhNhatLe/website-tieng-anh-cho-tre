@@ -1,5 +1,14 @@
-﻿@{
-    ViewBag.Title = "Home Page";
+﻿
+@{
+    ViewBag.Title ="Statistical - English For Kids";
+    if (Session["Admin_Code"] != null)
+    {
+        Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    }
+    if (Session["ID_User"] == null && Session["Admin_Code"] == null)
+    {
+        Response.Redirect("~/Login/SignIn");
+    }
 }
 
 <div class="jumbotron">
