@@ -1,6 +1,11 @@
 ﻿@model EnglishForKids_LMN.Models.Story
 @{ ViewBag.Title = "Delete Story - English For Kids";
-    Layout = "~/Views/Shared/_LayoutAdmin.cshtml"; }
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    if (Session["ID_User"] == null && Session["Admin_Code"] == null)
+    {
+        Response.Redirect("~/Login/SignIn");
+    }
+    }
 
 <style>
     .text-danger {
