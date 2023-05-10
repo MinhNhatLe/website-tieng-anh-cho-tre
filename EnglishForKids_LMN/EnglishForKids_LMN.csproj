@@ -240,7 +240,7 @@
     <Content Include="Content\audio\audio8.mp3" />
     <Content Include="Content\audio\audio9.mp3" />
     <Content Include="Content\audio\lose.mp3" />
-    <Content Include="Content\audio\phonics_song.mp3" />
+    <Content Include="Content\audio\phonics_song_main.mp3" />
     <Content Include="Content\audio\win.mp3" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
@@ -578,6 +578,7 @@
     <Content Include="Views\Vocabulary\ListVocabularyType.cshtml" />
     <Content Include="Views\Vocabulary\User_View.cshtml" />
     <Content Include="Views\Identify\Identify_AI.cshtml" />
+    <Content Include="Views\Home\Error404.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
