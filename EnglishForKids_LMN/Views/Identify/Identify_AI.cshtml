@@ -1,6 +1,11 @@
 ﻿@model EnglishForKids_LMN.Models.Google
 @{ ViewBag.Title = "Identify AI - English For Kids";
-    Layout = "~/Views/Shared/_Layout.cshtml"; }
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    if (Session["ID_User"] == null && Session["Admin_Code"] == null)
+    {
+        Response.Redirect("~/Login/SignIn");
+    }
+    }
 
 <div class="container">
     <div class="row">
