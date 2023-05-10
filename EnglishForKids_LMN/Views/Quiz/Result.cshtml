@@ -1,6 +1,10 @@
 ﻿@{
     ViewBag.Title = "Result Images Quiz - English For Kids";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    if (Session["ID_User"] == null && Session["Admin_Code"] == null)
+    {
+        Response.Redirect("~/Login/SignIn");
+    }
 }
 <style>
     .background-quiz-result {

@@ -1,6 +1,11 @@
 ﻿
 @{ ViewBag.Title = "Result Drag & Drop Quiz - English For Kids";
-                Layout = "~/Views/Shared/_Layout.cshtml"; }
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    if (Session["ID_User"] == null && Session["Admin_Code"] == null)
+    {
+        Response.Redirect("~/Login/SignIn");
+    }
+    }
 
 <style>
     .background-quiz-result {
@@ -69,21 +74,20 @@
 
 
 
+                        <div class="row">
+                            <div class="col-lg-12 col-sm-12 col-xs-12">
 
-                    <div class="row">
-                        <div class="col-lg-12 col-sm-12 col-xs-12">
-
-                            @{
-                                try
-                                {
-
-                                    // Khi trên 5 điểm thì sẽ hiện âm thanh win và img lên
-                                    // Dưới 5 thì ngược lại
-                                    // Check total score and show alert
-                                    int totalScore = (int)Session["DragDrop_Quiz_Score"];
-                                    if (totalScore > 5)
+                                @{
+                                    try
                                     {
-                                        <script>
+
+                                        // Khi trên 5 điểm thì sẽ hiện âm thanh win và img lên
+                                        // Dưới 5 thì ngược lại
+                                        // Check total score and show alert
+                                        int totalScore = (int)Session["DragDrop_Quiz_Score"];
+                                        if (totalScore > 5)
+                                        {
+                                            <script>
                                             //alert('Congratulations, you have scored over 5 points!');
                                             if (@Session["DragDrop_Quiz_Score"] > 5) {
                                                 var fireworks1 = $('<img>').attr('src', '/Content/images/gif/phaohoa1.gif')
@@ -106,11 +110,11 @@
                                                 $('.container').append(fireworks2);;
 
                                             }
-                                        </script>
-                                    }
-                                    else
-                                    {
-                                        <script>
+                                            </script>
+                                        }
+                                        else
+                                        {
+                                            <script>
                                             //alert('Sorry, you scored under 5 points. Please try again.');
                                             if (@Session["DragDrop_Quiz_Score"] < 5) {
                                                 var sadface1 = $('<img>').attr('src', '/Content/images/gif/rain1.gif')
@@ -132,33 +136,33 @@
                                                 $('.container').append(sadface1);
                                                 $('.container').append(sadface2);
                                             }
-                                        </script>
+                                            </script>
+                                        }
+
+
+
                                     }
-
-
-
+                                    catch (Exception ex) { Console.WriteLine(ex.StackTrace); }
                                 }
-                                catch (Exception ex) { Console.WriteLine(ex.StackTrace); }
-                            }
 
 
+                            </div>
                         </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                     </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                </div>
                 <br />
                 <br />
                 <div class="row">

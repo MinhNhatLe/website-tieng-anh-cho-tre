@@ -2,7 +2,12 @@
 
 
 @{ ViewBag.Title = "Quiz With Images - English For Kids";
-    Layout = "~/Views/Shared/_Layout.cshtml"; }
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    if (Session["ID_User"] == null && Session["Admin_Code"] == null)
+    {
+        Response.Redirect("~/Login/SignIn");
+    }
+    }
 <style>
     .layout-background-quiz {
         background-color: gray;
