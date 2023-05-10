@@ -1,6 +1,11 @@
 ﻿@model EnglishForKids_LMN.Models.Category_VocabularyBonus
 @{ ViewBag.Title = "List Vocabulary Categories - English For Kids";
-    Layout = "~/Views/Shared/_LayoutAdmin.cshtml"; }
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    if (Session["ID_User"] == null && Session["Admin_Code"] == null)
+    {
+        Response.Redirect("~/Login/SignIn");
+    }
+    }
 <style>
 </style>
 <div class="container">

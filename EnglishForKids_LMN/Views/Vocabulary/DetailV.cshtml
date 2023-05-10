@@ -8,7 +8,12 @@
     if (Session["Admin_Code"] != null)
     {
         Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
-    } }
+    }
+    if (Session["ID_User"] == null && Session["Admin_Code"] == null)
+    {
+        Response.Redirect("~/Login/SignIn");
+    }
+    }
 <style>
     .img-vocabulary {
         display: inline-block;

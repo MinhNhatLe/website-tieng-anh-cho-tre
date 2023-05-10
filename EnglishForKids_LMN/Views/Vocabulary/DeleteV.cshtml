@@ -1,6 +1,11 @@
 ﻿@model EnglishForKids_LMN.Models.Vocabulary
 @{ ViewBag.Title = "Delete Vocabulary - English For Kids";
-    Layout = "~/Views/Shared/_LayoutAdmin.cshtml"; }
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    if (Session["ID_User"] == null && Session["Admin_Code"] == null)
+    {
+        Response.Redirect("~/Login/SignIn");
+    }
+    }
 <script src="~/Scripts/jquery-3.4.1.min.js"></script>
 @*<h2>Xóa từ vựng</h2>
     <div class="thumbnail">
