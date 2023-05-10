@@ -17,6 +17,10 @@
     {
         Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
     }
+    if (Session["ID_User"] == null && Session["Admin_Code"] == null)
+    {
+        Response.Redirect("~/Login/SignIn");
+    }
 }
 
 

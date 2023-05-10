@@ -1,6 +1,13 @@
-﻿
+﻿@model PagedList.IPagedList<EnglishForKids_LMN.Models.Question>
 @{ ViewBag.Title = "Result Test - English For Kids";
-    Layout = "~/Views/Shared/_Layout.cshtml"; }
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    if (Session["ID_User"] == null && Session["Admin_Code"] == null)
+    {
+        Response.Redirect("~/Login/SignIn");
+    }
+
+    var resultTest = Convert.ToInt32(Session["Test_Score"]);
+}
 
 <style>
     .background-quiz-result {
@@ -61,6 +68,29 @@
 
                     <div class="col-lg-12 col-sm-12 col-xs-12">
                         <h2 style="text-align: center; font-weight: bold">Total score: @Session["Test_Score"]/10</h2>
+                        @{
+                            var choice1 = Session["choice1"] as string;
+                            var choice2 = Session["choice2"] as string;
+                            var choice3 = Session["choice3"] as string;
+                            var choice4 = Session["choice4"] as string;
+                            var choice5 = Session["choice5"] as string;
+                            var choice6 = Session["choice6"] as string;
+                            var choice7 = Session["choice7"] as string;
+                            var text1 = Session["text1"] as string;
+                            var text2 = Session["text2"] as string;
+                            var text3 = Session["text3"] as string;
+                        }
+
+                        <p>Choice 1: @choice1</p>
+                        <p>Choice 2: @choice2</p>
+                        <p>Choice 3: @choice3</p>
+                        <p>Choice 4: @choice4</p>
+                        <p>Choice 5: @choice5</p>
+                        <p>Choice 6: @choice6</p>
+                        <p>Choice 7: @choice7</p>
+                        <p>Text 1: @text1</p>
+                        <p>Text 2: @text2</p>
+                        <p>Text 3: @text3</p>
                     </div>
                 </div>
 
