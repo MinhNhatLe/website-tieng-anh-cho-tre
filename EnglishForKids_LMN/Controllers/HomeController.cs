@@ -108,14 +108,18 @@ namespace EnglishForKids_LMN.Controllers
             }
             catch
             {
-                return HttpNotFound();
+                //return HttpNotFound();
+                return RedirectToAction("Error404", "Home");
             }
         }
 
 
 
 
-
+        public ActionResult Error404()
+        {
+            return View();
+        }
         public ActionResult Index()
         {
             return View();

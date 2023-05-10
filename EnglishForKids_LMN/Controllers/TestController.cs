@@ -141,9 +141,24 @@ namespace EnglishForKids_LMN.Controllers
             {
                 test_Score++;
             }
+            Session["choice1"] = choice1;
+            Session["choice2"] = choice2;
+            Session["choice3"] = choice3;
+            Session["choice4"] = choice4;
+            Session["choice5"] = choice5;
+            Session["choice6"] = choice6;
+            Session["choice7"] = choice7;
+            Session["text1"] = text1;
+            Session["text2"] = text2;
+            Session["text3"] = text3;
+
+
+
             Session["Test_Score"] = test_Score;
+            // Lấy thông tin user
             int user_Code = int.Parse(Session["ID_User"].ToString());
             User userz = db.Users.FirstOrDefault(s => s.ID_User == user_Code);
+            // Lưu kết quả bài kiểm tra vào CSDL
             int id = int.Parse(questions[0].ID_Test.ToString());
             if (db.Test_Details.FirstOrDefault(s => s.ID_Test == id && s.ID_User == user_Code) != null)
             {
@@ -173,7 +188,7 @@ namespace EnglishForKids_LMN.Controllers
             {
                 Message.IsBodyHtml = true;
                 Message.Subject = "Test result";
-                Message.Body = "Chào " + userz.Name_User.ToString() + ",\n"
+                Message.Body = "Hello " + userz.Name_User.ToString() + ",\n"
                 + "Result : \n\n"
                 + "---------------------------------------------------"
                 + "Question 1 : " + questions[0].Content + "\n"
@@ -213,7 +228,8 @@ namespace EnglishForKids_LMN.Controllers
             //smtp.Send(Message);
             return RedirectToAction("Result_Test", "Test");
         }
-        public ActionResult Result_Test()
+
+            public ActionResult Result_Test()
         {
             return View();
         }

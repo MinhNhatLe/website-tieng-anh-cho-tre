@@ -166,7 +166,8 @@ namespace EnglishForKids_LMN.Controllers
             }
             catch (Exception)
             {
-                return HttpNotFound();
+                //return HttpNotFound();
+                return RedirectToAction("Error404", "Home");
             }
         }
         static int reCode;

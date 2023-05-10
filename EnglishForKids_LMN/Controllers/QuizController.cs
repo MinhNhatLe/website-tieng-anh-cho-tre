@@ -256,7 +256,8 @@ namespace EnglishForKids_LMN.Controllers
             }
             catch
             {
-                return HttpNotFound();
+                //return HttpNotFound();
+                return RedirectToAction("Error404", "Home");
             }
         }
         public ActionResult Result_DragDrop_Quiz()
@@ -326,7 +327,8 @@ namespace EnglishForKids_LMN.Controllers
             }
             catch
             {
-                return HttpNotFound();
+                //return HttpNotFound();
+                return RedirectToAction("Error404", "Home");
             }
         }
         public ActionResult EditQ(int id)
@@ -363,7 +365,8 @@ namespace EnglishForKids_LMN.Controllers
             }
             catch
             {
-                return HttpNotFound();
+                //return HttpNotFound();
+                return RedirectToAction("Error404", "Home");
             }
         }
         public ActionResult DeleteQ(int id)

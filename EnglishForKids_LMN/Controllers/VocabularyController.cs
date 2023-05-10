@@ -41,7 +41,8 @@ namespace EnglishForKids_LMN.Controllers
             }
             catch
             {
-                return HttpNotFound();
+                //return HttpNotFound();
+                return RedirectToAction("Error404", "Home");
             }
         }
         // lấy ra thông tin loại từ vựng (vocabulary type) có ID tương ứng từ cơ sở dữ liệu, và trả về một view cho phép người dùng chỉnh sửa thông tin này.
@@ -75,7 +76,8 @@ namespace EnglishForKids_LMN.Controllers
             }
             catch
             {
-                return HttpNotFound();
+                //return HttpNotFound();
+                return RedirectToAction("Error404", "Home");
             }
         }
         [HttpPost]
@@ -106,7 +108,8 @@ namespace EnglishForKids_LMN.Controllers
             }
             catch
             {
-                return HttpNotFound();
+                //return HttpNotFound();
+                return RedirectToAction("Error404", "Home");
             }
 
         }
@@ -192,7 +195,8 @@ namespace EnglishForKids_LMN.Controllers
             }
             catch
             {
-                return HttpNotFound();
+                //return HttpNotFound();
+                return RedirectToAction("Error404", "Home");
             }
         }
         public ActionResult CreateV()
@@ -232,7 +236,8 @@ namespace EnglishForKids_LMN.Controllers
             }
             catch
             {
-                return HttpNotFound();
+                //return HttpNotFound();
+                return RedirectToAction("Error404", "Home");
             }
         }
         //phương thức (method) có tên là ProcessUpload và nhận đối số đầu vào là một đối tượng HttpPostedFileBase.
@@ -292,7 +297,8 @@ namespace EnglishForKids_LMN.Controllers
             }
             catch
             {
-                return HttpNotFound();
+                //return HttpNotFound();
+                return RedirectToAction("Error404", "Home");
             }
         }
         public ActionResult User_View(int? id, int? page, string searchVocabulary, string sortVocabulary)
