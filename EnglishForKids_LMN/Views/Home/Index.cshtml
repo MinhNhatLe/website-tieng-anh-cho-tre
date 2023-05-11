@@ -1,6 +1,5 @@
-﻿
-@{
-    ViewBag.Title ="Statistical - English For Kids";
+﻿@{
+    ViewBag.Title = "Statistical - English For Kids";
     if (Session["Admin_Code"] != null)
     {
         Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
@@ -10,31 +9,265 @@
         Response.Redirect("~/Login/SignIn");
     }
 }
+@*<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>*@
+<script src="~/Scripts/chart.js"></script>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12 col-sm-12 col-xs-12">
+            <div class="border-title">
+                <div class="container_title">
+                    <h2 class="title" style="font-size:39px">
+                        <span class="title-word title-word-1">S</span>
+                        <span class="title-word title-word-2">T</span>
+                        <span class="title-word title-word-3">A</span>
+                        <span class="title-word title-word-4">T</span>
+                        <span class="title-word title-word-1">I</span>
+                        <span class="title-word title-word-2">S</span>
+                        <span class="title-word title-word-3">T</span>
+                        <span class="title-word title-word-4">I</span>
+                        <span class="title-word title-word-1">C</span>
+                        <span class="title-word title-word-2">A</span>
+                        <span class="title-word title-word-3">L</span>
+                    </h2>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br />
+    <br />
+    <div class="row">
+        <div class="col-lg-2 col-sm-2 col-xs-4">
+            <div class="bx-flashing-hover" style="width: 100%; height: 130px; background-color: #070A52; border-radius: 10px; padding: 10px">
+                <img class="center-block" src="~/Content/images/resultmain.png" style="width: 30%" />
+                <p class="text-center" style="color: white; font-size:15px; font-weight:300; padding: 10px">
+                    Total vocabulary:
+                    @ViewBag.TotalVocabularies
+                </p>
+            </div>
+        </div>
+        <div class="col-lg-2 col-sm-2 col-xs-4">
+            <div class="bx-flashing-hover" style="width: 100%; height: 130px; background-color: #F94A29; border-radius: 10px; padding: 10px">
+                <img class="center-block" src="~/Content/images/resultmain2.png" style="width: 38%" />
+                <p class="text-center" style="color: white; font-size:15px; font-weight:300; padding: 10px">
+                    Total category:
+                    @ViewBag.TotalCategory_Vo
+                </p>
+            </div>
+        </div>
+        <div class="col-lg-2 col-sm-2 col-xs-4">
+            <div class="bx-flashing-hover" style="width: 100%; height: 130px; background-color: #FCE22A; border-radius: 10px; padding: 10px">
+                <img class="center-block" src="~/Content/images/resultmain3.png" style="width: 24%" />
+                <p class="text-center" style="color: white; font-size:15px; font-weight:300; padding: 10px">
+                    Total story:
+                    @ViewBag.TotalStories
+                </p>
+            </div>
+        </div>
+        <div class="col-lg-2 col-sm-2 col-xs-4">
+            <div class="bx-flashing-hover" style="width: 100%; height: 130px; background-color: #FFBF9B; border-radius: 10px; padding: 10px">
+                <img class="center-block" src="~/Content/images/pngegg (4).png" style="width: 51%" />
+                <p class="text-center" style="color: white; font-size:15px; font-weight:300; padding: 10px">
+                    Total quiz:
+                    @ViewBag.TotalQuizs
+                </p>
+            </div>
+        </div>
+        <div class="col-lg-2 col-sm-2 col-xs-4">
+            <div class="bx-flashing-hover" style="width: 100%; height: 130px; background-color: #5D3891; border-radius: 10px; padding: 10px">
+                <img class="center-block" src="~/Content/images/pngegg (5).png" style="width: 27%" />
+                <p class="text-center" style="color: white; font-size:15px; font-weight:300; padding: 10px">
+                    Total question:
+                    @ViewBag.TotalQuestions
+                </p>
+            </div>
+        </div>
+        <div class="col-lg-2 col-sm-2 col-xs-4">
+            <div class="bx-flashing-hover" style="width: 100%; height: 130px; background-color: #F99417; border-radius: 10px; padding: 10px">
+                <img class="center-block" src="~/Content/images/pngegg (6).png" style="width: 45%" />
+                <p class="text-center" style="color: white; font-size:15px; font-weight:300; padding: 10px">
+                    Total test:
+                    @ViewBag.TotalTests
+                </p>
+            </div>
+        </div>
+    </div>
+    <br />
+    <div class="row">
+        <div class="col-lg-4 col-sm-4 col-xs-4">
+            <div class="bx-flashing-hover" style="width: 100%; height: 150px; background-color: #D61355; border-radius: 10px; padding: 10px">
+                <img class="center-block" src="~/Content/images/pngegg.png" style="width: 18%" />
+                <p class="text-center" style="color: white; font-size:15px; font-weight:300; padding: 10px">
+                    Total number of puzzle players:
+                    @ViewBag.TotalQuiz_Details
+                </p>
+            </div>
+        </div>
+        <div class="col-lg-4 col-sm-4 col-xs-4">
+            <div class="bx-flashing-hover" style="width: 100%; height: 150px; background-color: #4F4557; border-radius: 10px; padding: 10px">
+                <img class="center-block" src="~/Content/images/pngegg (8).png" style="width: 20%" />
+                <p class="text-center" style="color: white; font-size:15px; font-weight:300; padding: 10px">
+                    Total number of test players:
+                    @ViewBag.TotalTest_Details
+                </p>
+            </div>
+        </div>
+        <div class="col-lg-4 col-sm-4 col-xs-4">
+            <div class="bx-flashing-hover" style="width: 100%; height: 150px; background-color: #57C5B6; border-radius: 10px; padding: 10px">
+                <img class="center-block" src="~/Content/images/pngegg (7).png" style="width: 22%" />
+                <p class="text-center" style="color: white; font-size:15px; font-weight:300; padding: 10px">
+                    Total number of registered accounts:
+                    @ViewBag.TotalUsers
+                </p>
+            </div>
+        </div>
+    </div>
+    <br />
+    <hr />
+    <div class="row">
+        <div class="col-lg-12 col-sm-12 col-xs-12" style="background-color: azure; padding: 40px; border-radius: 10px;">
+            <h4 class="animate-charcter center-block text-center">Detailed statistics about all</h4>
+            <canvas id="userChart2"></canvas>
+            <script>
+                var userData2 = JSON.parse('@Html.Raw(ViewBag.UserData2)');
+                var ctx = document.getElementById("userChart2").getContext('2d');
+                var userChar2 = new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: userData2.labels,
+                        datasets: [{
+                            label: 'Unit',
+                            data: userData2.data,
+                            backgroundColor: [
+                                '#070A52',
+                                '#F94A29',
+                                '#FCE22A',
+                                '#FFBF9B',
+                                '#5D3891',
+                                '#F99417',
+                                '#D61355',
+                                '#4F4557',
+                                '#57C5B6',
+                            ],
+                            borderColor: [
+                                'rgba(54, 162, 235, 1)',
+                                'rgba(255, 206, 86, 1)',
+                                'rgba(75, 192, 192, 1)',
+                                'rgba(153, 102, 255, 1)',
+                                'rgba(75, 192, 192, 1)',
+                                'rgba(153, 102, 255, 1)',
+                                'rgba(75, 192, 192, 1)',
+                                'rgba(153, 102, 255, 1)',
+                                'rgba(54, 162, 235, 1)',
+                            ],
+                            borderWidth: 1,
+                        }]
+                    },
+                    options: {
+                        scales: {
+                            yAxes: [{
+                                ticks: {
+                                    beginAtZero: true
+                                }
+                            }]
+                        }
+                    }
+                });
+            </script>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12 col-sm-12 col-xs-12">
 
-<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
-</div>
+        </div>
+    </div>
+    <br />
+    <hr />
+    <div class="row" style="background-color: azure; padding: 40px; border-radius: 10px;">
+        <div class="col-lg-8 col-sm-8 col-xs-12">
+            <h4 class="animate-charcter center-block text-center">Statistics about pages</h4>
+            <canvas id="userChart"></canvas>
+            <script>
+                var userData = JSON.parse('@Html.Raw(ViewBag.UserData)');
+                var ctx = document.getElementById("userChart").getContext('2d');
+                var userChart = new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: userData.labels,
+                        datasets: [{
+                            label: 'Unit',
+                            data: userData.data,
+                            backgroundColor: [
+                                '#070A52',
+                                '#F94A29',
+                                '#FCE22A',
+                                '#FFBF9B',
+                                '#5D3891',
+                                '#F99417',
+                            ],
+                            borderColor: [
+                                'rgba(54, 162, 235, 1)',
+                                'rgba(255, 206, 86, 1)',
+                                'rgba(75, 192, 192, 1)',
+                                'rgba(153, 102, 255, 1)',
+                                'rgba(75, 192, 192, 1)',
+                                'rgba(153, 102, 255, 1)',
+                            ],
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        scales: {
+                            yAxes: [{
+                                ticks: {
+                                    beginAtZero: true
+                                }
+                            }]
+                        }
+                    }
+                });
+            </script>
 
-<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
+        </div>
+        <div class="col-lg-4 col-sm-4 col-xs-12">
+            <h4 class="animate-charcter center-block text-center">User statistics</h4>
+            <canvas id="userChart1" style="height:300px;"></canvas>
+            <script>
+                var userData1 = JSON.parse('@Html.Raw(ViewBag.UserData1)');
+                var ctx = document.getElementById("userChart1").getContext('2d');
+                var userChar1 = new Chart(ctx, {
+                    type: 'doughnut',
+                    data: {
+                        labels: userData1.labels,
+                        datasets: [{
+                            label: 'Unit',
+                            data: userData1.data,
+                            backgroundColor: [
+                                '#D61355',
+                                '#4F4557',
+                                '#57C5B6',
+                            ],
+                            borderColor: [
+                                'rgba(75, 192, 192, 1)',
+                                'rgba(153, 102, 255, 1)',
+                                'rgba(54, 162, 235, 1)',
+                            ],
+                            borderWidth: 1,
+                        }]
+                    },
+                    options: {
+                        scales: {
+                            yAxes: [{
+                                ticks: {
+                                    beginAtZero: true
+                                }
+                            }]
+                        }
+                    }
+                });
+            </script>
+        </div>
     </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
-    </div>
+    <br />
+    <br />
+    <br />
 </div>
