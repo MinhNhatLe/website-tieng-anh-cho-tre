@@ -6,6 +6,7 @@ using System.Text.RegularExpressions;
 using System.Web;
 using System.Web.Mvc;
 using EnglishForKids_LMN.Models;
+using Newtonsoft.Json;
 
 namespace EnglishForKids_LMN.Controllers
 {
@@ -121,7 +122,66 @@ namespace EnglishForKids_LMN.Controllers
             return View();
         }
         public ActionResult Index()
-        {
+        {            
+            // Tổng số từ vựng
+            int totalVocabularies = db.Vocabularies.Count();
+            ViewBag.TotalVocabularies = totalVocabularies;
+
+            // Tổng số thể loại từ vựng
+            int totalCategory_Vo = db.Category_Vo.Count();
+            ViewBag.TotalCategory_Vo = totalCategory_Vo;
+
+            // Tổng số câu truyện
+            int totalStories = db.Stories.Count();
+            ViewBag.TotalStories = totalStories;
+
+            // Tổng số câu đố
+            int totalQuizs = db.Quizs.Count();
+            ViewBag.TotalQuizs = totalQuizs;
+
+            // Tổng số câu hỏi
+            int totalQuestions = db.Questions.Count();
+            ViewBag.TotalQuestions = totalQuestions;
+            
+            // Tổng số bài kiểm tra
+            int totalTests = db.Tests.Count();
+            ViewBag.TotalTests = totalTests;
+            
+
+            // Tổng số người chơi quiz
+            int totalQuiz_Details = db.Quiz_Details.Count();
+            ViewBag.TotalQuiz_Details = totalQuiz_Details;
+            
+            // Tổng số người test
+            int totalTest_Details = db.Test_Details.Count();
+            ViewBag.TotalTest_Details = totalTest_Details;
+
+            // Tổng số người dùng
+            int totalUsers = db.Users.Count();
+            ViewBag.TotalUsers = totalUsers;
+
+
+            // Từng thể loại
+            ViewBag.UserData = JsonConvert.SerializeObject(new
+            {
+                labels = new[] { "Vocabulary", "Category", "Story", "Quiz", "Question", "Test"},
+                data = new[] { ViewBag.TotalVocabularies, ViewBag.TotalCategory_Vo, ViewBag.TotalStories, ViewBag.TotalQuizs, ViewBag.TotalQuestions, ViewBag.TotalTests}
+            });
+
+            // Người dùng
+            ViewBag.UserData1 = JsonConvert.SerializeObject(new
+            {
+                labels = new[] { "Quiz", "Test", "Account" },
+                data = new[] { ViewBag.TotalQuiz_Details, ViewBag.TotalTest_Details, ViewBag.TotalUsers}
+            });
+
+            //Tất cả
+            ViewBag.UserData2 = JsonConvert.SerializeObject(new
+            {
+                labels = new[] { "Vocabulary", "Category", "Story", "Quiz", "Question", "Test", "Quiz", "Test", "Account" },
+                data = new[] { ViewBag.TotalVocabularies, ViewBag.TotalCategory_Vo, ViewBag.TotalStories, ViewBag.TotalQuizs, ViewBag.TotalQuestions, ViewBag.TotalTests, ViewBag.TotalQuiz_Details, ViewBag.TotalTest_Details, ViewBag.TotalUsers }
+            });
+
             return View();
         }
 
