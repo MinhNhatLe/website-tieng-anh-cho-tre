@@ -346,7 +346,11 @@
     <Content Include="Content\images\Lemon.png" />
     <Content Include="Content\images\Mango.png" />
     <Content Include="Content\images\Motorbike.png" />
-    <Content Include="Content\images\nakiri-ayame-in-hololive-i5-1920x1080.jpg" />
+    <Content Include="Content\images\nhat1.jpg" />
+    <Content Include="Content\images\nhat2.jpg" />
+    <Content Include="Content\images\nhat3.jpg" />
+    <Content Include="Content\images\nhat4.jpg" />
+    <Content Include="Content\images\nhat5.jpg" />
     <Content Include="Content\images\noodles.png" />
     <Content Include="Content\images\number\1.jpg" />
     <Content Include="Content\images\number\10.jpg" />
@@ -511,6 +515,7 @@
       <DependentUpon>Model1.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
+    <Content Include="Scripts\chart.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
     <Content Include="Scripts\jquery-3.4.1.slim.js" />
