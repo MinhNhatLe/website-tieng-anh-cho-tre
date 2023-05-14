@@ -1,0 +1,133 @@
+﻿@model PagedList.IPagedList<EnglishForKids_LMN.Models.Question>
+@using PagedList.Mvc;
+@using PagedList;
+@{ ViewBag.Title = "List Question - English For Kids";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    if (Session["ID_User"] == null && Session["Admin_Code"] == null)
+    {
+        Response.Redirect("~/Login/SignIn");
+    }
+}
+
+<style>
+</style>
+
+
+
+@*MAIN Bài kiếm tra CHÍNH*@
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12 col-sm-12 col-xs-12">
+            <div class="border-title">
+                <div class="container_title">
+                    <h2 class="title" style="font-size:37px">
+                        <span class="title-word title-word-1">Q</span>
+                        <span class="title-word title-word-2">U</span>
+                        <span class="title-word title-word-3">E</span>
+                        <span class="title-word title-word-4">S</span>
+                        <span class="title-word title-word-1">T</span>
+                        <span class="title-word title-word-2">I</span>
+                        <span class="title-word title-word-3">O</span>
+                        <span class="title-word title-word-4">N</span>
+                    </h2>
+                </div>
+            </div>
+
+
+
+        </div>
+    </div>
+    <br />
+    @using (Html.BeginForm("ListQuestion", "Test", FormMethod.Get))
+    {
+        <div class="row">
+            <div class="col-lg-5 col-sm-1 col-xs-0">
+
+            </div>
+            <div class="col-lg-7 col-sm-11 col-xs-12">
+                <label>Search and arrange:</label>
+                <select id="sortTest" name="sortTest" class="form-control" style="width:105px;display:inline-block">
+                    <option for="sortQuestion" id="sortQuestion" name="sortQuestion" value="@Session["sortQuestion"]" hidden>@Session["sortQuestion"]</option>
+                    <option for="sortQuestion" id="sortQuestion" name="sortQuestion" value="None">None</option>
+                    <option for="sortQuestion" id="sortQuestion" name="sortQuestion" value="AZ">A - Z</option>
+                    <option for="sortQuestion" id="sortQuestion" name="sortQuestion" value="ZA">Z - A</option>
+                </select>
+                <input type="text" id="searchQuestion" name="searchQuestion" class="form-control" placeholder="Enter keywords to search ..." value="@Session["searchQuestion"]" required style="display: inline-block; width: 250px" />
+                <input type="submit" value="Search" class="btn btn-primary bx-fade-right-hover" style="width:90px;display:inline-block" />
+            </div>
+        </div>
+        <br />
+        <div class="row">
+            <div class="col-lg-12 col-sm-12 col-xs-12">
+                <a href="@Url.Action("Create_Question", "Test")" class="btn btn-primary bx-tada-hover btn-taomoi-reponsive">Create new question</a>
+            </div>
+        </div>
+        <hr />
+        <div class="row">
+            <table class="table-hover table table-responsive tr">
+                <caption class="caption">List of question</caption>
+                <tr>
+                    <th style=" text-align: center;">ID</th>
+                    <th style=" text-align: center;">Content</th>
+                    <th style=" text-align: center;">Type</th>
+                    <th style=" text-align: center;">Answer 1</th>
+                    <th style=" text-align: center;">Answer 2</th>
+                    <th style=" text-align: center;">Answer 3</th>
+                    <th style=" text-align: center;">Answer 4</th>
+                    <th style=" text-align: center;">Correct</th>
+                    <th style=" text-align: center;">ID test</th>
+                    <th style=" text-align: center;">Function</th>
+                </tr>
+                @foreach (var item in Model)
+                {
+                    <tr class="search-list">
+                        <td style=" text-align: center;">@item.ID_Question</td>
+                        <td style=" text-align: center;">@item.Content</td>
+                        <td style=" text-align: center;">@item.Type_Question</td>
+                        <td style=" text-align: center;">@item.Answer_Content1</td>
+                        <td style=" text-align: center;">@item.Answer_Content2</td>
+                        <td style=" text-align: center;">@item.Answer_Content3</td>
+                        <td style=" text-align: center;">@item.Answer_Content4</td>
+                        <td style=" text-align: center;">@item.Answer_Correct</td>
+                        <td style=" text-align: center;">@item.ID_Test</td>
+
+
+
+                        <td style=" text-align: center;">
+                            <a href="@Url.Action("EditQuestion", "Test", new { id = item.ID_Question })" class="btn btn-warning bx-tada-hover" style="width:80px;">Edit</a>
+                            <a href="/Test/DeleteQuestion/@item.ID_Question" class="btn btn-danger bx-tada-hover" style="width:80px;" onclick="return confirm('Are you sure you want to delete this question?')">Delete</a>
+                        </td>
+                    </tr>
+                }
+            </table>
+        </div>
+        <div class="row">
+            <div class="col-lg-12 col-sm-12 col-xs-12">
+                <div style="margin-top:50px">
+                    <div>
+                        Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount
+                    </div>
+                    <div>
+                        @if (Session["searchQuestion"] != null)
+                        {
+                            @Html.PagedListPager(Model, page => Url.Action("ListQuestion", new { page = page, searchQuestion = Session["searchQuestion"], sortQuestion = Session["sortQuestion"] })) }
+                        else
+                        {
+                            @Html.PagedListPager(Model, page => Url.Action("ListQuestion", new { page = page }))}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+
+        //MAIN Bài kiếm tra CHÍNH
+
+
+
+        <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    }
+</div>

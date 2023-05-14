@@ -584,6 +584,9 @@
     <Content Include="Views\Vocabulary\User_View.cshtml" />
     <Content Include="Views\Identify\Identify_AI.cshtml" />
     <Content Include="Views\Home\Error404.cshtml" />
+    <Content Include="Views\Test\Create_Question.cshtml" />
+    <Content Include="Views\Test\ListQuestion.cshtml" />
+    <Content Include="Views\Test\EditQuestion.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

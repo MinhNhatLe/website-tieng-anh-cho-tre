@@ -22,6 +22,10 @@ namespace EnglishForKids_LMN.Controllers
             List<Category_Vo> vocabulary_Type = db.Category_Vo.Where(s => s.ID_Category_Vo != 6).ToList();
             Category_VocabularyBonus vocabular_TypeBonus = new Category_VocabularyBonus();
             vocabular_TypeBonus.vocabulary_Types = vocabulary_Type;
+
+
+
+
             return View(vocabular_TypeBonus);
         }
         // sử dụng id chuyền vào tìm kiếm Category_Vo trong cơ sở dữ liệu

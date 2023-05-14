@@ -5,7 +5,7 @@
     {
         Response.Redirect("~/Login/SignIn");
     }
-    }
+}
 
 <style>
     .layout-background-test {
@@ -103,20 +103,20 @@
                 @*</marquee>*@
                 @foreach (var item in Model)
                 {
-    <ul>
-        <li>
-            <b>
-                @item.Name_Test
-            </b>
-            @foreach (var item1 in test_Details)
-            {
-                if (item1.ID_Test == item.ID_Test && item1.ID_User == user_Code)
-                {
-<span>: @item1.Test_Score/10 score.</span>break;
-}
-}
-        </li>
-    </ul>}
+                    <ul>
+                        <li>
+                            <b>
+                                @item.Name_Test
+                            </b>
+                            @foreach (var item1 in test_Details)
+                            {
+                                if (item1.ID_Test == item.ID_Test && item1.ID_User == user_Code)
+                                {
+                                    <span>: @item1.Test_Score/10 score.</span>break;
+                                }
+                            }
+                        </li>
+                    </ul>}
             </div>
             <hr />
             <ol>
@@ -124,6 +124,7 @@
                     Note:
                 </p>
                 <li>
+
                     There are 10 questions including: multiple choice, essay.
                 </li>
                 <li>
@@ -135,15 +136,14 @@
         <div class="col-lg-8 col-sm-8 col-xs-12">
             @foreach (var item in Model)
             {
-<a href="/Test/Do_Test/@item.ID_Test">
-    <div class="col-lg-6 col-sm-6 col-xs-12" style="border-radius: 0; margin-top: 30px; display: flex; align-items: center; justify-content: center;">
-        <div class="card" style="border-radius: 20px; background-color: #eceade;">
-            <h1 class="animate-charcter text-center" style="text-align:center;color:black; font-size: 24px; font-weight: 700 ">@item.Name_Test</h1>
+                <a href="/Test/Do_Test/@item.ID_Test">
+                    <div class="col-lg-6 col-sm-6 col-xs-12" style="border-radius: 0; margin-top: 30px; display: flex; align-items: center; justify-content: center;">
+                        <div class="card" style="border-radius: 20px; background-color: #eceade;">
+                            <h1 class="animate-charcter text-center" style="text-align:center;color:black; font-size: 24px; font-weight: 700 ">@item.Name_Test</h1>
 
-        </div>
-    </div>
-
-</a>        }
+                        </div>
+                    </div>
+                </a>}
         </div>
     </div>
 

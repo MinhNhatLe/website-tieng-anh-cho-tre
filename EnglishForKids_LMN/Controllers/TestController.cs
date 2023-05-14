@@ -270,6 +270,48 @@ namespace EnglishForKids_LMN.Controllers
             int pageNum = page ?? 1;
             return View(tests1.ToPagedList(pageNum, pageSize));
         }
+
+
+        public ActionResult ListQuestion(int? page, string searchQuestion, string sortQuestion)
+        {
+            List<Question> questions = new List<Question>();
+            if (searchQuestion != null)
+            {
+                Session["searchQuestion"] = searchQuestion;
+                questions = db.Questions.Where(s => s.Content.Contains(searchQuestion.Trim().ToLower())).ToList();
+            }
+            else
+            {
+                Session["searchQuestion"] = null;
+                questions = db.Questions.ToList();
+            }
+            List<Question> questions1;
+            if (sortQuestion == null || sortQuestion == "None")
+            {
+                Session["sortQuestion"] = "None";
+                questions1 = questions;
+            }
+            else if (sortQuestion == "AZ")
+            {
+                Session["sortQuestion"] = "A - Z";
+                questions1 = questions.OrderBy(s => s.Content).ToList();
+            }
+            else
+            {
+                Session["sortQuestion"] = "Z - A";
+                questions1 = questions.OrderByDescending(s => s.Content).ToList();
+            }
+            if (page == null)
+            {
+                page = 1;
+            }
+            int pageSize = 9;
+            int pageNum = page ?? 1;
+            return View(questions1.ToPagedList(pageNum, pageSize));
+        }
+
+
+
         public ActionResult CreateT()
         {
             return View();
@@ -279,7 +321,6 @@ namespace EnglishForKids_LMN.Controllers
         {
             if (test != null)
             {
-
 
 
                 Test test1 = new Test();
@@ -292,6 +333,39 @@ namespace EnglishForKids_LMN.Controllers
             }
             return RedirectToAction("ListTest", "Test");
         }
+
+
+
+
+        
+
+        public ActionResult Create_Question()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult Create_Question(Question question)
+        {
+            if (question != null)
+            {
+                Question question1 = new Question();
+                question1.ID_Question = question.ID_Question;
+                question1.Content = question.Content;
+                question1.Type_Question = question.Type_Question;
+                question1.Answer_Content1 = question.Answer_Content1;
+                question1.Answer_Content2 = question.Answer_Content2;
+                question1.Answer_Content3 = question.Answer_Content3;
+                question1.Answer_Content4 = question.Answer_Content4;
+                question1.Answer_Correct = question.Answer_Correct;
+                question1.ID_Test = question.ID_Test;
+                db.Questions.Add(question1);
+                db.SaveChanges();
+
+            }
+            return RedirectToAction("ListQuestion", "Test");
+        }
+
+
         public ActionResult EditQ(int id)
         {
             Test test = db.Tests.FirstOrDefault(s => s.ID_Test == id);
@@ -314,6 +388,81 @@ namespace EnglishForKids_LMN.Controllers
                 db.SaveChanges();
             }
             return RedirectToAction("ListTest", "Test");
+        }
+
+
+        public ActionResult EditQuestion(int id)
+        {
+            Question question = db.Questions.FirstOrDefault(s => s.ID_Question == id);
+            if (question != null)
+            {
+                return View(question);
+            }
+            return RedirectToAction("ListQuestion", "Test");
+        }
+        [HttpPost]
+        public ActionResult EditQuestion(Question question)
+        {
+            Question question1 = db.Questions.FirstOrDefault(s => s.ID_Question == question.ID_Question);
+            if (question != null)
+            {
+                //question1.ID_Question = question.ID_Question;
+                question1.Content = question.Content;
+                question1.Type_Question = question.Type_Question;
+                question1.Answer_Content1 = question.Answer_Content1;
+                question1.Answer_Content2 = question.Answer_Content2;
+                question1.Answer_Content3 = question.Answer_Content3;
+                question1.Answer_Content4 = question.Answer_Content4;
+                question1.Answer_Correct = question.Answer_Correct;
+                question1.ID_Test = question.ID_Test;
+
+                db.Questions.AddOrUpdate(question1);
+                db.SaveChanges();
+            }
+            return RedirectToAction("ListQuestion", "Test");
+        }
+
+
+
+        public ActionResult DeleteQ(int id)
+        {
+            try
+            {
+                Test test = db.Tests.FirstOrDefault(s => s.ID_Test == id);
+                if (test != null)
+                {
+                    db.Tests.Remove(test);
+                    db.SaveChanges();
+                    List<Test> tests = db.Tests.ToList();
+                }
+                return RedirectToAction("ListTest");
+            }
+            catch
+            {
+                //return HttpNotFound();
+                return RedirectToAction("Error404", "Home");
+            }
+        }
+
+
+        public ActionResult DeleteQuestion(int id)
+        {
+            try
+            {
+                Question questions = db.Questions.FirstOrDefault(s => s.ID_Question == id);
+                if (questions != null)
+                {
+                    db.Questions.Remove(questions);
+                    db.SaveChanges();
+                    List<Question> question = db.Questions.ToList();
+                }
+                return RedirectToAction("ListQuestion");
+            }
+            catch
+            {
+                //return HttpNotFound();
+                return RedirectToAction("Error404", "Home");
+            }
         }
     }
 }

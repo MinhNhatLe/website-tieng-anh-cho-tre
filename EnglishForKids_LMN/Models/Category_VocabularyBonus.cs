@@ -15,5 +15,10 @@ namespace EnglishForKids_LMN.Models
         public int ID_Category_Vo { get; set; }
 
         public List<Category_Vo> vocabulary_Types { get; set; }
+
+        internal object ToPagedList(int pageNum, int pageSize)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

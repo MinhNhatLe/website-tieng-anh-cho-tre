@@ -182,6 +182,7 @@ namespace EnglishForKids_LMN.Controllers
                 data = new[] { ViewBag.TotalVocabularies, ViewBag.TotalCategory_Vo, ViewBag.TotalStories, ViewBag.TotalQuizs, ViewBag.TotalQuestions, ViewBag.TotalTests, ViewBag.TotalQuiz_Details, ViewBag.TotalTest_Details, ViewBag.TotalUsers }
             });
 
+
             return View();
         }
 
