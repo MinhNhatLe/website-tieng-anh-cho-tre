@@ -1,0 +1,146 @@
+﻿@model EnglishForKids_LMN.Models.UserBonus
+@{ Layout = null;
+
+    if (Session["Admin_Code"] == null)
+    {
+        Response.Redirect("~/Login/SignIn");
+    }
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="~/Content/Style.css" rel="stylesheet" />
+    <title>Register - English For Kids</title>
+    <link href="~/Content/asset/signup.css" rel="stylesheet" />
+    <link href="~/Content/asset/reponsive_signin_signup.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&display=swap" rel="stylesheet">
+    <style>
+        .dangky {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
+</head>
+
+<body style="background-color: #eceade;">
+    <div class="row">
+        <div class="col-lg-12 col-sm-12 col-xs-12" style="position:relative;">
+            <img src="~/Content/images/gif/spyro-the-dragon-purple-dragon.gif" alt="results" style="width:15%; position: absolute; left: 80px; top: -20px" />
+        </div>
+    </div>
+    <div>
+        <div class="row">
+            <div class="col-lg-12 col-xs-12 dangky">
+                <audio autoplay="autoplay" controls hidden preload="auto" loop>
+                    <source src="~/Content/audio/phonics_song_main.mp3" type="audio/ogg">
+                    <source src="~/Content/audio/phonics_song_main.mp3" type="audio/mpeg">
+                </audio>
+
+                <div class="form-dangky">
+                    <form action="/Login/SignUpAdmin" method="post">
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        <div>
+                            <div class="text-center">
+                                <h1 class="h1-dangky animate-charcter">Member Admin Register</h1>
+                            </div>
+                            <p>
+                                <strong>
+                                    <label for="User_FullName">Full name</label>
+                                </strong>
+                                @Html.ValidationMessageFor(model => model.User_FullName, "", new { @class = "text-danger" })
+                            </p>
+                            <div class="input-group">
+                                <input type="text" id="User_FullName" name="User_FullName" class="form-control" placeholder="Enter your full name ..." autofocus="autofocus" minlength="2" maxlength="20" required />
+                                <span class="input-group-addon">
+                                    <i class="glyphicon glyphicon-user"></i>
+                                </span>
+                            </div>
+                            <br />
+                            <p>
+                                <strong>
+                                    <label for="User_Mail">Email address</label>
+                                </strong>
+                                <font style="color:red;"> @ViewData["UserExisted"]</font>
+                                @Html.ValidationMessageFor(model => model.User_Mail, "", new { @class = "text-danger" })
+                            </p>
+                            <div class="input-group">
+                                <input type="email" id="User_Mail" name="User_Mail" class="form-control" placeholder="Example: lmnhat.contact@gmail.com" minlength="5" maxlength="30" required />
+                                <span class="input-group-addon">
+                                    <i class="glyphicon glyphicon-envelope"></i>
+                                </span>
+                            </div>
+                            <br />
+                            <p>
+                                <strong>
+                                    <label for="User_Password">Password</label>
+                                </strong>
+                                @Html.ValidationMessageFor(model => model.User_Password, "", new { @class = "text-danger" })
+                            </p>
+                            <div class="input-group">
+                                <input type="password" id="User_Password" name="User_Password" class="form-control" placeholder="Enter your password ..." minlength="5" maxlength="10" required />
+                                <span class="input-group-addon">
+                                    <i class="glyphicon glyphicon-lock "></i>
+                                </span>
+                            </div>
+                            <br />
+                            <p>
+                                <strong>
+                                    <label for="Check_Password">Confirm password</label>
+                                </strong>
+                                <font style="color:red;"> @ViewData["WrongPassword"]</font>
+                                @Html.ValidationMessageFor(model => model.Check_Password, "", new { @class = "text-danger" })
+                            </p>
+                            <div class="input-group">
+                                <input type="password" id="Check_Password" name="Check_Password" class="form-control" placeholder="Enter your password again ..." minlength="5" maxlength="10" required />
+                                <span class="input-group-addon">
+                                    <i class="glyphicon glyphicon-check "></i>
+                                </span>
+                            </div>
+                            <div>
+                                @*<button type="submit" name="SignUp" value="Sign Up" class="btn btn-primary btn-dangky">Register</button>*@
+
+
+                                <div class="wrap">
+                                    <button class="button" type="submit" name="SignUpAdmin" value="Sign Up" required>Register</button>
+                                </div>
+
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-6 col-xs-6">
+                                    <p class="QuayLai">
+                                        <a href="/Login/SignIn">Back to login page!</a>
+                                    </p>
+                                </div>
+                                <div class="col-lg-6 col-xs-6">
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        function myfunction() {
+            var x = document.getElementById("Check_Password");
+            var y = document.getElementById("Password_User");
+            if (x.type == "password" && y.type == "password") {
+                x.type = "text";
+                y.type = "text";
+            }
+            else {
+                x.type = "password";
+                y.type = "password";
+            }
+        }
+    </script>
+    <script src="~/Scripts/jquery-3.4.1.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+</body>
+</html>
