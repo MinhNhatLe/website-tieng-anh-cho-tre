@@ -116,6 +116,7 @@
                         <strong>IPA: </strong>
                         / @Html.ValueFor(model => model.Pronunciation) /
                         @Html.ActionLink("Voice", "Speech", new { id = Model.ID_Vocabulary }, new { @class = "btn btn-success bx bx-microphone bx-tada" })
+                        
                     </p>
                 </div>
             </div>
@@ -123,6 +124,10 @@
 
             </div>
         </div>
+
+
+        
+
         <div class="row">
             <div class="col-lg-6 col-xs-6">
                 @Html.ActionLink("Back to vocabulary page!", "User_View", "Vocabulary", new { @class = "btn btn-warning bx-fade-left-hover" })
