@@ -587,6 +587,8 @@
     <Content Include="Views\Test\Create_Question.cshtml" />
     <Content Include="Views\Test\ListQuestion.cshtml" />
     <Content Include="Views\Test\EditQuestion.cshtml" />
+    <Content Include="Views\Home\AllAccount.cshtml" />
+    <Content Include="Views\Login\SignUpAdmin.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
