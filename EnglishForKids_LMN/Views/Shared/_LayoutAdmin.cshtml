@@ -145,22 +145,31 @@
                 </li>
                 <li>
                     <a href="@Url.Action("ListQuestion", "Test")">
-                        <i class='bx bx-notepad bx-tada'></i>
+                        <i class='bx bx-comment-add bx-tada'></i>
                         <span class="link_name">Question</span>
                     </a>
                     <ul class="sub-menu blank">
                         <li><a class="link_name" href="@Url.Action("ListQuestion", "Test")">Question</a></li>
                     </ul>
                 </li>
-                @*<li>
-            <a href="@Url.Action("GoogleTranslate", "GoogleTranslate")">
-                <i class='bx bx-captions bx-tada'></i>
-                <span class="link_name">Google dịch</span>
-            </a>
-            <ul class="sub-menu blank">
-                <li><a class="link_name" href="@Url.Action("GoogleTranslate", "GoogleTranslate")">Google dịch</a></li>
-            </ul>
-        </li>*@
+                <li>
+                    <a href="@Url.Action("GoogleTranslate", "GoogleTranslate")">
+                        <i class='bx bx-captions bx-tada'></i>
+                        <span class="link_name">Translate</span>
+                    </a>
+                    <ul class="sub-menu blank">
+                        <li><a class="link_name" href="@Url.Action("GoogleTranslate", "GoogleTranslate")">Translate</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="@Url.Action("AllAccount", "Home")">
+                        <i class='bx bxs-user-account bx-tada'></i>
+                        <span class="link_name">Account</span>
+                    </a>
+                    <ul class="sub-menu blank">
+                        <li><a class="link_name" href="@Url.Action("AllAccount", "Home")">Account</a></li>
+                    </ul>
+                </li>s
                 <li style="bottom:0; position:fixed">
                     <a href="/Home/Account">
                         <i class='bx bx-user bx-burst'></i>
@@ -182,7 +191,7 @@
                                 </a>
 
                             </div>
-                            <div class="job">Nice to meet you</div>
+                            <div class="job text-center">Nice to meet you</div>
                         </div>
                         <a class="link_name" href="@Url.Action("Logout", "Home")">
                             <i class='bx bx-log-out'>
@@ -206,65 +215,65 @@
 
 
             @*MAIN FOOTER CHÍNH*@
-        <footer class="new_footer_area bg_color">
-            <div class="new_footer_top">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-3 col-md-6">
-                            <div class="f_widget company_widget wow fadeInLeft" data-wow-delay="0.2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInLeft;">
-                                <h3 class="f-title f_600 t_color f_size_18">Leave message</h3>
-                                <p>Sign up for our latest updates!</p>
-                                <form action="#" class="f_subscribe_two mailchimp" method="post" novalidate="true" _lpchecked="1">
-                                    <input type="text" name="EMAIL" class="form-control memail" placeholder="Example: lmnhat.contact@gmail.com">
-                                    <button class="btn btn_get btn_get_two" type="submit">Register</button>
-                                    <p class="mchimp-errmessage" style="display: none;"></p>
-                                    <p class="mchimp-sucmessage" style="display: none;"></p>
-                                </form>
+            <footer class="new_footer_area bg_color">
+                <div class="new_footer_top">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-3 col-md-6">
+                                <div class="f_widget company_widget wow fadeInLeft" data-wow-delay="0.2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInLeft;">
+                                    <h3 class="f-title f_600 t_color f_size_18">Leave message</h3>
+                                    <p>Sign up for our latest updates!</p>
+                                    <form action="#" class="f_subscribe_two mailchimp" method="post" novalidate="true" _lpchecked="1">
+                                        <input type="text" name="EMAIL" class="form-control memail" placeholder="Example: lmnhat.contact@gmail.com">
+                                        <button class="btn btn_get btn_get_two" type="submit">Register</button>
+                                        <p class="mchimp-errmessage" style="display: none;"></p>
+                                        <p class="mchimp-sucmessage" style="display: none;"></p>
+                                    </form>
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-lg-3 col-md-6">
-                            <div class="f_widget about-widget pl_70 wow fadeInLeft" data-wow-delay="0.4s" style="visibility: visible; animation-delay: 0.4s; animation-name: fadeInLeft;">
-                                <h3 class="f-title f_600 t_color f_size_18">Page</h3>
-                                <ul class="list-unstyled f_list">
-                                    <li><a href="/Vocabulary/User_View">Vocabulary</a></li>
-                                    <li><a href="/Story/User_View">Story</a></li>
-                                    <li><a href="/Quiz/Choose_Image_Quiz">Quiz</a></li>
-                                    <li><a href="/Test/Choose_Test">Test</a></li>
-                                    <li><a href="/GoogleTranslate/GoogleTranslate">Translate</a></li>
-                                    <li><a href="/Home/Account">Your Profile</a></li>
-                                </ul>
+                            <div class="col-lg-3 col-md-6">
+                                <div class="f_widget about-widget pl_70 wow fadeInLeft" data-wow-delay="0.4s" style="visibility: visible; animation-delay: 0.4s; animation-name: fadeInLeft;">
+                                    <h3 class="f-title f_600 t_color f_size_18">Page</h3>
+                                    <ul class="list-unstyled f_list">
+                                        <li><a href="/Vocabulary/User_View">Vocabulary</a></li>
+                                        <li><a href="/Story/User_View">Story</a></li>
+                                        <li><a href="/Quiz/Choose_Image_Quiz">Quiz</a></li>
+                                        <li><a href="/Test/Choose_Test">Test</a></li>
+                                        <li><a href="/GoogleTranslate/GoogleTranslate">Translate</a></li>
+                                        <li><a href="/Home/Account">Your Profile</a></li>
+                                    </ul>
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-lg-3 col-md-6">
-                            <div class="f_widget about-widget pl_70 wow fadeInLeft" data-wow-delay="0.6s" style="visibility: visible; animation-delay: 0.6s; animation-name: fadeInLeft;">
-                                <h3 class="f-title f_600 t_color f_size_18">Help</h3>
-                                <ul class="list-unstyled f_list">
-                                    <li><a href="#">Common problems?</a></li>
-                                    <li><a href="#">What devices can use the website?</a></li>
-                                    <li><a href="#">Why is my phone broken when I go to the site?</a></li>
-                                    <li><a href="#">Do you have any other function?</a></li>
-                                </ul>
+                            <div class="col-lg-3 col-md-6">
+                                <div class="f_widget about-widget pl_70 wow fadeInLeft" data-wow-delay="0.6s" style="visibility: visible; animation-delay: 0.6s; animation-name: fadeInLeft;">
+                                    <h3 class="f-title f_600 t_color f_size_18">Help</h3>
+                                    <ul class="list-unstyled f_list">
+                                        <li><a href="#">Common problems?</a></li>
+                                        <li><a href="#">What devices can use the website?</a></li>
+                                        <li><a href="#">Why is my phone broken when I go to the site?</a></li>
+                                        <li><a href="#">Do you have any other function?</a></li>
+                                    </ul>
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-lg-3 col-md-6">
-                            <div class="f_widget social-widget pl_70 wow fadeInLeft" data-wow-delay="0.8s" style="visibility: visible; animation-delay: 0.8s; animation-name: fadeInLeft;">
-                                <h3 class="f-title f_600 t_color f_size_18">Contact</h3>
-                                <div class="f_social_icon">
-                                    <a href="https://www.facebook.com/Nhat.sun.1005/" class="fab fa-facebook"></a>
-                                    <a href="#" class="fab fa-twitter"></a>
-                                    <a href="#" class="fab fa-linkedin"></a>
-                                    <a href="#" class="fab fa-pinterest"></a>
+                            <div class="col-lg-3 col-md-6">
+                                <div class="f_widget social-widget pl_70 wow fadeInLeft" data-wow-delay="0.8s" style="visibility: visible; animation-delay: 0.8s; animation-name: fadeInLeft;">
+                                    <h3 class="f-title f_600 t_color f_size_18">Contact</h3>
+                                    <div class="f_social_icon">
+                                        <a href="https://www.facebook.com/Nhat.sun.1005/" class="fab fa-facebook"></a>
+                                        <a href="#" class="fab fa-twitter"></a>
+                                        <a href="#" class="fab fa-linkedin"></a>
+                                        <a href="#" class="fab fa-pinterest"></a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    <div class="footer_bg">
+                        <div class="footer_bg_one"></div>
+                        <div class="footer_bg_two"></div>
+                    </div>
                 </div>
-                <div class="footer_bg">
-                    <div class="footer_bg_one"></div>
-                    <div class="footer_bg_two"></div>
-                </div>
-            </div>
-        </footer>
+            </footer>
 
 
 
