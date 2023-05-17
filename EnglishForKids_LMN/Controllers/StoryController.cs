@@ -46,15 +46,18 @@ namespace EnglishForKids_LMN.Controllers
             else
             {
                 Session["sortStory1"] = "View";
-                stories1 = stories.OrderBy(s => s.View_Story).ToList();
+                stories1 = stories.OrderByDescending(s => s.View_Story).ToList();
             }
-            List<StoryBonus> storyBonus = new List<StoryBonus>();
+            
+               List <StoryBonus> storyBonus = new List<StoryBonus>();
             foreach (Story item in stories1)
             {
                 StoryBonus storyBonus1 = new StoryBonus();
                 storyBonus1.ID_Story = item.ID_Story;
                 storyBonus1.Image_Story = item.Image_Story;
                 storyBonus1.Name_Story = item.Name_Story;
+                
+
                 User users = db.Users.FirstOrDefault(s => s.ID_User == item.ID_User);
                 //storyBonus1.Name_User = users.Name_User;
 
@@ -180,6 +183,7 @@ namespace EnglishForKids_LMN.Controllers
             if (story != null)
             {
                 story.View_Story += 1;
+                story.View_Story = story.View_Story;
                 db.Stories.AddOrUpdate(story);
                 db.SaveChanges();
                 return View(story);
@@ -257,7 +261,7 @@ namespace EnglishForKids_LMN.Controllers
             else
             {
                 Session["sortStory"] = "View";
-                stories1 = stories.OrderBy(s => s.View_Story).ToList();
+                stories1 = stories.OrderByDescending(s => s.View_Story).ToList();
             }
             if (page == null)
             {

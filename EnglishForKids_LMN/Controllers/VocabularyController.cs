@@ -180,6 +180,10 @@ namespace EnglishForKids_LMN.Controllers
             });
             return await viewResult;
         }
+
+
+
+
         public ActionResult DeleteV(int id)
         {
             Vocabulary vocabulary = db.Vocabularies.FirstOrDefault(s => s.ID_Vocabulary == id);

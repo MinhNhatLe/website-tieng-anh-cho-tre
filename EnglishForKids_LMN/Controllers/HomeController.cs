@@ -7,6 +7,7 @@ using System.Web;
 using System.Web.Mvc;
 using EnglishForKids_LMN.Models;
 using Newtonsoft.Json;
+using PagedList;
 
 namespace EnglishForKids_LMN.Controllers
 {
@@ -185,6 +186,83 @@ namespace EnglishForKids_LMN.Controllers
 
             return View();
         }
+
+
+        public ActionResult AllAccount(int? page, string searchAccount, string sortAccount)
+        {
+            List<User> users = new List<User>();
+            //if (searchAccount != null)
+            //{
+            //    Session["searchAccount"] = searchAccount;
+            //    users = db.Users.Where(s => s.Name_User.Contains(searchAccount.Trim().ToLower())).ToList();
+            //}
+            //else
+            //{
+            //    Session["searchAccount"] = null;
+            //    users = db.Users.ToList();
+            //}
+
+
+            if (searchAccount != null)
+            {
+                Session["searchAccount"] = searchAccount;
+                users = db.Users.Where(s => s.Name_User.Contains(searchAccount.Trim().ToLower()) || (s.IsAdmin == true && searchAccount.Trim().ToLower() == "admin") || (s.IsAdmin == false && searchAccount.Trim().ToLower() == "user")).ToList();
+            }
+            else
+            {
+                Session["searchAccount"] = null;
+                users = db.Users.ToList();
+            }
+
+
+            List<User> users1;
+            if (sortAccount == null || sortAccount == "None")
+            {
+                Session["sortAccount"] = "None";
+                users1 = users;
+            }
+            else if (sortAccount == "AZ")
+            {
+                Session["sortAccount"] = "A - Z";
+                users1 = users.OrderBy(s => s.Name_User).ToList();
+            }
+            else
+            {
+                Session["sortAccount"] = "Z - A";
+                users1 = users.OrderByDescending(s => s.Name_User).ToList();
+            }
+            if (page == null)
+            {
+                page = 1;
+            }
+            int pageSize = 9;
+            int pageNum = page ?? 1;
+            return View(users1.ToPagedList(pageNum, pageSize));
+        }
+
+
+        public ActionResult DeleteAccount(int id)
+        {
+            try
+            {
+                User user = db.Users.FirstOrDefault(s => s.ID_User == id);
+                if (user != null)
+                {
+                    db.Users.Remove(user);
+                    db.SaveChanges();
+                    List<User> users = db.Users.ToList();
+                }
+                return RedirectToAction("AllAccount");
+            }
+            catch
+            {
+                //return HttpNotFound();
+                return RedirectToAction("Error404", "Home");
+            }
+        }
+
+
+
 
         public ActionResult About()
         {

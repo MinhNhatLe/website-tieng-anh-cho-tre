@@ -144,14 +144,23 @@ namespace EnglishForKids_LMN.Controllers
             Session["choice1"] = choice1;
             Session["choice2"] = choice2;
             Session["choice3"] = choice3;
+            Session["text1"] = text1;
+            Session["text2"] = text2;
+            Session["text3"] = text3;
             Session["choice4"] = choice4;
             Session["choice5"] = choice5;
             Session["choice6"] = choice6;
             Session["choice7"] = choice7;
-            Session["text1"] = text1;
-            Session["text2"] = text2;
-            Session["text3"] = text3;
-
+            Session["answer_choice1"] = questions[0].Answer_Correct;
+            Session["answer_choice2"] = questions[1].Answer_Correct;
+            Session["answer_choice3"] = questions[2].Answer_Correct;
+            Session["answer_text1"] = questions[3].Answer_Correct;
+            Session["answer_text2"] = questions[4].Answer_Correct;
+            Session["answer_text3"] = questions[5].Answer_Correct;
+            Session["answer_choice4"] = questions[6].Answer_Correct;
+            Session["answer_choice5"] = questions[7].Answer_Correct;
+            Session["answer_choice6"] = questions[8].Answer_Correct;
+            Session["answer_choice7"] = questions[9].Answer_Correct;
 
 
             Session["Test_Score"] = test_Score;
@@ -181,51 +190,138 @@ namespace EnglishForKids_LMN.Controllers
             }
             //MailAddress fromGMail = new MailAddress("garena281215@gmail.com", "StartEndSchools");
             //MailAddress toGMail = new MailAddress(userz.Email, "Me");
-            MailMessage Message = new MailMessage();
-            SmtpClient smtp = new SmtpClient();
-            Message.From = new MailAddress("lmnhat.englishforkids@gmail.com");
-            Message.To.Add(new MailAddress(userz.Email));
-            {
-                Message.IsBodyHtml = true;
-                Message.Subject = "Test result";
-                Message.Body = "Hello " + userz.Name_User.ToString() + ",\n"
-                + "Result : \n\n"
-                + "---------------------------------------------------"
-                + "Question 1 : " + questions[0].Content + "\n"
-                + "Your answer : " + choice1 + "\n\n"
-                + "Question 2 : " + questions[1].Content + "\n"
-                + "Your answer : " + choice2 + "\n\n"
-                + "Question 3 : " + questions[2].Content + "\n"
-                + "Your answer : " + choice3 + "\n\n"
-                + "Question 4 : " + questions[3].Content + "\n"
-                + "Your answer : " + text1 + "\n\n"
-                + "Question 5 : " + questions[4].Content + "\n"
-                + "Your answer : " + text2 + "\n\n"
-                + "Question 6 : " + questions[5].Content + "\n"
-                + "Your answer : " + text3 + "\n\n"
-                + "Question 7 : " + questions[6].Content + "\n"
-                + "Your answer : " + choice4 + "\n\n"
-                + "Question 8 : " + questions[7].Content + "\n"
-                + "Your answer : " + choice5 + "\n\n"
-                + "Question 9 : " + questions[8].Content + "\n"
-                + "Your answer : " + choice6 + "\n\n"
-                + "Question 10 : " + questions[9].Content + "\n"
-                + "Your answer : " + choice7 + "\n\n"
-                + "-----------------------------------------------------"
-                + "Total : " + test_Score + "\n\n"
-                + "Wish you have a useful and fun learning session,\n"
-                + "English For Kids";
-                Message.Priority = MailPriority.High;
-                Message.IsBodyHtml = false;
-            };
 
-            smtp.Host = "smtp.gmail.com";
-            smtp.Port = 587;
-            smtp.EnableSsl = true;
-            smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
-            smtp.UseDefaultCredentials = false;
-            smtp.Credentials = new NetworkCredential("lmnhat.englishforkids@gmail.com", "p");
-            //smtp.Send(Message);
+            //MailMessage Message = new MailMessage();
+            //SmtpClient smtp = new SmtpClient();
+            //Message.From = new MailAddress("lmnhat.work@gmail.com");
+            //Message.To.Add(new MailAddress(userz.Email));
+            //{
+            //    Message.IsBodyHtml = true;
+            //    Message.Subject = "Test result";
+            //    Message.Body = "Hello " + userz.Name_User.ToString() + ",\n"
+            //    + "Result : \n\n"
+            //    + "---------------------------------------------------"
+            //    + "Question 1 : " + questions[0].Content + "\n"
+            //    + "Your answer : " + choice1 + "\n\n"
+            //    + "Question 2 : " + questions[1].Content + "\n"
+            //    + "Your answer : " + choice2 + "\n\n"
+            //    + "Question 3 : " + questions[2].Content + "\n"
+            //    + "Your answer : " + choice3 + "\n\n"
+            //    + "Question 4 : " + questions[3].Content + "\n"
+            //    + "Your answer : " + text1 + "\n\n"
+            //    + "Question 5 : " + questions[4].Content + "\n"
+            //    + "Your answer : " + text2 + "\n\n"
+            //    + "Question 6 : " + questions[5].Content + "\n"
+            //    + "Your answer : " + text3 + "\n\n"
+            //    + "Question 7 : " + questions[6].Content + "\n"
+            //    + "Your answer : " + choice4 + "\n\n"
+            //    + "Question 8 : " + questions[7].Content + "\n"
+            //    + "Your answer : " + choice5 + "\n\n"
+            //    + "Question 9 : " + questions[8].Content + "\n"
+            //    + "Your answer : " + choice6 + "\n\n"
+            //    + "Question 10 : " + questions[9].Content + "\n"
+            //    + "Your answer : " + choice7 + "\n\n"
+            //    + "-----------------------------------------------------"
+            //    + "Total : " + test_Score + "\n\n"
+            //    + "Wish you have a useful and fun learning session,\n"
+            //    + "English For Kids";
+            //    Message.Priority = MailPriority.High;
+            //    Message.IsBodyHtml = false;
+            //};
+
+            //smtp.Host = "smtp.gmail.com";
+            //smtp.Port = 587;
+            //smtp.EnableSsl = true;
+            //smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
+            //smtp.UseDefaultCredentials = false;
+            //smtp.Credentials = new NetworkCredential("lmnhat.work@gmail.com", "p");
+            ////smtp.Send(Message);
+
+
+
+            MailAddress fromGMail = new MailAddress("lmnnhat.work@gmail.com", "English For Kids - CEO Lê Minh Nhật");
+            MailAddress toGMail = new MailAddress(userz.Email, "Me");
+            MailMessage Message = new MailMessage()
+            {
+                From = fromGMail,
+                Subject = "Test results",
+                Body = "Dear " + userz.Name_User.ToString() + ",\n"
+                + "This is your test. Include your questions and answers.\n"
+                + "\n"
+                + "Question 1 : " + questions[0].Content + "\n"
+                + "Your answer : " + choice1 + "\n"
+                + "Answer correct : " + questions[0].Answer_Correct + "\n"
+                + "\n"
+
+                + "Question 2 : " + questions[1].Content + "\n"
+                + "Your answer : " + choice2 + "\n"
+                + "Answer correct : " + questions[1].Answer_Correct + "\n"
+                + "\n"
+
+                + "Question 3 : " + questions[2].Content + "\n"
+                + "Your answer : " + choice3 + "\n"
+                + "Answer correct : " + questions[2].Answer_Correct + "\n"
+                + "\n"
+
+                + "Question 4 : " + questions[3].Content + "\n"
+                + "Your answer : " + text1 + "\n"
+                + "Answer correct : " + questions[3].Answer_Correct + "\n"
+                + "\n"
+
+                + "Question 5 : " + questions[4].Content + "\n"
+                + "Your answer : " + text2 + "\n"
+                + "Answer correct : " + questions[4].Answer_Correct + "\n"
+                + "\n"
+
+                + "Question 6 : " + questions[5].Content + "\n"
+                + "Your answer : " + text3 + "\n"
+                + "Answer correct : " + questions[5].Answer_Correct + "\n"
+                + "\n"
+
+                + "Question 7 : " + questions[6].Content + "\n"
+                + "Your answer : " + choice4 + "\n"
+                + "Answer correct : " + questions[6].Answer_Correct + "\n"
+                + "\n"
+
+                + "Question 8 : " + questions[7].Content + "\n"
+                + "Your answer : " + choice5 + "\n"
+                + "Answer correct : " + questions[7].Answer_Correct + "\n"
+                + "\n"
+
+                + "Question 9 : " + questions[8].Content + "\n"
+                + "Your answer : " + choice6 + "\n"
+                + "Answer correct : " + questions[8].Answer_Correct + "\n"
+                + "\n"
+
+                + "Question 10 : " + questions[9].Content + "\n"
+                + "Your answer : " + choice7 + "\n"
+                + "Answer correct : " + questions[9].Answer_Correct + "\n"
+                + "\n"
+
+                + "-----------------------------------------------------"
+                + "\n\n"
+                + "Total : " + test_Score + "/10 points"
+                + "\n"
+                + "Wish you have a useful and fun lesson,\n"
+                + "English For Kids - CEO Lê Minh Nhật",
+                Priority = MailPriority.High,
+                IsBodyHtml = false
+            };
+            Message.To.Add(toGMail);
+            SmtpClient smtp = new SmtpClient()
+            {
+                Host = "smtp.gmail.com",
+                Port = 587,
+                EnableSsl = true,
+                DeliveryMethod = SmtpDeliveryMethod.Network,
+                UseDefaultCredentials = false,
+                Credentials = new NetworkCredential()
+                {
+                    UserName = "lmnhat.work@gmail.com",
+                    Password = "drhvuzjzhkoizsch"
+                }
+            };
+            smtp.Send(Message);
             return RedirectToAction("Result_Test", "Test");
         }
 
@@ -279,6 +375,7 @@ namespace EnglishForKids_LMN.Controllers
             {
                 Session["searchQuestion"] = searchQuestion;
                 questions = db.Questions.Where(s => s.Content.Contains(searchQuestion.Trim().ToLower())).ToList();
+
             }
             else
             {

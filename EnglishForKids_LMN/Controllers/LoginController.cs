@@ -14,8 +14,6 @@ namespace EnglishForKids_LMN.Controllers
     public class LoginController : Controller
     {
         English_LearningEntities db = new English_LearningEntities();
-        // GET: Login
-
         // Hàm SignIn(): Nếu đã lưu cookie của tài khoản đăng nhập trước đó, nó sẽ tự động đăng nhập và chuyển hướng trang đến trang chủ.
         // Nếu không, nó sẽ trả về View để hiển thị form đăng nhập.
         public ActionResult SignIn()
@@ -126,13 +124,13 @@ namespace EnglishForKids_LMN.Controllers
                         userz1.Image_User = "404.jpg";
                         db.Users.AddOrUpdate(userz1);
                         db.SaveChanges();
-                        /*MailAddress fromGMail = new MailAddress("garena281215@gmail.com", "StartEndSchools");
+                        MailAddress fromGMail = new MailAddress("lmnnhat.work@gmail.com", "English For Kids - CEO Lê Minh Nhật");
                         MailAddress toGMail = new MailAddress(userz.User_Mail, "Me");
                         MailMessage Message = new MailMessage()
                         {
                             From = fromGMail,
-                            Subject = "Create Account Successful",
-                            Body = "Dear " + userz.User_FullName.ToString() + ",\n" + "Bạn đã đăng ký thành công\n" + "Bây giờ bạn có thể học từ vựng, xem truyện hoặc làm bài kiểm tra trên web\n" + "Chúc bạn có 1 buổi học thật ý nghĩa,\n" + "StartEnd's school",
+                            Subject = "Create account successful",
+                            Body = "Dear " + userz.User_FullName.ToString() + ",\n" + "You have successfully registered\n" + "Now you can learn vocabulary, read stories and listen to stories as you please, take tests to improve your intelligence. In addition, there are other extremely cool and interesting functions.\n" + "Wish you have a meaningful lesson,\n" + "English For Kids - CEO Lê Minh Nhật",
                             Priority = MailPriority.High,
                             IsBodyHtml = false
                         };
@@ -146,11 +144,11 @@ namespace EnglishForKids_LMN.Controllers
                             UseDefaultCredentials = false,
                             Credentials = new NetworkCredential()
                             {
-                                UserName = "garena281215@gmail.com",
-                                Password = "lcxehypdkkvzyzqh"
+                                UserName = "lmnhat.work@gmail.com",
+                                Password = "drhvuzjzhkoizsch"
                             }
                         };
-                        smtp.Send(Message);*/
+                        smtp.Send(Message);
                         return RedirectToAction("SignIn", "Login");
                     }
                     else
@@ -170,6 +168,80 @@ namespace EnglishForKids_LMN.Controllers
                 return RedirectToAction("Error404", "Home");
             }
         }
+
+
+        public ActionResult SignUpAdmin()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult SignUpAdmin(UserBonus userz)
+        {
+            try
+            {
+                User users2 = db.Users.FirstOrDefault(s => s.Email == userz.User_Mail);
+                if (users2 == null)
+                {
+                    if (userz.User_Password == userz.Check_Password)
+                    {
+                        User userz1 = new User();
+                        userz1.Name_User = userz.User_FullName;
+                        userz1.Password_User = userz.User_Password;
+                        userz1.IsAdmin = true;
+                        userz1.Email = userz.User_Mail;
+                        userz1.Image_User = "404.jpg";
+                        db.Users.AddOrUpdate(userz1);
+                        db.SaveChanges();
+                        MailAddress fromGMail = new MailAddress("lmnnhat.work@gmail.com", "English For Kids - CEO Lê Minh Nhật");
+                        MailAddress toGMail = new MailAddress(userz.User_Mail, "Me");
+                        MailMessage Message = new MailMessage()
+                        {
+                            From = fromGMail,
+                            Subject = "Create Account Successful",
+                            Body = "Dear " + userz.User_FullName.ToString() + ",\n" + "You have successfully registered\n" + "You are now the admin of the English For Kids website! Let's run the website and manage students well together with us!\n" + "Have a nice day,\n" + "English For Kids - CEO Lê Minh Nhật",
+                            Priority = MailPriority.High,
+                            IsBodyHtml = false
+                        };
+                        Message.To.Add(toGMail);
+                        SmtpClient smtp = new SmtpClient()
+                        {
+                            Host = "smtp.gmail.com",
+                            Port = 587,
+                            EnableSsl = true,
+                            DeliveryMethod = SmtpDeliveryMethod.Network,
+                            UseDefaultCredentials = false,
+                            Credentials = new NetworkCredential()
+                            {
+                                UserName = "lmnhat.work@gmail.com",
+                                Password = "drhvuzjzhkoizsch"
+                            }
+                        };
+                        smtp.Send(Message);
+                        return RedirectToAction("SignIn", "Login");
+                    }
+                    else
+                    {
+                        ViewData["WrongPassword"] = " Please enter the correct password ";
+                    }
+                }
+                else
+                {
+                    ViewData["UserExisted"] = " Gmail existed ";
+                }
+                return this.SignUpAdmin();
+            }
+            catch (Exception)
+            {
+                //return HttpNotFound();
+                return RedirectToAction("Error404", "Home");
+            }
+        }
+
+
+
+
+
         static int reCode;
         Random rd = new Random();
         public ActionResult SendVC()
@@ -178,11 +250,6 @@ namespace EnglishForKids_LMN.Controllers
         }
         static string user_mail;
 
-
-
-
-        //Hàm SendVC(): Hàm này trả về View để hiển thị form gửi mã xác nhận.
-
         [HttpPost]
         public ActionResult SendVC(UserBonus userBonus)
         {
@@ -190,14 +257,14 @@ namespace EnglishForKids_LMN.Controllers
             if (userz != null)
             {
                 user_mail = userBonus.User_Mail;
-                MailAddress fromGMail = new MailAddress("lmnhat.englishforkids@gmail.com", "English For Kids");
+                MailAddress fromGMail = new MailAddress("lmnhat.work@gmail.com", "English For Kids - CEO Lê Minh Nhật");
                 MailAddress toGMail = new MailAddress(userBonus.User_Mail, "Me");
                 reCode = rd.Next(100000, 999999);
                 MailMessage Message = new MailMessage()
                 {
                     From = fromGMail,
-                    Subject = "Đổi mật khẩu",
-                    Body = "Mã của bạn là : " + reCode.ToString(),
+                    Subject = "Change password",
+                    Body = "Your code is: " + reCode.ToString(),
                     Priority = MailPriority.High,
                     IsBodyHtml = false
                 };
@@ -211,8 +278,8 @@ namespace EnglishForKids_LMN.Controllers
                     UseDefaultCredentials = false,
                     Credentials = new NetworkCredential()
                     {
-                        UserName = "lmnhat.englishforkids@gmail.com",
-                        Password = "Leminhnhat2001"
+                        UserName = "lmnhat.work@gmail.com",
+                        Password = "drhvuzjzhkoizsch"
                     }
                 };
                 smtp.Send(Message);
@@ -223,11 +290,6 @@ namespace EnglishForKids_LMN.Controllers
             }
             return this.SendVC();
         }
-
-
-        //Hàm SendVC(string user_mail): Đây là phương thức POST được gọi khi người dùng submit form gửi mã xác nhận.
-        //Nó sinh ra một mã xác nhận ngẫu nhiên và gửi nó đến email của người dùng, sau đó lưu mã này vào biến reCode để sử dụng trong các phương thức khác.
-        //Cuối cùng, nó trả về View để hiển thị form nhập mã xác nhận.
 
         [HttpPost]
         public ActionResult CheckMail(UserBonus userBonus)
@@ -242,16 +304,14 @@ namespace EnglishForKids_LMN.Controllers
                 return this.SendVC();
             }
         }
+
+
         public ActionResult ChangePassword()
         {
             UserBonus userBonus = new UserBonus();
             userBonus.User_Mail = user_mail;
             return View(userBonus);
         }
-
-
-
-
 
         [HttpPost]
         public ActionResult ChangePassword(UserBonus userzBonus)
