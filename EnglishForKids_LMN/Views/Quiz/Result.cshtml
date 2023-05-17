@@ -149,13 +149,8 @@
                                             }
                                         }
                                     }
-
-
-                                    // Khi trên 5 điểm thì sẽ hiện âm thanh win và img lên
-                                    // Dưới 5 thì ngược lại
-                                    // Check total score and show alert
                                     int totalScore = (int)Session["Image_Quiz_Score"];
-                                    if (totalScore > 5)
+                                    if (totalScore >= 5)
                                     {
                                         <script>
                                             //alert('Congratulations, you have scored over 5 points!');

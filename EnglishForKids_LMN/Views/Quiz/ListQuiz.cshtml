@@ -69,22 +69,32 @@
         <tr>
             <th style=" text-align: center;">#</th>
             <th style=" text-align: center;">Quiz name</th>
+            <th style=" text-align: center;">Content</th>
+            <th style=" text-align: center;">Answer 1</th>
+            <th style=" text-align: center;">Answer 2</th>
+            <th style=" text-align: center;">Answer 3</th>
+            <th style=" text-align: center;">Answer 4</th>
             <th style=" text-align: center;">Function</th>
         </tr>
         @foreach (var item in Model)
         {
-<tr class="search-list">
-    <td style=" text-align: center;">@item.ID_Quiz</td>
-    <td style=" text-align: center;">@item.Name_Quiz</td>
-    <td style=" text-align: center;">
-        @*@Html.ActionLink("Sửa", "EditQ", new { id = item.ID_Quiz }) |
-        @Html.ActionLink("Chi tiết", "Do_DragDrop_Quiz", new { id = item.ID_Quiz }) |
-        @Html.ActionLink("Xóa", "DeleteQ", new { id = item.ID_Quiz })*@
-        <a href="@Url.Action("EditQ", "Quiz", new { id = item.ID_Quiz })" class="btn btn-warning bx-tada-hover" style="width:80px;">Edit</a>
-        <a href="@Url.Action("Do_DragDrop_Quiz", "Quiz", new { id = item.ID_Quiz })" class="btn btn-success bx-tada-hover" style="width:80px;">Detail</a>
-        <a href="@Url.Action("DeleteQ", "Quiz", new { id = item.ID_Quiz })" class="btn btn-danger bx-tada-hover" style="width:80px;">Delete</a>
-    </td>
-</tr>
+    <tr class="search-list">
+        <td style=" text-align: center;">@item.ID_Quiz</td>
+        <td style=" text-align: center;">@item.Name_Quiz</td>
+        <td style=" text-align: center;">@item.Content</td>
+        <td style=" text-align: center;">@item.Answer_1</td>
+        <td style=" text-align: center;">@item.Answer_2</td>
+        <td style=" text-align: center;">@item.Answer_3</td>
+        <td style=" text-align: center;">@item.Answer_4</td>
+        <td style=" text-align: center;">
+            @*@Html.ActionLink("Sửa", "EditQ", new { id = item.ID_Quiz }) |
+            @Html.ActionLink("Chi tiết", "Do_DragDrop_Quiz", new { id = item.ID_Quiz }) |
+            @Html.ActionLink("Xóa", "DeleteQ", new { id = item.ID_Quiz })*@
+            <a href="@Url.Action("EditQ", "Quiz", new { id = item.ID_Quiz })" class="btn btn-warning bx-tada-hover" style="width:80px;">Edit</a>
+            <a href="@Url.Action("Do_DragDrop_Quiz", "Quiz", new { id = item.ID_Quiz })" class="btn btn-success bx-tada-hover" style="width:80px;">Detail</a>
+            <a href="@Url.Action("DeleteQ", "Quiz", new { id = item.ID_Quiz })" class="btn btn-danger bx-tada-hover" style="width:80px;">Delete</a>
+        </td>
+    </tr>
         }
     </table>
 </div>
