@@ -39,6 +39,27 @@
             transform: translateY(-6px);
             font-size: 18px;
         }
+
+
+
+    #webcam-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 400px;
+        height: 400px;
+        border: 2px solid #ccc;
+        border-radius: 5px;
+        overflow: hidden;
+        margin: 0 auto;
+        margin-bottom: 20px;
+    }
+
+/*    #label-container {
+        font-size: 24px;
+        font-weight: bold;
+        text-align: center;
+    }*/
 </style>
 <div class="container">
     <div class="row">
@@ -82,77 +103,68 @@
 
             </div>
             <div class="col-lg-8 col-sm-8 col-xs-12">
-                <button class="center-block text-center btn-open bx-flashing-hover" type="button" onclick="init()">Open camera</button>
+                <button type="button" class="center-block text-center btn-open bx-flashing-hover" onclick="init()">Open Camera</button>
                 <div id="webcam-container" class="center-block text-center"></div>
-                <div id="label-container" class="text-center"></div>
-
-
-
-
-
-
-
-
-
-
-
-
-                <script src="https://code.responsivevoice.org/responsivevoice.js?key=btB4f6uk"></script>
+                <div id="label-container" class="animate-charcter center-block text-center"></div>
                 <script src="~/Scripts/tensorflow.js"></script>
                 <script src="~/Scripts/teachablemachine.js"></script>
+                <script src="https://code.responsivevoice.org/responsivevoice.js?key=ydjEgraa"></script>
                 <script type="text/javascript">
-                    // More API functions here:
+                    // Các hàm API khác tại đây:
                     // https://github.com/googlecreativelab/teachablemachine-community/tree/master/libraries/image
 
-                    // the link to your model provided by Teachable Machine export panel
-                    const URL = "https://teachablemachine.withgoogle.com/models/iwncUn3Qg/";
+                    // liên kết đến mô hình của bạn do bảng xuất khẩu Teachable Machine cung cấp
+                    const URL = "https://teachablemachine.withgoogle.com/models/9akuzbZQJ/";
 
                     let model, webcam, labelContainer, maxPredictions;
-                    let lastLabel = ''
+                    let lastLabel = '';
 
-                    // Load the image model and setup the webcam
+                    // Tải mô hình hình ảnh và thiết lập webcam
                     async function init() {
                         const modelURL = URL + "model.json";
                         const metadataURL = URL + "metadata.json";
 
-                        // load the model and metadata
-                        // Refer to tmImage.loadFromFiles() in the API to support files from a file picker
-                        // or files from your local hard drive
-                        // Note: the pose library adds "tmImage" object to your window (window.tmImage)
+                        // tải mô hình và siêu dữ liệu
+                         // Tham khảo tmImage.loadFromFiles() trong API để hỗ trợ tệp từ bộ chọn tệp
+                         // hoặc các tệp từ ổ cứng cục bộ của bạn
+                         // Lưu ý: thư viện pose thêm đối tượng "tmImage" vào cửa sổ của bạn (window.tmImage)
                         model = await tmImage.load(modelURL, metadataURL);
                         maxPredictions = model.getTotalClasses();
 
-                        // Convenience function to setup a webcam
-                        const flip = true; // whether to flip the webcam
-                        webcam = new tmImage.Webcam(200, 200, flip); // width, height, flip
-                        await webcam.setup(); // request access to the webcam
+                        // Chức năng tiện lợi để thiết lập webcam
+                        const flip = true; // có lật webcam không
+                        webcam = new tmImage.Webcam(400, 400, flip); // chiều rộng, chiều cao, lật
+                        await webcam.setup(); // yêu cầu quyền truy cập vào webcam
                         await webcam.play();
                         window.requestAnimationFrame(loop);
 
-                        // append elements to the DOM
+                        // nối các phần tử vào DOM
                         document.getElementById("webcam-container").appendChild(webcam.canvas);
-                        labelContainer = document.getElementById("label-constainer");
+                        labelContainer = document.getElementById("label-container");
                     }
 
                     async function loop() {
-                        webcam.update(); // update the webcam frame
+                        webcam.update(); // cập nhật khung webcam
                         await predict();
                         window.requestAnimationFrame(loop);
                     }
 
-                    // run the webcam image through the image model
+                    // chạy hình ảnh webcam thông qua mô hình hình ảnh
                     async function predict() {
-                        // predict can take in an image, video or canvas html element
-                        const predictions = await model.predictTopK(webcam.canvas);
+                        // dự đoán có thể lấy phần tử html hình ảnh, video hoặc canvas
+                        const predictions = await model.predictTopK(webcam.canvas, 1);
 
                         const label = predictions[0].className;
                         if (label !== lastLabel) {
                             lastLabel = label;
-                            responsiveVoice.speak(label, "UK English Male")
+                            responsiveVoice.speak(label, "UK English Male");
                             labelContainer.innerText = predictions[0].className;
                         }
                     }
                 </script>
+
+
+                
             </div>
             <div class="col-lg-2 col-sm-2 col-xs-0">
 
