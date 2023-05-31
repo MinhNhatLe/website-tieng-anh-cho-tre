@@ -24,6 +24,5 @@ namespace EnglishForKids_LMN.Models
     
         public virtual Category Category { get; set; }
         public virtual Category_Vo Category_Vo { get; set; }
-        public bool ShowRecordButton { get; internal set; }
     }
 }

@@ -311,6 +311,7 @@ namespace EnglishForKids_LMN.Controllers
         }
         public ActionResult User_View(int? id, int? page, string searchVocabulary, string sortVocabulary)
         {
+            
             List<Category_Vo> vocabulary_Types = db.Category_Vo.Where(s => s.ID_Category_Vo != 6).ToList();
             Session["Index"] = vocabulary_Types;
             List<Vocabulary> vocabularies = new List<Vocabulary>();
@@ -358,5 +359,6 @@ namespace EnglishForKids_LMN.Controllers
             int pageNum = page ?? 1;
             return View(vocabularies1.ToPagedList(pageNum, pageSize));
         }
+
     }
 }

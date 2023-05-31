@@ -1,4 +1,3 @@
-C:\Users\Minh Nhat\Desktop\EnglishForKids_LMN\EnglishForKids_LMN\obj\Debug\EnglishForKids_LMN.csproj.AssemblyReference.cache
 C:\Users\Minh Nhat\Desktop\EnglishForKids_LMN\EnglishForKids_LMN\obj\Debug\EnglishForKids_LMN.csproj.CoreCompileInputs.cache
 C:\Users\Minh Nhat\Desktop\EnglishForKids_LMN\EnglishForKids_LMN\bin\EnglishForKids_LMN.dll.config
 C:\Users\Minh Nhat\Desktop\EnglishForKids_LMN\EnglishForKids_LMN\bin\EnglishForKids_LMN.dll
@@ -85,3 +84,4 @@ C:\Users\Minh Nhat\Desktop\EnglishForKids_LMN\EnglishForKids_LMN\bin\Microsoft.C
 C:\Users\Minh Nhat\Desktop\EnglishForKids_LMN\EnglishForKids_LMN\obj\Debug\EnglishForKids_LMN.csproj.CopyComplete
 C:\Users\Minh Nhat\Desktop\EnglishForKids_LMN\EnglishForKids_LMN\obj\Debug\EnglishForKids_LMN.dll
 C:\Users\Minh Nhat\Desktop\EnglishForKids_LMN\EnglishForKids_LMN\obj\Debug\EnglishForKids_LMN.pdb
+C:\Users\Minh Nhat\Desktop\EnglishForKids_LMN\EnglishForKids_LMN\obj\Debug\EnglishForKids_LMN.csproj.AssemblyReference.cache

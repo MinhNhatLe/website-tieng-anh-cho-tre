@@ -6,6 +6,7 @@
         Response.Redirect("~/Login/SignIn");
     }
 }
+
 <style>
     .background_identify {
         margin-top: 50px;
@@ -55,7 +56,7 @@
         margin-bottom: 20px;
     }
 
-/*    #label-container {
+    /*    #label-container {
         font-size: 24px;
         font-weight: bold;
         text-align: center;
@@ -103,11 +104,19 @@
 
             </div>
             <div class="col-lg-8 col-sm-8 col-xs-12">
-                <button type="button" class="center-block text-center btn-open bx-flashing-hover" onclick="init()">Open Camera</button>
-                <div id="webcam-container" class="center-block text-center"></div>
+                <button type="button" class="center-block text-center btn-open bx-flashing-hover" style="width: 80%;" onclick="init()">Open Camera</button>
+                <div id="webcam-container" class="center-block text-center" style="width: 90%;"></div>
                 <div id="label-container" class="animate-charcter center-block text-center"></div>
-                <script src="~/Scripts/tensorflow.js"></script>
-                <script src="~/Scripts/teachablemachine.js"></script>
+                
+                @*đang gặp trường hợp add vào thì có lúc được có lúc không
+                link thì gặp kí tự đặc biệt không được
+                dùng rut gọn link để fix*@ 
+                @*<script src="~/Scripts/tensorflow.js"></script>
+                <script src="~/Scripts/teachablemachine.js"></script>*@
+                <script src="https://s.net.vn/lAlC"></script>
+                <script src="https://s.net.vn/KB0k"></script>
+
+
                 <script src="https://code.responsivevoice.org/responsivevoice.js?key=ydjEgraa"></script>
                 <script type="text/javascript">
                     // Các hàm API khác tại đây:
@@ -125,10 +134,11 @@
                         const metadataURL = URL + "metadata.json";
 
                         // tải mô hình và siêu dữ liệu
-                         // Tham khảo tmImage.loadFromFiles() trong API để hỗ trợ tệp từ bộ chọn tệp
-                         // hoặc các tệp từ ổ cứng cục bộ của bạn
-                         // Lưu ý: thư viện pose thêm đối tượng "tmImage" vào cửa sổ của bạn (window.tmImage)
+                        // Tham khảo tmImage.loadFromFiles() trong API để hỗ trợ tệp từ bộ chọn tệp
+                        // hoặc các tệp từ ổ cứng cục bộ của bạn
+                        // Lưu ý: thư viện pose thêm đối tượng "tmImage" vào cửa sổ của bạn (window.tmImage)
                         model = await tmImage.load(modelURL, metadataURL);
+
                         maxPredictions = model.getTotalClasses();
 
                         // Chức năng tiện lợi để thiết lập webcam
@@ -164,7 +174,6 @@
                 </script>
 
 
-                
             </div>
             <div class="col-lg-2 col-sm-2 col-xs-0">
 

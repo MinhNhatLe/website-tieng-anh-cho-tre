@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="English_LearningModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="English_LearningModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Category">
           <Key>
             <PropertyRef Name="ID_Category" />
@@ -166,18 +166,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Quiz_Deta__ID_Qu__4AB81AF0">
-          <End Role="Quiz" Type="Self.Quiz" Multiplicity="1" />
-          <End Role="Quiz_Details" Type="Self.Quiz_Details" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Quiz">
-              <PropertyRef Name="ID_Quiz" />
-            </Principal>
-            <Dependent Role="Quiz_Details">
-              <PropertyRef Name="ID_Quiz" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK__Quiz_Deta__ID_Us__4BAC3F29">
           <End Role="Users" Type="Self.Users" Multiplicity="1" />
           <End Role="Quiz_Details" Type="Self.Quiz_Details" Multiplicity="*" />
@@ -262,6 +250,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Quiz_Details_Quiz">
+          <End Role="Quiz" Type="Self.Quiz" Multiplicity="1" />
+          <End Role="Quiz_Details" Type="Self.Quiz_Details" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Quiz">
+              <PropertyRef Name="ID_Quiz" />
+            </Principal>
+            <Dependent Role="Quiz_Details">
+              <PropertyRef Name="ID_Quiz" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="English_LearningModelStoreContainer">
           <EntitySet Name="Category" EntityType="Self.Category" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Category_Vo" EntityType="Self.Category_Vo" Schema="dbo" store:Type="Tables" />
@@ -284,10 +284,6 @@
           </AssociationSet>
           <AssociationSet Name="FK__Quiz_Deta__ID_Ca__49C3F6B7" Association="Self.FK__Quiz_Deta__ID_Ca__49C3F6B7">
             <End Role="Category_Vo" EntitySet="Category_Vo" />
-            <End Role="Quiz_Details" EntitySet="Quiz_Details" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Quiz_Deta__ID_Qu__4AB81AF0" Association="Self.FK__Quiz_Deta__ID_Qu__4AB81AF0">
-            <End Role="Quiz" EntitySet="Quiz" />
             <End Role="Quiz_Details" EntitySet="Quiz_Details" />
           </AssociationSet>
           <AssociationSet Name="FK__Quiz_Deta__ID_Us__4BAC3F29" Association="Self.FK__Quiz_Deta__ID_Us__4BAC3F29">
@@ -318,9 +314,12 @@
             <End Role="Category" EntitySet="Category" />
             <End Role="Vocabulary" EntitySet="Vocabulary" />
           </AssociationSet>
+          <AssociationSet Name="FK_Quiz_Details_Quiz" Association="Self.FK_Quiz_Details_Quiz">
+            <End Role="Quiz" EntitySet="Quiz" />
+            <End Role="Quiz_Details" EntitySet="Quiz_Details" />
+          </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="English_LearningModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -659,8 +658,8 @@
             <End Role="Users" EntitySet="Users" />
             <End Role="Test_Details" EntitySet="Test_Details" />
           </AssociationSet>
-        </EntityContainer>
-      </Schema>
+          </EntityContainer>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>

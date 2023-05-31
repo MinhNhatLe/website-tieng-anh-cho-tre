@@ -161,18 +161,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Quiz_Deta__ID_Qu__4AB81AF0">
-    <End Role="Quiz" Type="Self.Quiz" Multiplicity="1" />
-    <End Role="Quiz_Details" Type="Self.Quiz_Details" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Quiz">
-        <PropertyRef Name="ID_Quiz" />
-      </Principal>
-      <Dependent Role="Quiz_Details">
-        <PropertyRef Name="ID_Quiz" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK__Quiz_Deta__ID_Us__4BAC3F29">
     <End Role="Users" Type="Self.Users" Multiplicity="1" />
     <End Role="Quiz_Details" Type="Self.Quiz_Details" Multiplicity="*" />
@@ -257,6 +245,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_Quiz_Details_Quiz">
+    <End Role="Quiz" Type="Self.Quiz" Multiplicity="1" />
+    <End Role="Quiz_Details" Type="Self.Quiz_Details" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Quiz">
+        <PropertyRef Name="ID_Quiz" />
+      </Principal>
+      <Dependent Role="Quiz_Details">
+        <PropertyRef Name="ID_Quiz" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <EntityContainer Name="English_LearningModelStoreContainer">
     <EntitySet Name="Category" EntityType="Self.Category" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Category_Vo" EntityType="Self.Category_Vo" Schema="dbo" store:Type="Tables" />
@@ -279,10 +279,6 @@
     </AssociationSet>
     <AssociationSet Name="FK__Quiz_Deta__ID_Ca__49C3F6B7" Association="Self.FK__Quiz_Deta__ID_Ca__49C3F6B7">
       <End Role="Category_Vo" EntitySet="Category_Vo" />
-      <End Role="Quiz_Details" EntitySet="Quiz_Details" />
-    </AssociationSet>
-    <AssociationSet Name="FK__Quiz_Deta__ID_Qu__4AB81AF0" Association="Self.FK__Quiz_Deta__ID_Qu__4AB81AF0">
-      <End Role="Quiz" EntitySet="Quiz" />
       <End Role="Quiz_Details" EntitySet="Quiz_Details" />
     </AssociationSet>
     <AssociationSet Name="FK__Quiz_Deta__ID_Us__4BAC3F29" Association="Self.FK__Quiz_Deta__ID_Us__4BAC3F29">
@@ -312,6 +308,10 @@
     <AssociationSet Name="FK__Vocabular__ID_Ca__5165187F" Association="Self.FK__Vocabular__ID_Ca__5165187F">
       <End Role="Category" EntitySet="Category" />
       <End Role="Vocabulary" EntitySet="Vocabulary" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Quiz_Details_Quiz" Association="Self.FK_Quiz_Details_Quiz">
+      <End Role="Quiz" EntitySet="Quiz" />
+      <End Role="Quiz_Details" EntitySet="Quiz_Details" />
     </AssociationSet>
   </EntityContainer>
 </Schema>

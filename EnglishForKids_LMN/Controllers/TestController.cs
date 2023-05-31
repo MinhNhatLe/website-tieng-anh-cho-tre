@@ -402,7 +402,7 @@ namespace EnglishForKids_LMN.Controllers
             {
                 page = 1;
             }
-            int pageSize = 9;
+            int pageSize = 10;
             int pageNum = page ?? 1;
             return View(questions1.ToPagedList(pageNum, pageSize));
         }
