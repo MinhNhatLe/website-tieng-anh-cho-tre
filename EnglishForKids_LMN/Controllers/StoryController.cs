@@ -183,8 +183,13 @@ namespace EnglishForKids_LMN.Controllers
             if (story != null)
             {
                 story.View_Story += 1;
-                story.View_Story = story.View_Story;
-                db.Stories.AddOrUpdate(story);
+                //story.View_Story = story.View_Story;
+                //db.Stories.AddOrUpdate(story);
+
+                // Lấy lượt xem cao nhất
+                //Story topStory = db.Stories.OrderByDescending(v => v.View_Story).FirstOrDefault();
+
+                //ViewBag.TopVocabulary = topStory; // Truyền vào ViewBag để sử dụng trong View
                 db.SaveChanges();
                 return View(story);
             }

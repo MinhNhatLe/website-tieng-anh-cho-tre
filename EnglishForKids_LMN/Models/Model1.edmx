@@ -129,6 +129,8 @@
           <Property Name="Image_Vocabulary" Type="varchar" MaxLength="50" />
           <Property Name="ID_Cate_Vo" Type="int" />
           <Property Name="ID_Category" Type="int" />
+          <Property Name="View_Vocabulary" Type="int" />
+          <Property Name="ID_User" Type="int" />
         </EntityType>
         <Association Name="FK__Category__ID_Use__47DBAE45">
           <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
@@ -262,6 +264,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Vocabulary_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="Vocabulary" Type="Self.Vocabulary" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="ID_User" />
+            </Principal>
+            <Dependent Role="Vocabulary">
+              <PropertyRef Name="ID_User" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="English_LearningModelStoreContainer">
           <EntitySet Name="Category" EntityType="Self.Category" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Category_Vo" EntityType="Self.Category_Vo" Schema="dbo" store:Type="Tables" />
@@ -317,6 +331,10 @@
           <AssociationSet Name="FK_Quiz_Details_Quiz" Association="Self.FK_Quiz_Details_Quiz">
             <End Role="Quiz" EntitySet="Quiz" />
             <End Role="Quiz_Details" EntitySet="Quiz_Details" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vocabulary_Users" Association="Self.FK_Vocabulary_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Vocabulary" EntitySet="Vocabulary" />
           </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
@@ -455,6 +473,7 @@
           <NavigationProperty Name="Quiz_Details" Relationship="Self.FK__Quiz_Deta__ID_Us__4BAC3F29" FromRole="Users" ToRole="Quiz_Details" />
           <NavigationProperty Name="Stories" Relationship="Self.FK__Story__ID_User__4D94879B" FromRole="Users" ToRole="Story" />
           <NavigationProperty Name="Test_Details" Relationship="Self.FK__Test_Deta__ID_Us__4F7CD00D" FromRole="Users" ToRole="Test_Details" />
+          <NavigationProperty Name="Vocabularies" Relationship="English_LearningModel.FK_Vocabulary_Users" FromRole="User" ToRole="Vocabulary" />
         </EntityType>
         <EntityType Name="Vocabulary">
           <Key>
@@ -469,6 +488,9 @@
           <Property Name="ID_Category" Type="Int32" />
           <NavigationProperty Name="Category" Relationship="Self.FK__Vocabular__ID_Ca__5165187F" FromRole="Vocabulary" ToRole="Category" />
           <NavigationProperty Name="Category_Vo" Relationship="Self.FK__Vocabular__ID_Ca__5070F446" FromRole="Vocabulary" ToRole="Category_Vo" />
+          <Property Name="View_Vocabulary" Type="Int32" />
+          <Property Name="ID_User" Type="Int32" />
+          <NavigationProperty Name="User" Relationship="English_LearningModel.FK_Vocabulary_Users" FromRole="Vocabulary" ToRole="User" />
         </EntityType>
         <Association Name="FK__Category__ID_Use__47DBAE45">
           <End Role="Users" Type="Self.User" Multiplicity="0..1" />
@@ -658,7 +680,23 @@
             <End Role="Users" EntitySet="Users" />
             <End Role="Test_Details" EntitySet="Test_Details" />
           </AssociationSet>
+          <AssociationSet Name="FK_Vocabulary_Users" Association="English_LearningModel.FK_Vocabulary_Users">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Vocabulary" EntitySet="Vocabularies" />
+          </AssociationSet>
           </EntityContainer>
+        <Association Name="FK_Vocabulary_Users">
+          <End Type="English_LearningModel.User" Role="User" Multiplicity="0..1" />
+          <End Type="English_LearningModel.Vocabulary" Role="Vocabulary" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="ID_User" />
+            </Principal>
+            <Dependent Role="Vocabulary">
+              <PropertyRef Name="ID_User" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -788,6 +826,8 @@
           <EntitySetMapping Name="Vocabularies">
             <EntityTypeMapping TypeName="English_LearningModel.Vocabulary">
               <MappingFragment StoreEntitySet="Vocabulary">
+                <ScalarProperty Name="ID_User" ColumnName="ID_User" />
+                <ScalarProperty Name="View_Vocabulary" ColumnName="View_Vocabulary" />
                 <ScalarProperty Name="ID_Vocabulary" ColumnName="ID_Vocabulary" />
                 <ScalarProperty Name="Pronunciation" ColumnName="Pronunciation" />
                 <ScalarProperty Name="VN_Meaning" ColumnName="VN_Meaning" />

@@ -124,6 +124,8 @@
     <EntitySetMapping Name="Vocabularies">
       <EntityTypeMapping TypeName="English_LearningModel.Vocabulary">
         <MappingFragment StoreEntitySet="Vocabulary">
+          <ScalarProperty Name="ID_User" ColumnName="ID_User" />
+          <ScalarProperty Name="View_Vocabulary" ColumnName="View_Vocabulary" />
           <ScalarProperty Name="ID_Vocabulary" ColumnName="ID_Vocabulary" />
           <ScalarProperty Name="Pronunciation" ColumnName="Pronunciation" />
           <ScalarProperty Name="VN_Meaning" ColumnName="VN_Meaning" />

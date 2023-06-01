@@ -21,6 +21,7 @@ namespace EnglishForKids_LMN.Models
             this.Quiz_Details = new HashSet<Quiz_Details>();
             this.Stories = new HashSet<Story>();
             this.Test_Details = new HashSet<Test_Details>();
+            this.Vocabularies = new HashSet<Vocabulary>();
         }
     
         public int ID_User { get; set; }
@@ -42,5 +43,7 @@ namespace EnglishForKids_LMN.Models
         public virtual ICollection<Story> Stories { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Test_Details> Test_Details { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Vocabulary> Vocabularies { get; set; }
     }
 }

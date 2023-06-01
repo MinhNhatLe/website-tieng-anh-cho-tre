@@ -157,7 +157,15 @@ namespace EnglishForKids_LMN.Controllers
         public ActionResult DetailV(int id)
         {
             Vocabulary vocabulary = db.Vocabularies.FirstOrDefault(s => s.ID_Vocabulary == id);
-            return View(vocabulary);
+            if (vocabulary != null)
+            {
+                vocabulary.View_Vocabulary += 1;
+                db.SaveChanges();
+                return View(vocabulary);
+            }
+
+            return RedirectToAction("User_View", "Vocabulary");
+            //return View(vocabulary);
         }
         //chức năng để tổng hợp giọng nói của từ vựng tiếng Anh. 
         //chương trình sử dụng đối tượng 'SpeechSynthesizer' để tổng hợp giọng nói
@@ -226,6 +234,7 @@ namespace EnglishForKids_LMN.Controllers
                     vocabulary.EN_Meaning = vocabularyBonus.EN_Meaning;
                     vocabulary.VN_Meaning = vocabularyBonus.VN_Meaning;
                     vocabulary.Pronunciation = vocabularyBonus.Pronunciation;
+                    vocabulary.View_Vocabulary = 0;
                     if (vocabularyBonus.Image_Vocabulary != null)
                     {
                         vocabulary.Image_Vocabulary = vocabularyBonus.Image_Vocabulary;
@@ -311,7 +320,8 @@ namespace EnglishForKids_LMN.Controllers
         }
         public ActionResult User_View(int? id, int? page, string searchVocabulary, string sortVocabulary)
         {
-            
+
+
             List<Category_Vo> vocabulary_Types = db.Category_Vo.Where(s => s.ID_Category_Vo != 6).ToList();
             Session["Index"] = vocabulary_Types;
             List<Vocabulary> vocabularies = new List<Vocabulary>();
@@ -359,6 +369,7 @@ namespace EnglishForKids_LMN.Controllers
             int pageNum = page ?? 1;
             return View(vocabularies1.ToPagedList(pageNum, pageSize));
         }
+
 
     }
 }

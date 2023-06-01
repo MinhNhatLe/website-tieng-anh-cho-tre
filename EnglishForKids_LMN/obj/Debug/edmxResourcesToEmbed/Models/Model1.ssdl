@@ -124,6 +124,8 @@
     <Property Name="Image_Vocabulary" Type="varchar" MaxLength="50" />
     <Property Name="ID_Cate_Vo" Type="int" />
     <Property Name="ID_Category" Type="int" />
+    <Property Name="View_Vocabulary" Type="int" />
+    <Property Name="ID_User" Type="int" />
   </EntityType>
   <Association Name="FK__Category__ID_Use__47DBAE45">
     <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
@@ -257,6 +259,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_Vocabulary_Users">
+    <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+    <End Role="Vocabulary" Type="Self.Vocabulary" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="ID_User" />
+      </Principal>
+      <Dependent Role="Vocabulary">
+        <PropertyRef Name="ID_User" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <EntityContainer Name="English_LearningModelStoreContainer">
     <EntitySet Name="Category" EntityType="Self.Category" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Category_Vo" EntityType="Self.Category_Vo" Schema="dbo" store:Type="Tables" />
@@ -312,6 +326,10 @@
     <AssociationSet Name="FK_Quiz_Details_Quiz" Association="Self.FK_Quiz_Details_Quiz">
       <End Role="Quiz" EntitySet="Quiz" />
       <End Role="Quiz_Details" EntitySet="Quiz_Details" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Vocabulary_Users" Association="Self.FK_Vocabulary_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Vocabulary" EntitySet="Vocabulary" />
     </AssociationSet>
   </EntityContainer>
 </Schema>

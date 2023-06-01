@@ -21,8 +21,12 @@ namespace EnglishForKids_LMN.Models
         public string Image_Vocabulary { get; set; }
         public Nullable<int> ID_Cate_Vo { get; set; }
         public Nullable<int> ID_Category { get; set; }
+        public Nullable<int> View_Vocabulary { get; set; }
+        public Nullable<int> ID_User { get; set; }
     
         public virtual Category Category { get; set; }
         public virtual Category_Vo Category_Vo { get; set; }
+        public virtual User User { get; set; }
+
     }
 }

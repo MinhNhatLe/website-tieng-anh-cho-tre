@@ -27,6 +27,7 @@
         <AssociationConnector Association="English_LearningModel.FK__Story__ID_User__4D94879B" ManuallyRouted="false" />
         <AssociationConnector Association="English_LearningModel.FK__Test_Deta__ID_Te__4E88ABD4" ManuallyRouted="false" />
         <AssociationConnector Association="English_LearningModel.FK__Test_Deta__ID_Us__4F7CD00D" ManuallyRouted="false" />
+        <AssociationConnector Association="English_LearningModel.FK_Vocabulary_Users" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
