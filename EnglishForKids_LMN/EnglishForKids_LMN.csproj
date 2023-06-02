@@ -223,6 +223,10 @@
     <Content Include="Content\asset\reponsive_signin_signup.css" />
     <Content Include="Content\asset\signup.css" />
     <Content Include="Content\asset\userview.css" />
+    <Content Include="Content\asset_game\style.css" />
+    <Content Include="Content\asset_game\utility.js" />
+    <Content Include="Content\asset_game\wordsearch.css" />
+    <Content Include="Content\asset_game\wordsearch.js" />
     <Content Include="Content\audio\audio1.mp3" />
     <Content Include="Content\audio\audio10.mp3" />
     <Content Include="Content\audio\audio100.mp3" />
@@ -540,7 +544,6 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\GoogleTranslate\GoogleTranslate.cshtml" />
@@ -589,6 +592,7 @@
     <Content Include="Views\Home\AllAccount.cshtml" />
     <Content Include="Views\Login\SignUpAdmin.cshtml" />
     <Content Include="Views\Identify\Identify_AI.cshtml" />
+    <Content Include="Views\Home\Game.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

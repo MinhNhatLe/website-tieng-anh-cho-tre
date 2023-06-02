@@ -264,7 +264,7 @@ namespace EnglishForKids_LMN.Controllers
 
 
 
-        public ActionResult About()
+        public ActionResult Game()
         {
             ViewBag.Message = "Your application description page.";
 
