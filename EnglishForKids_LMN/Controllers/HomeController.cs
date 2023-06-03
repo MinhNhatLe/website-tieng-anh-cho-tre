@@ -179,7 +179,7 @@ namespace EnglishForKids_LMN.Controllers
             //Tất cả
             ViewBag.UserData2 = JsonConvert.SerializeObject(new
             {
-                labels = new[] { "Vocabulary", "Category", "Story", "Quiz", "Question", "Test", "Quiz", "Test", "Account" },
+                labels = new[] { "Vocabulary", "Category", "Story", "Quiz", "Question", "Test", "User use quiz", "User use test", "Account" },
                 data = new[] { ViewBag.TotalVocabularies, ViewBag.TotalCategory_Vo, ViewBag.TotalStories, ViewBag.TotalQuizs, ViewBag.TotalQuestions, ViewBag.TotalTests, ViewBag.TotalQuiz_Details, ViewBag.TotalTest_Details, ViewBag.TotalUsers }
             });
 
@@ -266,7 +266,6 @@ namespace EnglishForKids_LMN.Controllers
 
         public ActionResult Game()
         {
-            ViewBag.Message = "Your application description page.";
 
             return View();
         }

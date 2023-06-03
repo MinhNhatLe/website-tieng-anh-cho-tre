@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Returns a random integer between min and max
  *
  * @param {Number} min
@@ -15,8 +15,7 @@ if (typeof Math.rangeInt != 'function') {
   }
 }
 
-/**
- * Mege two objects
+/** * Hợp nhất hai đối tượng
  *
  * @param {Object} o1 Object 1
  * @param {Object} o2 Object 2

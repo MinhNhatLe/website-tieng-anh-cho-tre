@@ -1,7 +1,7 @@
 (function(){
   'use strict';
 
-  // Extend the element method
+ // Mở rộng phương thức phần tử
   Element.prototype.wordSearch = function(settings) {
     return new WordSearch(this, settings);
   }
@@ -9,7 +9,7 @@
   /**
    * Word seach
    *
-   * @param {Element} wrapWl the game's wrap element
+   * @param {Element} wrapWl yếu tố bao bọc của trò chơi
    * @param {Array} settings
    * constructor
    */
@@ -19,13 +19,13 @@
   function WordSearch(wrapEl, settings) {
     this.wrapEl = wrapEl;
 
-    // Add `.ws-area` to wrap element
+    // Thêm `.ws-area` để bọc phần tử
     this.wrapEl.classList.add('ws-area');
 
-    //Words solved.
+    // Từ đã được giải quyết.
     this.solved = 0;
 
-    // Default settings
+    // Thiết lập mặc định
     var default_settings = {
       'directions': ['W', 'N', 'WN', 'EN'],
       'gridSize': 10,
@@ -35,30 +35,30 @@
     }
     this.settings = Object.merge(settings, default_settings);
 
-    // Check the words' length if it is overflow the grid
+    // Kiểm tra độ dài của từ nếu nó tràn lưới
     if (this.parseWords(this.settings.gridSize)) {
-      // Add words into the matrix data
+      // Thêm từ vào dữ liệu ma trận
       var isWorked = false;
 
       while (isWorked == false) {
-        // initialize the application
+       //khởi tạo ứng dụng
         this.initialize();
 
         isWorked = this.addWords();
       }
 
-      // Fill up the remaining blank items
+      // Điền vào các mục trống còn lại
       if (!this.settings.debug) {
         this.fillUpFools();
       }
 
-      // Draw the matrix into wrap element
+      // Vẽ ma trận vào phần tử bọc
       this.drawmatrix();
     }
   }
 
   /**
-   * Parse words
+   * phân tích từ
    * @param {Number} Max size
    * @return {Boolean}
    */
@@ -66,7 +66,7 @@
     var itWorked = true;
 
     for (var i = 0; i < this.settings.words.length; i++) {
-      // Convert all the letters to upper case      
+      //Chuyển tất cả các ký tự thành chữ hoa
 	  this.settings.wordsList[i] =  this.settings.words[i].trim();
 	  this.settings.words[i] =  removeDiacritics(this.settings.wordsList[i].trim().toUpperCase());
 
@@ -82,7 +82,7 @@
   }
 
   /**
-   * Put the words into the matrix
+   *Đặt các từ vào ma trận
    */
   WordSearch.prototype.addWords = function() {
       var keepGoing = true,
@@ -90,7 +90,7 @@
         isWorked = true;
 
       while (keepGoing) {
-        // Getting random direction
+       // Lấy hướng ngẫu nhiên
         var dir = this.settings.directions[Math.rangeInt(this.settings.directions.length - 1)],
           result = this.addWord(this.settings.words[counter], dir),
           isWorked = true;
@@ -110,7 +110,7 @@
   }
 
   /**
-   * Add word into the matrix
+   * Thêm từ vào ma trận
    *
    * @param {String} word
    * @param {Number} direction
@@ -118,10 +118,10 @@
   WordSearch.prototype.addWord = function(word, direction) {
     var itWorked = true,
       directions = {
-        'W': [0, 1], // Horizontal (From left to right)
-        'N': [1, 0], // Vertical (From top to bottom)
-        'WN': [1, 1], // From top left to bottom right
-        'EN': [1, -1] // From top right to bottom left
+          'W': [0, 1], // Ngang (Từ trái qua phải)
+          'N': [1, 0], // Dọc (Từ trên xuống dưới)
+          'WN': [1, 1], // Từ trên cùng bên trái xuống dưới cùng bên phải
+          'EN': [1, -1] // Từ trên bên phải xuống dưới bên trái
       },
       row, col; // y, x
 
@@ -153,12 +153,12 @@
         break;
     }
 
-    // Add words to the matrix
+    // Thêm từ vào ma trận
     for (var i = 0; i < word.length; i++) {
       var newRow = row + i * directions[direction][0],
         newCol = col + i * directions[direction][1];
 
-      // The letter on the board
+      // Chữ cái trên bảng
       var origin = this.matrix[newRow][newCol].letter;
 
       if (origin == '.' || origin == word[i]) {
@@ -172,11 +172,11 @@
   }
 
   /**
-   * Initialize the application
+   * Khởi tạo ứng dụng
    */
   WordSearch.prototype.initialize = function() {
     /**
-     * Letter matrix
+     * ma trận chữ cái
      *
      * param {Array}
      */
@@ -197,7 +197,7 @@
   }
 
   /**
-   * Fill default items into the matrix
+   * Điền các mục mặc định vào ma trận
    * @param {Number} size Grid size
    */
   WordSearch.prototype.initmatrix = function(size) {
