@@ -66,7 +66,7 @@ namespace EnglishForKids_LMN.Controllers
             // Nếu không nhập thì báo lỗi
             if (users1 == null)
             {
-                ViewData["UserNotFound"] = " Wrong user or password ";
+                ViewData["UserNotFound"] = " Please enter the correct account and password ";
                 return this.SignIn();
             }
             else

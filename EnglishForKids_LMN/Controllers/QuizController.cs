@@ -16,6 +16,7 @@ namespace EnglishForKids_LMN.Controllers
         English_LearningEntities db = new English_LearningEntities();
 
         // GET: Quiz
+
         public ActionResult Choose_Image_Quiz()
         {
             // lấy ra danh sách thể loại từ vựng và bỏ cái thứ 6 đi
