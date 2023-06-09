@@ -19,7 +19,7 @@ namespace EnglishForKids_LMN.Models
         [MaxLength(50)]
         public string EN_Content { get; set; }
         [DisplayName("Vietnamese content: ")]
-        [Required(ErrorMessage = " Please enter the content in Vietnamese ")]
+        [Required(ErrorMessage = " Please enter VietNam content ")]
         [MaxLength(50)]
         public string VN_Content { get; set; }
         [DisplayName("Story audio: ")]

@@ -205,7 +205,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__Test_Deta__ID_Te__4E88ABD4">
-          <End Role="Test" Type="Self.Test" Multiplicity="1" />
+          <End Role="Test" Type="Self.Test" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="Test_Details" Type="Self.Test_Details" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Test">
@@ -253,7 +255,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Quiz_Details_Quiz">
-          <End Role="Quiz" Type="Self.Quiz" Multiplicity="1" />
+          <End Role="Quiz" Type="Self.Quiz" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="Quiz_Details" Type="Self.Quiz_Details" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Quiz">
