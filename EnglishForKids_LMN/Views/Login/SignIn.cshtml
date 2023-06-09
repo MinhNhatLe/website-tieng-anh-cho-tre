@@ -15,8 +15,6 @@
     <link href="~/Content/asset/signin.css" rel="stylesheet" />
     <link href="~/Content/asset/reponsive_signin_signup.css" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&display=swap" rel="stylesheet">
-
-
 </head>
 <body style="">
     <div class="container">
@@ -25,16 +23,14 @@
                 <img src="~/Content/images/gif/gif_win7.gif" alt="results" style="width:30%; position: absolute; left: -300px; top: 100px" />
             </div>
         </div>
-
         <div>
             <div class="row">
-
 
             </div>
             <div class="row">
 
                 <div class="col-lg-12 col-xs-12 ">
-                    <audio autoplay="autoplay" controls hidden preload="auto" loop ="loop">
+                    <audio autoplay="autoplay" controls hidden preload="auto" loop="loop">
                         <source src="~/Content/audio/phonics_song_main.mp3" type="audio/ogg">
                         <source src="~/Content/audio/phonics_song_main.mp3" type="audio/mpeg">
                     </audio>
@@ -48,14 +44,14 @@
                                 </div>
                                 <p>
                                     <strong>
-                                        <label for="User_Mail">Email address</label> 
+                                        <label for="User_Mail">Email address</label>
                                     </strong>
                                     <span class="text-danger" data-valmsg-for="User_Mail" data-valmsg-replace="true"></span>
                                     <font style="color:red">@ViewData["UserNotFound"]</font>
                                 </p>
                                 <div class="input-group">
                                     @*<input class="form-control" type="email" id="User_Mail" name="User_Mail" placeholder="Example: lmnhat.contact@gmail.com" autofocus="autofocus" minlength="5" maxlength="30" required />*@
-                                    <input class="form-control" type="email" id="User_Mail" name="User_Mail" placeholder="Example: lmnhat.contact@gmail.com" autofocus="autofocus"  />
+                                    <input class="form-control" type="email" id="User_Mail" name="User_Mail" placeholder="Example: lmnhat.contact@gmail.com" autofocus="autofocus" />
                                     <span class="input-group-addon">
                                         <i class="glyphicon glyphicon-user "></i>
                                     </span>
@@ -69,7 +65,7 @@
                                 </p>
                                 <div class="input-group">
                                     @*<input class="form-control" type="password" id="User_Password" name="User_Password" placeholder="Enter your password ..." minlength="5" maxlength="10" required />*@
-                                    <input class="form-control" type="password" id="User_Password" name="User_Password" placeholder="Enter your password ..."  />
+                                    <input class="form-control" type="password" id="User_Password" name="User_Password" placeholder="Enter your password ..." />
                                     <span class="input-group-addon" onclick="myfunction()">
                                         <i class="glyphicon glyphicon-eye-close" id="a"></i>
                                         <i class="glyphicon glyphicon-eye-open" id="b" style="display:none;"></i>
@@ -97,38 +93,34 @@
                             </div>
                         </form>
                     </div>
-
-
-
-
                 </div>
             </div>
         </div>
     </div>
-        <script>
-            function myfunction() {
-                var x = document.getElementById("Password_User");
-                if (x.type == "password") {
-                    x.type = "text";
-                }
-                else {
-                    x.type = "password";
-                }
-                var y = document.getElementById("a");
-                var z = document.getElementById("b");
-                if (y.style.display == "block" && z.style.display == "none") {
-                    y.style.display = "none";
-                    z.style.display = "block";
-                }
-                else {
-                    y.style.display = "block";
-                    z.style.display = "none";
-                }
+    <script>
+        function myfunction() {
+            var x = document.getElementById("Password_User");
+            if (x.type == "password") {
+                x.type = "text";
             }
-        </script>
-        <script src="~/Scripts/jquery-3.4.1.js"></script>
-        <script src="~/Scripts/jquery.validate.min.js"></script>
-        <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+            else {
+                x.type = "password";
+            }
+            var y = document.getElementById("a");
+            var z = document.getElementById("b");
+            if (y.style.display == "block" && z.style.display == "none") {
+                y.style.display = "none";
+                z.style.display = "block";
+            }
+            else {
+                y.style.display = "block";
+                z.style.display = "none";
+            }
+        }
+    </script>
+    <script src="~/Scripts/jquery-3.4.1.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
 </body>
 </html>
 
