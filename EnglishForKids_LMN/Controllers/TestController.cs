@@ -18,20 +18,30 @@ namespace EnglishForKids_LMN.Controllers
         English_LearningEntities db = new English_LearningEntities();
         public ActionResult Choose_Test()
         {
+            // lấy ra danh sách bài kiểm tra
             List<Test> tests = db.Tests.ToList();
+            // lấy ra danh sách chi tiết của bài kiểm tra
             List<Test_Details> test_Details = db.Test_Details.ToList();
+            // lưu chi tiết bài kiểm tra vào session
             Session["test_Details"] = test_Details;
             return View(tests);
         }
+        // danh sách các câu hỏi và câu trả lời
         static List<Question> questions = new List<Question>();
         public ActionResult Do_Test(int id)
         {
             questions.Clear();
+            // lưu điểm ban đâu là 0
             Session["Test_Score"] = 0;
+            // lấy id bài kiểm tra ra
             Test test = db.Tests.FirstOrDefault(s => s.ID_Test == id);
+            // lấy danh sách câu hỏi ra
             List<Question> questions1 = db.Questions.Where(s => s.ID_Test == test.ID_Test).ToList();
+            // vào session video
             Session["video"] = test.Video;
+            // vào session paragraph
             Session["paragraph"] = test.Paragraph;
+            // random câu hỏi
             Random random = new Random();
             int x;
             for (int i = 0; i < 10; i++)
@@ -62,6 +72,7 @@ namespace EnglishForKids_LMN.Controllers
             List<Question> questions5 = new List<Question>();
             foreach (Question item in questions)
             {
+            // lấy từng thể loại bài kiếm tra
                 if (item.Type_Question == "multipe-choice")
                 {
                     questions2.Add(item);
@@ -79,6 +90,7 @@ namespace EnglishForKids_LMN.Controllers
                     questions5.Add(item);
                 }
             }
+            // lưu mấy cái session vào từng thể loại bài kiểm tra
             Session["questions2"] = questions2;
             Session["questions3"] = questions3;
             Session["questions4"] = questions4;
@@ -88,6 +100,7 @@ namespace EnglishForKids_LMN.Controllers
             questions.AddRange(questions3);
             questions.AddRange(questions4);
             questions.AddRange(questions5);
+            // nếu câu hỏi không có hoặc bé hơn 10 thì trở về trang cũ
             if (questions == null || questions.Count() < 10)
             {
                 return RedirectToAction("Choose_Test", "Test");
@@ -100,7 +113,11 @@ namespace EnglishForKids_LMN.Controllers
         [HttpPost]
         public ActionResult Do_Test(string choice1, string choice2, string choice3, string choice4, string choice5, string choice6, string choice7, string text1, string text2, string text3)
         {
+            // khai báo điểm số
             int test_Score = int.Parse(Session["Test_Score"].ToString());
+            // gán câu trả lời đúng đầu tiên vào choice
+            // thì sẽ được 1 điểm
+            // các câu khác tương tự
             if (questions[0].Answer_Correct == choice1)
             {
                 test_Score++;
@@ -141,6 +158,7 @@ namespace EnglishForKids_LMN.Controllers
             {
                 test_Score++;
             }
+            // lưu vào session
             Session["choice1"] = choice1;
             Session["choice2"] = choice2;
             Session["choice3"] = choice3;
@@ -162,8 +180,8 @@ namespace EnglishForKids_LMN.Controllers
             Session["answer_choice6"] = questions[8].Answer_Correct;
             Session["answer_choice7"] = questions[9].Answer_Correct;
 
-
             Session["Test_Score"] = test_Score;
+
             // Lấy thông tin user
             int user_Code = int.Parse(Session["ID_User"].ToString());
             User userz = db.Users.FirstOrDefault(s => s.ID_User == user_Code);
@@ -171,9 +189,11 @@ namespace EnglishForKids_LMN.Controllers
             int id = int.Parse(questions[0].ID_Test.ToString());
             if (db.Test_Details.FirstOrDefault(s => s.ID_Test == id && s.ID_User == user_Code) != null)
             {
+                // lấy id bài kiểm tra và user vào
                 Test_Details test_Detail = db.Test_Details.FirstOrDefault(s => s.ID_Test == id && s.ID_User == user_Code);
                 if (test_Detail.Test_Score < test_Score)
                 {
+                    // cập nhật vào
                     test_Detail.Test_Score = test_Score;
                     db.Test_Details.AddOrUpdate(test_Detail);
                     db.SaveChanges();
@@ -238,7 +258,7 @@ namespace EnglishForKids_LMN.Controllers
             ////smtp.Send(Message);
 
 
-
+            // chức năng gởi kết quả về mail
             MailAddress fromGMail = new MailAddress("lmnnhat.work@gmail.com", "English For Kids - CEO Lê Minh Nhật");
             MailAddress toGMail = new MailAddress(userz.Email, "Me");
             MailMessage Message = new MailMessage()
@@ -331,7 +351,9 @@ namespace EnglishForKids_LMN.Controllers
         }
         public ActionResult ListTest(int? page, string searchTest, string sortTest)
         {
+            // lấy danh sách bài kiểm tra ra
             List<Test> tests = new List<Test>();
+            // tìm kiếm theo tên
             if (searchTest != null)
             {
                 Session["searchTest"] = searchTest;
@@ -342,12 +364,15 @@ namespace EnglishForKids_LMN.Controllers
                 Session["searchTest"] = null;
                 tests = db.Tests.ToList();
             }
+            // lấy danh sách bài test ra
             List<Test> tests1;
+            // sắp xếp theo none
             if (sortTest == null || sortTest == "None")
             {
                 Session["sortTest"] = "None";
                 tests1 = tests;
             }
+            // sắp xếp theo AZ
             else if (sortTest == "AZ")
             {
                 Session["sortTest"] = "A - Z";
@@ -418,8 +443,8 @@ namespace EnglishForKids_LMN.Controllers
         {
             if (test != null)
             {
-
-
+                // lấy danh sách test ra
+                // rồi add vào thôi
                 Test test1 = new Test();
                 test1.Name_Test = test.Name_Test;
                 test1.Paragraph = test.Paragraph;
@@ -431,10 +456,6 @@ namespace EnglishForKids_LMN.Controllers
             return RedirectToAction("ListTest", "Test");
         }
 
-
-
-
-        
 
         public ActionResult Create_Question()
         {
@@ -465,6 +486,7 @@ namespace EnglishForKids_LMN.Controllers
 
         public ActionResult EditQ(int id)
         {
+            // lấy id bài kiểm tra ra
             Test test = db.Tests.FirstOrDefault(s => s.ID_Test == id);
             if (test != null)
             {
@@ -475,9 +497,11 @@ namespace EnglishForKids_LMN.Controllers
         [HttpPost]
         public ActionResult EditQ(Test test)
         {
+            // lấy id bài kiểm tra ra
             Test test1 = db.Tests.FirstOrDefault(s => s.ID_Test == test.ID_Test);
             if (test != null)
             {
+                // cập nhật vào
                 test1.Name_Test = test.Name_Test;
                 test1.Paragraph = test.Paragraph;
                 test1.Video = test.Video;
@@ -490,6 +514,7 @@ namespace EnglishForKids_LMN.Controllers
 
         public ActionResult EditQuestion(int id)
         {
+            // lấy id câu hỏi ra
             Question question = db.Questions.FirstOrDefault(s => s.ID_Question == id);
             if (question != null)
             {
@@ -500,9 +525,11 @@ namespace EnglishForKids_LMN.Controllers
         [HttpPost]
         public ActionResult EditQuestion(Question question)
         {
+            // lấy id câu hỏi ra
             Question question1 = db.Questions.FirstOrDefault(s => s.ID_Question == question.ID_Question);
             if (question != null)
             {
+                // cập nhật vào
                 //question1.ID_Question = question.ID_Question;
                 question1.Content = question.Content;
                 question1.Type_Question = question.Type_Question;
@@ -520,11 +547,11 @@ namespace EnglishForKids_LMN.Controllers
         }
 
 
-
         public ActionResult DeleteQ(int id)
         {
             try
             {
+                // lấy id bài kiểm tra muốn xóa
                 Test test = db.Tests.FirstOrDefault(s => s.ID_Test == id);
                 if (test != null)
                 {
@@ -546,6 +573,7 @@ namespace EnglishForKids_LMN.Controllers
         {
             try
             {
+                // lấy id câu hỏi muốn xóa
                 Question questions = db.Questions.FirstOrDefault(s => s.ID_Question == id);
                 if (questions != null)
                 {

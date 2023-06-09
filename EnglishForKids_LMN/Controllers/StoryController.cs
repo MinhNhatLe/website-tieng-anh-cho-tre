@@ -4,7 +4,6 @@ using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-
 using EnglishForKids_LMN.Models;
 using PagedList;
 
@@ -16,40 +15,51 @@ namespace EnglishForKids_LMN.Controllers
         English_LearningEntities db = new English_LearningEntities();
         public ActionResult ListStory(int? page, string searchStory1, string sortStory1)
         {
+            // Lấy danh sách ra
             List<Story> stories = new List<Story>();
+            // tìm kiếm theo tên story
+            // nếu story đó khác null thì ra như này
             if (searchStory1 != null)
             {
                 Session["searchStory1"] = searchStory1;
                 stories = db.Stories.Where(s => s.Name_Story.Contains(searchStory1.Trim().ToLower())).ToList();
             }
             else
+            // nếu null thì ra list danh sách story
             {
                 Session["searchStory1"] = null;
                 stories = db.Stories.ToList();
             }
+
+            // lấy  danh sách story ra
             List<Story> stories1;
+            // nếu null thì như này
             if (sortStory1 == null || sortStory1 == "None")
             {
                 Session["sortStory1"] = "None";
                 stories1 = stories;
             }
+            // sắp xếp theo từ  a -> z
             else if (sortStory1 == "AZ")
             {
                 Session["sortStory1"] = "A - Z";
                 stories1 = stories.OrderBy(s => s.Name_Story).ToList();
             }
+            // sắp xếp theo từ  z -> a
             else if (sortStory1 == "ZA")
             {
                 Session["sortStory"] = "Z - A";
                 stories1 = stories.OrderByDescending(s => s.Name_Story).ToList();
             }
             else
+            // sắp xếp theo số lượng view
             {
                 Session["sortStory1"] = "View";
                 stories1 = stories.OrderByDescending(s => s.View_Story).ToList();
             }
             
-               List <StoryBonus> storyBonus = new List<StoryBonus>();
+            // lấy danh sách ra
+            List <StoryBonus> storyBonus = new List<StoryBonus>();
             foreach (Story item in stories1)
             {
                 StoryBonus storyBonus1 = new StoryBonus();
@@ -57,13 +67,11 @@ namespace EnglishForKids_LMN.Controllers
                 storyBonus1.Image_Story = item.Image_Story;
                 storyBonus1.Name_Story = item.Name_Story;
                 
-
                 User users = db.Users.FirstOrDefault(s => s.ID_User == item.ID_User);
                 //storyBonus1.Name_User = users.Name_User;
 
-
-
                 // fix lỗi 500
+                // xử lí khi user khác null
                 if (users != null)
                 {
                     storyBonus1.Name_User = users.Name_User;
@@ -72,14 +80,10 @@ namespace EnglishForKids_LMN.Controllers
                 {
                     // Xử lý khi đối tượng users là null
                 }
-
-                /////////////////
-                ///
-
-
-
                 storyBonus.Add(storyBonus1);
             }
+
+            // phân trang
             if (page == null)
             {
                 page = 1;
@@ -88,6 +92,8 @@ namespace EnglishForKids_LMN.Controllers
             int pageNum = page ?? 1;
             return View(storyBonus.ToPagedList(pageNum, pageSize));
         }
+
+
         public ActionResult CreateS()
         {
             StoryBonus story = new StoryBonus();
@@ -96,24 +102,30 @@ namespace EnglishForKids_LMN.Controllers
         [HttpPost]
         public ActionResult CreateS(StoryBonus story)
         {
+            // bắt lỗi
             try
             {
                 if (story != null)
                 {
                     Story story1 = new Story();
+                    // nếu story đó khác null thì gán vào 
                     if (story.Banner != null)
                     {
                         story1.Banner = story.Banner;
                     }
                     else
+                    // còn nếu null thì  cho nó hình 404
                     {
                         story1.Banner = "404.jpg";
                     }
+
+                    // nếu story đó khác null thì gán vào 
                     if (story.Image_Story != null)
                     {
                         story1.Image_Story = story.Image_Story;
                     }
                     else
+                    // còn nếu null thì  cho nó hình 404
                     {
                         story1.Image_Story = "404.jpg";
                     }
@@ -136,6 +148,7 @@ namespace EnglishForKids_LMN.Controllers
         }
         public ActionResult EditS(int id)
         {
+            // lấy ID của story đó ra
             Story story = db.Stories.FirstOrDefault(s => s.ID_Story == id);
             if (story != null)
             {
@@ -157,6 +170,7 @@ namespace EnglishForKids_LMN.Controllers
         {
             try
             {
+                // lấy ID nó ra
                 Story story = db.Stories.FirstOrDefault(s => s.ID_Story == storyBonus.ID_Story);
                 if (story != null)
                 {
@@ -177,26 +191,26 @@ namespace EnglishForKids_LMN.Controllers
                 return RedirectToAction("Error404", "Home");
             }
         }
+
+
         public ActionResult DetailS(int id)
         {
+            // lấy  id story ra
             Story story = db.Stories.FirstOrDefault(s => s.ID_Story == id);
             if (story != null)
             {
+                // cộng thêm 1 khi click vào
                 story.View_Story += 1;
-                //story.View_Story = story.View_Story;
-                //db.Stories.AddOrUpdate(story);
-
-                // Lấy lượt xem cao nhất
-                //Story topStory = db.Stories.OrderByDescending(v => v.View_Story).FirstOrDefault();
-
-                //ViewBag.TopVocabulary = topStory; // Truyền vào ViewBag để sử dụng trong View
                 db.SaveChanges();
                 return View(story);
             }
             return RedirectToAction("User_View", "Story");
         }
+
+
         public ActionResult DeleteS(int id)
         {
+            // lấy ID để show ra mấy ô input để xem thông tin trước khi xóa
             Story story = db.Stories.FirstOrDefault(s => s.ID_Story == id);
             if (story != null)
             {
@@ -208,6 +222,7 @@ namespace EnglishForKids_LMN.Controllers
         {
             try
             {
+                // lấy  ID của story ra gán cho id
                 Story story = db.Stories.FirstOrDefault(s => s.ID_Story == id);
                 if (story != null)
                 {
@@ -230,19 +245,24 @@ namespace EnglishForKids_LMN.Controllers
             }
             else
             {
+                // Lấy hình ở đâu cũng được
+                // Nhưng lấy xong nó sẽ lưu vào Server theo đường dẫn này
                 file.SaveAs(Server.MapPath("~/Content/images/" + file.FileName));
             }
             return file.FileName;
         }
         public ActionResult User_View(int? page, string searchStory, string sortStory)
         {
+            // lấy danh sách story ra
             List<Story> stories = new List<Story>();
+            // tìm kiếm theo tên story
             if (searchStory != null)
             {
                 Session["searchStory"] = searchStory;
                 stories = db.Stories.Where(s => s.Name_Story.Contains(searchStory.Trim().ToLower())).ToList();
             }
             else
+            // nếu null thì ra danh sách
             {
                 Session["searchStory"] = null;
                 stories = db.Stories.ToList();

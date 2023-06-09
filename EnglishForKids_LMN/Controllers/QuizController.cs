@@ -18,12 +18,16 @@ namespace EnglishForKids_LMN.Controllers
         // GET: Quiz
         public ActionResult Choose_Image_Quiz()
         {
+            // lấy ra danh sách thể loại từ vựng và bỏ cái thứ 6 đi
             List<Category_Vo> vocabulary_Type = db.Category_Vo.Where(s => s.ID_Category_Vo != 6).ToList();
+            // lấy ra danh sách câu đố 
             List<Quiz_Details> quiz_Details = db.Quiz_Details.ToList();
+            // lưu vào session để đẩy ra view
             Session["quiz_Details"] = quiz_Details;
             return View(vocabulary_Type);
 
         }
+        // lấy ra danh sách từ vựng lưu vào static
         static List<Vocabulary> vocabularies = new List<Vocabulary>();
 
 
@@ -36,6 +40,7 @@ namespace EnglishForKids_LMN.Controllers
             Session["Image_Quiz_List"] = 0;
             Session["Image_Quiz_Index"] = 1;
             Session["Image_Quiz_Score"] = 0;
+            // lấy danh sách câu hỏi và câu trả lời
             List<TempListAnswer> listAnss = new List<TempListAnswer>();
             TempListAnswer answer = new TempListAnswer();
             answer.IdAnswer = "0";
@@ -43,11 +48,16 @@ namespace EnglishForKids_LMN.Controllers
             listAnss.Add(answer);
             Session["Answer"] = listAnss;
             List<bool> save_Result = new List<bool>();
+            // lưu kết quả vào session
             Session["Image_Quiz_Result"] = save_Result;
             Session["Vocabulary_Index"] = null;
+
+            // lấy danh danh thể loại từ vựng ra
             List<Vocabulary> vocabulary = db.Vocabularies.Where(s => s.ID_Cate_Vo == id).ToList();
+            // random từ vựng
             Random random = new Random();
             int x;
+            // random ngầu nhiên lấy ra 5 từ vựng
             for (int i = 0; i < 5; i++)
             {
                 if (vocabularies.Count() < 5)
@@ -67,6 +77,8 @@ namespace EnglishForKids_LMN.Controllers
                     break;
                 }
             }
+            // nếu từ vựng đó không có hoặc dưới 5
+            // thì quay lại trang chọn câu đố
             Session["Count_Image_Quiz_List"] = vocabularies.Count();
             if (vocabularies == null || vocabularies.Count() < 5)
             {
@@ -83,30 +95,37 @@ namespace EnglishForKids_LMN.Controllers
         [HttpPost]
         public ActionResult Check_Answer(Vocabulary vocabulary, string answer)
         {
+            // Tạo một danh sách mới có kiểu TempListAnswer và gán nó bằng giá trị của Session "Answer" được ép kiểu thành List<TempListAnswer>.
+            //Session "Answer" được truy xuất và lưu trữ từ trước.
             List<TempListAnswer> listAnss = new List<TempListAnswer>();
             listAnss = Session["Answer"] as List<TempListAnswer>;
-
-            //
+            //Tạo một danh sách mới có kiểu bool và gán nó bằng giá trị của Session "Image_Quiz_Result" được ép kiểu thành List<bool>.
+            //Session "Image_Quiz_Result" được truy xuất và lưu trữ từ trước.
             List<bool> save_Result = Session["Image_Quiz_Result"] as List<bool>;
+            //Tạo các biến list, index, và quiz_Score và gán chúng bằng giá trị của các Session tương ứng.
+            //Giá trị của các Session này được ép kiểu thành int từ kiểu dữ liệu gốc (thường là string).
             int list = int.Parse(Session["Image_Quiz_List"].ToString());
             int index = int.Parse(Session["Image_Quiz_Index"].ToString());
             int quiz_Score = int.Parse(Session["Image_Quiz_Score"].ToString());
+
+            // lấy ra id của từ vựng
             Vocabulary vocabulary1 = db.Vocabularies.FirstOrDefault(s => s.ID_Vocabulary == vocabulary.ID_Vocabulary);
-            //
 
-
-            //
+            // nếu kh có từ vựng thì chuyển hướng sang sang chọn từ vựng
             if (vocabulary1 == null)
             {
                 return RedirectToAction("Choose_Image_Quiz", "Quiz");
             }
             else
+            // nếu có từ vựng
             {
                 if (vocabulary1.EN_Meaning.ToLower().Trim() == answer.ToLower().Trim())
                 {
+                    // nếu trả lời đúng thì +2 điểm
                     quiz_Score = quiz_Score + 2;
                     save_Result.Add(true);
 
+                    // lấy ra danh sách rồi add vào
                     TempListAnswer aa = new TempListAnswer();
                     aa.IdAnswer = index.ToString();
                     aa.QuestionAnswer = answer.ToString();
@@ -124,8 +143,10 @@ namespace EnglishForKids_LMN.Controllers
                     Session["Answer"] = listAnss;
                     save_Result.Add(false);
                 }
+                // từ vựng tăng lên lưu vào Session["Image_Quiz_Index"]
                 index++;
                 Session["Image_Quiz_Index"] = index;
+                // danh sách thì cũng lưu vào
                 list++;
                 Session["Image_Quiz_List"] = list;
                 Session["Image_Quiz_Result"] = save_Result;
@@ -133,6 +154,7 @@ namespace EnglishForKids_LMN.Controllers
 
                 if (int.Parse(Session["Image_Quiz_Index"].ToString()) > 5)
                 {
+                    // này nếu là user thì như này
                     int user_Code = int.Parse(Session["ID_User"].ToString());
                     if (db.Quiz_Details.FirstOrDefault(s => s.ID_User == user_Code && s.ID_Category_Vo == vocabulary1.ID_Cate_Vo) != null)
                     {
@@ -181,19 +203,24 @@ namespace EnglishForKids_LMN.Controllers
         {
             return View();
         }
+
         //phương thức kiểm tra xem câu trả lời của người dùng có khớp với nghĩa tiếng Anh của từ vựng hay không
         //Nếu có, điểm số của người dùng tăng lên 2, kết quả trả lời được lưu vào danh sách save_Result, và câu trả lời tạm thời được lưu vào danh sách listAnss.
         public ActionResult Choose_DragDrop_Quiz()
         {
+            // lấy danh sách câu đố ra trừ cái thứ 6
             List<Quiz> quizzes = db.Quizs.Where(s => s.ID_Quiz != 6).ToList();
             List<Quiz_Details> quiz_Details = db.Quiz_Details.ToList();
+            // lưu vào session
             Session["quiz_Details"] = quiz_Details;
             Session["Choose_DragDrop_Quiz"] = null;
             return View(quizzes);
         }
         public ActionResult Do_DragDrop_Quiz(int id)
         {
+            // lấy id câu đố ra
             Quiz quizzes = db.Quizs.FirstOrDefault(s => s.ID_Quiz == id);
+            // lưu vào session
             Session["Choose_DragDrop_Quiz"] = id;
             return View(quizzes);
         }
@@ -202,13 +229,20 @@ namespace EnglishForKids_LMN.Controllers
         {
             try
             {
+                // gán id
                 int id = int.Parse(Session["Choose_DragDrop_Quiz"].ToString());
+                // lấy id câu đố ra
                 Quiz quiz = db.Quizs.FirstOrDefault(s => s.ID_Quiz == id);
+                // gán user
                 int user_Code = int.Parse(Session["ID_User"].ToString());
+                // lấy id user = tài khoản user
                 User userz = db.Users.FirstOrDefault(s => s.ID_User == user_Code);
+                // nếu câu đố có và tài khoản có
                 if (quiz != null && userz != null)
                 {
+                    // khai báo ban đầu là 0 điểm
                     int quiz_score = 0;
+                    // nếu dropone giống với câu trả lời của quiz trong db thì +2 và tương tự cho 5 cái
                     if (dropone == quiz.Answer_1)
                     {
                         quiz_score += 2;
@@ -229,8 +263,11 @@ namespace EnglishForKids_LMN.Controllers
                     {
                         quiz_score += 2;
                     }
+                    // lưu điểm vào session
                     Session["DragDrop_Quiz_Score"] = quiz_score;
+                    // lấy danh sách câu đố và id người dùng
                     Quiz_Details quiz_Detail = db.Quiz_Details.FirstOrDefault(s => s.ID_Quiz == quiz.ID_Quiz && s.ID_User == userz.ID_User);
+                    // update điểm câu đố vào
                     if (quiz_Detail != null)
                     {
                         if (quiz_Detail.Quiz_Score < quiz_score)
@@ -266,29 +303,37 @@ namespace EnglishForKids_LMN.Controllers
         }
         public ActionResult ListQuiz(int? page, string searchQuiz, string sortQuiz)
         {
+            // lấy danh sách câu đô
             List<Quiz> quizzes = new List<Quiz>();
+            // tìm kiếm theo tên câu đô
             if (searchQuiz != null)
             {
                 Session["searchQuiz"] = searchQuiz;
                 quizzes = db.Quizs.Where(s => s.Name_Quiz.Contains(searchQuiz.Trim().ToLower()) && s.ID_Quiz != 6).ToList();
             }
             else
+            // nếu không tìm kiếm gì thì đổ ra danh sách
             {
                 Session["searchQuiz"] = null;
                 quizzes = db.Quizs.Where(s => s.ID_Quiz != 6).ToList();
             }
+
+            // lấy danh sách câu đố ra
             List<Quiz> quizzes1;
+            // nếu kh sắp xếp gì thì đổ ra hết danh sách
             if (sortQuiz == null || sortQuiz == "None")
             {
                 Session["sortQuiz"] = "None";
                 quizzes1 = quizzes;
             }
             else if (sortQuiz == "AZ")
+                // nếu sắp xếp từ AZ thì dùng OderBy
             {
                 Session["sortQuiz"] = "A - Z";
                 quizzes1 = quizzes.OrderBy(s => s.Name_Quiz).ToList();
             }
             else
+            // nếu sắp xếp từ ZA thì dùng OderByDescending
             {
                 Session["sortQuiz"] = "Z - A";
                 quizzes1 = quizzes.OrderByDescending(s => s.Name_Quiz).ToList();
@@ -312,6 +357,8 @@ namespace EnglishForKids_LMN.Controllers
             {
                 if (quiz != null)
                 {
+                    // lấy danh sách câu đố ra 
+                    // add vào thôi
                     Quiz quiz1 = new Quiz();
                     quiz1.Name_Quiz = quiz.Name_Quiz;
                     quiz1.Content = quiz.Content;
@@ -333,6 +380,7 @@ namespace EnglishForKids_LMN.Controllers
         }
         public ActionResult EditQ(int id)
         {
+            // lấy id của câu đố muốn cập nhật ra
             Quiz quiz = db.Quizs.FirstOrDefault(s => s.ID_Quiz == id);
             if (quiz != null)
             {
@@ -347,6 +395,7 @@ namespace EnglishForKids_LMN.Controllers
             {
                 if (quiz != null)
                 {
+                    // lấy id câu đố muốn cập nhật
                     if (db.Quizs.FirstOrDefault(s => s.ID_Quiz == quiz.ID_Quiz) != null)
                     {
                         Quiz quiz1 = db.Quizs.FirstOrDefault(s => s.ID_Quiz == quiz.ID_Quiz);
@@ -371,6 +420,7 @@ namespace EnglishForKids_LMN.Controllers
         }
         public ActionResult DeleteQ(int id)
         {
+            // lấy id câu đố muỗn xóa
             Quiz quiz = db.Quizs.FirstOrDefault(s => s.ID_Quiz == id);
             if (quiz != null)
             {
@@ -381,9 +431,11 @@ namespace EnglishForKids_LMN.Controllers
         [HttpPost]
         public ActionResult DeleteQ(Quiz quiz)
         {
+            // lấy id câu đố muỗn xóa
             Quiz quiz1 = db.Quizs.FirstOrDefault(s => s.ID_Quiz == quiz.ID_Quiz);
             if (quiz != null)
             {
+                // dùng remove để xóa
                 db.Quizs.Remove(quiz1);
                 db.SaveChanges();
             }

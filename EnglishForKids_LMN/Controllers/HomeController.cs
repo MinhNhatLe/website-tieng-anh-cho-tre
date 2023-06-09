@@ -20,9 +20,11 @@ namespace EnglishForKids_LMN.Controllers
             return View();
         }
 
-        //chức năng xác định người dùng hiện tại và hiển thị thông tin tài khoản của họ trên trang "Account".
+
         public ActionResult Account()
         {
+            // Kiểm tra nó có ID_User có giống với session bên LogIn kh
+            // Lấy ra dữ liệu hiển thị thôi
             if (Session["ID_User"] != null)
             {
                 int check = int.Parse(Session["ID_User"].ToString());
@@ -57,6 +59,8 @@ namespace EnglishForKids_LMN.Controllers
             try
             {
                 User users;
+                // Kiểm tra nó có ID_User có giống với session bên LogIn kh
+                // Lấy ra dữ liệu hiển thị thôi
                 if (Session["ID_User"] != null)
                 {
                     int checkUser = int.Parse(Session["ID_User"].ToString());
@@ -71,12 +75,16 @@ namespace EnglishForKids_LMN.Controllers
                 {
                     return this.Account();
                 }
+
+                // Cập nhật
                 if (users != null)
                 {
                     Session["Name_User"] = userzBonus.Name_User;
                     users.Name_User = userzBonus.Name_User;
                     users.Gender = userzBonus.Gender;
                     users.Birthday = DateTime.Parse(userzBonus.Birthday.ToString());
+
+                    // lấy email và id của nó
                     User user1 = db.Users.FirstOrDefault(s => s.Email == userzBonus.Email && s.ID_User != users.ID_User);
                     if (user1 == null)
                     {
@@ -96,8 +104,6 @@ namespace EnglishForKids_LMN.Controllers
                         ViewData["PhoneNumberNotValid"] = "Phone Number not valid";
                         return this.Account();
                     }
-                    //Nếu người dùng tải lên hình ảnh mới, hình ảnh mới sẽ được lưu và đường dẫn đến hình ảnh sẽ được lưu trong Session để hiển thị cho người dùng sau đó.
-                    //Sau khi cập nhật thông tin người dùng mới vào cơ sở dữ liệu, hàm sẽ chuyển hướng người dùng trở lại trang tài khoản của họ. Nếu có lỗi, hàm sẽ trả về trang 404.
                     if (userzBonus.Image_User != null)
                     {
                         users.Image_User = userzBonus.Image_User;
@@ -114,8 +120,6 @@ namespace EnglishForKids_LMN.Controllers
                 return RedirectToAction("Error404", "Home");
             }
         }
-
-
 
 
         public ActionResult Error404()
@@ -190,19 +194,11 @@ namespace EnglishForKids_LMN.Controllers
 
         public ActionResult AllAccount(int? page, string searchAccount, string sortAccount)
         {
+            // lấy danh sách ra
             List<User> users = new List<User>();
-            //if (searchAccount != null)
-            //{
-            //    Session["searchAccount"] = searchAccount;
-            //    users = db.Users.Where(s => s.Name_User.Contains(searchAccount.Trim().ToLower())).ToList();
-            //}
-            //else
-            //{
-            //    Session["searchAccount"] = null;
-            //    users = db.Users.ToList();
-            //}
 
-
+            // tìm kiếm theo tên
+            // tìm kiếm theo admin hay users
             if (searchAccount != null)
             {
                 Session["searchAccount"] = searchAccount;
@@ -245,6 +241,7 @@ namespace EnglishForKids_LMN.Controllers
         {
             try
             {
+                //lấy id để xóa
                 User user = db.Users.FirstOrDefault(s => s.ID_User == id);
                 if (user != null)
                 {
@@ -266,7 +263,6 @@ namespace EnglishForKids_LMN.Controllers
 
         public ActionResult Game()
         {
-
             return View();
         }
 
@@ -276,9 +272,8 @@ namespace EnglishForKids_LMN.Controllers
 
             return View();
         }
-        //Đoạn code này thực hiện việc đăng xuất người dùng khỏi hệ thống.
+
         //Nó xóa tất cả các phiên đăng nhập và cài đặt lại các cookie "Login_User" và "Password_User" với thời gian hết hạn là -1 tháng.
-        //Sau đó, nó chuyển hướng người dùng đến trang đăng nhập.
         public ActionResult Logout()
         {
             Session.RemoveAll();
@@ -293,10 +288,7 @@ namespace EnglishForKids_LMN.Controllers
             }
             return RedirectToAction("SignIn", "Login");
         }
-        //phương thức dùng để xử lý upload file ảnh lên server.
-        //, phương thức kiểm tra xem tham số đầu vào có phải là một file hợp lệ hay không bằng cách kiểm tra xem giá trị của biến file có phải là null hay không
-        //Nếu file không phải là null, phương thức sẽ lưu file ảnh lên server bằng cách sử dụng phương thức SaveAs của đối tượng HttpPostedFileBase.
-        //đường dẫn để lưu file ảnh được xác định bằng cách sử dụng phương thức MapPath của đối tượng Server.
+
         public string ProcessUpload(HttpPostedFileBase file)
         {
             if (file == null)

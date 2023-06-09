@@ -17,6 +17,8 @@ namespace EnglishForKids_LMN.Controllers
     {
 
         // GET: GoogleTranslate
+        // Nó tạo một đối tượng Google
+        // đặt giá trị cho các Session "translate" và "checklanguage" và trả về View GoogleTranslate với đối tượng Google.
         public ActionResult GoogleTranslate()
         {
             Google gg = new Google();
@@ -54,6 +56,7 @@ namespace EnglishForKids_LMN.Controllers
                 translation += string.Format(" {0}", Convert.ToString(translationLineString.Current));
             }
             if (translation.Length > 1) { translation = translation.Substring(1); };
+            //lưu kết quả dịch vào Session và trả về View GoogleTranslate với đối tượng Google.
             Session["checklanguage"] = gg.checklanguage;
             Session["translate"] = translation.ToString();
             return View(gg);
@@ -71,6 +74,7 @@ namespace EnglishForKids_LMN.Controllers
                         //sp.SelectVoiceByHints(VoiceGender.Female, VoiceAge.Child);
                         sp.SelectVoice("Microsoft Zira Desktop");
                         sp.SetOutputToDefaultAudioDevice();
+                        //kiểm tra xem Session "translate" có giá trị hay không, sau đó sử dụng SpeechSynthesizer để phát âm văn bản
                         sp.Speak(Session["translate"].ToString());
                         Google google = new Google();
                         google.checklanguage = Session["checklanguage"].ToString();

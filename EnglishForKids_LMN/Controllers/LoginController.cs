@@ -14,24 +14,33 @@ namespace EnglishForKids_LMN.Controllers
     public class LoginController : Controller
     {
         English_LearningEntities db = new English_LearningEntities();
-        // Hàm SignIn(): Nếu đã lưu cookie của tài khoản đăng nhập trước đó, nó sẽ tự động đăng nhập và chuyển hướng trang đến trang chủ.
-        // Nếu không, nó sẽ trả về View để hiển thị form đăng nhập.
         public ActionResult SignIn()
         {
+            // User tên lớp
+            // users là tên biến tham chiếu đến đối tượng lớp User
             User users = new User();
+
+            // Kiểm tra xem các cookies Login_User và Password_User có tồn tại trong request không?
             if (Request.Cookies["Login_User"] != null && Request.Cookies["Password_User"] != null)
             {
+                // Gán giá trị của cookies Login_User Password_User cho đối tượng users
                 users.Login_User = Request.Cookies["Login_User"].Value;
                 users.Password_User = Request.Cookies["Password_User"].Value;
+
+                // Truy vấn dữ liệu
+                // Kiểm tra xem có khớp Email và Password không
+                // FirstOrDefault lấy người dùng đầu tiên thõa mản điều kiện
                 User users1 = db.Users.Where(s => s.Email == users.Email && s.Password_User == users.Password_User).FirstOrDefault();
                 if (users1 != null)
                 {
                     if (users1.IsAdmin == true)
                     {
+                        // Nếu là admin thì lưu vào Session Admin_code
                         Session["Admin_Code"] = users1.ID_User;
                     }
                     else
                     {
+                        // Nếu là user thì lưu vào Session User
                         Session["ID_User"] = users1.ID_User;
                     }
                     Session["Image_User"] = users1.Image_User;
@@ -48,17 +57,13 @@ namespace EnglishForKids_LMN.Controllers
                 return View();
             }
         }
-
-
-
-        //Hàm SignIn(UserBonus userz): Đây là phương thức POST được gọi khi người dùng submit form đăng nhập.
-        //Nó tìm kiếm trong CSDL xem tài khoản người dùng có tồn tại hay không.
-        //Nếu có, nó lưu các thông tin tài khoản vào Session và cookie (nếu người dùng chọn "Ghi nhớ tài khoản"), sau đó chuyển hướng đến trang chủ.
-        //Nếu không, nó trả về View đăng nhập với thông báo lỗi "Wrong user or password".
         [HttpPost]
         public ActionResult SignIn(UserBonus userz)
         {
+            // Kiểm tra xem có trùng dữ liệu không
             User users1 = db.Users.Where(s => s.Password_User == userz.User_Password && s.Email == userz.User_Mail).FirstOrDefault();
+            
+            // Nếu không nhập thì báo lỗi
             if (users1 == null)
             {
                 ViewData["UserNotFound"] = " Wrong user or password ";
@@ -66,22 +71,32 @@ namespace EnglishForKids_LMN.Controllers
             }
             else
             {
+                // Kiểm tra nếu là Admin thì vào Admin
                 if (users1.IsAdmin == true)
                 {
                     Session["Admin_Code"] = users1.ID_User;
                 }
+                // Nếu không thì vào user
                 else
                 {
                     Session["ID_User"] = users1.ID_User;
                 }
+                // Gán Name và Image vào session
                 Session["Name_User"] = users1.Name_User;
                 Session["Image_User"] = users1.Image_User;
+
+
                 if (userz.RememberMe)
                 {
-                    HttpCookie httpCookie = new HttpCookie("Login_User");
+                    // Khởi tạo HttpCookie để lưu giá trị Login_User cho người dùng
+                    // Expires lưu giá trị 1 ngày
+                    // Gán giá trị vào http cookie
+                    // Cuối cùng là add vào
+                    HttpCookie httpCookie = new HttpCookie("Login_User");                    
                     httpCookie.Expires = DateTime.Now.AddDays(1d);
                     httpCookie.Value = userz.User_Mail;
                     Response.Cookies.Add(httpCookie);
+
                     HttpCookie httpCookie1 = new HttpCookie("User_Password");
                     httpCookie1.Expires = DateTime.Now.AddDays(1d);
                     httpCookie1.Value = userz.User_Password;
@@ -95,35 +110,39 @@ namespace EnglishForKids_LMN.Controllers
 
 
 
-        //Sign Up
-        //Hàm SignUp(): Hàm này trả về View hiển thị form đăng ký.
+
         public ActionResult SignUp()
         {
             return View();
         }
-
-        //Hàm SignUp(UserBonus userz): Đây là phương thức POST được gọi khi người dùng submit form đăng ký.
-        //Nó kiểm tra xem email đã tồn tại hay chưa.
-        //Nếu chưa, nó tạo một đối tượng User mới trong CSDL với các thông tin người dùng đã nhập vào, sau đó chuyển hướng đến trang đăng nhập.
-        //Nếu email đã tồn tại hoặc password không đúng, nó trả về View đăng ký với thông báo lỗi tương ứng.
         [HttpPost]
         public ActionResult SignUp(UserBonus userz)
         {
             try
             {
+                // Truy vấn CSDL và lấy ra 
                 User users2 = db.Users.FirstOrDefault(s => s.Email == userz.User_Mail);
+
+                // Tạo account mới
                 if (users2 == null)
                 {
+                    // Kiểm tra Password và Check_Password phải giống nhau
                     if (userz.User_Password == userz.Check_Password)
                     {
+                        // Tạo đối tượng user mới
                         User userz1 = new User();
                         userz1.Name_User = userz.User_FullName;
                         userz1.Password_User = userz.User_Password;
+                        // Quyết định xem account nào là admin hay user
                         userz1.IsAdmin = false;
                         userz1.Email = userz.User_Mail;
+                        // Cho img mặc định vừa tạo là ảnh 404
                         userz1.Image_User = "404.jpg";
                         db.Users.AddOrUpdate(userz1);
                         db.SaveChanges();
+
+
+                        // Chức năng thông báo email vừa tạo xong
                         MailAddress fromGMail = new MailAddress("lmnnhat.work@gmail.com", "English For Kids - CEO Lê Minh Nhật");
                         MailAddress toGMail = new MailAddress(userz.User_Mail, "Me");
                         MailMessage Message = new MailMessage()
@@ -151,12 +170,14 @@ namespace EnglishForKids_LMN.Controllers
                         smtp.Send(Message);
                         return RedirectToAction("SignIn", "Login");
                     }
+                    // Nếu nhập sai thì nó sẽ báo lỗi
                     else
                     {
                         ViewData["WrongPassword"] = " Please enter the correct password ";
                     }
                 }
                 else
+                // nếu user đó đã có rồi thì tồn tại
                 {
                     ViewData["UserExisted"] = " Gmail existed ";
                 }
@@ -241,24 +262,29 @@ namespace EnglishForKids_LMN.Controllers
 
 
 
-
+        // reCode là một biến static kiểu số nguyên. Biến này được sử dụng để lưu trữ mã xác nhận.
         static int reCode;
+        // rd là một đối tượng của lớp Random, được sử dụng để tạo số ngẫu nhiên.
         Random rd = new Random();
         public ActionResult SendVC()
         {
             return View();
         }
+        //user_mail là một biến static kiểu chuỗi. Biến này được sử dụng để lưu trữ địa chỉ email của người dùng.
         static string user_mail;
 
         [HttpPost]
         public ActionResult SendVC(UserBonus userBonus)
         {
             User userz = db.Users.FirstOrDefault(s => s.Email == userBonus.User_Mail);
+            // Nếu user đó không phải null
             if (userz != null)
             {
+                // Lấy cái User_mail của userBonus lưu vào user_mail của cái static string
                 user_mail = userBonus.User_Mail;
                 MailAddress fromGMail = new MailAddress("lmnhat.work@gmail.com", "English For Kids - CEO Lê Minh Nhật");
                 MailAddress toGMail = new MailAddress(userBonus.User_Mail, "Me");
+                // Ramdom 6 số ngẫu nhiên
                 reCode = rd.Next(100000, 999999);
                 MailMessage Message = new MailMessage()
                 {
@@ -285,21 +311,25 @@ namespace EnglishForKids_LMN.Controllers
                 smtp.Send(Message);
             }
             else
+            // Nếu usez đó không có thì báo lỗi
             {
                 ViewData["MailNotFound"] = "Gmail not found";
             }
             return this.SendVC();
         }
 
+        // CheckMail của SendVC
         [HttpPost]
         public ActionResult CheckMail(UserBonus userBonus)
         {
             if (userBonus.CheckMail == reCode)
             {
+                // Nếu đúng thì chuyển hướng sang trang ChangePassword
                 return RedirectToAction("ChangePassword", "Login");
             }
             else
             {
+                // Nếu sai thì thông báo
                 ViewData["WrongVC"] = " Wrong verification code";
                 return this.SendVC();
             }
@@ -317,20 +347,27 @@ namespace EnglishForKids_LMN.Controllers
         public ActionResult ChangePassword(UserBonus userzBonus)
         {
             User userz = db.Users.FirstOrDefault(s => s.Email == userzBonus.User_Mail);
+
+            // Kiểm tra User_Password và Check_Password phải giống nhau
             if (userzBonus.Check_Password == userzBonus.User_Password)
             {
+                // Nếu user tồn tại
                 if (userz != null)
                 {
+                    // cập nhật lại password
                     userz.Password_User = userzBonus.User_Password;
                     db.Users.AddOrUpdate(userz);
                     db.SaveChanges();
                     return RedirectToAction("SignIn", "Login");
                 }
                 else
+                // nếu user không có
                 {
                     ViewData["Null"] = " Account not found ";
                 }
             }
+            // Kiểm tra User_Password và Check_Password không phải giống nhau thì báo lỗi
+
             else
             {
                 ViewData["NotEqual"] = " Please enter correct infomation ";
