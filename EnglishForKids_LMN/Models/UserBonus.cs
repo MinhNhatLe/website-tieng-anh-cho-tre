@@ -11,16 +11,16 @@ namespace EnglishForKids_LMN.Models
     {
         [DisplayName("Full name: ")]
         [Required(ErrorMessage = " Please enter your full name ")]
-        [MaxLength(35)]
+        [MaxLength(20, ErrorMessage = " Please enter your name with no more than 20 characters ")]
         public string User_FullName { get; set; }
         [DisplayName("Password: ")]
         [Required(ErrorMessage = " Please enter your password ")]
-        [MaxLength(10, ErrorMessage = " Password must be 5 - 10 character ")]
-        [MinLength(5, ErrorMessage = " Password must be 5 - 10 character ")]
+        [MaxLength(10, ErrorMessage = " Please enter a password between 5 and 10 characters ")]
+        [MinLength(5, ErrorMessage = " Please enter a password between 5 and 10 characters ")]
         [DataType(DataType.Password)]
         public string User_Password { get; set; }
         [DisplayName("Confirm password: ")]
-        [Required(ErrorMessage = " Please re-enter your password ")]
+        //[Required(ErrorMessage = " Please re-enter your password ")]
         [DataType(DataType.Password)]
         public string Check_Password { get; set; }
 

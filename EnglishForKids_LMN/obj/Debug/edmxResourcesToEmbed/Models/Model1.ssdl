@@ -103,14 +103,14 @@
       <PropertyRef Name="ID_User" />
     </Key>
     <Property Name="ID_User" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Name_User" Type="nvarchar" MaxLength="50" />
+    <Property Name="Name_User" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="Gender" Type="nvarchar" MaxLength="10" />
     <Property Name="Phone" Type="varchar" MaxLength="12" />
-    <Property Name="Email" Type="nvarchar" MaxLength="50" />
+    <Property Name="Email" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="Birthday" Type="datetime" />
     <Property Name="Image_User" Type="varchar" MaxLength="50" />
     <Property Name="Login_User" Type="varchar" MaxLength="50" />
-    <Property Name="Password_User" Type="varchar" MaxLength="11" />
+    <Property Name="Password_User" Type="varchar" MaxLength="11" Nullable="false" />
     <Property Name="IsAdmin" Type="bit" />
   </EntityType>
   <EntityType Name="Vocabulary">

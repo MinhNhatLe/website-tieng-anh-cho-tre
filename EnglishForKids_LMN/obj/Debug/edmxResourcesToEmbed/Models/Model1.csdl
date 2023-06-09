@@ -119,14 +119,14 @@
       <PropertyRef Name="ID_User" />
     </Key>
     <Property Name="ID_User" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Name_User" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Name_User" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="Gender" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
     <Property Name="Phone" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
-    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="Birthday" Type="DateTime" Precision="3" />
     <Property Name="Image_User" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="Login_User" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="Password_User" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+    <Property Name="Password_User" Type="String" MaxLength="11" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="IsAdmin" Type="Boolean" />
     <NavigationProperty Name="Categories" Relationship="Self.FK__Category__ID_Use__47DBAE45" FromRole="Users" ToRole="Category" />
     <NavigationProperty Name="Quiz_Details" Relationship="Self.FK__Quiz_Deta__ID_Us__4BAC3F29" FromRole="Users" ToRole="Quiz_Details" />
