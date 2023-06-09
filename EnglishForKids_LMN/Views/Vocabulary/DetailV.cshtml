@@ -13,12 +13,11 @@
     {
         Response.Redirect("~/Login/SignIn");
     }
-    }
+}
 <style>
     .img-vocabulary {
         display: inline-block;
         padding: 5px;
-        
         width: 70%;
         border-radius: 30px;
         border: 10px; /* Viền của cái khối */
@@ -26,10 +25,6 @@
         box-shadow: 0 14px 28px rgb(226 17 17 / 25%), 0 10px 10px rgb(243 241 22 / 22%);
         margin-top: 20px;
     }
-/*    .img-vocabulary:hover{
-        transition: 2s;
-        width:80%;
-    }*/
 
     .background-quiz {
         padding: 35px;
@@ -68,9 +63,6 @@
                     </h2>
                 </div>
             </div>
-
-
-            @*<marquee direction="right"> <h2 style="text-align: center; font-size: 30px; font-weight: 600;">VOCABULARY</h2> </marquee>*@
 
         </div>
     </div>
@@ -127,10 +119,6 @@
 
             </div>
         </div>
-
-
-        
-
         <div class="row">
             <div class="col-lg-6 col-xs-6">
                 @Html.ActionLink("Back to vocabulary page!", "User_View", "Vocabulary", new { @class = "btn btn-warning bx-fade-left-hover" })

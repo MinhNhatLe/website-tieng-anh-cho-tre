@@ -5,7 +5,7 @@
     {
         Response.Redirect("~/Login/SignIn");
     }
-    }
+}
 <style>
     .text-danger {
         color: red;
@@ -69,9 +69,6 @@
     <div class="row background-createVocabulary">
         <div class="row">
             <div class="col-lg-12 col-sm-12 col-xs-12">
-                @*<h2 style="text-align: center; font-size: 30px; font-weight: 600;">Create new vocabulary</h2>*@
-
-
                 <div class="text-center" style="background-color:antiquewhite">
                     <h2 class="animate-charcter" style="text-transform: uppercase; text-align: center; font-size: 30px; font-weight: 700;">
                         Create new vocabulary
@@ -134,7 +131,7 @@
                             <strong>English name:</strong>
                             @Html.ValidationMessageFor(model => model.EN_Meaning, "", new { @class = "text-danger" })
                         </p>
-                        @Html.EditorFor(model => model.EN_Meaning, "", new { htmlAttributes = new { @class = "form-control center-block", @placeholder = "Enter english name ...", @style = "width:100%;max-width:100%;", @minlength = "1", @maxlength = "10", @autofocus="autofocus", @required = "required" } })
+                        @Html.EditorFor(model => model.EN_Meaning, "", new { htmlAttributes = new { @class = "form-control center-block", @placeholder = "Enter english name ...", @style = "width:100%;max-width:100%;", @minlength = "1", @maxlength = "10", @autofocus = "autofocus", @required = "required" } })
                         <br />
                         <p>
                             <strong>Vietnamese name:</strong>
@@ -166,67 +163,6 @@
                     </div>
                 </div>
             </div>
-            @*<div class="row">
-                                <div class="myleft">
-                                    <br />
-                                    <input type="file" name="fileUpload" id="fileUpload" accept="images/*" style="display:none;" />
-                                    <img src="~/Content/images/@Model.Image_Vocabulary" id="pictureUpload" style="width: 50%; height: 60vh; margin-top: 14.7%; border-radius: 6px; margin-left:25%" alt="Image Vocabulary" />
-                                    <br />
-                                    @Html.EditorFor(model => model.Image_Vocabulary, "", new { htmlAttributes = new { @class = "form-control center-block", @placeholder = "Type image string ...", @style = "width:500px;height:200px;display:none;", @maxlength = "50" } })
-                                    <br />
-                                    <p><input type="button" id="btnUpload" value="Chọn ảnh" class="btn btn-success center-block" /></p>
-                                    @section upload
-                {
-                                        <script>
-                $(function () {
-                                                $('#btnUpload').click(function () {
-                                                    $('#fileUpload').trigger('click');
-                                                });
-                                            });
-                                            $('#fileUpload').change(function () {
-                                                if (window.FormData !== undefined) {
-                                                    var fileUpload = $('#fileUpload').get(0);
-                                                    var files = fileUpload.files;
-                                                    var formData = new FormData();
-                                                    formData.append('file', files[0]);
-                                                    $.ajax({
-                                                        type: 'POST',
-                                                        url: '/Vocabulary/ProcessUpload',
-                                                        contentType: false,
-                                                        processData: false,
-                                                        data: formData,
-                                                        success: function (urlImage) {
-                                                            $('#pictureUpload').attr('src', "/Content/images/" + urlImage);
-                                                            $('#Image_Vocabulary').val(urlImage);
-                                                        },
-                                                        error: function (err) {
-                                                            alert('Error', err.statusText);
-                                                        }
-                                                    });
-                                                }
-                                            });</script>
-                                    }
-                                </div>
-                                <div class="myright mydiv">
-                                    <p><strong>Tên tiếng anh : </strong> @Html.ValidationMessageFor(model => model.EN_Meaning, "", new { @class = "text-danger" })</p>
-                                    @Html.EditorFor(model => model.EN_Meaning, "", new { htmlAttributes = new { @class = "form-control center-block", @placeholder = "Nhập tên từ vựng tiếng anh ...", @style = "width:100%;max-width:100%;", @maxlength = "30" } })
-                                    <br />
-                                    <p><strong>Tên tiếng việt : </strong> @Html.ValidationMessageFor(model => model.VN_Meaning, "", new { @class = "text-danger" })</p>
-                                    @Html.EditorFor(model => model.VN_Meaning, new { htmlAttributes = new { @class = "form-control center-block", @placeholder = "Nhập tên từ vựng tiếng việt ...", @style = "width:100%;max-width:100%;", @maxlength = "30" } })
-                                    <br />
-                                    <p><strong>Phát âm : </strong> @Html.ValidationMessageFor(model => model.Pronunciation, "", new { @class = "text-danger" })</p>
-                                    @Html.EditorFor(model => model.Pronunciation, new { htmlAttributes = new { @class = "form-control center-block", @placeholder = "Nhập phát âm ...", @style = "width:100%;max-width:100%;", @maxlength = "20" } })
-                                    <br />
-                                    <p><strong>Loại từ vựng : </strong> @Html.ValidationMessageFor(model => model.category_vos, "", new { @class = "text-danger" })</p>
-                                    @Html.DropDownListFor(model => model.ID_Category_Vo, new SelectList(Model.category_vos, "ID_Category_Vo", "Name_Category_Vo"), "", new { @class = "form-control center-block pull-left", @style = "width:85%;max-width:100%;" }) <a href="#" class="btn btn-primary pull-right" data-toggle="modal" data-target="#create-category">Thêm</a>
-                                    <br />
-                                    <br />
-                                    <br />
-                                    <p>
-                                        @Html.ActionLink("Trở về", "ListVocabulary", "Vocabulary", new { @class = "btn btn-default pull-left", @style = "width:48%;max-width:48%;border-radius:16px;" }) <input type="submit" name="Create" value="Lưu" class="btn btn-success pull-right" style="width: 48%; max-width: 48%; border-radius: 16px; " />
-                                    </p>
-                                </div>
-                            </div>*@
         }
         <div class="modal fade " id="create-category">
             <div class="modal-dialog">

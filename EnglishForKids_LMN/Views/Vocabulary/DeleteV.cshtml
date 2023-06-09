@@ -5,42 +5,8 @@
     {
         Response.Redirect("~/Login/SignIn");
     }
-    }
+}
 <script src="~/Scripts/jquery-3.4.1.min.js"></script>
-@*<h2>Xóa từ vựng</h2>
-    <div class="thumbnail">
-        <img src="~/Content/images/@Model.Image_Vocabulary" alt="Vocabulary Image" style="width:100px;height:100px;" />
-    </div>
-    <div class="text-center">
-        <p><strong>Tên tiếng anh : </strong>@Html.ValueFor(model => model.EN_Meaning)</p>
-        <p><strong>Tên tiếng việt : </strong>@Html.ValueFor(model => model.VN_Meaning)</p>
-        <p><strong>Phát âm : </strong>@Html.ValueFor(model => model.Pronunciation) @Html.ActionLink("Speech", "Speech", new { id = Model.ID_Vocabulary }, new { @class = "btn btn-default" })</p>
-        <br />
-        <p>@Html.ActionLink("Trở về", "ListVocabulary", "", new { @class = "btn btn-default" }) 
-        <a href="#" class="btn btn-danger" data-toggle="modal" data-target="#delete">Xóa</a></p>
-    </div>
-    <div class="modal fade " id="delete">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <div class="form-group">
-                        <h2 class="modal-title">Xóa từ vựng<button type="button" class="close pull-right" data-dismiss="modal">x</button></h2>
-                    </div>
-                </div>
-                <div class="modal-body">
-                    Bạn có muốn xóa từ vựng này không ?
-                </div>
-                <div class="modal-footer">
-                    <div class="btn-group">
-                        <p>
-                            <a href="#" class="btn btn-default" data-dismiss="modal">Hủy</a>
-                            @Html.ActionLink("Xóa", "DeleteVC", "Vocabulary", new { id = Model.ID_Vocabulary }, new { @class = "btn btn-danger" })
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>*@
 <style>
     .img-vocabulary {
         display: inline-block;
@@ -49,7 +15,7 @@
         border-radius: 20px;
         border: 5px solid #337ab7;
         margin-top: 20px;
-        width:50%;
+        width: 50%;
     }
 
     .background-quiz {
@@ -88,8 +54,6 @@
     <div class="row background-quiz">
         <div class="row">
             <div class="col-lg-12 col-sm-12 col-xs-12">
-                @*<h2 style="text-transform: uppercase; text-align: center; font-size: 30px; font-weight: 600;">@Html.ValueFor(model => model.EN_Meaning)</h2>*@
-
                 <div class="text-center" style="background-color:antiquewhite">
                     <h2 class="animate-charcter" style="text-transform: uppercase; text-align: center; font-size: 30px; font-weight: 700;">
                         @Html.ValueFor(model => model.EN_Meaning)

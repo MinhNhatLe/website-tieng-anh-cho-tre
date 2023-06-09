@@ -5,7 +5,7 @@
     {
         Response.Redirect("~/Login/SignIn");
     }
-    }
+}
 <style>
     .text-danger {
         color: red;
@@ -32,6 +32,7 @@
         border-radius: 20px;
         box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
     }
+
     .background-editVocabulary {
         padding: 35px;
         background-color: #fff;
@@ -84,92 +85,21 @@
         <hr />
         @using (Html.BeginForm("EditV", "Vocabulary", FormMethod.Post))
         {
-@Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                <div class="row">
-                    <div class="col-lg-6 col-sm-12 col-xs-12">
-                        <div>
-                            <br />
-                            <input type="file" name="fileUpload" id="fileUpload" accept="images/*" style="display:none;" />
-                            <img src="~/Content/images/@Model.Image_Vocabulary" id="pictureUpload" style="width: 100%; height: 350px" alt="Vocabulary Image" class="img-editV" />
-                            <br />
-                            @Html.EditorFor(model => model.Image_Vocabulary, "", new { htmlAttributes = new { @class = "form-control center-block", @placeholder = "Type image string ...", @style = "width:500px;height:200px;display:none;", @maxlength = "50" } })
-                            <br />
-                            <p><input type="button" id="btnUpload" value="Choose picture" class="btn btn-success bx-flashing-hover center-block" /></p>
-                            @section upload
-                        {
-                                <script>
-                                    $(function () {
-                                        $('#btnUpload').click(function () {
-                                            $('#fileUpload').trigger('click');
-                                        });
-                                    });
-                                    $('#fileUpload').change(function () {
-                                        if (window.FormData !== undefined) {
-                                            var fileUpload = $('#fileUpload').get(0);
-                                            var files = fileUpload.files;
-                                            var formData = new FormData();
-                                            formData.append('file', files[0]);
-                                            $.ajax({
-                                                type: 'POST',
-                                                url: '/Vocabulary/ProcessUpload',
-                                                contentType: false,
-                                                processData: false,
-                                                data: formData,
-                                                success: function (urlImage) {
-                                                    $('#pictureUpload').attr('src', "/Content/images/" + urlImage);
-                                                    $('#Image_Vocabulary').val(urlImage);
-                                                },
-                                                error: function (err) {
-                                                    alert('Error', err.statusText);
-                                                }
-                                            });
-                                        }
-                                    });</script>
-                            }
-                        </div>
-                    </div>
-                    <div class="col-lg-6 col-sm-12 col-xs-12">
-                        <div class="background-editV">
-                            @Html.EditorFor(model => model.ID_Vocabulary, "", new { htmlAttributes = new { @class = "form-control center-block", @placeholder = "Enter english name ...", @style = "width:100%;max-width:100%;display:none;" } })
-                            <p><strong>English name:</strong> @Html.ValidationMessageFor(model => model.EN_Meaning, "", new { @class = "text-danger" })</p>
-                            @Html.EditorFor(model => model.EN_Meaning, "", new { htmlAttributes = new { @class = "form-control center-block", @placeholder = "Enter english name ..", @style = "width:100%;max-width:100%;", @minlength = "1", @maxlength = "10", @autofocus = "autofocus", @required = "required" } })
-                            <br />
-                            <p><strong>Vietnamese name:</strong> @Html.ValidationMessageFor(model => model.VN_Meaning, "", new { @class = "text-danger" })</p>
-                            @Html.EditorFor(model => model.VN_Meaning, new { htmlAttributes = new { @class = "form-control center-block", @placeholder = "Enter vietnamese name ...", @style = "width:100%;max-width:100%;", @minlength = "1", @maxlength = "10", @required = "required" } })
-                            <br />
-                            <p><strong>IPA transcription:</strong> @Html.ValidationMessageFor(model => model.Pronunciation, "", new { @class = "text-danger" })</p>
-                            @Html.EditorFor(model => model.Pronunciation, new { htmlAttributes = new { @class = "form-control center-block", @placeholder = "Enter IPA ...", @style = "width:100%;max-width:100%;", @minlength = "1", @maxlength = "10", @required = "required" } })
-                            <br />
-                            <p><strong>Category vocabulary:</strong> @Html.ValidationMessageFor(model => model.category_vos, "", new { @class = "text-danger" })</p>
-                            @Html.DropDownListFor(model => model.ID_Category_Vo, new SelectList(Model.category_vos, "ID_Category_Vo", "Name_Category_Vo"), "", new { @class = "form-control center-block pull-left", @style = "width:100%;", @minlength = "1", @maxlength = "10", @required = "required" })
-                            @*<a href="#" class="btn btn-success bx-fade-right-hover pull-right" data-toggle="modal" data-target="#create-category" style="width: 48%;">Add category</a>*@
-                            <br />
-                            <br />
-                            <br />
-                            <p>
-                                @Html.ActionLink("Back", "ListVocabulary", "Vocabulary", new { @class = "btn btn-default bx-fade-left-hover pull-left", @style = "width:45%; max-width:50%; border-radius:4px;" })
-                                <input type="submit" name="EditV" value="Update" class="btn btn-primary bx-fade-right-hover pull-right" style="width: 45%; max-width: 50%; border-radius: 4px; " />
-                            </p>
-                            <br />
-                            <br />
-                        </div>
-                    </div>
-                </div>}
-        @*<h2><p>@Html.ValueFor(model => model.EN_Meaning)</p></h2>
-            @using (Html.BeginForm("EditV", "Vocabulary", FormMethod.Post))
-            {
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                            <div class="row">
-                                <div class="myleft">
-                                    <input type="file" name="fileUpload" id="fileUpload" accept="images/*" style="display:none;" />
-                                    <img src="~/Content/images/@Model.Image_Vocabulary" id="pictureUpload" style="width: 50%; height: 60%; margin-top: 14.7%; border-radius: 6px; margin-left:25%" alt="Vocabulary Image" />
-                                    <br />
-                                    @Html.EditorFor(model => model.Image_Vocabulary, "", new { htmlAttributes = new { @class = "form-control center-block", @placeholder = "Type image string ...", @style = "width:500px;height:200px;display:none;", @maxlength = "50" } })
-                                    <br />
-                                    <p><input type="button" id="btnUpload" value="Chọn ảnh" class="btn btn-success center-block" /></p>
-                                    @section upload
-                {
-                                        <script>$(function () {
+            <div class="row">
+                <div class="col-lg-6 col-sm-12 col-xs-12">
+                    <div>
+                        <br />
+                        <input type="file" name="fileUpload" id="fileUpload" accept="images/*" style="display:none;" />
+                        <img src="~/Content/images/@Model.Image_Vocabulary" id="pictureUpload" style="width: 100%; height: 350px" alt="Vocabulary Image" class="img-editV" />
+                        <br />
+                        @Html.EditorFor(model => model.Image_Vocabulary, "", new { htmlAttributes = new { @class = "form-control center-block", @placeholder = "Type image string ...", @style = "width:500px;height:200px;display:none;", @maxlength = "50" } })
+                        <br />
+                        <p><input type="button" id="btnUpload" value="Choose picture" class="btn btn-success bx-flashing-hover center-block" /></p>
+                        @section upload
+                        {
+                            <script>
+                                $(function () {
                                     $('#btnUpload').click(function () {
                                         $('#fileUpload').trigger('click');
                                     });
@@ -196,31 +126,36 @@
                                         });
                                     }
                                 });</script>
-                                    }
-                                </div>
-                                <div class="myright mydiv">
-                                    @Html.EditorFor(model => model.ID_Vocabulary, "", new { htmlAttributes = new { @class = "form-control center-block", @placeholder = "Nhập tên từ vựng tiếng anh ...", @style = "width:100%;max-width:100%;display:none;" } })
-                                    <p><strong>Tên tiếng anh : </strong> @Html.ValidationMessageFor(model => model.EN_Meaning, "", new { @class = "text-danger" })</p>
-                                    @Html.EditorFor(model => model.EN_Meaning, "", new { htmlAttributes = new { @class = "form-control center-block", @placeholder = "Nhập tên từ vựng tiếng anh ...", @style = "width:100%;max-width:100%;", @maxlength = "30" } })
-                                    <br />
-                                    <p><strong>Tên tiếng việt : </strong> @Html.ValidationMessageFor(model => model.VN_Meaning, "", new { @class = "text-danger" })</p>
-                                    @Html.EditorFor(model => model.VN_Meaning, new { htmlAttributes = new { @class = "form-control center-block", @placeholder = "Nhập tên từ vựng tiếng việt ...", @style = "width:100%;max-width:100%;", @maxlength = "30" } })
-                                    <br />
-                                    <p><strong>Phát âm : </strong> @Html.ValidationMessageFor(model => model.Pronunciation, "", new { @class = "text-danger" })</p>
-                                    @Html.EditorFor(model => model.Pronunciation, new { htmlAttributes = new { @class = "form-control center-block", @placeholder = "Nhập phát âm ...", @style = "width:100%;max-width:100%;", @maxlength = "20" } })
-                                    <br />
-                                    <p><strong>Loại từ vựng : </strong> @Html.ValidationMessageFor(model => model.category_vos, "", new { @class = "text-danger" })</p>
-                                    @Html.DropDownListFor(model => model.ID_Category_Vo, new SelectList(Model.category_vos, "ID_Category_Vo", "Name_Category_Vo"), "", new { @class = "form-control center-block pull-left", @style = "width:85%;max-width:100%;" }) <a href="#" class="btn btn-primary pull-right" data-toggle="modal" data-target="#create-category">Thêm</a>
-                                    <br />
-                                    <br />
-                                    <br />
-                                    <p>
-                                        @Html.ActionLink("Trở về", "ListVocabulary", "Vocabulary", new { @class = "btn btn-default pull-left", @style = "width:48%;max-width:48%;border-radius:16px;" }) <input type="submit" name="EditV" value="Lưu" class="btn btn-success pull-right" style="width: 48%; max-width: 48%; border-radius: 16px; " />
-                                    </p>
-                                </div>
-                            </div>}*@
-
-
+                        }
+                    </div>
+                </div>
+                <div class="col-lg-6 col-sm-12 col-xs-12">
+                    <div class="background-editV">
+                        @Html.EditorFor(model => model.ID_Vocabulary, "", new { htmlAttributes = new { @class = "form-control center-block", @placeholder = "Enter english name ...", @style = "width:100%;max-width:100%;display:none;" } })
+                        <p><strong>English name:</strong> @Html.ValidationMessageFor(model => model.EN_Meaning, "", new { @class = "text-danger" })</p>
+                        @Html.EditorFor(model => model.EN_Meaning, "", new { htmlAttributes = new { @class = "form-control center-block", @placeholder = "Enter english name ..", @style = "width:100%;max-width:100%;", @minlength = "1", @maxlength = "10", @autofocus = "autofocus", @required = "required" } })
+                        <br />
+                        <p><strong>Vietnamese name:</strong> @Html.ValidationMessageFor(model => model.VN_Meaning, "", new { @class = "text-danger" })</p>
+                        @Html.EditorFor(model => model.VN_Meaning, new { htmlAttributes = new { @class = "form-control center-block", @placeholder = "Enter vietnamese name ...", @style = "width:100%;max-width:100%;", @minlength = "1", @maxlength = "10", @required = "required" } })
+                        <br />
+                        <p><strong>IPA transcription:</strong> @Html.ValidationMessageFor(model => model.Pronunciation, "", new { @class = "text-danger" })</p>
+                        @Html.EditorFor(model => model.Pronunciation, new { htmlAttributes = new { @class = "form-control center-block", @placeholder = "Enter IPA ...", @style = "width:100%;max-width:100%;", @minlength = "1", @maxlength = "10", @required = "required" } })
+                        <br />
+                        <p><strong>Category vocabulary:</strong> @Html.ValidationMessageFor(model => model.category_vos, "", new { @class = "text-danger" })</p>
+                        @Html.DropDownListFor(model => model.ID_Category_Vo, new SelectList(Model.category_vos, "ID_Category_Vo", "Name_Category_Vo"), "", new { @class = "form-control center-block pull-left", @style = "width:100%;", @minlength = "1", @maxlength = "10", @required = "required" })
+                        @*<a href="#" class="btn btn-success bx-fade-right-hover pull-right" data-toggle="modal" data-target="#create-category" style="width: 48%;">Add category</a>*@
+                        <br />
+                        <br />
+                        <br />
+                        <p>
+                            @Html.ActionLink("Back", "ListVocabulary", "Vocabulary", new { @class = "btn btn-default bx-fade-left-hover pull-left", @style = "width:45%; max-width:50%; border-radius:4px;" })
+                            <input type="submit" name="EditV" value="Update" class="btn btn-primary bx-fade-right-hover pull-right" style="width: 45%; max-width: 50%; border-radius: 4px; " />
+                        </p>
+                        <br />
+                        <br />
+                    </div>
+                </div>
+            </div>}
 
         <div class="modal fade " id="create-category">
             <div class="modal-dialog">
@@ -254,29 +189,29 @@
 
     </div>
 </div>
-        @section add
+@section add
                 {
-            <script>
-                $(document).ready(function () {
-                    $("#btn-save").click(function () {
-                        var category = $("#create").serialize();
-                        $.ajax({
-                            type: "POST",
-                            url: "/Vocabulary/CreateVT",
-                            data: category,
-                            success: function () {
-                                $(this).hide();
-                                alert('Congratulations, you have successfully created a new category 💕!');
-                                location.reload();
-                            },
-                            error: function () {
-                                alert('Sorry! Type name already exists 😢!');
-                            }
-                        })
-                    })
-                })</script>
-        }
-        <script src="~/Scripts/jquery-3.4.1.js"></script>
-        <script src="~/Scripts/jquery.validate.min.js"></script>
-        <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
-        <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#btn-save").click(function () {
+                var category = $("#create").serialize();
+                $.ajax({
+                    type: "POST",
+                    url: "/Vocabulary/CreateVT",
+                    data: category,
+                    success: function () {
+                        $(this).hide();
+                        alert('Congratulations, you have successfully created a new category 💕!');
+                        location.reload();
+                    },
+                    error: function () {
+                        alert('Sorry! Type name already exists 😢!');
+                    }
+                })
+            })
+        })</script>
+}
+<script src="~/Scripts/jquery-3.4.1.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
