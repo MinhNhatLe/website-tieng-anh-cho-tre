@@ -88,14 +88,6 @@
     }
 </style>
 
-
-
-
-
-
-
-
-
 @using (Html.BeginForm("Account", "Home", FormMethod.Post))
 {
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
@@ -126,12 +118,8 @@
         <hr />
         <div class="row">
             @*<div class="col-lg-5 col-sm-12 col-xs-12">
-
-
                     <div class="row">
                         <div class="col-lg-12 col-xs-12 note-main" style="padding:40px;">
-
-
                             <p style="font-size:15px">
                                 Hello,
                                 <span class="animate-charcter" style="text-align: center; font-size: 30px; font-weight: 500; font-family: 'Segoe UI Emoji'">
@@ -155,13 +143,8 @@
                                 <br />
                                 Thank you. 💖
                             </p>
-
-
                         </div>
                     </div>
-
-
-
                 </div>*@
             <div class="col-lg-12 col-sm-12 col-xs-12">
                 <div class="row">
@@ -281,10 +264,6 @@
                                         <input type="submit" name="Account" id="update-form" value="Update" class="btn btn-primary center-block btn-capnhat bx-flashing-hover" style="width: 100%;max-width:100%; border-radius: 10px;" required />
                                     </p>
 
-                                    @*<p>
-                                            <a href="/Home/HomePage" class="btn btn-default center-block btn-capnhat bx-flashing-hover" style="width: 100%; border-radius: 10px;">Back home!</a>
-                                        </p>*@
-
                                 </div>
                             </div>
 
@@ -301,33 +280,6 @@
 <br />
 <br />
 <br />
-
-
-@*///lỗi logic
-    <script>
-        $(document).ready(function () {
-            $("#update-form").click(function () {
-                var form = $(".form-account").serialize();
-                $.ajax({
-                    type: "POST",
-                    url: '/Home/ProcessUpload',
-                    data: form,
-                    success: function () {
-                        alert('Congratulations, you have successfully created a new category 💕!');
-                    },
-                    error: function () {
-                        alert('Sorry! Type name already exists 😢!');
-                    }
-                })
-            })
-        })</script>*@
-
-
-
-
-
-
-
 
 <script src="~/Scripts/jquery-3.4.1.js"></script>
 <script src="~/Scripts/jquery.validate.min.js"></script>
