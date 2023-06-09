@@ -5,7 +5,7 @@
     {
         Response.Redirect("~/Login/SignIn");
     }
-    }
+}
 
 <style>
     .img-quiz {
@@ -19,12 +19,6 @@
         width: 80%;
         height: 80%;
     }
-
-/*        .img-quiz:hover {
-            transition: all 1s ease-in-out .3s;
-            width: 75%;
-            height: 75%;
-        }*/
 
     .background-quiz {
         padding: 35px;
@@ -68,19 +62,12 @@
             {
                 <div class="row">
                     <div class="col-lg-12 col-xs-12">
-                        @*<h2 style="text-align: center; font-size: 30px; font-weight: 600;">CÂU ĐỐ HÌNH ẢNH</h2>*@
                     </div>
                 </div>
                 <br />
                 <div class="row">
                     <div class="col-lg-6 col-xs-12">
-                        @*<div class="note-1">
-                                <b>Lưu ý nhỏ:</b>
-                                <p>- Tổng số câu hỏi là 5.</p>
-                                <p>- Mỗi câu tưởng đương với 2 điểm.</p>
-                                <p>- Tất cả những câu đố đều có trong phần từ vựng.</p>
-                                <p>- Chúc các em vừa học & vừa chơi thật vui vẻ.</p>
-                            </div>*@
+
                     </div>
                     <div class="col-lg-6 col-xs-0">
                     </div>
@@ -88,13 +75,7 @@
                 @Html.EditorFor(model => model.ID_Vocabulary, "", new { htmlAttributes = new { @class = "form-control center-block", @style = "width:100%;max-width:100%;display:none;" } })
                 <div class="row">
                     <div class="col-lg-2 col-xs-0">
-                        @*<div class="note-2">
-                                <b>Lưu ý nhỏ:</b>
-                                <p>- Tổng số câu hỏi là 5.</p>
-                                <p>- Mỗi câu tưởng đương với 2 điểm.</p>
-                                <p>- Tất cả những câu đố đều có trong phần từ vựng.</p>
-                                <p>- Chúc các em vừa học & vừa chơi thật vui vẻ.</p>
-                            </div>*@
+
                     </div>
                     <div class="col-lg-8 col-xs-12">
                         <div style="text-align: center;">

@@ -5,11 +5,12 @@
     {
         Response.Redirect("~/Login/SignIn");
     }
-    }
+}
 <style>
     .text-danger {
         color: red;
     }
+
     .background-quiz-createQ {
         padding: 20px;
         background-color: #fff;
@@ -47,16 +48,12 @@
             <div class="col-lg-8 col-sm-12 col-xs-12">
                 <div class="row">
                     <div class="col-lg-12 col-xs-12">
-                        @*<h2 style="text-align: center; font-size: 30px; font-weight: 600;">TẠO CÂU ĐỐ</h2>*@
 
                         <div class="text-center" style="background-color:antiquewhite">
                             <h2 class="animate-charcter" style="text-transform: uppercase; text-align: center; font-size: 30px; font-weight: 700;">
                                 Create new quiz
                             </h2>
                         </div>
-
-
-
                     </div>
                     <br />
                     <br />
@@ -108,8 +105,8 @@
 
                                 </div>
                             </div>
-                            
-                         }
+
+                        }
                     </div>
                 </div>
             </div>
@@ -120,43 +117,6 @@
     </div>
     <br />
 </div>
-@*<h2>Tạo câu đố</h2>
-<hr />
-@using (Html.BeginForm("CreateQ", "Quiz", FormMethod.Post))
-{
-@Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                <div class="form-group">
-                    <p>
-                        <strong>Tên câu đố : </strong> @Html.ValidationMessageFor(model => model.Name_Quiz, "", new { @class = "text-danger" })
-                        @Html.EditorFor(model => model.Name_Quiz, new { htmlAttributes = new { @class = "form-control", @placeholder = "Nhập tên câu đố ...", @maxlength = "50" } })
-                    </p>
-                    <p>
-                        <strong>Content : </strong> @Html.ValidationMessageFor(model => model.Content, "", new { @class = "text-danger" })
-                        @Html.EditorFor(model => model.Content, new { htmlAttributes = new { @class = "form-control", @placeholder = "Nhập tên file content  ...", @maxlength = "50" } })
-                    </p>
-                    <p>
-                        <strong>Lựa chọn 1 : </strong> @Html.ValidationMessageFor(model => model.Answer_1, "", new { @class = "text-danger" })
-                        @Html.EditorFor(model => model.Answer_1, new { htmlAttributes = new { @class = "form-control", @placeholder = "Nhập lựa chọn 1 ...", @maxlength = "50" } })
-                    </p>
-                    <p>
-                        <strong>Lựa chọn 2 : </strong> @Html.ValidationMessageFor(model => model.Answer_2, "", new { @class = "text-danger" })
-                        @Html.EditorFor(model => model.Answer_2, new { htmlAttributes = new { @class = "form-control", @placeholder = "Nhập lựa chọn 2 ...", @maxlength = "50" } })
-                    </p>
-                    <p>
-                        <strong>Lựa chọn 3 : </strong> @Html.ValidationMessageFor(model => model.Answer_3, "", new { @class = "text-danger" })
-                        @Html.EditorFor(model => model.Answer_3, new { htmlAttributes = new { @class = "form-control", @placeholder = "Nhập lựa chọn 3 ...", @maxlength = "50" } })
-                    </p>
-                    <p>
-                        <strong>Lựa chọn 4 : </strong> @Html.ValidationMessageFor(model => model.Answer_4, "", new { @class = "text-danger" })
-                        @Html.EditorFor(model => model.Answer_4, new { htmlAttributes = new { @class = "form-control", @placeholder = "Nhập lựa chọn 4 ...", @maxlength = "50" } })
-                    </p>
-                    <p>
-                        <strong>Lựa chọn 5 : </strong> @Html.ValidationMessageFor(model => model.Answer_5, "", new { @class = "text-danger" })
-                        @Html.EditorFor(model => model.Answer_5, new { htmlAttributes = new { @class = "form-control", @placeholder = "Nhập lựa chọn 5 ...", @maxlength = "50" } })
-                    </p>
-                </div>
-                <input type="submit" value="Save" name="CreateQ" class="btn btn-success" />
-}*@
 
 <script src="~/Scripts/jquery-3.4.1.js"></script>
 <script src="~/Scripts/jquery.validate.min.js"></script>

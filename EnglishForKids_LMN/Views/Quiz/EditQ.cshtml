@@ -5,12 +5,13 @@
     {
         Response.Redirect("~/Login/SignIn");
     }
-    }
+}
 <style>
 
     .text-danger {
         color: red;
     }
+
     .background-quiz-editQ {
         padding: 20px;
         background-color: #fff;
@@ -47,18 +48,12 @@
             <div class="col-lg-8 col-sm-12 col-xs-12">
                 <div class="row">
                     <div class="col-lg-12 col-sm-12 col-xs-12">
-                        @*<h2 style="text-align: center; font-size: 30px; font-weight: 600;">SỬA CÂU ĐỐ</h2>*@
-
-
 
                         <div class="text-center" style="background-color:antiquewhite">
                             <h2 class="animate-charcter" style="text-transform: uppercase; text-align: center; font-size: 30px; font-weight: 700;">
                                 Edit quiz
                             </h2>
                         </div>
-
-
-
                     </div>
                     <br />
                     <br />
@@ -72,31 +67,31 @@
                                 @Html.HiddenFor(model => model.ID_Quiz)
                                 <p>
                                     <strong>Quiz name:</strong> @Html.ValidationMessageFor(model => model.Name_Quiz, "", new { @class = "text-danger" })
-                                    @Html.EditorFor(model => model.Name_Quiz, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter the puzzle name...", @maxlength = "50" } })
+                                    @Html.EditorFor(model => model.Name_Quiz, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter the puzzle name...", @maxlength = "20", @minlength = "2", @autofocus = "autofocus", @required = "required" } })
                                 </p>
                                 <p>
                                     <strong>Content file:</strong> @Html.ValidationMessageFor(model => model.Content, "", new { @class = "text-danger" })
-                                    @Html.EditorFor(model => model.Content, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter the content file name...", @maxlength = "50" } })
+                                    @Html.EditorFor(model => model.Content, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter the content file name...", @maxlength = "50", @minlength = "2", @autofocus = "autofocus", @required = "required" } })
                                 </p>
                                 <p>
                                     <strong>Answer 1:</strong> @Html.ValidationMessageFor(model => model.Answer_1, "", new { @class = "text-danger" })
-                                    @Html.EditorFor(model => model.Answer_1, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter answer 1...", @maxlength = "50" } })
+                                    @Html.EditorFor(model => model.Answer_1, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter answer 1...", @minlength = "1", @autofocus = "autofocus", @required = "required" } })
                                 </p>
                                 <p>
                                     <strong>Answer 2:</strong> @Html.ValidationMessageFor(model => model.Answer_2, "", new { @class = "text-danger" })
-                                    @Html.EditorFor(model => model.Answer_2, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter answer 2...", @maxlength = "50" } })
+                                    @Html.EditorFor(model => model.Answer_2, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter answer 2...", @minlength = "1", @autofocus = "autofocus", @required = "required" } })
                                 </p>
                                 <p>
                                     <strong>Answer 3:</strong> @Html.ValidationMessageFor(model => model.Answer_3, "", new { @class = "text-danger" })
-                                    @Html.EditorFor(model => model.Answer_3, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter answer 3...", @maxlength = "50" } })
+                                    @Html.EditorFor(model => model.Answer_3, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter answer 3...", @minlength = "1", @autofocus = "autofocus", @required = "required" } })
                                 </p>
                                 <p>
                                     <strong>Answer 4:</strong> @Html.ValidationMessageFor(model => model.Answer_4, "", new { @class = "text-danger" })
-                                    @Html.EditorFor(model => model.Answer_4, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter answer 4...", @maxlength = "50" } })
+                                    @Html.EditorFor(model => model.Answer_4, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter answer 4...", @minlength = "1", @autofocus = "autofocus", @required = "required" } })
                                 </p>
                                 <p>
                                     <strong>Answer 5:</strong> @Html.ValidationMessageFor(model => model.Answer_5, "", new { @class = "text-danger" })
-                                    @Html.EditorFor(model => model.Answer_5, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter answer 5...", @maxlength = "50" } })
+                                    @Html.EditorFor(model => model.Answer_5, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter answer 5...", @minlength = "1", @autofocus = "autofocus", @required = "required" } })
                                 </p>
                             </div>
                             <div class="row">
@@ -110,8 +105,7 @@
 
                                 </div>
                             </div>
-                                    }
-                            
+                        }
                     </div>
                 </div>
             </div>
@@ -122,44 +116,6 @@
     </div>
     <br />
 </div>
-@*<h2>Sửa câu đố</h2>
-<hr />
-@using (Html.BeginForm("EditQ", "Quiz", FormMethod.Post))
-{
-@Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                <div class="form-group">
-                    @Html.HiddenFor(model => model.ID_Quiz)
-                    <p>
-                        <strong>Tên câu đố : </strong> @Html.ValidationMessageFor(model => model.Name_Quiz, "", new { @class = "text-danger" })
-                        @Html.EditorFor(model => model.Name_Quiz, new { htmlAttributes = new { @class = "form-control", @placeholder = "Type quiz name ...", @maxlength = "50" } })
-                    </p>
-                    <p>
-                        <strong>Nội dung câu đố : </strong> @Html.ValidationMessageFor(model => model.Content, "", new { @class = "text-danger" })
-                        @Html.EditorFor(model => model.Content, new { htmlAttributes = new { @class = "form-control", @placeholder = "Type file  path of quiz content  ...", @maxlength = "50" } })
-                    </p>
-                    <p>
-                        <strong>Câu trả lời 1 : </strong> @Html.ValidationMessageFor(model => model.Answer_1, "", new { @class = "text-danger" })
-                        @Html.EditorFor(model => model.Answer_1, new { htmlAttributes = new { @class = "form-control", @placeholder = "Type quiz answer one ...", @maxlength = "50" } })
-                    </p>
-                    <p>
-                        <strong>Câu trả lời 2 : </strong> @Html.ValidationMessageFor(model => model.Answer_2, "", new { @class = "text-danger" })
-                        @Html.EditorFor(model => model.Answer_2, new { htmlAttributes = new { @class = "form-control", @placeholder = "Type quiz answer two ...", @maxlength = "50" } })
-                    </p>
-                    <p>
-                        <strong>Câu trả lời 3 : </strong> @Html.ValidationMessageFor(model => model.Answer_3, "", new { @class = "text-danger" })
-                        @Html.EditorFor(model => model.Answer_3, new { htmlAttributes = new { @class = "form-control", @placeholder = "Type quiz answer three ...", @maxlength = "50" } })
-                    </p>
-                    <p>
-                        <strong>Câu trả lời 4 : </strong> @Html.ValidationMessageFor(model => model.Answer_4, "", new { @class = "text-danger" })
-                        @Html.EditorFor(model => model.Answer_4, new { htmlAttributes = new { @class = "form-control", @placeholder = "Type quiz answer four ...", @maxlength = "50" } })
-                    </p>
-                    <p>
-                        <strong>Câu trả lời 5 : </strong> @Html.ValidationMessageFor(model => model.Answer_5, "", new { @class = "text-danger" })
-                        @Html.EditorFor(model => model.Answer_5, new { htmlAttributes = new { @class = "form-control", @placeholder = "Type quiz answer one ...", @maxlength = "50" } })
-                    </p>
-                </div>
-                                <input type="submit" value="Lưu" name="CreateQ" class="btn btn-success" />
-}*@
 <script src="~/Scripts/jquery-3.4.1.js"></script>
 <script src="~/Scripts/jquery.validate.min.js"></script>
 <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
