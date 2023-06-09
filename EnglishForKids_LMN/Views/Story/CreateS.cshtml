@@ -5,7 +5,7 @@
     {
         Response.Redirect("~/Login/SignIn");
     }
-    }
+}
 <style>
     .text-danger {
         color: red;
@@ -54,20 +54,13 @@
     <div class="row background-story-createS">
         <div class="row">
             <div class="col-lg-12 col-xs-12">
-                @*<h2 style="text-align: center; font-size: 30px; font-weight: 600;">TẠO MỚI CÂU CHUYỆN</h2>*@
-
-
                 <div class="text-center" style="background-color:antiquewhite">
                     <h2 class="animate-charcter" style="text-transform: uppercase; text-align: center; font-size: 30px; font-weight: 700;">
                         Create new story
                     </h2>
                 </div>
-
-
             </div>
         </div>
-
-
 
         <br />
         <hr />
@@ -170,7 +163,6 @@
                                 <div class="form-group">
                                     <p>
                                         <strong>
-                                            @*@Html.LabelFor(model => model.Name_Story)*@
                                             Story name:
                                         </strong>
                                         @Html.ValidationMessageFor(model => model.Name_Story, "", new { @class = "text-danger" })
@@ -178,7 +170,6 @@
                                     </p>
                                     <p>
                                         <strong>
-                                            @*@Html.LabelFor(model => model.EN_Content)*@
                                             English content:
                                         </strong>
                                         @Html.ValidationMessageFor(model => model.EN_Content, "", new { @class = "text-danger" })
@@ -187,7 +178,6 @@
                                     </p>
                                     <p>
                                         <strong>
-                                            @*@Html.LabelFor(model => model.VN_Content)*@
                                             Vietnamese content:
                                         </strong>
                                         @Html.ValidationMessageFor(model => model.VN_Content, "", new { @class = "text-danger" })
@@ -196,7 +186,6 @@
                                     </p>
                                     <p>
                                         <strong>
-                                            @*@Html.LabelFor(model => model.Audio)*@
                                             Story audio:
                                         </strong>
                                         @Html.ValidationMessageFor(model => model.Audio, "", new { @class = "text-danger" })
@@ -213,9 +202,6 @@
                             </div>
                         </div>
                     </div>
-
-
-
                 }
             </div>
         </div>
@@ -230,108 +216,6 @@
         </div>
     </div>
 </div>
-@*<h2>Tạo mới</h2>
-    <hr />
-    @using (Html.BeginForm("CreateS", "Story", FormMethod.Post))
-    {
-    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                    <div>
-                        <input type="file" name="fileUpload" id="fileUpload" accept="images/*" style="display:none;" />
-                        <img src="~/Content/images/@Model.Banner" id="pictureUpload" style="width: 100%; height: 60vh;" alt="Story Banner" />
-                        <br />
-                        @Html.EditorFor(model => model.Banner, "", new { htmlAttributes = new { @class = "form-control center-block", @placeholder = "Type image string ...", @style = "width:500px;height:200px;display:none;", @maxlength = "50" } })
-                        <br />
-                        <p><input type="button" id="btnUpload" value="Chọn Banner" class="btn btn-success center-block" /></p>
-                        <p>@Html.ValidationMessageFor(model => model.Banner, "", new { @class = "text-danger" })</p>
-                    </div>
-                                    @section upload
-        {
-                                        <script>$(function () {
-                    $('#btnUpload').click(function () {
-                        $('#fileUpload').trigger('click');
-                    });
-                });
-                $('#fileUpload').change(function () {
-                    if (window.FormData !== undefined) {
-                        var fileUpload = $('#fileUpload').get(0);
-                        var files = fileUpload.files;
-                        var formData = new FormData();
-                        formData.append('file', files[0]);
-                        $.ajax({
-                            type: 'POST',
-                            url: '/Story/ProcessUpload',
-                            contentType: false,
-                            processData: false,
-                            data: formData,
-                            success: function (urlImage) {
-                                $('#pictureUpload').attr('src', "/Content/images/" + urlImage);
-                                $('#Banner').val(urlImage);
-                            },
-                            error: function (err) {
-                                alert('Error', err.statusText);
-                            }
-                        });
-                    }
-                });</script>
-                                    }
-                                                    <div class="thumbnail">
-                                                        <input type="file" name="fileUpload" id="fileUpload1" accept="images/*" style="display:none;" />
-                                                        <img src="~/Content/images/@Model.Image_Story" id="pictureUpload1" style="width: 200px; height: 200px;" alt="Story Image" />
-                                                        <br />
-                                                        @Html.EditorFor(model => model.Image_Story, "", new { htmlAttributes = new { @class = "form-control center-block", @placeholder = "Type image string ...", @style = "width:500px;height:200px;display:none;", @maxlength = "50" } })
-                                                        <br />
-                                                        <p><input type="button" id="btnUpload1" value="Chọn ảnh" class="btn btn-success center-block" /></p>
-                                                    </div>
-                                                                    @section upload1
-        {
-                                                                        <script>$(function () {
-                    $('#btnUpload1').click(function () {
-                        $('#fileUpload1').trigger('click');
-                    });
-                });
-                $('#fileUpload1').change(function () {
-                    if (window.FormData !== undefined) {
-                        var fileUpload = $('#fileUpload1').get(0);
-                        var files = fileUpload.files;
-                        var formData = new FormData();
-                        formData.append('file', files[0]);
-                        $.ajax({
-                            type: 'POST',
-                            url: '/Story/ProcessUpload',
-                            contentType: false,
-                            processData: false,
-                            data: formData,
-                            success: function (urlImage) {
-                                $('#pictureUpload1').attr('src', "/Content/images/" + urlImage);
-                                $('#Image_Story').val(urlImage);
-                            },
-                            error: function (err) {
-                                alert('Error', err.statusText);
-                            }
-                        });
-                    }
-                });</script>
-                                                                    }
-                                                                                    <div class="form-group">
-                                                                                        <p>
-                                                                                            <strong>@Html.LabelFor(model => model.Name_Story)</strong> @Html.ValidationMessageFor(model => model.Name_Story, "", new { @class = "text-danger" })
-                                                                                            @Html.EditorFor(model => model.Name_Story, new { htmlAttributes = new { @class = "form-control", @placeholder = "Nhập tên câu chuyện ...", @maxlength = "50" } })
-                                                                                        </p>
-                                                                                        <p>
-                                                                                            <strong>@Html.LabelFor(model => model.EN_Content)</strong> @Html.ValidationMessageFor(model => model.EN_Content, "", new { @class = "text-danger" })
-                                                                                            @Html.EditorFor(model => model.EN_Content, new { htmlAttributes = new { @class = "form-control", @placeholder = "Nhập file EN nội dung câu chuyện  ...", @maxlength = "50" } })
-                                                                                        </p>
-                                                                                        <p>
-                                                                                            <strong>@Html.LabelFor(model => model.VN_Content)</strong> @Html.ValidationMessageFor(model => model.VN_Content, "", new { @class = "text-danger" })
-                                                                                            @Html.EditorFor(model => model.VN_Content, new { htmlAttributes = new { @class = "form-control", @placeholder = "Nhập file VN nội dung câu chuyện ...", @maxlength = "50" } })
-                                                                                        </p>
-                                                                                        <p>
-                                                                                            <strong>@Html.LabelFor(model => model.Audio)</strong> @Html.ValidationMessageFor(model => model.Audio, "", new { @class = "text-danger" })
-                                                                                            @Html.EditorFor(model => model.Audio, new { htmlAttributes = new { @class = "form-control", @placeholder = "Nhập file âm thanh câu chuyện ...", @maxlength = "50" } })
-                                                                                        </p>
-                                                                                        <p><input type="text" id="ID_User" name="ID_User" class="form-control text-box single-line" value="@Session["Admin_Code"]" style="display:none;" /></p>
-                                                                                    </div>
-                                                                                                    <input type="submit" value="Lưu" name="CreateS" class="btn btn-success" />}*@
 <script src="~/Scripts/jquery-3.4.1.js"></script>
 <script src="~/Scripts/jquery.validate.min.js"></script>
 <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
