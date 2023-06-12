@@ -29,7 +29,7 @@
     var default_settings = {
       'directions': ['W', 'N', 'WN', 'EN'],
       'gridSize': 10,
-      'words': ['abccccccc', 'two', 'three', 'four', 'five', 'xyz'],
+      'words': ['banana', 'football', 'dog', 'fish', 'cake', 'bus'],
 	  'wordsList' : [],
       'debug': false
     }

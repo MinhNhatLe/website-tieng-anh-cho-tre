@@ -282,6 +282,7 @@ namespace EnglishForKids_LMN.Controllers
                 HttpCookie httpCookie = new HttpCookie("Login_User");
                 httpCookie.Expires = DateTime.Now.AddMonths(-1);
                 Response.Cookies.Add(httpCookie);
+
                 HttpCookie httpCookie1 = new HttpCookie("Password_User");
                 httpCookie1.Expires = DateTime.Now.AddMonths(-1);
                 Response.Cookies.Add(httpCookie1);

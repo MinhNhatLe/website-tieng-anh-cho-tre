@@ -80,16 +80,28 @@
                         <td style=" text-align: center;">@item.Gender</td>
                         <td style=" text-align: center;">@item.Phone</td>
                         <td style=" text-align: center;">@item.Email</td>
-                        <td style=" text-align: center;">@item.Birthday</td>
+                        <td style=" text-align: center;">
+                            @*@item.Birthday*@
+                            @string.Format("{0:dd/MM/yyyy}", item.Birthday)
+                        </td>
                         @*<td style=" text-align: center;">@item.Image_User</td>*@
                         <td style=" text-align: center;">
                             <img src="~/Content/images/@item.Image_User" style="width: 30px; height: 30px; border-radius: 100%" />
                         </td>
-                        <td style=" text-align: center;">@item.IsAdmin</td>
+                        <td style=" text-align: center;">
+                            @*@item.IsAdmin*@
+                            @{
+                                if (item.IsAdmin == true)
+                                {
+                                    <p>Admin</p>
+                                }
+                                else
+                                {
+                                    <p>User</p>
+                                }
+                            }
+                        </td>
                         <td style=" text-align: center;">@item.Password_User</td>
-
-
-
                         <td style=" text-align: center;">
                             @*<a href="@Url.Action("Account", "Home", new { id = item.ID_User })" class="btn btn-warning bx-tada-hover" style="width:80px;">Edit</a>*@
                             <a href="/Home/DeleteAccount/@item.ID_User" class="btn btn-danger bx-tada-hover" style="width:80px;" onclick="return confirm('Are you sure you want to delete this account?')">Delete</a>
