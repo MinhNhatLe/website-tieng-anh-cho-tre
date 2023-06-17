@@ -16,15 +16,55 @@ namespace EnglishForKids_LMN.Controllers
     {
         // GET: Test
         English_LearningEntities db = new English_LearningEntities();
-        public ActionResult Choose_Test()
+        public ActionResult Choose_Test(int? page, string searchTest, string sortTest)
         {
-            // lấy ra danh sách bài kiểm tra
-            List<Test> tests = db.Tests.ToList();
-            // lấy ra danh sách chi tiết của bài kiểm tra
+            //// lấy ra danh sách bài kiểm tra
+            //List<Test> tests = db.Tests.ToList();
+            //// lấy ra danh sách chi tiết của bài kiểm tra
             List<Test_Details> test_Details = db.Test_Details.ToList();
-            // lưu chi tiết bài kiểm tra vào session
+            //// lưu chi tiết bài kiểm tra vào session
             Session["test_Details"] = test_Details;
-            return View(tests);
+            //return View(tests);
+
+            List<Test> tests = new List<Test>();
+
+
+            if (searchTest != null)
+            {
+                Session["searchTest"] = searchTest;
+                tests = db.Tests.Where(s => s.Name_Test.ToString().Contains(searchTest.Trim().ToLower())).ToList();
+            }
+            else
+            {
+                Session["searchTest"] = null;
+                tests = db.Tests.ToList();
+            }
+            List<Test> tests1;
+
+            if (sortTest == null || sortTest == "None")
+            {
+                Session["sortTest"] = "None";
+                tests1 = tests;
+            }
+            else if (sortTest == "AZ")
+            {
+                Session["sortTest"] = "A - Z";
+                tests1 = tests.OrderBy(s => s.Name_Test).ToList();
+            }
+            else
+            {
+                Session["sortTest"] = "Z - A";
+                tests1 = tests.OrderByDescending(s => s.Name_Test).ToList();
+            }
+            if (page == null)
+            {
+                page = 1;
+            }
+            int pageSize = 6;
+            int pageNum = page ?? 1;
+            return View(tests1.ToPagedList(pageNum, pageSize));
+
+
         }
         // danh sách các câu hỏi và câu trả lời
         static List<Question> questions = new List<Question>();
@@ -432,7 +472,48 @@ namespace EnglishForKids_LMN.Controllers
             return View(questions1.ToPagedList(pageNum, pageSize));
         }
 
+        public ActionResult List_Result_Test_User(int? page, string searchResult, string sortResult)
+        {
+            //List<Test_Details> test_Details = db.Test_Details.ToList();
 
+            List<Test_Details> test_Details = new List<Test_Details>();
+
+
+            if (searchResult != null)
+            {
+                Session["searchResult"] = searchResult;
+                test_Details = db.Test_Details.Where(s => s.Test_Score.ToString().Contains(searchResult.Trim().ToLower())).ToList();
+            }
+            else
+            {
+                Session["searchResult"] = null;
+                test_Details = db.Test_Details.ToList();
+            }
+            List<Test_Details> test_Details1;
+
+            if (sortResult == null || sortResult == "None")
+            {
+                Session["sortResult"] = "None";
+                test_Details1 = test_Details;
+            }
+            else if (sortResult == "AZ")
+            {
+                Session["sortResult"] = "0 - 10";
+                test_Details1 = test_Details.OrderBy(s => s.Test_Score).ToList();
+            }
+            else
+            {
+                Session["sortResult"] = "10 - 0";
+                test_Details1 = test_Details.OrderByDescending(s => s.Test_Score).ToList();
+            }
+            if (page == null)
+            {
+                page = 1;
+            }
+            int pageSize = 9;
+            int pageNum = page ?? 1;
+            return View(test_Details1.ToPagedList(pageNum, pageSize));
+        }
 
         public ActionResult CreateT()
         {

@@ -1,5 +1,10 @@
-﻿@model IEnumerable<EnglishForKids_LMN.Models.Test>
-@{ ViewBag.Title = "Choose Test - English For Kids";
+﻿@*@model IEnumerable<EnglishForKids_LMN.Models.Test>*@
+@model PagedList.IPagedList<EnglishForKids_LMN.Models.Test>
+@using PagedList.Mvc;
+@using PagedList;
+@{
+    EnglishForKids_LMN.Models.English_LearningEntities db = new EnglishForKids_LMN.Models.English_LearningEntities();
+    ViewBag.Title = "Choose Test - English For Kids";
     Layout = "~/Views/Shared/_Layout.cshtml";
     if (Session["ID_User"] == null && Session["Admin_Code"] == null)
     {
@@ -29,12 +34,11 @@
     </div>
     <div class="row">
         <div class="col-lg-12 col-sm-12 col-xs-12" style="position:relative;">
-            <img src="~/Content/images/gif/light-fury-ice.gif" alt="results" style="width:20%; position: absolute; right: 660px; top: 600px" />
+            <img src="~/Content/images/gif/light-fury-ice.gif" alt="results" style="width:20%; position: absolute; right: 160px; top: 600px" />
         </div>
     </div>
     <div class="row">
         <div class="col-lg-12 col-sm-12 col-xs-12">
-
             <div class="border-title">
                 <div class="container_title">
                     <h2 class="title">
@@ -42,74 +46,105 @@
                         <span class="title-word title-word-2">E</span>
                         <span class="title-word title-word-3">S</span>
                         <span class="title-word title-word-4">T</span>
-
                     </h2>
                 </div>
             </div>
-
-
         </div>
     </div>
     <br />
+    <br />
+    <br />
+    @using (Html.BeginForm("Choose_Test", "Test", FormMethod.Get))
+    {
+        <div class="row">
+            <div class="col-lg-5 col-sm-1 col-xs-0">
 
-    <hr />
-    <div class="row">
+            </div>
+            <div class="col-lg-7 col-sm-11 col-xs-12">
+                <label>Search and arrange:</label>
+                <select id="sortTest" name="sortTest" class="form-control" style="width:105px;display:inline-block">
+                    <option for="sortTest" id="sortTest" name="sortTest" value="@Session["sortTest"]" hidden>@Session["sortTest"]</option>
+                    <option for="sortTest" id="sortTest" name="sortTest" value="None">None</option>
+                    <option for="sortTest" id="sortTest" name="sortTest" value="AZ">A - Z</option>
+                    <option for="sortTest" id="sortTest" name="sortTest" value="ZA">Z - A</option>
+                </select>
+                <input type="text" id="searchTest" name="searchTest" class="form-control" placeholder="Enter keywords to search ..." value="@Session["searchTest"]" required style="display: inline-block; width: 250px" />
+                <input type="submit" value="Search" class="btn btn-primary bx-fade-right-hover" style="width:90px;display:inline-block" />
+            </div>
+        </div>
+        <br />
+        <hr />
+        <div class="row">
+            @using EnglishForKids_LMN.Models;
+            @{ List<Test_Details> test_Details = Session["test_Details"] as List<Test_Details>;
+                int user_Code = int.Parse(Session["ID_User"].ToString()); }
+            <div class="col-lg-4 col-sm-4 col-xs-12 note-main" style="padding:40px;">
+                <div class="">
+                    <h2 class="animate-charcter" style="text-align: center; font-size: 30px; font-weight: 600;">
+                        Score statistics:
+                    </h2>
+                    @foreach (var item in Model)
+                    {
+                        <ul>
+                            <li>
+                                <b>
+                                    @item.Name_Test
+                                </b>
+                                @foreach (var item1 in test_Details)
+                                {
+                                    if (item1.ID_Test == item.ID_Test && item1.ID_User == user_Code)
+                                    {
+                                        <span>: @item1.Test_Score/10 score.</span>break;
+                                    }
+                                }
+                            </li>
+                        </ul>}
+                </div>
+                <hr />
+                <ol>
+                    <p class="animate-charcter" style="text-align: center; font-size: 20px; font-weight: 600;">
+                        Note:
+                    </p>
+                    <li>
+                        There are 10 questions including: multiple choice, essay.
+                    </li>
+                    <li>
+                        1 correct answer is equivalent to 1 points.
+                    </li>
+                </ol>
+            </div>
 
-
-        @using EnglishForKids_LMN.Models;
-        @{ List<Test_Details> test_Details = Session["test_Details"] as List<Test_Details>;
-            int user_Code = int.Parse(Session["ID_User"].ToString()); }
-        <div class="col-lg-4 col-sm-4 col-xs-12 note-main" style="padding:40px;">
-            <div class="">
-                <h2 class="animate-charcter" style="text-align: center; font-size: 30px; font-weight: 600;">
-                    Score statistics:
-                </h2>
+            <div class="col-lg-8 col-sm-8 col-xs-12">
                 @foreach (var item in Model)
                 {
-                    <ul>
-                        <li>
-                            <b>
-                                @item.Name_Test
-                            </b>
-                            @foreach (var item1 in test_Details)
-                            {
-                                if (item1.ID_Test == item.ID_Test && item1.ID_User == user_Code)
+                    <a href="/Test/Do_Test/@item.ID_Test">
+                        <div class="col-lg-6 col-sm-6 col-xs-12" style="border-radius: 0; margin-top: 30px; display: flex; align-items: center; justify-content: center;">
+                            <div class="card" style="border-radius: 20px; background-color: #eceade;">
+                                <h1 class="animate-charcter text-center" style="text-align:center;color:black; font-size: 24px; font-weight: 700 ">@item.Name_Test</h1>
+                            </div>
+                        </div>
+                    </a>}
+                <div class="row">
+                    <div class="col-lg-12 col-sm-12 col-xs-12">
+                        <div style="margin-top:50px">
+                            <div>
+                                Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount
+                            </div>
+                            <div>
+                                @if (Session["searchTest"] != null)
                                 {
-                                    <span>: @item1.Test_Score/10 score.</span>break;
-                                }
-                            }
-                        </li>
-                    </ul>}
-            </div>
-            <hr />
-            <ol>
-                <p class="animate-charcter" style="text-align: center; font-size: 20px; font-weight: 600;">
-                    Note:
-                </p>
-                <li>
-
-                    There are 10 questions including: multiple choice, essay.
-                </li>
-                <li>
-                    1 correct answer is equivalent to 1 points.
-                </li>
-            </ol>
-        </div>
-
-        <div class="col-lg-8 col-sm-8 col-xs-12">
-            @foreach (var item in Model)
-            {
-                <a href="/Test/Do_Test/@item.ID_Test">
-                    <div class="col-lg-6 col-sm-6 col-xs-12" style="border-radius: 0; margin-top: 30px; display: flex; align-items: center; justify-content: center;">
-                        <div class="card" style="border-radius: 20px; background-color: #eceade;">
-                            <h1 class="animate-charcter text-center" style="text-align:center;color:black; font-size: 24px; font-weight: 700 ">@item.Name_Test</h1>
+                                    @Html.PagedListPager(Model, page => Url.Action("Choose_Test", new { page = page, searchTest = Session["searchTest"], sortTest = Session["sortTest"] })) }
+                                else
+                                {
+                                    @Html.PagedListPager(Model, page => Url.Action("Choose_Test", new { page = page }))}
+                            </div>
                         </div>
                     </div>
-                </a>}
+                </div>
+            </div>
         </div>
-    </div>
+    }
 </div>
 <br />
 <br />
-
 
