@@ -593,6 +593,7 @@
     <Content Include="Views\Login\SignUpAdmin.cshtml" />
     <Content Include="Views\Identify\Identify_AI.cshtml" />
     <Content Include="Views\Home\Game.cshtml" />
+    <Content Include="Views\Test\List_Result_Test_User.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
