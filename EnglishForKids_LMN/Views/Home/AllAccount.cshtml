@@ -70,7 +70,7 @@
                     <th style=" text-align: center;">Avatar</th>
                     <th style=" text-align: center;">Admin / User</th>
                     <th style=" text-align: center;">Password</th>
-                    <th style=" text-align: center;">Function</th>
+                    @*<th style=" text-align: center;">Function</th>*@
                 </tr>
                 @foreach (var item in Model)
                 {
@@ -102,10 +102,10 @@
                             }
                         </td>
                         <td style=" text-align: center;">@item.Password_User</td>
-                        <td style=" text-align: center;">
+                        <!--<td style=" text-align: center;">-->
                             @*<a href="@Url.Action("Account", "Home", new { id = item.ID_User })" class="btn btn-warning bx-tada-hover" style="width:80px;">Edit</a>*@
-                            <a href="/Home/DeleteAccount/@item.ID_User" class="btn btn-danger bx-tada-hover" style="width:80px;" onclick="return confirm('Are you sure you want to delete this account?')">Delete</a>
-                        </td>
+                            <!--<a href="/Home/DeleteAccount/@item.ID_User" class="btn btn-danger bx-tada-hover" style="width:80px;" onclick="return confirm('Are you sure you want to delete this account?')">Delete</a>
+                        </td>-->
                     </tr>
                 }
             </table>
