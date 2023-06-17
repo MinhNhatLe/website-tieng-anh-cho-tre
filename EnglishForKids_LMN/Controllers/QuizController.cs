@@ -17,15 +17,54 @@ namespace EnglishForKids_LMN.Controllers
 
         // GET: Quiz
 
-        public ActionResult Choose_Image_Quiz()
+        public ActionResult Choose_Image_Quiz(int? page, string searchImgQuiz, string sortImgQuiz)
         {
-            // lấy ra danh sách thể loại từ vựng và bỏ cái thứ 6 đi
-            List<Category_Vo> vocabulary_Type = db.Category_Vo.Where(s => s.ID_Category_Vo != 6).ToList();
-            // lấy ra danh sách câu đố 
+            //// lấy ra danh sách thể loại từ vựng và bỏ cái thứ 6 đi
+            //List<Category_Vo> vocabulary_Type = db.Category_Vo.Where(s => s.ID_Category_Vo != 6).ToList();
+            //// lấy ra danh sách câu đố 
             List<Quiz_Details> quiz_Details = db.Quiz_Details.ToList();
-            // lưu vào session để đẩy ra view
+            //// lưu vào session để đẩy ra view
             Session["quiz_Details"] = quiz_Details;
-            return View(vocabulary_Type);
+            //return View(vocabulary_Type);
+
+
+
+            List<Category_Vo> vocabulary_Type = db.Category_Vo.Where(s => s.ID_Category_Vo != 6).ToList();
+            if (searchImgQuiz != null)
+            {
+                Session["searchImgQuiz"] = searchImgQuiz;
+                vocabulary_Type = db.Category_Vo.Where(s => s.Name_Category_Vo.ToString().Contains(searchImgQuiz.Trim().ToLower())).Where(s => s.ID_Category_Vo != 6).ToList();
+            }
+            else
+            {
+                Session["searchImgQuiz"] = null;
+                vocabulary_Type = db.Category_Vo.Where(s => s.ID_Category_Vo != 6).ToList();
+            }
+            List<Category_Vo> category_Vos = db.Category_Vo.Where(s => s.ID_Category_Vo != 6).ToList();
+            //List<Category_Vo> category_Vos;
+
+            if (sortImgQuiz == null || sortImgQuiz == "None")
+            {
+                Session["sortImgQuiz"] = "None";
+                category_Vos = vocabulary_Type;
+            }
+            else if (sortImgQuiz == "AZ")
+            {
+                Session["sortImgQuiz"] = "A - Z";
+                category_Vos = vocabulary_Type.OrderBy(s => s.Name_Category_Vo).ToList();
+            }
+            else
+            {
+                Session["sortImgQuiz"] = "Z - A";
+                category_Vos = vocabulary_Type.OrderByDescending(s => s.Name_Category_Vo).ToList();
+            }
+            if (page == null)
+            {
+                page = 1;
+            }
+            int pageSize = 6;
+            int pageNum = page ?? 1;
+            return View(category_Vos.ToPagedList(pageNum, pageSize));
 
         }
         // lấy ra danh sách từ vựng lưu vào static
@@ -84,6 +123,7 @@ namespace EnglishForKids_LMN.Controllers
             if (vocabularies == null || vocabularies.Count() < 5)
             {
                 return RedirectToAction("Choose_Image_Quiz", "Quiz");
+                //return RedirectToAction("Error404", "Home");
             }
             else
             {
@@ -207,15 +247,52 @@ namespace EnglishForKids_LMN.Controllers
 
         //phương thức kiểm tra xem câu trả lời của người dùng có khớp với nghĩa tiếng Anh của từ vựng hay không
         //Nếu có, điểm số của người dùng tăng lên 2, kết quả trả lời được lưu vào danh sách save_Result, và câu trả lời tạm thời được lưu vào danh sách listAnss.
-        public ActionResult Choose_DragDrop_Quiz()
+        public ActionResult Choose_DragDrop_Quiz(int? page, string searchDragDropQuiz, string sortDragDropQuiz)
         {
             // lấy danh sách câu đố ra trừ cái thứ 6
-            List<Quiz> quizzes = db.Quizs.Where(s => s.ID_Quiz != 6).ToList();
+            //List<Quiz> quizzes = db.Quizs.Where(s => s.ID_Quiz != 6).ToList();
             List<Quiz_Details> quiz_Details = db.Quiz_Details.ToList();
-            // lưu vào session
+            //// lưu vào session
             Session["quiz_Details"] = quiz_Details;
             Session["Choose_DragDrop_Quiz"] = null;
-            return View(quizzes);
+            //return View(quizzes);
+
+            List<Quiz> quizzes = db.Quizs.Where(s => s.ID_Quiz != 6).ToList();
+            if (searchDragDropQuiz != null)
+            {
+                Session["searchDragDropQuiz"] = searchDragDropQuiz;
+                quizzes = db.Quizs.Where(s => s.Name_Quiz.ToString().Contains(searchDragDropQuiz.Trim().ToLower())).Where(s => s.ID_Quiz != 6).ToList();
+            }
+            else
+            {
+                Session["searchDragDropQuiz"] = null;
+                quizzes = db.Quizs.Where(s => s.ID_Quiz != 6).ToList();
+            }
+            List<Quiz> quizzes1 = db.Quizs.Where(s => s.ID_Quiz != 6).ToList();
+
+            if (sortDragDropQuiz == null || sortDragDropQuiz == "None")
+            {
+                Session["sortDragDropQuiz"] = "None";
+                quizzes1 = quizzes;
+            }
+            else if (sortDragDropQuiz == "AZ")
+            {
+                Session["sortDragDropQuiz"] = "A - Z";
+                quizzes1 = quizzes.OrderBy(s => s.Name_Quiz).ToList();
+            }
+            else
+            {
+                Session["sortDragDropQuiz"] = "Z - A";
+                quizzes1 = quizzes.OrderByDescending(s => s.Name_Quiz).ToList();
+            }
+            if (page == null)
+            {
+                page = 1;
+            }
+            int pageSize = 6;
+            int pageNum = page ?? 1;
+            return View(quizzes1.ToPagedList(pageNum, pageSize));
+
         }
         public ActionResult Do_DragDrop_Quiz(int id)
         {
