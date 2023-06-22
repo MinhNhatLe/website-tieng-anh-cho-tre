@@ -175,30 +175,165 @@
                                         @Html.ValidationMessageFor(model => model.Name_Story, "", new { @class = "text-danger" })
                                         @Html.EditorFor(model => model.Name_Story, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter story name...", @maxlength = "20", @minlength = "2", @autofocus = "autofocus", @required = "required" } })
                                     </p>
+                                    <!--<p>
+                                        <strong>
+                                            English content:
+                                        </strong>
+                                        @Html.ValidationMessageFor(model => model.EN_Content, "", new { @class = "text-danger" })-->
+                                        @*@Html.EditorFor(model => model.EN_Content, new { htmlAttributes = new { @class = "form-control", @placeholder = "Import the file EN the story content...", @maxlength = "50", @minlength = "2", @autofocus = "autofocus", @required = "required" } })*@
+                                        <!--<input class="bx-flashing-hover" style="padding:10px;" type="file" name="EN_Content" accept=".txt" required />
+                                    </p>-->
                                     <p>
                                         <strong>
                                             English content:
                                         </strong>
+                                        <input type="file" name="fileUpload" id="fileUpload2" accept=".txt" style="display:none;" />
                                         @Html.ValidationMessageFor(model => model.EN_Content, "", new { @class = "text-danger" })
-                                        @*@Html.EditorFor(model => model.EN_Content, new { htmlAttributes = new { @class = "form-control", @placeholder = "Import the file EN the story content...", @maxlength = "50", @minlength = "2", @autofocus = "autofocus", @required = "required" } })*@
-                                        <input class="bx-flashing-hover" style="padding:10px;" type="file" name="EN_Content" accept=".txt" required />
+                                        <div class="row">
+                                            <div class="col-lg-8 col-sm-8 col-xs-8">
+                                                @Html.EditorFor(model => model.EN_Content, new { htmlAttributes = new { @class = "form-control", @placeholder = "Import the file EN the story content...", @maxlength = "30", @minlength = "2", @required = "required", @readonly = "readonly" } })
+                                            </div>
+                                            <div class="col-lg-4 col-sm-4 col-xs-4">
+                                                <input type="button" id="btnUpload2" value="Import EN" class="btn btn-info bx-flashing-hover" style="width: 100%"/>
+                                            </div>
+                                        </div>
                                     </p>
+                                    @section upload2
+    {
+                                        <script>
+                                            $(function () {
+                                                $('#btnUpload2').click(function () {
+                                                    $('#fileUpload2').trigger('click');
+                                                });
+                                            });
+                                            $('#fileUpload2').change(function () {
+                                                if (window.FormData !== undefined) {
+                                                    var fileUpload = $('#fileUpload2').get(0);
+                                                    var files = fileUpload.files;
+                                                    var formData = new FormData();
+                                                    formData.append('file', files[0]);
+                                                    $.ajax({
+                                                        type: 'POST',
+                                                        url: '/Story/ProcessUpload1',
+                                                        contentType: false,
+                                                        processData: false,
+                                                        data: formData,
+                                                        success: function (txt) {
+                                                            $('#EN_Content').val(txt);
+                                                        },
+                                                        error: function (err) {
+                                                            alert('Error', err.statusText);
+                                                        }
+                                                    });
+                                                }
+                                            });</script>
+                                    }
+                                    <!--<p>
+                                        <strong>
+                                            Vietnamese content:
+                                        </strong>
+                                        @Html.ValidationMessageFor(model => model.VN_Content, "", new { @class = "text-danger" })-->
+                                        @*@Html.EditorFor(model => model.VN_Content, new { htmlAttributes = new { @class = "form-control", @placeholder = "Import the VN file with story content...", @maxlength = "50", @minlength = "2", @autofocus = "autofocus", @required = "required" } })*@
+                                        <!--<input class="bx-flashing-hover" style="padding:10px;" type="file" name="VN_Content" accept=".txt" required />
+                                    </p>-->
                                     <p>
                                         <strong>
                                             Vietnamese content:
                                         </strong>
+                                        <input type="file" name="fileUpload" id="fileUpload3" accept=".txt" style="display:none;" />
                                         @Html.ValidationMessageFor(model => model.VN_Content, "", new { @class = "text-danger" })
-                                        @*@Html.EditorFor(model => model.VN_Content, new { htmlAttributes = new { @class = "form-control", @placeholder = "Import the VN file with story content...", @maxlength = "50", @minlength = "2", @autofocus = "autofocus", @required = "required" } })*@
-                                        <input class="bx-flashing-hover" style="padding:10px;" type="file" name="VN_Content" accept=".txt" required />
+                                        <div class="row">
+                                            <div class="col-lg-8 col-sm-8 col-xs-8">
+                                                @Html.EditorFor(model => model.VN_Content, new { htmlAttributes = new { @class = "form-control", @placeholder = "Import the VN file with story content...", @maxlength = "30", @minlength = "2", @required = "required", @readonly = "readonly" } })
+                                            </div>
+                                            <div class="col-lg-4 col-sm-4 col-xs-4">
+                                                <input type="button" id="btnUpload3" value="Import VN" class="btn btn-info bx-flashing-hover" style="width: 100%"/>
+                                            </div>
+                                        </div>
                                     </p>
+                                    @section upload3
+    {
+                                        <script>
+                                            $(function () {
+                                                $('#btnUpload3').click(function () {
+                                                    $('#fileUpload3').trigger('click');
+                                                });
+                                            });
+                                            $('#fileUpload3').change(function () {
+                                                if (window.FormData !== undefined) {
+                                                    var fileUpload = $('#fileUpload3').get(0);
+                                                    var files = fileUpload.files;
+                                                    var formData = new FormData();
+                                                    formData.append('file', files[0]);
+                                                    $.ajax({
+                                                        type: 'POST',
+                                                        url: '/Story/ProcessUpload1',
+                                                        contentType: false,
+                                                        processData: false,
+                                                        data: formData,
+                                                        success: function (txt) {
+                                                            $('#VN_Content').val(txt);
+                                                        },
+                                                        error: function (err) {
+                                                            alert('Error', err.statusText);
+                                                        }
+                                                    });
+                                                }
+                                            });</script>
+                                    }
+                                    <!--<p>
+                                        <strong>
+                                            Story audio:
+                                        </strong>
+                                        @Html.ValidationMessageFor(model => model.Audio, "", new { @class = "text-danger" })-->
+                                        @*@Html.EditorFor(model => model.Audio, new { htmlAttributes = new { @class = "form-control", @placeholder = "Import story audio files...", @maxlength = "50", @minlength = "2", @autofocus = "autofocus", @required = "required" } })*@
+                                        <!--<input class="bx-flashing-hover" style="padding:10px;" type="file" name="Audio" accept=".mp3" required />
+                                    </p>-->
                                     <p>
                                         <strong>
                                             Story audio:
                                         </strong>
+                                        <input type="file" name="fileUpload" id="fileUpload4" accept=".mp3" style="display:none;" />
                                         @Html.ValidationMessageFor(model => model.Audio, "", new { @class = "text-danger" })
-                                        @*@Html.EditorFor(model => model.Audio, new { htmlAttributes = new { @class = "form-control", @placeholder = "Import story audio files...", @maxlength = "50", @minlength = "2", @autofocus = "autofocus", @required = "required" } })*@
-                                        <input class="bx-flashing-hover" style="padding:10px;" type="file" name="Audio" accept=".mp3" required />
+                                        <div class="row">
+                                            <div class="col-lg-8 col-sm-8 col-xs-8">
+                                                @Html.EditorFor(model => model.Audio, new { htmlAttributes = new { @class = "form-control", @placeholder = "Import story audio files...", @maxlength = "30", @minlength = "2", @required = "required", @readonly = "readonly" } })
+                                            </div>
+                                            <div class="col-lg-4 col-sm-4 col-xs-4">
+                                                <input type="button" id="btnUpload4" value="Import audio" class="btn btn-info bx-flashing-hover" style="width: 100%"/>
+                                            </div>
+                                        </div>
                                     </p>
+                                    @section upload4
+    {
+                                        <script>
+                                            $(function () {
+                                                $('#btnUpload4').click(function () {
+                                                    $('#fileUpload4').trigger('click');
+                                                });
+                                            });
+                                            $('#fileUpload4').change(function () {
+                                                if (window.FormData !== undefined) {
+                                                    var fileUpload = $('#fileUpload4').get(0);
+                                                    var files = fileUpload.files;
+                                                    var formData = new FormData();
+                                                    formData.append('file', files[0]);
+                                                    $.ajax({
+                                                        type: 'POST',
+                                                        url: '/Story/ProcessUpload2',
+                                                        contentType: false,
+                                                        processData: false,
+                                                        data: formData,
+                                                        success: function (mp3) {
+                                                            $('#Audio').val(mp3);
+                                                        },
+                                                        error: function (err) {
+                                                            alert('Error', err.statusText);
+                                                        }
+                                                    });
+                                                }
+                                            });</script>
+                                    }
                                     <p>
                                         <input type="text" id="ID_User" name="ID_User" class="form-control text-box single-line" value="@Session["Admin_Code"]" style="display:none;" />
                                     </p>

@@ -76,10 +76,55 @@
                                     <strong>Quiz name:</strong> @Html.ValidationMessageFor(model => model.Name_Quiz, "", new { @class = "text-danger" })
                                     @Html.EditorFor(model => model.Name_Quiz, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter the puzzle name...", @maxlength = "20", @minlength = "2", @autofocus = "autofocus", @required = "required" } })
                                 </p>
+                                @*<p>
+                                        <strong>Content file:</strong> @Html.ValidationMessageFor(model => model.Content, "", new { @class = "text-danger" })
+                                        @Html.EditorFor(model => model.Content, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter the content file name...", @maxlength = "50", @minlength = "2", @autofocus = "autofocus", @required = "required" } })
+                                    </p>*@
                                 <p>
-                                    <strong>Content file:</strong> @Html.ValidationMessageFor(model => model.Content, "", new { @class = "text-danger" })
-                                    @Html.EditorFor(model => model.Content, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter the content file name...", @maxlength = "50", @minlength = "2", @autofocus = "autofocus", @required = "required" } })
+                                    <strong>
+                                        Content file:
+                                    </strong>
+                                    <input type="file" name="fileUpload" id="fileUpload2" accept=".txt" style="display:none;" />
+                                    @Html.ValidationMessageFor(model => model.Content, "", new { @class = "text-danger" })
+                                    <div class="row">
+                                        <div class="col-lg-8 col-sm-8 col-xs-8">
+                                            @Html.EditorFor(model => model.Content, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter the content file name...", @maxlength = "50", @minlength = "2", @required = "required", @readonly = "readonly" } })
+                                        </div>
+                                        <div class="col-lg-4 col-sm-4 col-xs-4">
+                                            <input type="button" id="btnUpload2" value="Change content" class="btn btn-info bx-flashing-hover" style="width: 100%" />
+                                        </div>
+                                    </div>
                                 </p>
+                                @section upload2
+    {
+                                    <script>
+                                        $(function () {
+                                            $('#btnUpload2').click(function () {
+                                                $('#fileUpload2').trigger('click');
+                                            });
+                                        });
+                                        $('#fileUpload2').change(function () {
+                                            if (window.FormData !== undefined) {
+                                                var fileUpload = $('#fileUpload2').get(0);
+                                                var files = fileUpload.files;
+                                                var formData = new FormData();
+                                                formData.append('file', files[0]);
+                                                $.ajax({
+                                                    type: 'POST',
+                                                    url: '/Quiz/ProcessUpload1',
+                                                    contentType: false,
+                                                    processData: false,
+                                                    data: formData,
+                                                    success: function (txt) {
+                                                        $('#Content').val(txt);
+                                                    },
+                                                    error: function (err) {
+                                                        alert('Error', err.statusText);
+                                                    }
+                                                });
+                                            }
+                                        });</script>
+                                }
                                 <p>
                                     <strong>Answer 1:</strong> @Html.ValidationMessageFor(model => model.Answer_1, "", new { @class = "text-danger" })
                                     @Html.EditorFor(model => model.Answer_1, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter answer 1...", @minlength = "1", @autofocus = "autofocus", @required = "required" } })

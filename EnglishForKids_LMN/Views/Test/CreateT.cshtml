@@ -76,18 +76,108 @@
                                     @Html.ValidationMessageFor(model => model.Name_Test, "", new { @class = "text-danger" })
                                     @Html.EditorFor(model => model.Name_Test, "", new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter test name...", @minlength = "2", @maxlength = "15", @autofocus = "autofocus", @required = "required" } })
                                 </p>
-                                <p>
+                                <!--<p>
                                     <strong>Test video:</strong>
-                                    @Html.ValidationMessageFor(model => model.Video, "", new { @class = "text-danger" })
-                                    @*@Html.EditorFor(model => model.Video, new { htmlAttributes = new { @class = "form-control", @placeholder = "Import test video file...", @maxlength = "30" } })*@
-                                    <input class="bx-flashing-hover" style="padding:10px;" type="file" name="Video" accept=".mp4" required />
-                                </p>
+                                    @Html.ValidationMessageFor(model => model.Video, "", new { @class = "text-danger" })-->
+                                @*@Html.EditorFor(model => model.Video, new { htmlAttributes = new { @class = "form-control", @placeholder = "Import test video file...", @maxlength = "30" } })*@
+                                <!--<input class="bx-flashing-hover" style="padding:10px;" type="file" name="Video" accept=".mp4" required />
+                                </p>-->
                                 <p>
-                                    <strong>Test paragraph:</strong>
-                                    @Html.ValidationMessageFor(model => model.Paragraph, "", new { @class = "text-danger" })
-                                    @*@Html.EditorFor(model => model.Paragraph, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter test paragraph name...", @maxlength = "30" } })*@
-                                    <input class="bx-flashing-hover" style="padding:10px;" type="file" name="Paragraph" accept=".txt" required />
+                                    <strong>
+                                        Test video:
+                                    </strong>
+                                    <input type="file" name="fileUpload" id="fileUpload3" accept=".mp4" style="display:none;" />
+                                    @Html.ValidationMessageFor(model => model.Video, "", new { @class = "text-danger" })
+                                    <div class="row">
+                                        <div class="col-lg-8 col-sm-8 col-xs-8">
+                                            @Html.EditorFor(model => model.Video, new { htmlAttributes = new { @class = "form-control", @placeholder = "Import test video file....", @maxlength = "50", @minlength = "2", @required = "required", @readonly = "readonly" } })
+                                        </div>
+                                        <div class="col-lg-4 col-sm-4 col-xs-4">
+                                            <input type="button" id="btnUpload3" value="Import video" class="btn btn-info bx-flashing-hover" style="width: 100%" />
+                                        </div>
+                                    </div>
                                 </p>
+                                @section upload3
+    {
+                                    <script>
+                                        $(function () {
+                                            $('#btnUpload3').click(function () {
+                                                $('#fileUpload3').trigger('click');
+                                            });
+                                        });
+                                        $('#fileUpload3').change(function () {
+                                            if (window.FormData !== undefined) {
+                                                var fileUpload = $('#fileUpload3').get(0);
+                                                var files = fileUpload.files;
+                                                var formData = new FormData();
+                                                formData.append('file', files[0]);
+                                                $.ajax({
+                                                    type: 'POST',
+                                                    url: '/Test/ProcessUpload2',
+                                                    contentType: false,
+                                                    processData: false,
+                                                    data: formData,
+                                                    success: function (video) {
+                                                        $('#Video').val(video);
+                                                    },
+                                                    error: function (err) {
+                                                        alert('Error', err.statusText);
+                                                    }
+                                                });
+                                            }
+                                        });</script>
+                                }
+                                <!--<p>
+                                    <strong>Test paragraph:</strong>
+                                    @Html.ValidationMessageFor(model => model.Paragraph, "", new { @class = "text-danger" })-->
+                                @*@Html.EditorFor(model => model.Paragraph, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter test paragraph name...", @maxlength = "30" } })*@
+                                <!--<input class="bx-flashing-hover" style="padding:10px;" type="file" name="Paragraph" accept=".txt" required />
+                                </p>-->
+                                <p>
+                                    <strong>
+                                        Test paragraph:
+                                    </strong>
+                                    <input type="file" name="fileUpload" id="fileUpload2" accept=".txt" style="display:none;" />
+                                    @Html.ValidationMessageFor(model => model.Paragraph, "", new { @class = "text-danger" })
+                                    <div class="row">
+                                        <div class="col-lg-8 col-sm-8 col-xs-8">
+                                            @Html.EditorFor(model => model.Paragraph, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter test paragraph name...", @maxlength = "50", @minlength = "2", @required = "required", @readonly = "readonly" } })
+                                        </div>
+                                        <div class="col-lg-4 col-sm-4 col-xs-4">
+                                            <input type="button" id="btnUpload2" value="Import paragraph" class="btn btn-info bx-flashing-hover" style="width: 100%" />
+                                        </div>
+                                    </div>
+                                </p>
+                                @section upload2
+    {
+                                    <script>
+                                        $(function () {
+                                            $('#btnUpload2').click(function () {
+                                                $('#fileUpload2').trigger('click');
+                                            });
+                                        });
+                                        $('#fileUpload2').change(function () {
+                                            if (window.FormData !== undefined) {
+                                                var fileUpload = $('#fileUpload2').get(0);
+                                                var files = fileUpload.files;
+                                                var formData = new FormData();
+                                                formData.append('file', files[0]);
+                                                $.ajax({
+                                                    type: 'POST',
+                                                    url: '/Test/ProcessUpload1',
+                                                    contentType: false,
+                                                    processData: false,
+                                                    data: formData,
+                                                    success: function (txt) {
+                                                        $('#Paragraph').val(txt);
+                                                    },
+                                                    error: function (err) {
+                                                        alert('Error', err.statusText);
+                                                    }
+                                                });
+                                            }
+                                        });</script>
+                                }
                             </div>
                             <div class="row">
                                 <div class="col-lg-2 col-sm-2 col-xs-0">
