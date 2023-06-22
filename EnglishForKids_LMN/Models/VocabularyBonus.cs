@@ -34,6 +34,8 @@ namespace EnglishForKids_LMN.Models
         [MaxLength(20, ErrorMessage = "Vocabulary type name can't longer than 20 character")]
         public string Name_Category_Vo { get; set; }
         public int ID_Vocabulary { get; set; }
+        public Nullable<int> ID_User { get; set; }
+
 
     }
 }
