@@ -630,5 +630,33 @@ namespace EnglishForKids_LMN.Controllers
                 return RedirectToAction("Error404", "Home");
             }
         }
+        public string ProcessUpload1(HttpPostedFileBase file)
+        {
+            if (file == null)
+            {
+                return "";
+            }
+            else
+            {
+                // Lấy hình ở đâu cũng được
+                // Nhưng lấy xong nó sẽ lưu vào Server theo đường dẫn này
+                file.SaveAs(Server.MapPath("~/Content/txt/" + file.FileName));
+            }
+            return file.FileName;
+        }
+        public string ProcessUpload2(HttpPostedFileBase file)
+        {
+            if (file == null)
+            {
+                return "";
+            }
+            else
+            {
+                // Lấy hình ở đâu cũng được
+                // Nhưng lấy xong nó sẽ lưu vào Server theo đường dẫn này
+                file.SaveAs(Server.MapPath("~/Content/video/" + file.FileName));
+            }
+            return file.FileName;
+        }
     }
 }
