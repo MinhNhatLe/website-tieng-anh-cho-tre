@@ -278,6 +278,7 @@ namespace EnglishForKids_LMN.Controllers
                     vocabulary.EN_Meaning = vocabularyBonus.EN_Meaning;
                     vocabulary.VN_Meaning = vocabularyBonus.VN_Meaning;
                     vocabulary.Pronunciation = vocabularyBonus.Pronunciation;
+                    vocabulary.ID_User = vocabularyBonus.ID_User;
                     vocabulary.View_Vocabulary = 0;
                     // Nếu không mốn null thì add Ảnh vào
                     if (vocabularyBonus.Image_Vocabulary != null)
@@ -330,6 +331,7 @@ namespace EnglishForKids_LMN.Controllers
                 vocabularyBonus.VN_Meaning = vocabulary.VN_Meaning;
                 vocabularyBonus.Pronunciation = vocabulary.Pronunciation;
                 vocabularyBonus.ID_Category_Vo = vocabulary.Category_Vo.ID_Category_Vo;
+                vocabularyBonus.ID_User = vocabulary.ID_User;
 
                 // Lấy danh sách thể loại từ vựng đố ra
                 List<Category_Vo> vocabulary_Types = db.Category_Vo.ToList();

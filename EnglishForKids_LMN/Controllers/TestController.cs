@@ -81,27 +81,35 @@ namespace EnglishForKids_LMN.Controllers
             Session["video"] = test.Video;
             // vào session paragraph
             Session["paragraph"] = test.Paragraph;
-            // random câu hỏi
-            Random random = new Random();
-            int x;
-            for (int i = 0; i < 10; i++)
+            try
             {
-                if (questions.Count() < 10)
+                // random câu hỏi
+                Random random = new Random();
+                int x;
+                for (int i = 0; i < 10; i++)
                 {
-                    x = random.Next(0, questions1.Count());
-                    if (questions.Contains(questions1[x]))
+                    if (questions.Count() < 10)
                     {
-                        i--;
+                        x = random.Next(0, questions1.Count());
+                        if (questions.Contains(questions1[x]))
+                        {
+                            i--;
+                        }
+                        else
+                        {
+                            questions.Add(questions1[x]);
+                        }
                     }
                     else
                     {
-                        questions.Add(questions1[x]);
+                        break;
                     }
                 }
-                else
-                {
-                    break;
-                }
+            }
+            catch
+            {
+                //return HttpNotFound();
+                return RedirectToAction("Error404", "Home");
             }
 
 
@@ -248,54 +256,6 @@ namespace EnglishForKids_LMN.Controllers
                 db.Test_Details.Add(test_Detail);
                 db.SaveChanges();
             }
-            //MailAddress fromGMail = new MailAddress("garena281215@gmail.com", "StartEndSchools");
-            //MailAddress toGMail = new MailAddress(userz.Email, "Me");
-
-            //MailMessage Message = new MailMessage();
-            //SmtpClient smtp = new SmtpClient();
-            //Message.From = new MailAddress("lmnhat.work@gmail.com");
-            //Message.To.Add(new MailAddress(userz.Email));
-            //{
-            //    Message.IsBodyHtml = true;
-            //    Message.Subject = "Test result";
-            //    Message.Body = "Hello " + userz.Name_User.ToString() + ",\n"
-            //    + "Result : \n\n"
-            //    + "---------------------------------------------------"
-            //    + "Question 1 : " + questions[0].Content + "\n"
-            //    + "Your answer : " + choice1 + "\n\n"
-            //    + "Question 2 : " + questions[1].Content + "\n"
-            //    + "Your answer : " + choice2 + "\n\n"
-            //    + "Question 3 : " + questions[2].Content + "\n"
-            //    + "Your answer : " + choice3 + "\n\n"
-            //    + "Question 4 : " + questions[3].Content + "\n"
-            //    + "Your answer : " + text1 + "\n\n"
-            //    + "Question 5 : " + questions[4].Content + "\n"
-            //    + "Your answer : " + text2 + "\n\n"
-            //    + "Question 6 : " + questions[5].Content + "\n"
-            //    + "Your answer : " + text3 + "\n\n"
-            //    + "Question 7 : " + questions[6].Content + "\n"
-            //    + "Your answer : " + choice4 + "\n\n"
-            //    + "Question 8 : " + questions[7].Content + "\n"
-            //    + "Your answer : " + choice5 + "\n\n"
-            //    + "Question 9 : " + questions[8].Content + "\n"
-            //    + "Your answer : " + choice6 + "\n\n"
-            //    + "Question 10 : " + questions[9].Content + "\n"
-            //    + "Your answer : " + choice7 + "\n\n"
-            //    + "-----------------------------------------------------"
-            //    + "Total : " + test_Score + "\n\n"
-            //    + "Wish you have a useful and fun learning session,\n"
-            //    + "English For Kids";
-            //    Message.Priority = MailPriority.High;
-            //    Message.IsBodyHtml = false;
-            //};
-
-            //smtp.Host = "smtp.gmail.com";
-            //smtp.Port = 587;
-            //smtp.EnableSsl = true;
-            //smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
-            //smtp.UseDefaultCredentials = false;
-            //smtp.Credentials = new NetworkCredential("lmnhat.work@gmail.com", "p");
-            ////smtp.Send(Message);
 
 
             // chức năng gởi kết quả về mail
