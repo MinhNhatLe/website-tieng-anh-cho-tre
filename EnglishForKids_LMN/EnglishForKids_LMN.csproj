@@ -356,18 +356,6 @@
     <Content Include="Content\images\nhat4.jpg" />
     <Content Include="Content\images\nhat5.jpg" />
     <Content Include="Content\images\noodles.png" />
-    <Content Include="Content\images\number\1.jpg" />
-    <Content Include="Content\images\number\10.jpg" />
-    <Content Include="Content\images\number\11.jpg" />
-    <Content Include="Content\images\number\12.jpg" />
-    <Content Include="Content\images\number\2.jpg" />
-    <Content Include="Content\images\number\3.jpg" />
-    <Content Include="Content\images\number\4.jpg" />
-    <Content Include="Content\images\number\5.jpg" />
-    <Content Include="Content\images\number\6.png" />
-    <Content Include="Content\images\number\7.jpg" />
-    <Content Include="Content\images\number\8.jpg" />
-    <Content Include="Content\images\number\9.jpg" />
     <Content Include="Content\images\Orange.png" />
     <Content Include="Content\images\Pancake.png" />
     <Content Include="Content\images\Peach.png" />
@@ -597,6 +585,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Content\All_bin\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
