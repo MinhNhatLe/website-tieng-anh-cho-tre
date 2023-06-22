@@ -1,16 +1,22 @@
 ﻿@model PagedList.IPagedList<EnglishForKids_LMN.Models.Vocabulary>
 @using PagedList.Mvc;
 @using PagedList;
-@{ ViewBag.Title = "List Vocabularies - English For Kids";
-    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+@{
+    EnglishForKids_LMN.Models.English_LearningEntities db = new EnglishForKids_LMN.Models.English_LearningEntities();
+    ViewBag.Title = "List Vocabularies - English For Kids";
+    if (Session["ID_User"] != null)
+    {
+        Response.Redirect("~/Home/HomePage");
+    }
+    if (Session["Admin_Code"] != null)
+    {
+        Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    }
     if (Session["ID_User"] == null && Session["Admin_Code"] == null)
     {
         Response.Redirect("~/Login/SignIn");
     }
 }
-
-<style>
-</style>
 <div class="container">
     <div class="row">
         <div class="col-lg-12 col-sm-12 col-xs-12">
@@ -68,6 +74,7 @@
                         <th style=" text-align: center;">Vocabulary pictures</th>
                         <th style=" text-align: center;">English name</th>
                         <th style=" text-align: center;">Vietnamese name</th>
+                        <th style=" text-align: center;">Creator</th>
                         <th style=" text-align: center;">Function</th>
                     </tr>
                     @foreach (var item in Model)
@@ -77,6 +84,15 @@
                             <td style=" text-align: center;"><img src="~/Content/images/@item.Image_Vocabulary" style="width:50px;height:50px; border-radius:10px" /></td>
                             <td style=" text-align: center;">@item.EN_Meaning</td>
                             <td style=" text-align: center;">@item.VN_Meaning</td>
+                            <td style=" text-align: center;">
+                                @{
+                                    if (item.User != null)
+                                    {
+                                        <span>@item.User.Name_User</span>
+                                    }
+                                }
+                            </td>
+
                             <td style=" text-align: center;">
                                 <a href="@Url.Action("EditV", "Vocabulary", new { id = item.ID_Vocabulary })" class="btn btn-warning bx-tada-hover" style="width:80px;">Edit</a>
                                 <a href="@Url.Action("DetailV", "Vocabulary", new { id = item.ID_Vocabulary })" class="btn btn-success bx-tada-hover" style="width:80px;">Detail</a>

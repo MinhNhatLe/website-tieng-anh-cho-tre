@@ -7,7 +7,7 @@
     }
     if (Session["Admin_Code"] != null)
     {
-        Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+        Response.Redirect("~/Home/HomePage");
     }
     if (Session["ID_User"] == null && Session["Admin_Code"] == null)
     {

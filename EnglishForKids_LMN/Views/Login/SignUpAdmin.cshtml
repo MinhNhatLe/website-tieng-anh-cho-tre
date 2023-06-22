@@ -1,7 +1,15 @@
 ﻿@model EnglishForKids_LMN.Models.UserBonus
-@{ Layout = null;
+@{ 
 
-    if (Session["Admin_Code"] == null)
+    if (Session["ID_User"] != null)
+    {
+        Response.Redirect("~/Home/HomePage");
+    }
+    if (Session["Admin_Code"] != null)
+    {
+        Layout = null;
+    }
+    if (Session["ID_User"] == null && Session["Admin_Code"] == null)
     {
         Response.Redirect("~/Login/SignIn");
     }
@@ -114,7 +122,7 @@
                             <div class="row">
                                 <div class="col-lg-6 col-xs-6">
                                     <p class="QuayLai">
-                                        <a href="/Login/SignIn">Back to login page!</a>
+                                        <a href="~/Home/HomePage">Back to home page!</a>
                                     </p>
                                 </div>
                                 <div class="col-lg-6 col-xs-6">

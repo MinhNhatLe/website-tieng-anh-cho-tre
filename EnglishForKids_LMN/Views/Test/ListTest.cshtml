@@ -2,7 +2,14 @@
 @using PagedList.Mvc;
 @using PagedList;
 @{ ViewBag.Title = "List Test - English For Kids";
-    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    if (Session["ID_User"] != null)
+    {
+        Response.Redirect("~/Home/HomePage");
+    }
+    if (Session["Admin_Code"] != null)
+    {
+        Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    }
     if (Session["ID_User"] == null && Session["Admin_Code"] == null)
     {
         Response.Redirect("~/Login/SignIn");

@@ -1,7 +1,14 @@
 ﻿@model EnglishForKids_LMN.Models.VocabularyBonus
 @{ ViewBag.Title = "Create Vocabulary - English For Kids";
     EnglishForKids_LMN.Models.English_LearningEntities db = new EnglishForKids_LMN.Models.English_LearningEntities();
-    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    if (Session["ID_User"] != null)
+    {
+        Response.Redirect("~/Home/HomePage");
+    }
+    if (Session["Admin_Code"] != null)
+    {
+        Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    }
     if (Session["ID_User"] == null && Session["Admin_Code"] == null)
     {
         Response.Redirect("~/Login/SignIn");
@@ -151,15 +158,17 @@
                             @Html.ValidationMessageFor(model => model.category_vos, "", new { @class = "text-danger" })
                         </p>
                         @*@Html.DropDownListFor(model => model.ID_Category_Vo, new SelectList(Model.category_vos, "ID_Category_Vo", "Name_Category_Vo"), "", new { @class = "form-control center-block pull-left", @style = "width:100%;" })*@
-                        <select class="form-control center-block pull-left" style = "width:100%;" name="ID_Category_Vo">
-                            @foreach(var item in db.Category_Vo.Where(s => s.ID_Category_Vo != 6).ToList())
-                                {
-                                    <option value="@item.ID_Category_Vo">@item.Name_Category_Vo</option>
-                                }
+                        <select class="form-control center-block pull-left" style="width:100%;" name="ID_Category_Vo">
+                            @foreach (var item in db.Category_Vo.Where(s => s.ID_Category_Vo != 6).ToList())
+                            {
+                                <option value="@item.ID_Category_Vo">@item.Name_Category_Vo</option>
+                            }
                         </select>
 
 
-
+                        <p>
+                            <input type="text" id="ID_User" name="ID_User" class="form-control text-box single-line" value="@Session["Admin_Code"]" style="display:none;" />
+                        </p>
 
 
                         @*<a href="#" class="btn btn-success bx-flashing-hover pull-right" data-toggle="modal" data-target="#create-category" style="width: 48%;">Add category</a>*@

@@ -4,12 +4,18 @@
 @{
     EnglishForKids_LMN.Models.English_LearningEntities db = new EnglishForKids_LMN.Models.English_LearningEntities();
     ViewBag.Title = "List Test Results - English For Kids";
-    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    if (Session["ID_User"] != null)
+    {
+        Response.Redirect("~/Home/HomePage");
+    }
+    if (Session["Admin_Code"] != null)
+    {
+        Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    }
     if (Session["ID_User"] == null && Session["Admin_Code"] == null)
     {
         Response.Redirect("~/Login/SignIn");
     }
-
 }
 <div class="container">
     <div class="row">
