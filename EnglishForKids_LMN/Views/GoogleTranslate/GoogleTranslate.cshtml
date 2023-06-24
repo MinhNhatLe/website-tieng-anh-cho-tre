@@ -108,7 +108,52 @@
         <div class="row">
             <div class="col-lg-4 col-sm-12 col-xs-12">
                 <div>
-                    <textarea name="content" id="content" placeholder="..." class="form-control center-block" required style="width:100%; height:300px">@Model.content</textarea>
+                    <textarea name="content" id="content" placeholder="..." class="form-control center-block" required style="width:100%; height:300px; position:relative">@Model.content</textarea>
+                    <button class="btn-start btn btn-danger" style="width: 70px; padding: 10px; position: absolute; bottom: 10px; left: 25px;">Start</button>
+                    <button class="btn-stop btn btn-success" style="width: 70px; padding: 10px; position: absolute; bottom: 10px; right: 25px;">Stop</button>
+                    <script>
+                        class SpeechRecognitionApi {
+                            constructor(options) {
+                                const SpeechToText = window.speechRecognition || window.webkitSpeechRecognition;
+                                this.speechApi = new SpeechToText();
+                                this.speechApi.continuous = true;
+                                this.speechApi.interimResults = false;
+                                this.speechApi.lang = 'vi-VN'; // ở đây ví dụ là VN, còn USA là 'en-US' nhé.
+                                this.output = options.output ? options.output : document.createElement('div');
+                                console.log(this.output)
+                                this.speechApi.onresult = (event) => {
+                                    console.log(event);
+                                    var resultIndex = event.resultIndex;
+                                    var transcript = event.results[resultIndex][0].transcript;
+
+                                    console.log('transcript>>', transcript);
+                                    console.log(this.output)
+                                    this.output.textContent = transcript;
+                                }
+                            }
+                            init() {
+                                this.speechApi.start();
+                            }
+                            stop() {
+                                this.speechApi.stop();
+                            }
+                        }
+
+                        window.onload = function () {
+                            var speech = new SpeechRecognitionApi({
+                                output: document.querySelector('#content')
+                            })
+
+                            document.querySelector('.btn-start').addEventListener('click', function () {
+                                speech.init()
+                            })
+
+                            document.querySelector('.btn-stop').addEventListener('click', function () {
+                                speech.stop()
+                            })
+
+                        }
+                    </script>
                 </div>
             </div>
             <div class="col-lg-4 col-sm-12 col-xs-12">
@@ -119,7 +164,7 @@
                 <div>
                     <textarea placeholder="Translation ..." class="form-control center-block" style="width:100%; height:300px; cursor: default ; position:relative" readonly>@Session["translate"].ToString()</textarea>
                 </div>
-                <a href="/GoogleTranslate/Speech" class="btn btn-warning btn-voice" style=" width: 70px; padding:10px; position: absolute;">Voice</a>
+                <a href="/GoogleTranslate/Speech" class="btn btn-warning btn-voice" style="right: 30px; bottom: 10px; width: 70px; padding: 10px; position: absolute;">Voice</a>
             </div>
             @*@Html.ActionLink("Voice", "Speech", "GoogleTranslate", new { @class = "btn btn-default", @style = "width:70px" })*@
         </div>

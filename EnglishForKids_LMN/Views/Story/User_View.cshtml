@@ -62,8 +62,54 @@
                     <option for="sortStory" id="sortStory" name="sortStory" value="View">View</option>
                 </select>
                 <input type="text" id="searchStory" name="searchStory" class="form-control" placeholder="Enter keywords to search ..." value="@Session["searchStory"]" style="display: inline-block; width: 250px" maxlength="20" required />
+                <button id="microButton" onclick="startListening()" style="background: #e3d409; width: 35px; height: 35px; border-radius: 10px; border-color: red;"><i class='bx bx-microphone'></i></button>
                 <input type="submit" value="Search" class="btn btn-primary bx-flashing-hover" style="width:90px;display:inline-block" />
             </div>
+            <script>
+                // Khai báo biến global để lưu trạng thái nhận dạng giọng nói
+                let isListening = false;
+
+                // Hàm bắt đầu nhận dạng giọng nói
+                function startListening() {
+                    // Kiểm tra trình duyệt có hỗ trợ SpeechRecognition hay không
+                    if ('webkitSpeechRecognition' in window) {
+                        const recognition = new webkitSpeechRecognition();
+
+                        // Thiết lập các tùy chọn nhận dạng giọng nói
+                        recognition.continuous = false;
+                        recognition.lang = 'en-US';
+
+                        // Bắt đầu nhận dạng giọng nói
+                        recognition.start();
+
+                        // Xử lý sự kiện khi nhận dạng thành công
+                        recognition.onresult = function (event) {
+                            const result = event.results[0][0].transcript;
+                            document.getElementById('searchStory').value = result;
+                            recognition.stop();
+                        };
+
+                        // Xử lý sự kiện khi kết thúc nhận dạng
+                        recognition.onend = function () {
+                            isListening = false;
+                        };
+
+                        isListening = true;
+                    }
+                }
+
+                // Xử lý sự kiện khi người dùng click vào nút micro
+                document.getElementById('microButton').addEventListener('click', function () {
+                    if (isListening) {
+                        // Ngừng nhận dạng nếu đang trong quá trình nhận dạng
+                        recognition.stop();
+                        isListening = false;
+                    } else {
+                        // Bắt đầu nhận dạng nếu không trong quá trình nhận dạng
+                        startListening();
+                    }
+                });
+            </script>
         </div>
         <br />
         <hr />
